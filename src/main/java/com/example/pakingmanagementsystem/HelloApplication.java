@@ -17,6 +17,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 
 public class HelloApplication extends Application {
   public static void main(String[] args) {
@@ -105,12 +107,12 @@ public class HelloApplication extends Application {
       //stage.setScene(new Scene(root, 1000, 500));
       Scene scene = new Scene(root);
       //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-      try {
-        String css = this.getClass().getResource("/application.css").toExternalForm();
-        scene.getStylesheets().add(css);
-      }catch (Exception e){
-        e.printStackTrace();
-      }
+      /*String css = this.getClass().getResource("/application.css").toExternalForm();
+      scene.getStylesheets().clear();
+      scene.getStylesheets().add(css);*/
+      File f = new File("src/main/java/com/example/pakingmanagementsystem/application.css");
+      scene.getStylesheets().clear();
+      scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
       stage.setScene(scene);
       stage.show();
     } catch (Exception e){

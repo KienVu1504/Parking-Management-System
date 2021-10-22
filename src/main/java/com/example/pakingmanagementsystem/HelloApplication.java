@@ -1,10 +1,12 @@
 package com.example.pakingmanagementsystem;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-//import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -23,7 +25,8 @@ public class HelloApplication extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    //Stage stage = new Stage();
+    /*
+    Stage stage = new Stage();
     Group root = new Group();
     Scene scene = new Scene(root,1000,500, Color.WHITESMOKE);
     Image icon = new Image("E:/GitHub/Paking-Management-System/src/images/icon.png");
@@ -39,14 +42,12 @@ public class HelloApplication extends Application {
     stage.setTitle("Parking Management System");
     stage.setWidth(1000);
     stage.setHeight(500);
-    /*
     stage.setResizable(false);
     stage.setX(50);
     stage.setY(50);
     stage.setFullScreen(true);
     stage.setFullScreenExitHint("You can't escape unless you press p!");
     stage.setFullScreenExitKeyCombination(KeyCombination.keyCombination("q"));
-    */
 
     Text text = new Text();
     text.setText("WELCOME!");
@@ -96,6 +97,11 @@ public class HelloApplication extends Application {
     root.getChildren().add(imageView);
 
     stage.setScene(scene);
+    stage.show();
+    */
+    Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    stage.setTitle("HELLO!");
+    stage.setScene(new Scene(root,1000,500));
     stage.show();
   }
 }

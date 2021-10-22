@@ -102,7 +102,16 @@ public class HelloApplication extends Application {
     try {
       Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
       stage.setTitle("HELLO!");
-      stage.setScene(new Scene(root, 1000, 500));
+      //stage.setScene(new Scene(root, 1000, 500));
+      Scene scene = new Scene(root);
+      //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+      try {
+        String css = this.getClass().getResource("/application.css").toExternalForm();
+        scene.getStylesheets().add(css);
+      }catch (Exception e){
+        e.printStackTrace();
+      }
+      stage.setScene(scene);
       stage.show();
     } catch (Exception e){
       e.printStackTrace();

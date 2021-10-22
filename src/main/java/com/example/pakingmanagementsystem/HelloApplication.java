@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
   }
 
   @Override
-  public void start(Stage stage) throws Exception {
+  public void start(Stage stage) {
     /*
     Stage stage = new Stage();
     Group root = new Group();
@@ -99,9 +99,13 @@ public class HelloApplication extends Application {
     stage.setScene(scene);
     stage.show();
     */
-    Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-    stage.setTitle("HELLO!");
-    stage.setScene(new Scene(root,1000,500));
-    stage.show();
+    try {
+      Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+      stage.setTitle("HELLO!");
+      stage.setScene(new Scene(root, 1000, 500));
+      stage.show();
+    } catch (Exception e){
+      e.printStackTrace();
+    }
   }
 }

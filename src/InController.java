@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -23,6 +24,10 @@ public class InController {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
+    // Get the Stage.
+    stage = (Stage) alert.getDialogPane().getScene().getWindow();
+    // Add a custom icon.
+    stage.getIcons().add(new Image("images/sgd.png"));
     if(alert.showAndWait().get() == ButtonType.OK){
       stage = (Stage) InPane.getScene().getWindow();
       stage.close();

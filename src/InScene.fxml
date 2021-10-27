@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="InPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InController">
+   <children>
+      <MenuBar prefWidth="1360.0">
+        <menus>
+          <Menu id="Menu" mnemonicParsing="false" text="Menu">
+            <items>
+              <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out" />
+                  <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close" />
+            </items>
+          </Menu>
+          <Menu id="Admin" mnemonicParsing="false" text="Admin">
+            <items>
+              <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login" />
+            </items>
+          </Menu>
+          <Menu id="Help" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials" />
+                  <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

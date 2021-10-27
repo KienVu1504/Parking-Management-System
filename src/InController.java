@@ -17,14 +17,14 @@ public class InController {
   private Parent root;
   private Stage stage;
   @FXML
-  private AnchorPane InPanel;
+  private AnchorPane InPane;
   public void closeAPP(ActionEvent event){
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
     if(alert.showAndWait().get() == ButtonType.OK){
-      stage = (Stage) InPanel.getScene().getWindow();
+      stage = (Stage) InPane.getScene().getWindow();
       stage.close();
     }
   }

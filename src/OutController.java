@@ -1,4 +1,3 @@
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,7 +37,7 @@ public class OutController {
   }
   @FXML
   private MenuBar menuBar;
-  public void goToIn(ActionEvent event) throws IOException {
+  public void goToIn() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);

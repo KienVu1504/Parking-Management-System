@@ -33,21 +33,7 @@ public class HistoryController {
   @FXML
   private TableView<?> historyTable;
   @FXML
-  private TableColumn<?, ?> licensePlateColumn;
-  @FXML
-  private TableColumn<?, ?> monthlyTicketColumn;
-  @FXML
-  private TableColumn<?, ?> numbersColumn;
-  @FXML
-  private TableColumn<?, ?> parkingFeeColumn;
-  @FXML
-  private TableColumn<?, ?> statusColumn;
-  @FXML
-  private TableColumn<?, ?> timeInColumn;
-  @FXML
-  private TableColumn<?, ?> timeOutColumn;
-  @FXML
-  private TableColumn<?, ?> vehicleTypeColumn;
+  private TableColumn<?, ?> licensePlateColumn, monthlyTicketColumn, numbersColumn, parkingFeeColumn, statusColumn, timeInColumn, timeOutColumn, vehicleTypeColumn;
   @FXML
   private MenuBar menuBar;
   public void goToIn() throws IOException {

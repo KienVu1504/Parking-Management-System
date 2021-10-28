@@ -79,7 +79,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="530.0" text="Paking Fee">
+      <Label layoutX="350.0" layoutY="530.0" text="Parking Fee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

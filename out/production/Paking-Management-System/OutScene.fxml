@@ -79,7 +79,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="530.0" text="Paking Fee">
+      <Label layoutX="350.0" layoutY="530.0" text="Parking Fee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -91,7 +91,7 @@
       <TextField editable="false" layoutX="510.0" layoutY="530.0" prefWidth="500.0" />
       <Button fx:id="getOutTimeButton" layoutX="946.0" layoutY="460.0" mnemonicParsing="false" onAction="#getTimeOut" text="Get Time" />
       <Button fx:id="licensePlateSearch" layoutX="958.0" layoutY="250.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
-      <Button layoutX="650.0" layoutY="658.0" mnemonicParsing="false" text="Done">
+      <Button layoutX="646.0" layoutY="648.0" mnemonicParsing="false" text="Done">
          <font>
             <Font size="18.0" />
          </font>

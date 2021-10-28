@@ -18,27 +18,11 @@ public class InController {
   private Parent root;
   private Stage stage;
   @FXML
-  private TextField licensePlateTextField;
+  private TextField licensePlateTextField, timeInField;
   @FXML
-  private TextField timeInField;
-  @FXML
-  private RadioButton vehicleBicycles;
-  @FXML
-  private RadioButton vehicleTypeCar;
-  @FXML
-  private RadioButton vehicleTypeMotorbike;
-  @FXML
-  private RadioButton monthlyTicketYes;
-  @FXML
-  private RadioButton monthlyTicketNo;
+  private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, monthlyTicketYes, monthlyTicketNo, carSeats1,carSeats2, carSeats3;
   @FXML
   private Label carSeatsLabel;
-  @FXML
-  private RadioButton carSeats1;
-  @FXML
-  private RadioButton carSeats2;
-  @FXML
-  private RadioButton carSeats3;
   @FXML
   private Button getInTimeButton;
   @FXML

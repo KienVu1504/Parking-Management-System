@@ -54,44 +54,44 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Label alignment="CENTER" layoutY="120.0" prefWidth="1360.0" text="Car Out">
+      <Label alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Car Out">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="250.0" text="License Plate">
+      <Label layoutX="350.0" layoutY="230.0" text="License Plate">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="320.0" text="Car Type">
+      <Label layoutX="350.0" layoutY="300.0" text="Car Type">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="390.0" text="Time In">
+      <Label layoutX="350.0" layoutY="370.0" text="Time In">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="460.0" text="Time Out">
+      <Label layoutX="350.0" layoutY="440.0" text="Time Out">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="530.0" text="Parking Fee">
+      <Label layoutX="350.0" layoutY="510.0" text="Parking Fee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="510.0" layoutY="250.0" prefWidth="420.0" />
-      <TextField editable="false" layoutX="510.0" layoutY="320.0" prefWidth="500.0" />
-      <TextField editable="false" layoutX="510.0" layoutY="390.0" prefWidth="500.0" />
-      <TextField fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="460.0" prefWidth="420.0" />
-      <TextField editable="false" layoutX="510.0" layoutY="530.0" prefWidth="500.0" />
-      <Button fx:id="getOutTimeButton" layoutX="946.0" layoutY="460.0" mnemonicParsing="false" onAction="#getTimeOut" text="Get Time" />
-      <Button fx:id="licensePlateSearch" layoutX="958.0" layoutY="250.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
-      <Button layoutX="646.0" layoutY="648.0" mnemonicParsing="false" text="Done">
+      <TextField layoutX="510.0" layoutY="230.0" prefWidth="420.0" />
+      <TextField editable="false" layoutX="510.0" layoutY="300.0" prefWidth="500.0" />
+      <TextField editable="false" layoutX="510.0" layoutY="370.0" prefWidth="500.0" />
+      <TextField fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefWidth="420.0" />
+      <TextField editable="false" layoutX="510.0" layoutY="510.0" prefWidth="500.0" />
+      <Button fx:id="getOutTimeButton" layoutX="946.0" layoutY="440.0" mnemonicParsing="false" onAction="#getTimeOut" text="Get Time" />
+      <Button fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
+      <Button layoutX="646.0" layoutY="640.0" mnemonicParsing="false" text="Done">
          <font>
             <Font size="18.0" />
          </font>

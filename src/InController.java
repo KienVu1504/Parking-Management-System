@@ -1,4 +1,3 @@
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,7 +59,7 @@ public class InController {
   }
   @FXML
   private MenuBar menuBar;
-  public void goToOut(ActionEvent event) throws IOException {
+  public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
     //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -68,28 +67,28 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
-  public void goToHistory(ActionEvent event) throws IOException {
+  public void goToHistory() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
-  public void goToAdmin(ActionEvent event) throws IOException {
+  public void goToAdmin() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
-  public void goToHelp(ActionEvent event) throws IOException {
+  public void goToHelp() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
-  public void goToAbout(ActionEvent event) throws IOException {
+  public void goToAbout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);

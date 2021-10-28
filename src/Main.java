@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -18,6 +19,7 @@ public class Main extends Application {
     Image icon = new Image("images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png");
     stage.setTitle("Parking Management System");
     stage.setResizable(false);
+    stage.setAlwaysOnTop(true);
     stage.getIcons().add(icon);
     stage.setScene(scene);
     stage.show();
@@ -32,9 +34,10 @@ public class Main extends Application {
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
     // Get the Stage.
-    stage = (Stage) alert.getDialogPane().getScene().getWindow();
+    Stage stage1 = (Stage) alert.getDialogPane().getScene().getWindow();
     // Add a custom icon.
-    stage.getIcons().add(new Image("images/sgd.png"));
+    stage1.getIcons().add(new Image("images/sgd.png"));
+
     if (alert.showAndWait().get() == ButtonType.OK) {
       stage.close();
     }

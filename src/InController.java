@@ -4,13 +4,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class InController {
@@ -18,8 +18,32 @@ public class InController {
   private Parent root;
   private Stage stage;
   @FXML
+  private TextField licensePlateTextField;
+  @FXML
+  private TextField timeInField;
+  @FXML
+  private RadioButton vehicleBicycles;
+  @FXML
+  private RadioButton vehicleTypeCar;
+  @FXML
+  private RadioButton vehicleTypeMotorbike;
+  @FXML
+  private RadioButton monthlyTicketYes;
+  @FXML
+  private RadioButton monthlyTicketNo;
+  @FXML
+  private Label carSeatsLabel;
+  @FXML
+  private RadioButton carSeats1;
+  @FXML
+  private RadioButton carSeats2;
+  @FXML
+  private RadioButton carSeats3;
+  @FXML
+  private Button getInTimeButton;
+  @FXML
   private AnchorPane InPane;
-  public void closeAPP(ActionEvent event){
+  public void closeAPP(){
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
@@ -32,6 +56,24 @@ public class InController {
       stage = (Stage) InPane.getScene().getWindow();
       stage.close();
     }
+  }
+  public void carTypeChecked(){
+    //set Car Seats section to disabled state each time "vehicleTypeCar" radiobutton is selected
+    if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()){
+      carSeatsLabel.setDisable(true);
+      carSeats1.setDisable(true);
+      carSeats2.setDisable(true);
+      carSeats3.setDisable(true);
+    } else {
+      carSeatsLabel.setDisable(false);
+      carSeats1.setDisable(false);
+      carSeats2.setDisable(false);
+      carSeats3.setDisable(false);
+    }
+  }
+  public void getTimeIn(){
+    Calendar calendar = Calendar.getInstance();
+    timeInField.setText(String.valueOf(calendar.getTime()));
   }
   public void goToOut(ActionEvent event) throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));

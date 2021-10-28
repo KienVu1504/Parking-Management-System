@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelpController {
+public class AboutController {
   private Scene scene;
   private Parent root;
   private Stage stage;
   @FXML
-  private AnchorPane HelpPane;
+  private AnchorPane AboutPane;
   public void closeAPP(){
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
@@ -28,7 +28,7 @@ public class HelpController {
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if(alert.showAndWait().get() == ButtonType.OK){
-      stage = (Stage) HelpPane.getScene().getWindow();
+      stage = (Stage) AboutPane.getScene().getWindow();
       stage.close();
     }
   }
@@ -63,8 +63,8 @@ public class HelpController {
     stage.setScene(scene);
     stage.show();
   }
-  public void goToAbout() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));
+  public void goToHelp() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

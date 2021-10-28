@@ -9,30 +9,49 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="InPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InController">
    <children>
-      <MenuBar prefWidth="1360.0">
+      <MenuBar fx:id="menuBar" prefWidth="1360.0">
         <menus>
           <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <items>
-              <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out" />
-                  <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History" />
+              <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close" />
+                  <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
           <Menu id="Admin" mnemonicParsing="false" text="Admin">
             <items>
-              <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login" />
+              <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
           <Menu id="Help" mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials" />
-                  <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About" />
+              <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
         </menus>
@@ -63,7 +82,7 @@
          </font>
       </Label>
       <TextField fx:id="licensePlateTextField" layoutX="510.0" layoutY="250.0" prefWidth="500.0" />
-      <TextField fx:id="timeInField" disable="true" editable="false" layoutX="510.0" layoutY="530.0" prefHeight="26.0" prefWidth="420.0" />
+      <TextField fx:id="timeInField" editable="false" layoutX="510.0" layoutY="530.0" prefHeight="26.0" prefWidth="420.0" />
       <RadioButton fx:id="vehicleBicycles" layoutX="510.0" layoutY="320.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
          <font>
             <Font size="18.0" />

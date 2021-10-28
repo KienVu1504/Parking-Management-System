@@ -13,20 +13,16 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class InController {
+public class OutController {
   private Scene scene;
   private Parent root;
   private Stage stage;
   @FXML
-  private TextField licensePlateTextField, timeInField;
+  private Button getOutTimeButton;
   @FXML
-  private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, monthlyTicketYes, monthlyTicketNo, carSeats1,carSeats2, carSeats3;
+  private TextField timeOutField;
   @FXML
-  private Label carSeatsLabel;
-  @FXML
-  private Button getInTimeButton;
-  @FXML
-  private AnchorPane InPane;
+  private AnchorPane OutPane;
   public void closeAPP(){
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
@@ -37,37 +33,25 @@ public class InController {
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if(alert.showAndWait().get() == ButtonType.OK){
-      stage = (Stage) InPane.getScene().getWindow();
+      stage = (Stage) OutPane.getScene().getWindow();
       stage.close();
     }
   }
-  public void carTypeChecked(){
-    //set Car Seats section to disabled state each time "vehicleTypeCar" radiobutton is selected
-    if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()){
-      carSeatsLabel.setDisable(true);
-      carSeats1.setDisable(true);
-      carSeats2.setDisable(true);
-      carSeats3.setDisable(true);
-    } else {
-      carSeatsLabel.setDisable(false);
-      carSeats1.setDisable(false);
-      carSeats2.setDisable(false);
-      carSeats3.setDisable(false);
-    }
-  }
-  public void getTimeIn(){
-    Calendar calendar = Calendar.getInstance();
-    timeInField.setText(String.valueOf(calendar.getTime()));
-  }
   @FXML
   private MenuBar menuBar;
-  public void goToOut(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+  public void goToIn(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
+  }
+  public void getTimeOut(){
+    Calendar calendar = Calendar.getInstance();
+    timeOutField.setText(String.valueOf(calendar.getTime()));
+  }
+  public void licensePlateSearch(){
+
   }
   public void goToHistory(ActionEvent event) throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));

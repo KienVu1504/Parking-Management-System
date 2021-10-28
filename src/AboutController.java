@@ -9,7 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class AboutController {
@@ -69,5 +72,12 @@ public class AboutController {
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
+  }
+
+  public void openHomeSite() throws URISyntaxException, IOException {
+    Desktop.getDesktop().browse(new URI("https://github.com/KienVu1504/Paking-Management-System"));
+  }
+  public void openSupport() throws URISyntaxException, IOException {
+    Desktop.getDesktop().browse(new URI("https://www.facebook.com/messages/t/100004800523531"));
   }
 }

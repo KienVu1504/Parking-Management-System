@@ -77,7 +77,7 @@
             <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.10.28 Build 10.04PM Beta">
+      <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.10.28 Build 10.21PM Beta">
          <font>
             <Font size="18.0" />
          </font>
@@ -98,12 +98,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="522.0" layoutY="613.0" text="https://github.com/KienVu1504/Paking-Management-System">
+      <Hyperlink layoutX="522.0" layoutY="613.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System">
          <font>
             <Font size="18.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="535.0" layoutY="669.0" text="https://www.facebook.com/messages/t/100004800523531">
+      <Hyperlink layoutX="535.0" layoutY="669.0" onAction="#openSupport" text="https://www.facebook.com/messages/t/100004800523531">
          <font>
             <Font size="18.0" />
          </font>

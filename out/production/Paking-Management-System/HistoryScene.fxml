@@ -22,7 +22,7 @@
                         <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem id="History" mnemonicParsing="false" onAction="#goToOut" text="Out">
+                  <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>

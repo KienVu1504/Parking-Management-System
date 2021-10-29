@@ -7,6 +7,7 @@
     <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/LoginController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/LoginScene.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/lock-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>

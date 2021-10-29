@@ -42,12 +42,12 @@
       </ImageView>
       <Label layoutX="192.0" layoutY="511.0" text="Home Site:">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="180.0" layoutY="592.0" text="Support Team:">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Hyperlink layoutX="31.0" layoutY="545.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">

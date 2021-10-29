@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/HistoryScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/HistoryScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AboutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AboutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AboutScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HistoryScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/HistoryScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../BT/Java/jdk/javafx-sdk-17.0.1/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />

@@ -98,12 +98,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="522.0" layoutY="613.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System">
+      <Hyperlink layoutX="522.0" layoutY="613.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
          <font>
             <Font size="18.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="535.0" layoutY="669.0" onAction="#openSupport" text="https://www.facebook.com/messages/t/100004800523531">
+      <Hyperlink layoutX="535.0" layoutY="669.0" onAction="#openSupport" text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
          <font>
             <Font size="18.0" />
          </font>

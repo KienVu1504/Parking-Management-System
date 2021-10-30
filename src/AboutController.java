@@ -73,7 +73,13 @@ public class AboutController {
     stage.setScene(scene);
     stage.show();
   }
-
+  public void logout() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
   public void openHomeSite() throws URISyntaxException, IOException {
     Desktop.getDesktop().browse(new URI("https://github.com/KienVu1504/Paking-Management-System"));
   }

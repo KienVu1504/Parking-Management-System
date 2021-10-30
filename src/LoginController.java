@@ -109,7 +109,6 @@ public class LoginController implements Initializable {
   public void openSupport() throws URISyntaxException, IOException {
     Desktop.getDesktop().browse(new URI("https://www.facebook.com/messages/t/100004800523531"));
   }
-
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     loginButton.setOnAction(new EventHandler<ActionEvent>() {

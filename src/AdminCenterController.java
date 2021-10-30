@@ -77,4 +77,11 @@ public class AdminCenterController {
     stage.setScene(scene);
     stage.show();
   }
+  public void adminLogout() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 }

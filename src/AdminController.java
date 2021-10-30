@@ -111,7 +111,7 @@ public class AdminController implements Initializable {
         while (resultSet.next()){
           String retriedPassword = resultSet.getString("password");
           if (retriedPassword.equals(password)){
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminCenterScene.fxml")));
             //Stage stage = (Stage) menuBar.getScene().getWindow();
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);

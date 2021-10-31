@@ -11,9 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class InController {
   private Scene scene;
@@ -147,8 +150,60 @@ public class InController {
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all text field before submit!");
     } else {
-      errorLabel.setTextFill(Color.GREEN);
-      errorLabel.setText("Submitted!");
+      Connection connection = null;
+      PreparedStatement preparedStatement = null;
+      ResultSet resultSet = null;
+      try {
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+        preparedStatement = connection.prepareStatement("insert into parking(license plate, type, seat, ticket, time in) values(?, ?, ?, ?, ?)");
+        preparedStatement.setString(1, licensePlateTextField.getText());
+        if (vehicleBicycles.isSelected()){
+          preparedStatement.setString(2, "Bicycles");
+        }
+        if (vehicleTypeMotorbike.isSelected()){
+          preparedStatement.setString(2, "Motorbike");
+        }
+        if (vehicleTypeCar.isSelected()){
+          preparedStatement.setString(2, "Car");
+        }
+        if (carSeats1.isSelected()){
+          preparedStatement.setString(3, "4-8");
+        }
+        if (carSeats2.isSelected()){
+          preparedStatement.setString(3, "9-29");
+        }
+        if (carSeats3.isSelected()){
+          preparedStatement.setString(3, "30+");
+        }
+        if (monthlyTicketYes.isSelected()){
+          preparedStatement.setString(4, "1");
+        }
+        if (monthlyTicketNo.isSelected()){
+          preparedStatement.setString(4, "0");
+        }
+        preparedStatement.setString(5, timeInField.getText());
+        int kq = preparedStatement.executeUpdate();
+        if (kq > 0) {
+          errorLabel.setTextFill(Color.GREEN);
+          errorLabel.setText("Submitted!");
+        } else {
+          errorLabel.setTextFill(Color.RED);
+          errorLabel.setText("We can't submitted your record at this time. Please try again!");
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);
+      } finally {
+        try {
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+          if (connection != null) {
+            connection.close();
+          }
+        } catch (SQLException e) {
+          Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);
+        }
+      }
     }
   }
   public void randomLP() {

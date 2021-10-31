@@ -155,30 +155,27 @@ public class InController {
       ResultSet resultSet = null;
       try {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
-        preparedStatement = connection.prepareStatement("insert into parking(license plate, type, seat, ticket, time in) values(?, ?, ?, ?, ?)");
+        preparedStatement = connection.prepareStatement("insert into parking(license_plate, type, seat, ticket, time_in) values(?, ?, ?, ?, ?)");
         preparedStatement.setString(1, licensePlateTextField.getText());
         if (vehicleBicycles.isSelected()){
           preparedStatement.setString(2, "Bicycles");
-        }
-        if (vehicleTypeMotorbike.isSelected()){
+        } else if (vehicleTypeMotorbike.isSelected()){
           preparedStatement.setString(2, "Motorbike");
-        }
-        if (vehicleTypeCar.isSelected()){
+        } else if (vehicleTypeCar.isSelected()){
           preparedStatement.setString(2, "Car");
         }
-        if (carSeats1.isSelected()){
+        if (vehicleBicycles.isSelected()){
+          preparedStatement.setString(3, "0");
+        } else if (carSeats1.isSelected()){
           preparedStatement.setString(3, "4-8");
-        }
-        if (carSeats2.isSelected()){
+        } else if (carSeats2.isSelected()){
           preparedStatement.setString(3, "9-29");
-        }
-        if (carSeats3.isSelected()){
+        } else if (carSeats3.isSelected()){
           preparedStatement.setString(3, "30+");
         }
         if (monthlyTicketYes.isSelected()){
           preparedStatement.setString(4, "1");
-        }
-        if (monthlyTicketNo.isSelected()){
+        } else if (monthlyTicketNo.isSelected()){
           preparedStatement.setString(4, "0");
         }
         preparedStatement.setString(5, timeInField.getText());

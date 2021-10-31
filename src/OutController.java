@@ -8,7 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class OutController {
@@ -45,8 +46,9 @@ public class OutController {
     stage.show();
   }
   public void getTimeOut(){
-    Calendar calendar = Calendar.getInstance();
-    timeOutField.setText(String.valueOf(calendar.getTime()));
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    LocalDateTime now = LocalDateTime.now();
+    timeOutField.setText(dtf.format(now));
   }
   public void licensePlateSearch(){
 

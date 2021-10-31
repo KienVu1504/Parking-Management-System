@@ -1,15 +1,22 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class InController {
   private Scene scene;
@@ -20,9 +27,9 @@ public class InController {
   @FXML
   private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, monthlyTicketYes, monthlyTicketNo, carSeats1,carSeats2, carSeats3;
   @FXML
-  private Label carSeatsLabel;
+  private Label carSeatsLabel,errorLabel;
   @FXML
-  private Button getInTimeButton;
+  private Button getInTimeButton, submitButton;
   @FXML
   private AnchorPane InPane;
   public void closeAPP(){
@@ -46,6 +53,9 @@ public class InController {
       carSeats1.setDisable(true);
       carSeats2.setDisable(true);
       carSeats3.setDisable(true);
+      if (vehicleBicycles.isSelected()){
+        randomLP();
+      }
     } else {
       carSeatsLabel.setDisable(false);
       carSeats1.setDisable(false);
@@ -54,8 +64,11 @@ public class InController {
     }
   }
   public void getTimeIn(){
-    Calendar calendar = Calendar.getInstance();
-    timeInField.setText(String.valueOf(calendar.getTime()));
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    LocalDateTime now = LocalDateTime.now();
+    timeInField.setText(dtf.format(now));
+    //Calendar calendar = Calendar.getInstance();
+    //timeInField.setText(String.valueOf(calendar.getTime()));
   }
   @FXML
   private MenuBar menuBar;
@@ -101,5 +114,38 @@ public class InController {
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
+  }
+  public void limitLength() {
+    licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (licensePlateTextField.getText().length() > 10) {
+          errorLabel.setText("License Plate length must be <= 10!");
+          // if its 11th character then just setText to previous
+          // one
+          licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
+        }
+      }
+    });
+  }
+  public void submitIn(){
+
+  }
+  public void randomLP() {
+    // chose a Character random from this String
+    String AlphaNumericString = "0123456789";
+    // create StringBuffer size of AlphaNumericString
+    StringBuilder sb = new StringBuilder(10);
+    for (int i = 0; i < 10; i++) {
+      // generate a random number between
+      // 0 to AlphaNumericString variable length
+      int index
+        = (int)(AlphaNumericString.length()
+        * Math.random());
+      // add Character one by one in end of sb
+      sb.append(AlphaNumericString
+        .charAt(index));
+    }
+    licensePlateTextField.setText(sb.toString());
   }
 }

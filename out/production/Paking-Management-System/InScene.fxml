@@ -61,12 +61,12 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Car In">
+      <Label alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Vehicle In">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="348.0" layoutY="230.0" text="License Plate">
+      <Label layoutX="347.0" layoutY="300.0" text="License Plate">
          <font>
             <Font size="18.0" />
          </font>
@@ -76,7 +76,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="348.0" layoutY="300.0" text="Vehicle Type">
+      <Label layoutX="347.0" layoutY="220.0" text="Vehicle Type">
          <font>
             <Font size="18.0" />
          </font>
@@ -86,9 +86,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="licensePlateTextField" layoutX="508.0" layoutY="230.0" prefWidth="500.0" />
+      <TextField fx:id="licensePlateTextField" layoutX="507.0" layoutY="300.0" onKeyTyped="#limitLength" prefWidth="500.0" />
       <TextField fx:id="timeInField" editable="false" layoutX="508.0" layoutY="510.0" prefHeight="26.0" prefWidth="420.0" />
-      <RadioButton fx:id="vehicleBicycles" layoutX="508.0" layoutY="300.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
+      <RadioButton fx:id="vehicleBicycles" layoutX="507.0" layoutY="220.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
          <font>
             <Font size="18.0" />
          </font>
@@ -96,12 +96,12 @@
             <ToggleGroup fx:id="vehicleType" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="vehicleTypeCar" layoutX="948.0" layoutY="300.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$vehicleType">
+      <RadioButton fx:id="vehicleTypeCar" layoutX="947.0" layoutY="220.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$vehicleType">
          <font>
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="vehicleTypeMotorbike" layoutX="700.0" layoutY="300.0" mnemonicParsing="false" onAction="#carTypeChecked" selected="true" text="Motorbike" toggleGroup="$vehicleType">
+      <RadioButton fx:id="vehicleTypeMotorbike" layoutX="699.0" layoutY="220.0" mnemonicParsing="false" onAction="#carTypeChecked" selected="true" text="Motorbike" toggleGroup="$vehicleType">
          <font>
             <Font size="18.0" />
          </font>
@@ -119,7 +119,7 @@
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <Button layoutX="637.0" layoutY="640.0" mnemonicParsing="false" text="Submit">
+      <Button fx:id="submitButton" layoutX="637.0" layoutY="640.0" mnemonicParsing="false" onAction="#submitIn" text="Submit">
          <font>
             <Font size="18.0" />
          </font>
@@ -148,5 +148,10 @@
          </font>
       </RadioButton>
       <Button fx:id="getInTimeButton" layoutX="948.0" layoutY="510.0" mnemonicParsing="false" onAction="#getTimeIn" text="Get Time" />
+      <Label fx:id="errorLabel" layoutX="666.0" layoutY="581.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

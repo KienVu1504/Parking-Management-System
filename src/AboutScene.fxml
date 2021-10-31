@@ -82,7 +82,7 @@
             <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.10.30 Build 4.06PM Beta">
+      <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.10.31 Build 10.35PM Beta">
          <font>
             <Font size="18.0" />
          </font>

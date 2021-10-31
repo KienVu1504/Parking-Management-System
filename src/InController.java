@@ -1,22 +1,19 @@
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 
 public class InController {
   private Scene scene;
@@ -27,9 +24,9 @@ public class InController {
   @FXML
   private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, monthlyTicketYes, monthlyTicketNo, carSeats1,carSeats2, carSeats3;
   @FXML
-  private Label carSeatsLabel,errorLabel;
+  private Label carSeatsLabel,errorLabel,errorLabel1, errorLabel2;
   @FXML
-  private Button getInTimeButton, submitButton;
+  private Button getInTimeButton, submitButton, resetButton;
   @FXML
   private AnchorPane InPane;
   public void closeAPP(){
@@ -67,8 +64,17 @@ public class InController {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     LocalDateTime now = LocalDateTime.now();
     timeInField.setText(dtf.format(now));
+    errorLabel2.setText("");
     //Calendar calendar = Calendar.getInstance();
     //timeInField.setText(String.valueOf(calendar.getTime()));
+  }
+  public void goToIn(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
+    //Stage stage = (Stage) menuBar.getScene().getWindow();
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
   }
   @FXML
   private MenuBar menuBar;
@@ -124,12 +130,26 @@ public class InController {
           // if its 11th character then just setText to previous
           // one
           licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
+        } else {
+          errorLabel1.setText("");
         }
       }
     });
   }
   public void submitIn(){
-
+    if (timeInField.getText().length() == 0 || licensePlateTextField.getText().length() == 0){
+      if (licensePlateTextField.getText().length() == 0){
+        errorLabel1.setText("!");
+      }
+      if (timeInField.getText().length() == 0){
+        errorLabel2.setText("!");
+      }
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Please fill all text field before submit!");
+    } else {
+      errorLabel.setTextFill(Color.GREEN);
+      errorLabel.setText("Submitted!");
+    }
   }
   public void randomLP() {
     // chose a Character random from this String

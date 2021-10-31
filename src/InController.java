@@ -164,7 +164,7 @@ public class InController {
         } else if (vehicleTypeCar.isSelected()){
           preparedStatement.setString(2, "Car");
         }
-        if (vehicleBicycles.isSelected()){
+        if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()){
           preparedStatement.setString(3, "0");
         } else if (carSeats1.isSelected()){
           preparedStatement.setString(3, "4-8");

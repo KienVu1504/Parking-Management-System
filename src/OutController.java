@@ -1,5 +1,7 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -25,7 +27,7 @@ public class OutController {
   @FXML
   private Label errorLabel1, errorLabel2, errorLabel;
   @FXML
-  private Button getOutTimeButton,doneButton;
+  private Button getOutTimeButton,doneButton, resetButton;
   @FXML
   private TextField parkingTimeTextField, ticketTextField, seatTextField, timeOutField, licensePlateTextField, vehicleTypeTextField, timeInTextField, parkingFeeTextField;
   @FXML
@@ -61,6 +63,9 @@ public class OutController {
     });
   }
   public void outCheck(){
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
     if (licensePlateTextField.getText().length() == 0 || timeOutField.getText().length() == 0){
       if (licensePlateTextField.getText().length() == 0 || seatTextField.getText().length() != 0){
         errorLabel1.setTextFill(Color.RED);
@@ -73,8 +78,49 @@ public class OutController {
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all text field before submit!");
     } else {
-      errorLabel.setTextFill(Color.GREEN);
-      errorLabel.setText("OK");
+      try {
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+        preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
+        preparedStatement.setString(1, licensePlateTextField.getText());
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+          preparedStatement = connection.prepareStatement("update parking set time_out=?, parking_time=?, fee=?, status=? where license_plate = ? AND status = 1");
+          preparedStatement.setString(1, timeOutField.getText());
+          preparedStatement.setString(2, parkingTimeTextField.getText());
+          preparedStatement.setString(3, parkingFeeTextField.getText());
+          preparedStatement.setString(4, "0");
+          preparedStatement.setString(5, licensePlateTextField.getText());
+          int kq = preparedStatement.executeUpdate();
+          if (kq > 0) {
+            errorLabel.setTextFill(Color.GREEN);
+            errorLabel.setText("Completed!");
+          } else {
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("We can't submitted your record at this time. Please try again!");
+          }
+        } else {
+          errorLabel.setTextFill(Color.RED);
+          errorLabel.setText("Can't find " + licensePlateTextField.getText() + "!");
+          errorLabel1.setTextFill(Color.RED);
+          errorLabel1.setText("!");
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
+      } finally {
+        try {
+          if (resultSet != null) {
+            resultSet.close();
+          }
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+          if (connection != null) {
+            connection.close();
+          }
+        } catch (SQLException e) {
+          Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
+        }
+      }
     }
   }
   @FXML
@@ -140,12 +186,21 @@ public class OutController {
           Date d2 = (Date) sdf.parse(dtf.format(now));
           long difference_In_Time = d2.getTime() - d1.getTime();
           if (difference_In_Time < 0){
-            parkingFeeTextField.setText("Free");
+            if (ticketTextField.getText().equals("Yes")){
+              parkingFeeTextField.setText("Free");
+            } else {
+              feeCal();
+            }
           } else {
-            errorLabel2.setTextFill(Color.RED);
-            errorLabel2.setText("!");
-            errorLabel.setTextFill(Color.RED);
-            errorLabel.setText("Your monthly ticket is expired!");
+            if (!ticketTextField.getText().equals("No")){
+              feeCal();
+              errorLabel2.setTextFill(Color.RED);
+              errorLabel2.setText("!");
+              errorLabel.setTextFill(Color.RED);
+              errorLabel.setText("Your monthly ticket is expired!");
+            } else {
+              feeCal();
+            }
           }
         } catch (ParseException e) {
           e.printStackTrace();
@@ -206,11 +261,11 @@ public class OutController {
           parkingFee = 417 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("4-8")){
+        if (seatTextField.getText().equals("9-29")){
           parkingFee = 667 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")){
+        if (seatTextField.getText().equals("30+")){
           parkingFee = 834 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
@@ -220,11 +275,11 @@ public class OutController {
           parkingFee = 167 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("4-8")){
+        if (seatTextField.getText().equals("9-29")){
           parkingFee = 250 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")){
+        if (seatTextField.getText().equals("30+")){
           parkingFee = 334 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
@@ -234,11 +289,11 @@ public class OutController {
           parkingFee = 105 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("4-8")){
+        if (seatTextField.getText().equals("9-29")){
           parkingFee = 209 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")){
+        if (seatTextField.getText().equals("30+")){
           parkingFee = 334 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
@@ -251,7 +306,7 @@ public class OutController {
     ResultSet resultSet = null;
     try {
       connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
-      preparedStatement = connection.prepareStatement("select * from parking where license_plate = ?");
+      preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
       preparedStatement.setString(1, licensePlateTextField.getText());
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
@@ -296,6 +351,14 @@ public class OutController {
         Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
       }
     }
+  }
+  public void goToOut(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
+    //Stage stage = (Stage) menuBar.getScene().getWindow();
+    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
   }
   public void goToHistory() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));

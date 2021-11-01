@@ -155,48 +155,58 @@ public class InController {
       ResultSet resultSet = null;
       try {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
-        preparedStatement = connection.prepareStatement("insert into parking(license_plate, type, seat, ticket, time_in) values(?, ?, ?, ?, ?)");
+        preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
         preparedStatement.setString(1, licensePlateTextField.getText());
-        if (vehicleBicycles.isSelected()){
-          preparedStatement.setString(2, "Bicycles");
-        } else if (vehicleTypeMotorbike.isSelected()){
-          preparedStatement.setString(2, "Motorbike");
-        } else if (vehicleTypeCar.isSelected()){
-          preparedStatement.setString(2, "Car");
-        }
-        if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()){
-          preparedStatement.setString(3, "0");
-        } else if (carSeats1.isSelected()){
-          preparedStatement.setString(3, "4-8");
-        } else if (carSeats2.isSelected()){
-          preparedStatement.setString(3, "9-29");
-        } else if (carSeats3.isSelected()){
-          preparedStatement.setString(3, "30+");
-        }
-        PreparedStatement preparedStatement1 = null;
-        ResultSet resultSet1 = null;
-        preparedStatement1 = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
-        resultSet1 = preparedStatement1.executeQuery();
-        if (resultSet1.next()) {
-          preparedStatement1 = connection.prepareStatement("select * from ticket where license_plate = ?");
-          preparedStatement1.setString(1, licensePlateTextField.getText());
-          resultSet1 = preparedStatement1.executeQuery();
-          if (!resultSet1.next()) {
-            preparedStatement.setString(4, "0");
-          } else {
-            preparedStatement.setString(4, "1");
-          }
-        } else {
-          System.out.println("List is empty!");
-        }
-        preparedStatement.setString(5, timeInField.getText());
-        int kq = preparedStatement.executeUpdate();
-        if (kq > 0) {
-          errorLabel.setTextFill(Color.GREEN);
-          errorLabel.setText("Submitted!");
-        } else {
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()){
           errorLabel.setTextFill(Color.RED);
-          errorLabel.setText("We can't submitted your record at this time. Please try again!");
+          errorLabel.setText("License plate existing!");
+          errorLabel1.setTextFill(Color.RED);
+          errorLabel1.setText("!");
+        } else {
+          preparedStatement = connection.prepareStatement("insert into parking(license_plate, type, seat, ticket, time_in) values(?, ?, ?, ?, ?)");
+          preparedStatement.setString(1, licensePlateTextField.getText());
+          if (vehicleBicycles.isSelected()) {
+            preparedStatement.setString(2, "Bicycles");
+          } else if (vehicleTypeMotorbike.isSelected()) {
+            preparedStatement.setString(2, "Motorbike");
+          } else if (vehicleTypeCar.isSelected()) {
+            preparedStatement.setString(2, "Car");
+          }
+          if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()) {
+            preparedStatement.setString(3, "0");
+          } else if (carSeats1.isSelected()) {
+            preparedStatement.setString(3, "4-8");
+          } else if (carSeats2.isSelected()) {
+            preparedStatement.setString(3, "9-29");
+          } else if (carSeats3.isSelected()) {
+            preparedStatement.setString(3, "30+");
+          }
+          PreparedStatement preparedStatement1 = null;
+          ResultSet resultSet1 = null;
+          preparedStatement1 = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
+          resultSet1 = preparedStatement1.executeQuery();
+          if (resultSet1.next()) {
+            preparedStatement1 = connection.prepareStatement("select * from ticket where license_plate = ?");
+            preparedStatement1.setString(1, licensePlateTextField.getText());
+            resultSet1 = preparedStatement1.executeQuery();
+            if (!resultSet1.next()) {
+              preparedStatement.setString(4, "0");
+            } else {
+              preparedStatement.setString(4, "1");
+            }
+          } else {
+            preparedStatement.setString(4, "0");
+          }
+          preparedStatement.setString(5, timeInField.getText());
+          int kq = preparedStatement.executeUpdate();
+          if (kq > 0) {
+            errorLabel.setTextFill(Color.GREEN);
+            errorLabel.setText("Submitted!");
+          } else {
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("We can't submitted your record at this time. Please try again!");
+          }
         }
       } catch (SQLException e) {
         Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);

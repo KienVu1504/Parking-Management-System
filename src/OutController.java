@@ -125,6 +125,12 @@ public class OutController {
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
         feeCal();
+        if (ticketTextField.getText().equals("Yes")){
+          errorLabel2.setTextFill(Color.RED);
+          errorLabel2.setText("!");
+          errorLabel.setTextFill(Color.RED);
+          errorLabel.setText("You don't have a monthly ticket or your monthly ticket is suspended!");
+        }
       } else {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         try {
@@ -133,8 +139,13 @@ public class OutController {
           Date d1 = (Date) sdf.parse(resultSet.getString("expired_date"));
           Date d2 = (Date) sdf.parse(dtf.format(now));
           long difference_In_Time = d2.getTime() - d1.getTime();
-          if (difference_In_Time != 0){
+          if (difference_In_Time < 0){
             parkingFeeTextField.setText("Free");
+          } else {
+            errorLabel2.setTextFill(Color.RED);
+            errorLabel2.setText("!");
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("Your monthly ticket is expired!");
           }
         } catch (ParseException e) {
           e.printStackTrace();

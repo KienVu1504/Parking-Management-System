@@ -25,7 +25,7 @@ public class InController {
   @FXML
   private TextField licensePlateTextField, timeInField;
   @FXML
-  private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, monthlyTicketYes, monthlyTicketNo, carSeats1,carSeats2, carSeats3;
+  private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, carSeats1,carSeats2, carSeats3;
   @FXML
   private Label carSeatsLabel,errorLabel,errorLabel1, errorLabel2;
   @FXML
@@ -173,10 +173,21 @@ public class InController {
         } else if (carSeats3.isSelected()){
           preparedStatement.setString(3, "30+");
         }
-        if (monthlyTicketYes.isSelected()){
-          preparedStatement.setString(4, "1");
-        } else if (monthlyTicketNo.isSelected()){
-          preparedStatement.setString(4, "0");
+        PreparedStatement preparedStatement1 = null;
+        ResultSet resultSet1 = null;
+        preparedStatement1 = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
+        resultSet1 = preparedStatement1.executeQuery();
+        if (resultSet1.next()) {
+          preparedStatement1 = connection.prepareStatement("select * from ticket where license_plate = ?");
+          preparedStatement1.setString(1, licensePlateTextField.getText());
+          resultSet1 = preparedStatement1.executeQuery();
+          if (!resultSet1.next()) {
+            preparedStatement.setString(4, "0");
+          } else {
+            preparedStatement.setString(4, "1");
+          }
+        } else {
+          System.out.println("List is empty!");
         }
         preparedStatement.setString(5, timeInField.getText());
         int kq = preparedStatement.executeUpdate();

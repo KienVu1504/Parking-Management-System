@@ -106,17 +106,6 @@ public class OutController {
       // Calculate time difference
       // in milliseconds
       long difference_In_Time = d2.getTime() - d1.getTime();
-      // Calculate time difference in
-      // seconds, minutes, hours, years,
-      // and days
-      long difference_In_Seconds = (difference_In_Time / 1000) % 60;
-      long difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
-      long difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
-      long difference_In_Years = (difference_In_Time / (1000L * 60 * 60 * 24 * 365));
-      long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-      // Print the date difference in
-      // years, in days, in hours, in
-      // minutes, and in seconds
       int parkingTime = (int) ((difference_In_Time / 1000) / 60);
       parkingTimeTextField.setText(String.valueOf(parkingTime));
     }
@@ -125,8 +114,125 @@ public class OutController {
       e.printStackTrace();
     }
   }
+  public void findDifferenceTicket(){
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    try {
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+      preparedStatement = connection.prepareStatement("select expired_date from ticket where license_plate = ? AND status = 1");
+      preparedStatement.setString(1, licensePlateTextField.getText());
+      resultSet = preparedStatement.executeQuery();
+      if (!resultSet.next()) {
+        feeCal();
+      } else {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        try {
+          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+          LocalDateTime now = LocalDateTime.now();
+          Date d1 = (Date) sdf.parse(resultSet.getString("expired_date"));
+          Date d2 = (Date) sdf.parse(dtf.format(now));
+          long difference_In_Time = d2.getTime() - d1.getTime();
+          if (difference_In_Time != 0){
+            parkingFeeTextField.setText("Free");
+          }
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+      }
+    } catch (SQLException e) {
+      Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
+    } finally {
+      try {
+        if (resultSet != null) {
+          resultSet.close();
+        }
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+        if (connection != null) {
+          connection.close();
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
+      }
+    }
+  }
   public void feeCal(){
-    
+    int parkingFee;
+    int parkingTime = Integer.parseInt(parkingTimeTextField.getText());
+    if (vehicleTypeTextField.getText().equals("Bicycles")){
+      if (parkingTime <= 240){
+        parkingFee = 50 * parkingTime;
+        parkingFeeTextField.setText(String.valueOf(parkingFee));
+      }
+      if (parkingTime > 240 && parkingTime <= 480){
+        parkingFee = 9 * parkingTime;
+        parkingFeeTextField.setText(String.valueOf(parkingFee));
+      }
+      if (parkingTime > 480){
+        parkingFee = 11 * parkingTime;
+        parkingFeeTextField.setText(String.valueOf(parkingFee));
+      }
+    }
+    if (vehicleTypeTextField.getText().equals("Motorbike")){
+      if (parkingTime <= 240){
+        parkingFee = 100 * parkingTime;
+        parkingFeeTextField.setText(String.valueOf(parkingFee));
+      }
+      if (parkingTime > 240 && parkingTime <= 480){
+        parkingFee = 17 * parkingTime;
+        parkingFeeTextField.setText(String.valueOf(parkingFee));
+      }
+      if (parkingTime > 480){
+        parkingFee = 19 * parkingTime;
+        parkingFeeTextField.setText(String.valueOf(parkingFee));
+      }
+    }
+    if (vehicleTypeTextField.getText().equals("Car")){
+      if (parkingTime <= 90){
+        if (seatTextField.getText().equals("4-8")){
+          parkingFee = 417 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+        if (seatTextField.getText().equals("4-8")){
+          parkingFee = 667 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+        if (seatTextField.getText().equals("9-29")){
+          parkingFee = 834 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+      }
+      if (parkingTime > 90 && parkingTime <= 1440){
+        if (seatTextField.getText().equals("4-8")){
+          parkingFee = 167 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+        if (seatTextField.getText().equals("4-8")){
+          parkingFee = 250 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+        if (seatTextField.getText().equals("9-29")){
+          parkingFee = 334 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+      }
+      if (parkingTime > 1440){
+        if (seatTextField.getText().equals("4-8")){
+          parkingFee = 105 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+        if (seatTextField.getText().equals("4-8")){
+          parkingFee = 209 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+        if (seatTextField.getText().equals("9-29")){
+          parkingFee = 334 * parkingTime;
+          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        }
+      }
+    }
   }
   public void licensePlateSearch(){
     Connection connection = null;
@@ -160,6 +266,7 @@ public class OutController {
         errorLabel.setText("");
         getTimeOut();
         findDifference();
+        findDifferenceTicket();
       }
     } catch (SQLException e) {
       Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);

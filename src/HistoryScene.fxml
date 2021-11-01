@@ -13,86 +13,78 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="HistoryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0"
-            prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="HistoryController">
+<AnchorPane fx:id="HistoryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HistoryController">
    <MenuBar fx:id="menuBar" prefWidth="1360.0">
       <Menu id="Menu" mnemonicParsing="false" text="Menu">
          <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
             <accelerator>
-               <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
          <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
             <accelerator>
-               <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
-         <SeparatorMenuItem mnemonicParsing="false"/>
+         <SeparatorMenuItem mnemonicParsing="false" />
          <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
             <accelerator>
-               <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
          <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
             <accelerator>
-               <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
       </Menu>
       <Menu id="Admin" mnemonicParsing="false" text="Admin">
          <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
             <accelerator>
-               <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
       </Menu>
       <Menu id="Help" mnemonicParsing="false" text="Help">
          <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
             <accelerator>
-               <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
          <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
             <accelerator>
-               <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+               <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
          </MenuItem>
       </Menu>
    </MenuBar>
    <Label alignment="CENTER" layoutY="26.0" prefHeight="54.0" prefWidth="887.0" text="Parking History">
       <font>
-         <Font name="System Bold" size="36.0"/>
+         <Font name="System Bold" size="36.0" />
       </font>
    </Label>
    <TableView fx:id="historyTable" layoutY="80.0" prefHeight="688.0" prefWidth="1360.0">
       <columns>
-         <TableColumn id="Numbers" fx:id="numbersColumn" maxWidth="75.0" minWidth="75.0" prefWidth="75.0"
-                      text="Numbers"/>
-         <TableColumn id="License Plate" fx:id="licensePlateColumn" maxWidth="250.0" minWidth="250.0" prefWidth="250.0"
-                      text="License Plate"/>
-         <TableColumn id="Vehicle Type" fx:id="vehicleTypeColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0"
-                      text="Vehicle Type"/>
-         <TableColumn id="Monthly Ticket" fx:id="monthlyTicketColumn" maxWidth="110.0" minWidth="110.0"
-                      prefWidth="110.0" text="Monthly Ticket"/>
-         <TableColumn id="Time In" fx:id="timeInColumn" maxWidth="300.0" minWidth="300.0" prefWidth="300.0"
-                      text="Time In"/>
-         <TableColumn id="Time Out" fx:id="timeOutColumn" maxWidth="300.0" minWidth="300.0" prefWidth="300.0"
-                      text="Time Out"/>
-         <TableColumn id="Parking Fee" fx:id="parkingFeeColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0"
-                      text="Parking Fee"/>
-         <TableColumn id="Status" fx:id="statusColumn" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Status"/>
+         <TableColumn id="Numbers" fx:id="numbersColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="ID" />
+         <TableColumn id="License Plate" fx:id="licensePlateColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="License Plate" />
+         <TableColumn id="Vehicle Type" fx:id="vehicleTypeColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Vehicle Type" />
+         <TableColumn id="Seat" fx:id="seatColumn" editable="false" prefWidth="75.0" text="Seat" />
+         <TableColumn id="Monthly Ticket" fx:id="monthlyTicketColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" text="Monthly Ticket" />
+         <TableColumn id="Time In" fx:id="timeInColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Time In" />
+         <TableColumn id="Time Out" fx:id="timeOutColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Time Out" />
+         <TableColumn id="Parking Time" fx:id="parkingTimeColumn" prefWidth="75.0" text="Time" />
+         <TableColumn id="Parking Fee" fx:id="parkingFeeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Parking Fee" />
+         <TableColumn id="Status" fx:id="statusColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Status" />
       </columns>
    </TableView>
-   <Button fx:id="searchButton" layoutX="1187.0" layoutY="26.0" mnemonicParsing="false" prefHeight="54.0"
-           prefWidth="172.0" text="Search">
+   <Button fx:id="searchButton" layoutX="1187.0" layoutY="26.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="172.0" text="Search">
       <font>
-         <Font name="System Bold" size="18.0"/>
+         <Font name="System Bold" size="18.0" />
       </font>
    </Button>
    <TextField layoutX="887.0" layoutY="26.0" prefHeight="54.0" prefWidth="300.0" promptText="Enter a license plate...">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </TextField>
 </AnchorPane>

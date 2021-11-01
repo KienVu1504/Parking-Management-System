@@ -10,6 +10,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,6 +63,7 @@ public class HistoryController implements Initializable {
 
   @FXML
   private TableColumn<HistoryController, String> parkingFeeColumn;
+
   @FXML
   private TableColumn<HistoryController, Integer> statusColumn;
 

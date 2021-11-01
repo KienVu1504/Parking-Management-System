@@ -64,7 +64,7 @@ public class InController {
     }
   }
   public void getTimeIn(){
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     LocalDateTime now = LocalDateTime.now();
     timeInField.setText(dtf.format(now));
     errorLabel2.setText("");

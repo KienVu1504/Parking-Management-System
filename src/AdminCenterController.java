@@ -17,7 +17,7 @@ public class AdminCenterController {
   private Parent root;
   private Stage stage;
   @FXML
-  private AnchorPane AdminCenterPane;
+  private AnchorPane adminCenterPane;
   public void closeAPP(){
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
@@ -28,7 +28,7 @@ public class AdminCenterController {
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if(alert.showAndWait().get() == ButtonType.OK){
-      stage = (Stage) AdminCenterPane.getScene().getWindow();
+      stage = (Stage) adminCenterPane.getScene().getWindow();
       stage.close();
     }
   }

@@ -25,6 +25,8 @@ public class InController {
   @FXML
   private TextField licensePlateTextField, timeInField;
   @FXML
+  private ToggleGroup carSeats, vehicleType;
+  @FXML
   private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, carSeats1,carSeats2, carSeats3;
   @FXML
   private Label carSeatsLabel,errorLabel,errorLabel1, errorLabel2;
@@ -68,8 +70,6 @@ public class InController {
     LocalDateTime now = LocalDateTime.now();
     timeInField.setText(dtf.format(now));
     errorLabel2.setText("");
-    //Calendar calendar = Calendar.getInstance();
-    //timeInField.setText(String.valueOf(calendar.getTime()));
   }
   public void goToIn(ActionEvent event) throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));

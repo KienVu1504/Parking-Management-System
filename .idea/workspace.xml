@@ -6,10 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AboutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AboutScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminCenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminCenterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminCenterScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminCenterScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HelpScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HistoryScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/HistoryScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/InScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OutController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/OutScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

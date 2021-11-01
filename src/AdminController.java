@@ -1,5 +1,4 @@
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -150,12 +149,7 @@ public class AdminController implements Initializable {
   }
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    loginButton.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        loginCheck(event, usernameTextField.getText(), passwordTextField.getText());
-      }
-    });
+    loginButton.setOnAction(event -> loginCheck(event, usernameTextField.getText(), passwordTextField.getText()));
   }
   public void openHomeSite() throws URISyntaxException, IOException {
     Desktop.getDesktop().browse(new URI("https://github.com/KienVu1504/Paking-Management-System"));

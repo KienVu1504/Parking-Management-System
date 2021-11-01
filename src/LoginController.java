@@ -1,6 +1,4 @@
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -111,11 +109,6 @@ public class LoginController implements Initializable {
   }
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    loginButton.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-        loginCheck(event, usernameTextField.getText(), passwordTextField.getText());
-      }
-    });
+    loginButton.setOnAction(event -> loginCheck(event, usernameTextField.getText(), passwordTextField.getText()));
   }
 }

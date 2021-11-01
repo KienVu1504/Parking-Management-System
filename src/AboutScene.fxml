@@ -14,104 +14,101 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AboutPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AboutController">
-   <children>
-      <MenuBar fx:id="menuBar" prefWidth="1360.0">
-         <menus>
-            <Menu id="Menu" mnemonicParsing="false" text="Menu">
-               <items>
-                  <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-               </items>
-            </Menu>
-            <Menu id="Admin" mnemonicParsing="false" text="Admin">
-               <items>
-                  <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-               </items>
-            </Menu>
-            <Menu id="Help" mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <Label alignment="CENTER" layoutY="26.0" prefHeight="54.0" prefWidth="1360.0" text="About">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="518.0" layoutY="114.0" text="Parking Management System">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font></Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="344.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.10.31 Build 10.35PM Beta">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextArea editable="false" layoutX="344.0" layoutY="284.0" prefHeight="200.0" prefWidth="670.0" text="Warning: This computer program is protected by copyright laws and international treaties. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under law." wrapText="true">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextArea>
-      <Separator layoutY="545.0" prefWidth="1360.0" />
-      <Label layoutX="336.0" layoutY="617.0" text="Home Site:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="336.0" layoutY="673.0" text="Support Team:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Hyperlink layoutX="522.0" layoutY="613.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Hyperlink>
-      <Hyperlink layoutX="535.0" layoutY="669.0" onAction="#openSupport" text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Hyperlink>
-   </children>
+<AnchorPane fx:id="AboutPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0"
+            prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AboutController">
+   <MenuBar fx:id="menuBar" prefWidth="1360.0">
+      <Menu id="Menu" mnemonicParsing="false" text="Menu">
+         <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
+            <accelerator>
+               <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+         <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
+            <accelerator>
+               <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+         <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
+            <accelerator>
+               <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+         <SeparatorMenuItem mnemonicParsing="false"/>
+         <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
+            <accelerator>
+               <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+         <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
+            <accelerator>
+               <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+      </Menu>
+      <Menu id="Admin" mnemonicParsing="false" text="Admin">
+         <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
+            <accelerator>
+               <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+      </Menu>
+      <Menu id="Help" mnemonicParsing="false" text="Help">
+         <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
+            <accelerator>
+               <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+            </accelerator>
+         </MenuItem>
+      </Menu>
+   </MenuBar>
+   <Label alignment="CENTER" layoutY="26.0" prefHeight="54.0" prefWidth="1360.0" text="About">
+      <font>
+         <Font name="System Bold" size="36.0"/>
+      </font>
+   </Label>
+   <Label layoutX="518.0" layoutY="114.0" text="Parking Management System">
+      <font>
+         <Font name="System Bold" size="36.0"/>
+      </font>
+   </Label>
+   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="344.0" layoutY="80.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png"/>
+   </ImageView>
+   <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0"
+          text="Version: 21.10.31 Build 10.35PM Beta">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <TextArea editable="false" layoutX="344.0" layoutY="284.0" prefHeight="200.0" prefWidth="670.0"
+             text="Warning: This computer program is protected by copyright laws and international treaties. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under law."
+             wrapText="true">
+      <font>
+         <Font size="24.0"/>
+      </font>
+   </TextArea>
+   <Separator layoutY="545.0" prefWidth="1360.0"/>
+   <Label layoutX="336.0" layoutY="617.0" text="Home Site:">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <Label layoutX="336.0" layoutY="673.0" text="Support Team:">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <Hyperlink layoutX="522.0" layoutY="613.0" onAction="#openHomeSite"
+              text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Hyperlink>
+   <Hyperlink layoutX="535.0" layoutY="669.0" onAction="#openSupport"
+              text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Hyperlink>
 </AnchorPane>

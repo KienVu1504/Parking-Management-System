@@ -31,6 +31,8 @@ public class HistoryController {
     }
   }
   @FXML
+  private Button searchButton;
+  @FXML
   private TableView<?> historyTable;
   @FXML
   private TableColumn<?, ?> licensePlateColumn, monthlyTicketColumn, numbersColumn, parkingFeeColumn, statusColumn, timeInColumn, timeOutColumn, vehicleTypeColumn;

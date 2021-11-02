@@ -72,18 +72,18 @@ public class HistoryController implements Initializable {
   private TableColumn<HistoryController, Integer> statusColumn;
   private ObservableList<HistoryController> historyControllerObservableList;
   private List<HistoryController> historyControllerList = new ArrayList();
-  private Integer id, ticket, status;
+  private int id, ticket, status;
   private String license_plate, type, seat, time_in, time_out, parking_time, fee;
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public void setLicensePlate(String license_plate) {
+  public void setLicense_plate(String license_plate) {
     this.license_plate = license_plate;
   }
 
-  public void setVehicleType(String type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -91,39 +91,39 @@ public class HistoryController implements Initializable {
     this.seat = seat;
   }
 
-  public void setMonthlyTicket(Integer ticket) {
+  public void setTicket(int ticket) {
     this.ticket = ticket;
   }
 
-  public void setTimeIn(String time_in) {
+  public void setTime_in(String time_in) {
     this.time_in = time_in;
   }
 
-  public void setTimeOut(String time_out) {
+  public void setTime_out(String time_out) {
     this.time_out = time_out;
   }
 
-  public void setParkingTime(String parking_time) {
+  public void setParking_time(String parking_time) {
     this.parking_time = parking_time;
   }
 
-  public void setParkingFee(String fee) {
+  public void setFee(String fee) {
     this.fee = fee;
   }
 
-  public void setStatus(Integer status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 
-  public Integer getId() {
+  public int getId() {
     return id;
   }
 
-  public String getLicensePlate() {
+  public String getLicense_plate() {
     return license_plate;
   }
 
-  public String getVehicleType() {
+  public String getType() {
     return type;
   }
 
@@ -131,31 +131,34 @@ public class HistoryController implements Initializable {
     return seat;
   }
 
-  public Integer getMonthlyTicket() {
+  public int getTicket() {
     return ticket;
   }
 
-  public String getTimeIn() {
+  public String getTime_in() {
     return time_in;
   }
 
-  public String getTimeOut() {
+  public String getTime_out() {
     return time_out;
   }
 
-  public String getParkingTime() {
+  public String getParking_time() {
     return parking_time;
   }
 
-  public String getParkingFee() {
+  public String getFee() {
     return fee;
   }
 
-  public Integer getStatus() {
+  public int getStatus() {
     return status;
   }
 
-  public HistoryController(Integer id, String license_plate, String type, String seat, Integer ticket, String time_in, String time_out, String parking_time, String fee, Integer status) {
+  public HistoryController() {
+  }
+
+  public HistoryController(int id, String license_plate, String type, String seat, int ticket, String time_in, String time_out, String parking_time, String fee, int status) {
     this.id = id;
     this.license_plate = license_plate;
     this.type = type;
@@ -178,16 +181,16 @@ public class HistoryController implements Initializable {
       resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {
         setId(resultSet.getInt("id"));
-        setLicensePlate(resultSet.getString("license_plate"));
-        setVehicleType(resultSet.getString("type"));
+        setLicense_plate(resultSet.getString("license_plate"));
+        setType(resultSet.getString("type"));
         setSeat(resultSet.getString("seat"));
-        setMonthlyTicket(resultSet.getInt("ticket"));
-        setTimeIn(resultSet.getString("time_in"));
-        setTimeOut(resultSet.getString("time_out"));
-        setParkingTime(resultSet.getString("parking_time"));
-        setParkingFee(resultSet.getString("fee"));
+        setTicket(resultSet.getInt("ticket"));
+        setTime_in(resultSet.getString("time_in"));
+        setTime_out(resultSet.getString("time_out"));
+        setParking_time(resultSet.getString("parking_time"));
+        setFee(resultSet.getString("fee"));
         setStatus(resultSet.getInt("status"));
-        historyControllerList.add(new HistoryController(getId(), getLicensePlate(), getVehicleType(), getSeat(), getMonthlyTicket(), getTimeIn(), getTimeOut(), getParkingTime(), getParkingFee(), getStatus()));
+        historyControllerList.add(new HistoryController(getId(), getLicense_plate(), getType(), getSeat(), getTicket(), getTime_in(), getTime_out(), getParking_time(), getFee(), getStatus()));
       }
       historyControllerObservableList = FXCollections.observableArrayList(historyControllerList);
       IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

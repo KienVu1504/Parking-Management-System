@@ -1,3 +1,4 @@
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -5,16 +6,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -152,9 +155,6 @@ public class HistoryController implements Initializable {
     return status;
   }
 
-  public HistoryController() {
-  }
-
   public HistoryController(Integer id, String license_plate, String type, String seat, Integer ticket, String time_in, String time_out, String parking_time, String fee, Integer status) {
     this.id = id;
     this.license_plate = license_plate;
@@ -172,7 +172,53 @@ public class HistoryController implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
     Connection connection = null;
     ResultSet resultSet = null;
-    
+    try {
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+      PreparedStatement preparedStatement = connection.prepareStatement("select * from parking");
+      resultSet = preparedStatement.executeQuery();
+      while (resultSet.next()) {
+        setId(resultSet.getInt("id"));
+        setLicensePlate(resultSet.getString("license_plate"));
+        setVehicleType(resultSet.getString("type"));
+        setSeat(resultSet.getString("seat"));
+        setMonthlyTicket(resultSet.getInt("ticket"));
+        setTimeIn(resultSet.getString("time_in"));
+        setTimeOut(resultSet.getString("time_out"));
+        setParkingTime(resultSet.getString("parking_time"));
+        setParkingFee(resultSet.getString("fee"));
+        setStatus(resultSet.getInt("status"));
+        historyControllerList.add(new HistoryController(getId(), getLicensePlate(), getVehicleType(), getSeat(), getMonthlyTicket(), getTimeIn(), getTimeOut(), getParkingTime(), getParkingFee(), getStatus()));
+      }
+      historyControllerObservableList = FXCollections.observableArrayList(historyControllerList);
+      IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+      licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
+      vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+      seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
+      monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+      timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
+      timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
+      parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
+      parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
+      statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+      historyTable.setItems(historyControllerObservableList);
+    } catch (SQLException sqlException) {
+      sqlException.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException sqlException) {
+          sqlException.printStackTrace();
+        }
+      }
+      if (connection != null) {
+        try {
+          connection.close();
+        } catch (SQLException sqlException) {
+          sqlException.printStackTrace();
+        }
+      }
+    }
   }
 
   @FXML

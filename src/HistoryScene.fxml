@@ -58,33 +58,38 @@
          </MenuItem>
       </Menu>
    </MenuBar>
-   <Label alignment="CENTER" layoutY="26.0" prefHeight="54.0" prefWidth="887.0" text="Parking History">
+   <Label fx:id="errorLabel1" alignment="CENTER" layoutY="26.0" prefHeight="54.0" prefWidth="800.0" text="Parking History">
       <font>
          <Font name="System Bold" size="36.0" />
       </font>
    </Label>
    <TableView fx:id="historyTable" layoutY="80.0" prefHeight="688.0" prefWidth="1360.0">
       <columns>
-         <TableColumn id="ID" fx:id="IdColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="ID" />
-         <TableColumn id="License Plate" fx:id="licensePlateColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="License Plate" />
-         <TableColumn id="Vehicle Type" fx:id="vehicleTypeColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Vehicle Type" />
-         <TableColumn id="Seat" fx:id="seatColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Seat" />
-         <TableColumn id="Monthly Ticket" fx:id="monthlyTicketColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" text="Monthly Ticket" />
-         <TableColumn id="Time In" fx:id="timeInColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Time In" />
-         <TableColumn id="Time Out" fx:id="timeOutColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Time Out" />
-         <TableColumn id="Parking Time" fx:id="parkingTimeColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Time" />
-         <TableColumn id="Parking Fee" fx:id="parkingFeeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Parking Fee" />
-         <TableColumn id="Status" fx:id="statusColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="Status" />
+         <TableColumn id="ID" fx:id="IdColumn" editable="false" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" resizable="false" text="ID" />
+         <TableColumn id="License Plate" fx:id="licensePlateColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="License Plate" />
+         <TableColumn id="Vehicle Type" fx:id="vehicleTypeColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Vehicle Type" />
+         <TableColumn id="Seat" fx:id="seatColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Seat" />
+         <TableColumn id="Monthly Ticket" fx:id="monthlyTicketColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" resizable="false" text="Monthly Ticket" />
+         <TableColumn id="Time In" fx:id="timeInColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" resizable="false" text="Time In" />
+         <TableColumn id="Time Out" fx:id="timeOutColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" resizable="false" text="Time Out" />
+         <TableColumn id="Parking Time" fx:id="parkingTimeColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Time" />
+         <TableColumn id="Parking Fee" fx:id="parkingFeeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Parking Fee" />
+         <TableColumn id="Status" fx:id="statusColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Status" />
       </columns>
    </TableView>
-   <Button fx:id="searchButton" layoutX="1187.0" layoutY="25.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="172.0" text="Search">
+   <Button fx:id="searchButton" layoutX="1187.0" layoutY="25.0" mnemonicParsing="false" onAction="#searchHistory" prefHeight="54.0" prefWidth="172.0" text="Search">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <TextField layoutX="887.0" layoutY="25.0" prefHeight="54.0" prefWidth="300.0" promptText="Enter a license plate...">
+   <TextField fx:id="searchBox" layoutX="787.0" layoutY="25.0" onKeyTyped="#limitLength" prefHeight="54.0" prefWidth="400.0" promptText="Enter a license plate...">
       <font>
-         <Font size="14.0" />
+         <Font size="18.0" />
       </font>
    </TextField>
+   <Label fx:id="errorLabel" layoutX="1170.0" layoutY="38.0" textFill="RED">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
 </AnchorPane>

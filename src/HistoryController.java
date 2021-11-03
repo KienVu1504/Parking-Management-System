@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
@@ -222,6 +224,101 @@ public class HistoryController implements Initializable {
         }
       }
     }
+  }
+
+  @FXML
+  private TextField searchBox;
+
+  public void searchHistory() {
+    if (searchBox.getText().length() == 0) {
+      errorLabel1.setTextFill(Color.RED);
+      errorLabel1.setText("Fill the search box!");
+      errorLabel.setText("!");
+    } else {
+      Connection connection = null;
+      ResultSet resultSet = null;
+      try {
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from parking where license_plate like ?");
+        preparedStatement.setString(1, searchBox.getText());
+        resultSet = preparedStatement.executeQuery();
+        if (!resultSet.next()){
+          errorLabel1.setTextFill(Color.RED);
+          errorLabel1.setText("Can't find " + searchBox.getText());
+        } else {
+          historyTable.getItems().removeAll();
+          preparedStatement = connection.prepareStatement("select * from parking where license_plate like ?");
+          preparedStatement.setString(1, searchBox.getText());
+          resultSet = preparedStatement.executeQuery();
+          while (resultSet.next()) {
+            setId(resultSet.getInt("id"));
+            setLicense_plate(resultSet.getString("license_plate"));
+            setType(resultSet.getString("type"));
+            setSeat(resultSet.getString("seat"));
+            setTicket(resultSet.getInt("ticket"));
+            setTime_in(resultSet.getString("time_in"));
+            setTime_out(resultSet.getString("time_out"));
+            setParking_time(resultSet.getString("parking_time"));
+            setFee(resultSet.getString("fee"));
+            setStatus(resultSet.getInt("status"));
+            historyControllerList.add(new HistoryController(getId(), getLicense_plate(), getType(), getSeat(), getTicket(), getTime_in(), getTime_out(), getParking_time(), getFee(), getStatus()));
+          }
+          historyControllerObservableList = FXCollections.observableArrayList(historyControllerList);
+          IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+          licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
+          vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+          seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
+          monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+          timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
+          timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
+          parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
+          parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
+          statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+          historyTable.setItems(historyControllerObservableList);
+          errorLabel.setText("");
+          errorLabel1.setTextFill(Color.BLACK);
+          errorLabel1.setText("Parking History");
+        }
+      } catch (SQLException sqlException) {
+        sqlException.printStackTrace();
+      } finally {
+        if (resultSet != null) {
+          try {
+            resultSet.close();
+          } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+          }
+        }
+        if (connection != null) {
+          try {
+            connection.close();
+          } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+
+  @FXML
+  private Label errorLabel, errorLabel1;
+
+  public void limitLength() {
+    searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (searchBox.getText().length() > 10) {
+          errorLabel.setText("!");
+          errorLabel1.setTextFill(Color.RED);
+          errorLabel1.setText("License Plate length must be <= 10!");
+          searchBox.setText(searchBox.getText().substring(0, 10));
+        } else {
+          errorLabel.setText("");
+          errorLabel1.setTextFill(Color.BLACK);
+          errorLabel1.setText("Parking History");
+        }
+      }
+    });
   }
 
   @FXML

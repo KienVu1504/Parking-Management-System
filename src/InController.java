@@ -55,12 +55,15 @@ public class InController {
       carSeats3.setDisable(true);
       if (vehicleBicycles.isSelected()) {
         randomLP();
+      } else {
+        licensePlateTextField.setText("");
       }
     } else {
       carSeatsLabel.setDisable(false);
       carSeats1.setDisable(false);
       carSeats2.setDisable(false);
       carSeats3.setDisable(false);
+      licensePlateTextField.setText("");
     }
   }
 
@@ -238,8 +241,8 @@ public class InController {
     // chose a Character random from this String
     String AlphaNumericString = "0123456789";
     // create StringBuffer size of AlphaNumericString
-    StringBuilder sb = new StringBuilder(10);
-    for (int i = 0; i < 10; i++) {
+    StringBuilder sb = new StringBuilder(9);
+    for (int i = 0; i < 9; i++) {
       // generate a random number between
       // 0 to AlphaNumericString variable length
       int index

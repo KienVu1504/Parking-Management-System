@@ -6,21 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AboutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AboutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AboutScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminCenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminCenterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminCenterScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminCenterScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelpScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HistoryScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/HistoryScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AboutScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminCenterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminCenterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminCenterScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminCenterScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/AdminScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/HelpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/HelpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/HelpScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/HelpScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/HistoryScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/HistoryScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/InController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/InController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/OutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/OutScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OutScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/OutScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

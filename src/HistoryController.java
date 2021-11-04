@@ -247,6 +247,9 @@ public class HistoryController implements Initializable {
   }
 
   @FXML
+  private Pagination pagination;
+
+  @FXML
   private TextField searchBox;
 
   @FXML

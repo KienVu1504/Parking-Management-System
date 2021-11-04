@@ -24,8 +24,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-  private Scene scene;
-  private Parent root;
   private Stage stage;
   @FXML
   private Label errorLabel;
@@ -35,7 +33,8 @@ public class LoginController implements Initializable {
   private Button loginButton;
   @FXML
   private AnchorPane LoginPane;
-  public void closeAPP(){
+
+  public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
@@ -44,12 +43,13 @@ public class LoginController implements Initializable {
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
-    if(alert.showAndWait().get() == ButtonType.OK){
+    if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) LoginPane.getScene().getWindow();
       stage.close();
     }
   }
-  public void loginCheck(ActionEvent event, String username, String password){
+
+  public void loginCheck(ActionEvent event, String username, String password) {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -58,16 +58,16 @@ public class LoginController implements Initializable {
       preparedStatement = connection.prepareStatement("SELECT password FROM account WHERE username = ?");
       preparedStatement.setString(1, username);
       resultSet = preparedStatement.executeQuery();
-      if (!resultSet.isBeforeFirst()){
+      if (!resultSet.isBeforeFirst()) {
         errorLabel.setText("Wrong username!");
       } else {
-        while (resultSet.next()){
+        while (resultSet.next()) {
           String retriedPassword = resultSet.getString("password");
-          if (retriedPassword.equals(password)){
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
+          if (retriedPassword.equals(password)) {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
             //Stage stage = (Stage) menuBar.getScene().getWindow();
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
           } else {
@@ -75,38 +75,41 @@ public class LoginController implements Initializable {
           }
         }
       }
-    } catch (SQLException | IOException e){
+    } catch (SQLException | IOException e) {
       e.printStackTrace();
     } finally {
-      if (resultSet != null){
+      if (resultSet != null) {
         try {
           resultSet.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
           e.printStackTrace();
         }
       }
-      if (preparedStatement != null){
+      if (preparedStatement != null) {
         try {
           preparedStatement.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
           e.printStackTrace();
         }
       }
-      if (connection != null){
+      if (connection != null) {
         try {
           connection.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
           e.printStackTrace();
         }
       }
     }
   }
+
   public void openHomeSite() throws URISyntaxException, IOException {
     Desktop.getDesktop().browse(new URI("https://github.com/KienVu1504/Paking-Management-System"));
   }
+
   public void openSupport() throws URISyntaxException, IOException {
     Desktop.getDesktop().browse(new URI("https://www.facebook.com/messages/t/100004800523531"));
   }
+
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     loginButton.setOnAction(event -> loginCheck(event, usernameTextField.getText(), passwordTextField.getText()));

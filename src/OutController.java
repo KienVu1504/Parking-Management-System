@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import java.util.Date;
 import java.io.IOException;
 import java.sql.*;
@@ -27,12 +28,11 @@ public class OutController {
   @FXML
   private Label errorLabel1, errorLabel2, errorLabel;
   @FXML
-  private Button getOutTimeButton,doneButton, resetButton;
-  @FXML
   private TextField parkingTimeTextField, ticketTextField, seatTextField, timeOutField, licensePlateTextField, vehicleTypeTextField, timeInTextField, parkingFeeTextField;
   @FXML
   private AnchorPane OutPane;
-  public void closeAPP(){
+
+  public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
@@ -41,11 +41,12 @@ public class OutController {
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
-    if(alert.showAndWait().get() == ButtonType.OK){
+    if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) OutPane.getScene().getWindow();
       stage.close();
     }
   }
+
   public void limitLength() {
     licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
@@ -62,16 +63,17 @@ public class OutController {
       }
     });
   }
-  public void outCheck(){
+
+  public void outCheck() {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    if (licensePlateTextField.getText().length() == 0 || timeOutField.getText().length() == 0){
-      if (licensePlateTextField.getText().length() == 0 || seatTextField.getText().length() != 0){
+    if (licensePlateTextField.getText().length() == 0 || timeOutField.getText().length() == 0) {
+      if (licensePlateTextField.getText().length() == 0 || seatTextField.getText().length() != 0) {
         errorLabel1.setTextFill(Color.RED);
         errorLabel1.setText("!");
       }
-      if (timeOutField.getText().length() == 0){
+      if (timeOutField.getText().length() == 0) {
         errorLabel2.setTextFill(Color.RED);
         errorLabel2.setText("!");
       }
@@ -123,8 +125,10 @@ public class OutController {
       }
     }
   }
+
   @FXML
   private MenuBar menuBar;
+
   public void goToIn() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -132,13 +136,15 @@ public class OutController {
     stage.setScene(scene);
     stage.show();
   }
-  public void getTimeOut(){
+
+  public void getTimeOut() {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     LocalDateTime now = LocalDateTime.now();
     timeOutField.setText(dtf.format(now));
     errorLabel2.setText("");
   }
-  public void findDifference(){
+
+  public void findDifference() {
     // SimpleDateFormat converts the
     // string format to date object
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -147,8 +153,8 @@ public class OutController {
       // parse method is used to parse
       // the text from a string to
       // produce the date
-      Date d1 = (Date) sdf.parse(timeInTextField.getText());
-      Date d2 = (Date) sdf.parse(timeOutField.getText());
+      Date d1 = sdf.parse(timeInTextField.getText());
+      Date d2 = sdf.parse(timeOutField.getText());
       // Calculate time difference
       // in milliseconds
       long difference_In_Time = d2.getTime() - d1.getTime();
@@ -160,7 +166,8 @@ public class OutController {
       e.printStackTrace();
     }
   }
-  public void findDifferenceTicket(){
+
+  public void findDifferenceTicket() {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -171,7 +178,7 @@ public class OutController {
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
         feeCal();
-        if (ticketTextField.getText().equals("Yes")){
+        if (ticketTextField.getText().equals("Yes")) {
           errorLabel2.setTextFill(Color.RED);
           errorLabel2.setText("!");
           errorLabel.setTextFill(Color.RED);
@@ -182,17 +189,17 @@ public class OutController {
         try {
           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
           LocalDateTime now = LocalDateTime.now();
-          Date d1 = (Date) sdf.parse(resultSet.getString("expired_date"));
-          Date d2 = (Date) sdf.parse(dtf.format(now));
+          Date d1 = sdf.parse(resultSet.getString("expired_date"));
+          Date d2 = sdf.parse(dtf.format(now));
           long difference_In_Time = d2.getTime() - d1.getTime();
-          if (difference_In_Time < 0){
-            if (ticketTextField.getText().equals("Yes")){
+          if (difference_In_Time < 0) {
+            if (ticketTextField.getText().equals("Yes")) {
               parkingFeeTextField.setText("Free");
             } else {
               feeCal();
             }
           } else {
-            if (!ticketTextField.getText().equals("No")){
+            if (!ticketTextField.getText().equals("No")) {
               feeCal();
               errorLabel2.setTextFill(Color.RED);
               errorLabel2.setText("!");
@@ -224,83 +231,85 @@ public class OutController {
       }
     }
   }
-  public void feeCal(){
+
+  public void feeCal() {
     int parkingFee;
     int parkingTime = Integer.parseInt(parkingTimeTextField.getText());
-    if (vehicleTypeTextField.getText().equals("Bicycles")){
-      if (parkingTime <= 240){
+    if (vehicleTypeTextField.getText().equals("Bicycles")) {
+      if (parkingTime <= 240) {
         parkingFee = 50 * parkingTime;
         parkingFeeTextField.setText(String.valueOf(parkingFee));
       }
-      if (parkingTime > 240 && parkingTime <= 480){
+      if (parkingTime > 240 && parkingTime <= 480) {
         parkingFee = 9 * parkingTime;
         parkingFeeTextField.setText(String.valueOf(parkingFee));
       }
-      if (parkingTime > 480){
+      if (parkingTime > 480) {
         parkingFee = 11 * parkingTime;
         parkingFeeTextField.setText(String.valueOf(parkingFee));
       }
     }
-    if (vehicleTypeTextField.getText().equals("Motorbike")){
-      if (parkingTime <= 240){
+    if (vehicleTypeTextField.getText().equals("Motorbike")) {
+      if (parkingTime <= 240) {
         parkingFee = 100 * parkingTime;
         parkingFeeTextField.setText(String.valueOf(parkingFee));
       }
-      if (parkingTime > 240 && parkingTime <= 480){
+      if (parkingTime > 240 && parkingTime <= 480) {
         parkingFee = 17 * parkingTime;
         parkingFeeTextField.setText(String.valueOf(parkingFee));
       }
-      if (parkingTime > 480){
+      if (parkingTime > 480) {
         parkingFee = 19 * parkingTime;
         parkingFeeTextField.setText(String.valueOf(parkingFee));
       }
     }
-    if (vehicleTypeTextField.getText().equals("Car")){
-      if (parkingTime <= 90){
-        if (seatTextField.getText().equals("4-8")){
+    if (vehicleTypeTextField.getText().equals("Car")) {
+      if (parkingTime <= 90) {
+        if (seatTextField.getText().equals("4-8")) {
           parkingFee = 417 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")){
+        if (seatTextField.getText().equals("9-29")) {
           parkingFee = 667 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("30+")){
+        if (seatTextField.getText().equals("30+")) {
           parkingFee = 834 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
       }
-      if (parkingTime > 90 && parkingTime <= 1440){
-        if (seatTextField.getText().equals("4-8")){
+      if (parkingTime > 90 && parkingTime <= 1440) {
+        if (seatTextField.getText().equals("4-8")) {
           parkingFee = 167 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")){
+        if (seatTextField.getText().equals("9-29")) {
           parkingFee = 250 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("30+")){
+        if (seatTextField.getText().equals("30+")) {
           parkingFee = 334 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
       }
-      if (parkingTime > 1440){
-        if (seatTextField.getText().equals("4-8")){
+      if (parkingTime > 1440) {
+        if (seatTextField.getText().equals("4-8")) {
           parkingFee = 105 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")){
+        if (seatTextField.getText().equals("9-29")) {
           parkingFee = 209 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("30+")){
+        if (seatTextField.getText().equals("30+")) {
           parkingFee = 334 * parkingTime;
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
       }
     }
   }
-  public void licensePlateSearch(){
+
+  public void licensePlateSearch() {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -352,14 +361,16 @@ public class OutController {
       }
     }
   }
+
   public void goToOut(ActionEvent event) throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
     //Stage stage = (Stage) menuBar.getScene().getWindow();
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToHistory() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -367,6 +378,7 @@ public class OutController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToAdmin() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -374,6 +386,7 @@ public class OutController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToHelp() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -381,6 +394,7 @@ public class OutController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToAbout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -388,6 +402,7 @@ public class OutController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void logout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();

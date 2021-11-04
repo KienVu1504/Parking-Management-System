@@ -25,16 +25,13 @@ public class InController {
   @FXML
   private TextField licensePlateTextField, timeInField;
   @FXML
-  private ToggleGroup carSeats, vehicleType;
+  private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, carSeats1, carSeats2, carSeats3;
   @FXML
-  private RadioButton vehicleBicycles, vehicleTypeCar, vehicleTypeMotorbike, carSeats1,carSeats2, carSeats3;
-  @FXML
-  private Label carSeatsLabel,errorLabel,errorLabel1, errorLabel2;
-  @FXML
-  private Button getInTimeButton, submitButton, resetButton;
+  private Label carSeatsLabel, errorLabel, errorLabel1, errorLabel2;
   @FXML
   private AnchorPane InPane;
-  public void closeAPP(){
+
+  public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
@@ -43,19 +40,20 @@ public class InController {
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
-    if(alert.showAndWait().get() == ButtonType.OK){
+    if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) InPane.getScene().getWindow();
       stage.close();
     }
   }
-  public void carTypeChecked(){
+
+  public void carTypeChecked() {
     //set Car Seats section to disabled state each time "vehicleTypeCar" radiobutton is selected
-    if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()){
+    if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()) {
       carSeatsLabel.setDisable(true);
       carSeats1.setDisable(true);
       carSeats2.setDisable(true);
       carSeats3.setDisable(true);
-      if (vehicleBicycles.isSelected()){
+      if (vehicleBicycles.isSelected()) {
         randomLP();
       }
     } else {
@@ -65,22 +63,26 @@ public class InController {
       carSeats3.setDisable(false);
     }
   }
-  public void getTimeIn(){
+
+  public void getTimeIn() {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     LocalDateTime now = LocalDateTime.now();
     timeInField.setText(dtf.format(now));
     errorLabel2.setText("");
   }
+
   public void goToIn(ActionEvent event) throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
     //Stage stage = (Stage) menuBar.getScene().getWindow();
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
+
   @FXML
   private MenuBar menuBar;
+
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
     //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -89,6 +91,7 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToHistory() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -96,6 +99,7 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToAdmin() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -103,6 +107,7 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToHelp() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -110,6 +115,7 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void goToAbout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -117,6 +123,7 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void logout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -124,6 +131,7 @@ public class InController {
     stage.setScene(scene);
     stage.show();
   }
+
   public void limitLength() {
     licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
@@ -139,12 +147,13 @@ public class InController {
       }
     });
   }
-  public void submitIn(){
-    if (timeInField.getText().length() == 0 || licensePlateTextField.getText().length() == 0){
-      if (licensePlateTextField.getText().length() == 0){
+
+  public void submitIn() {
+    if (timeInField.getText().length() == 0 || licensePlateTextField.getText().length() == 0) {
+      if (licensePlateTextField.getText().length() == 0) {
         errorLabel1.setText("!");
       }
-      if (timeInField.getText().length() == 0){
+      if (timeInField.getText().length() == 0) {
         errorLabel2.setText("!");
       }
       errorLabel.setTextFill(Color.RED);
@@ -152,13 +161,13 @@ public class InController {
     } else {
       Connection connection = null;
       PreparedStatement preparedStatement = null;
-      ResultSet resultSet = null;
+      ResultSet resultSet;
       try {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
         preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
         preparedStatement.setString(1, licensePlateTextField.getText());
         resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()){
+        if (resultSet.next()) {
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("License plate existing!");
           errorLabel1.setTextFill(Color.RED);
@@ -182,8 +191,8 @@ public class InController {
           } else if (carSeats3.isSelected()) {
             preparedStatement.setString(3, "30+");
           }
-          PreparedStatement preparedStatement1 = null;
-          ResultSet resultSet1 = null;
+          PreparedStatement preparedStatement1;
+          ResultSet resultSet1;
           preparedStatement1 = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
           resultSet1 = preparedStatement1.executeQuery();
           if (resultSet1.next()) {
@@ -224,6 +233,7 @@ public class InController {
       }
     }
   }
+
   public void randomLP() {
     // chose a Character random from this String
     String AlphaNumericString = "0123456789";
@@ -233,7 +243,7 @@ public class InController {
       // generate a random number between
       // 0 to AlphaNumericString variable length
       int index
-        = (int)(AlphaNumericString.length()
+        = (int) (AlphaNumericString.length()
         * Math.random());
       // add Character one by one in end of sb
       sb.append(AlphaNumericString

@@ -12,9 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,7 +25,6 @@ import java.util.*;
 public class HistoryController implements Initializable {
   private Scene scene;
   private Parent root;
-  private Stage stage;
   @FXML
   private AnchorPane HistoryPane;
 
@@ -37,17 +34,14 @@ public class HistoryController implements Initializable {
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
     // Get the Stage.
-    stage = (Stage) alert.getDialogPane().getScene().getWindow();
+    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
     // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
-    if (alert.showAndWait().get() == ButtonType.OK) {
+    if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) HistoryPane.getScene().getWindow();
       stage.close();
     }
   }
-
-  @FXML
-  private Button searchButton;
 
   @FXML
   private TableView<HistoryController> historyTable;
@@ -71,7 +65,6 @@ public class HistoryController implements Initializable {
   private TableColumn<HistoryController, String> parkingFeeColumn;
   @FXML
   private TableColumn<HistoryController, Integer> statusColumn;
-  private ObservableList<HistoryController> historyControllerObservableList;
   private List<HistoryController> historyControllerList = new ArrayList();
   private int id, ticket, status;
   private String license_plate, type, seat, time_in, time_out, parking_time, fee;
@@ -193,7 +186,7 @@ public class HistoryController implements Initializable {
         setStatus(resultSet.getInt("status"));
         historyControllerList.add(new HistoryController(getId(), getLicense_plate(), getType(), getSeat(), getTicket(), getTime_in(), getTime_out(), getParking_time(), getFee(), getStatus()));
       }
-      historyControllerObservableList = FXCollections.observableArrayList(historyControllerList);
+      ObservableList<HistoryController> historyControllerObservableList = FXCollections.observableArrayList(historyControllerList);
       IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
       licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
       vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));

@@ -1,5 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,10 +22,7 @@ import javafx.scene.control.TableView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class HistoryController implements Initializable {
   private Scene scene;
@@ -206,6 +205,35 @@ public class HistoryController implements Initializable {
       parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
       statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
       historyTable.setItems(historyControllerObservableList);
+
+      //Initial filtered list
+      FilteredList<HistoryController> filteredList = new FilteredList<>(historyControllerObservableList, b -> true);
+      searchBox.textProperty().addListener((observable, oldValue, newValue) -> filteredList.setPredicate(historyController -> {
+        //If no search value then display all records or whatever records it current have. No change :v
+        if (newValue.isEmpty() || newValue.isBlank()){
+          return true;
+        }
+        String searchKeyWords = newValue.toLowerCase();
+        if (historyController.getLicense_plate().toLowerCase().contains(searchKeyWords)) {
+          return true; // Means we found a match in license_plate
+        } else if (historyController.getType().toLowerCase().contains(searchKeyWords)) {
+          return true;
+        } else if (historyController.getSeat().toLowerCase().contains(searchKeyWords)) {
+          return true;
+        } else if (historyController.getTime_in().toLowerCase().contains(searchKeyWords)) {
+          return true;
+        } else if (historyController.getTime_out().toLowerCase().contains(searchKeyWords)) {
+          return true;
+        } else
+          if (historyController.getParking_time().toLowerCase().contains(searchKeyWords)) {
+          return true;
+        } else return historyController.getFee().toLowerCase().contains(searchKeyWords);
+      }));
+      SortedList<HistoryController> sortedList = new SortedList<>(filteredList);
+      // Bind sorted result with TableView
+      sortedList.comparatorProperty().bind(historyTable.comparatorProperty());
+      //Apply filtered and sorted data to the TableView
+      historyTable.setItems(sortedList);
     } catch (SQLException sqlException) {
       sqlException.printStackTrace();
     } finally {
@@ -228,77 +256,6 @@ public class HistoryController implements Initializable {
 
   @FXML
   private TextField searchBox;
-
-  public void searchHistory() {
-    if (searchBox.getText().length() == 0) {
-      errorLabel1.setTextFill(Color.RED);
-      errorLabel1.setText("Fill the search box!");
-      errorLabel.setText("!");
-    } else {
-      Connection connection = null;
-      ResultSet resultSet = null;
-      try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
-        PreparedStatement preparedStatement = connection.prepareStatement("select * from parking where license_plate like ?");
-        preparedStatement.setString(1, searchBox.getText());
-        resultSet = preparedStatement.executeQuery();
-        if (!resultSet.next()){
-          errorLabel1.setTextFill(Color.RED);
-          errorLabel1.setText("Can't find " + searchBox.getText());
-        } else {
-          historyTable.getItems().removeAll();
-          preparedStatement = connection.prepareStatement("select * from parking where license_plate like ?");
-          preparedStatement.setString(1, searchBox.getText());
-          resultSet = preparedStatement.executeQuery();
-          while (resultSet.next()) {
-            setId(resultSet.getInt("id"));
-            setLicense_plate(resultSet.getString("license_plate"));
-            setType(resultSet.getString("type"));
-            setSeat(resultSet.getString("seat"));
-            setTicket(resultSet.getInt("ticket"));
-            setTime_in(resultSet.getString("time_in"));
-            setTime_out(resultSet.getString("time_out"));
-            setParking_time(resultSet.getString("parking_time"));
-            setFee(resultSet.getString("fee"));
-            setStatus(resultSet.getInt("status"));
-            historyControllerList.add(new HistoryController(getId(), getLicense_plate(), getType(), getSeat(), getTicket(), getTime_in(), getTime_out(), getParking_time(), getFee(), getStatus()));
-          }
-          historyControllerObservableList = FXCollections.observableArrayList(historyControllerList);
-          IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-          licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
-          vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-          seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
-          monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
-          timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
-          timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
-          parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
-          parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
-          statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-          historyTable.setItems(historyControllerObservableList);
-          errorLabel.setText("");
-          errorLabel1.setTextFill(Color.BLACK);
-          errorLabel1.setText("Parking History");
-        }
-      } catch (SQLException sqlException) {
-        sqlException.printStackTrace();
-      } finally {
-        if (resultSet != null) {
-          try {
-            resultSet.close();
-          } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-          }
-        }
-        if (connection != null) {
-          try {
-            connection.close();
-          } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-          }
-        }
-      }
-    }
-  }
 
   @FXML
   private Label errorLabel, errorLabel1;

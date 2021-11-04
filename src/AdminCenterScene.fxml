@@ -11,58 +11,58 @@
 <AnchorPane fx:id="adminCenterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminCenterController">
-   <MenuBar fx:id="menuBar" layoutY="1.0" prefWidth="1360.0">
-      <Menu id="Menu" mnemonicParsing="false" text="Menu">
-         <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
-            <accelerator>
-               <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-         <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
-            <accelerator>
-               <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-         <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
-            <accelerator>
-               <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-         <SeparatorMenuItem mnemonicParsing="false"/>
-         <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
-            <accelerator>
-               <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-         <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
-            <accelerator>
-               <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-      </Menu>
-      <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
-         <MenuItem mnemonicParsing="false" text="Action 1"/>
-         <MenuItem mnemonicParsing="false" text="Action 1"/>
-         <MenuItem mnemonicParsing="false" text="Action 1"/>
-         <MenuItem mnemonicParsing="false" text="Action 1"/>
-         <SeparatorMenuItem mnemonicParsing="false"/>
-         <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
-            <accelerator>
-               <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-      </Menu>
-      <Menu id="Help" mnemonicParsing="false" text="Help">
-         <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
-            <accelerator>
-               <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-         <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
-            <accelerator>
-               <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
-            </accelerator>
-         </MenuItem>
-      </Menu>
-   </MenuBar>
+    <MenuBar fx:id="menuBar" layoutY="1.0" prefWidth="1360.0">
+        <Menu id="Menu" mnemonicParsing="false" text="Menu">
+            <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+        <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+        <Menu id="Help" mnemonicParsing="false" text="Help">
+            <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+    </MenuBar>
 </AnchorPane>

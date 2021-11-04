@@ -210,7 +210,7 @@ public class HistoryController implements Initializable {
       FilteredList<HistoryController> filteredList = new FilteredList<>(historyControllerObservableList, b -> true);
       searchBox.textProperty().addListener((observable, oldValue, newValue) -> filteredList.setPredicate(historyController -> {
         //If no search value then display all records or whatever records it current have. No change :v
-        if (newValue.isEmpty() || newValue.isBlank()){
+        if (newValue.isEmpty() || newValue.isBlank()) {
           return true;
         }
         String searchKeyWords = newValue.toLowerCase();
@@ -224,8 +224,7 @@ public class HistoryController implements Initializable {
           return true;
         } else if (historyController.getTime_out().toLowerCase().contains(searchKeyWords)) {
           return true;
-        } else
-          if (historyController.getParking_time().toLowerCase().contains(searchKeyWords)) {
+        } else if (historyController.getParking_time().toLowerCase().contains(searchKeyWords)) {
           return true;
         } else return historyController.getFee().toLowerCase().contains(searchKeyWords);
       }));

@@ -81,7 +81,7 @@
          <Font size="18.0" />
       </font>
    </TextField>
-   <Label fx:id="errorLabel" layoutX="1343.0" layoutY="39.0" text="!" textFill="RED">
+   <Label fx:id="errorLabel" layoutX="1343.0" layoutY="39.0" textFill="RED">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>

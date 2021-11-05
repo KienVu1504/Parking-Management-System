@@ -1,3 +1,4 @@
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -5,6 +6,8 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ScrollBar;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,6 +69,8 @@ public class HistoryController implements Initializable {
   private TableColumn<HistoryController, String> parkingFeeColumn;
   @FXML
   private TableColumn<HistoryController, Integer> statusColumn;
+  @FXML
+  private ScrollBar scrollBar;
   private List<HistoryController> historyControllerList = new ArrayList();
   private int id, ticket, status;
   private String license_plate, type, seat, time_in, time_out, parking_time, fee;
@@ -245,9 +251,6 @@ public class HistoryController implements Initializable {
       }
     }
   }
-
-  @FXML
-  private Pagination pagination;
 
   @FXML
   private TextField searchBox;

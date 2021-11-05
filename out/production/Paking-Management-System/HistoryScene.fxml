@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -63,29 +62,28 @@
             <Font name="System Bold" size="36.0" />
         </font>
     </Label>
-    <TableView fx:id="historyTable" layoutY="80.0" prefHeight="688.0" prefWidth="1345.0">
+    <TableView fx:id="historyTable" layoutY="80.0" prefHeight="688.0" prefWidth="1360.0">
         <columns>
             <TableColumn id="ID" fx:id="IdColumn" editable="false" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" resizable="false" text="ID" />
             <TableColumn id="License Plate" fx:id="licensePlateColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="License Plate" />
             <TableColumn id="Vehicle Type" fx:id="vehicleTypeColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Vehicle Type" />
             <TableColumn id="Seat" fx:id="seatColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Seat" />
             <TableColumn id="Monthly Ticket" fx:id="monthlyTicketColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" resizable="false" text="Monthly Ticket" />
-            <TableColumn id="Time In" fx:id="timeInColumn" editable="false" maxWidth="245.0" minWidth="245.0" prefWidth="245.0" resizable="false" text="Time In" />
-            <TableColumn id="Time Out" fx:id="timeOutColumn" editable="false" maxWidth="245.0" minWidth="245.0" prefWidth="245.0" resizable="false" text="Time Out" />
+            <TableColumn id="Time In" fx:id="timeInColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" resizable="false" text="Time In" />
+            <TableColumn id="Time Out" fx:id="timeOutColumn" editable="false" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" resizable="false" text="Time Out" />
             <TableColumn id="Parking Time" fx:id="parkingTimeColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Time" />
             <TableColumn id="Parking Fee" fx:id="parkingFeeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Parking Fee" />
             <TableColumn id="Status" fx:id="statusColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Status" />
         </columns>
     </TableView>
-    <TextField fx:id="searchBox" layoutX="958.0" layoutY="25.0" onKeyTyped="#limitLength" prefHeight="54.0" prefWidth="386.0" promptText="Search Box">
+    <TextField fx:id="searchBox" layoutX="958.0" layoutY="25.0" onKeyTyped="#limitLength" prefHeight="54.0" prefWidth="400.0" promptText="Search Box">
         <font>
             <Font size="18.0" />
         </font>
     </TextField>
-    <Label fx:id="errorLabel" layoutX="1327.0" layoutY="39.0" textFill="RED">
+    <Label fx:id="errorLabel" layoutX="1346.0" layoutY="39.0" textFill="RED">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-   <ScrollBar fx:id="scrollBar" layoutX="1346.0" orientation="VERTICAL" prefHeight="768.0" />
 </AnchorPane>

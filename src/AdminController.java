@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import repositories.Database;
 
 import java.awt.*;
 import java.io.IOException;
@@ -109,7 +110,7 @@ public class AdminController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     try {
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+      connection = Database.getInstance().getConnection();
       preparedStatement = connection.prepareStatement("SELECT password FROM account WHERE username = ? AND role = 'ad'");
       preparedStatement.setString(1, username);
       resultSet = preparedStatement.executeQuery();

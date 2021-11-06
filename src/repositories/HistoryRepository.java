@@ -38,34 +38,4 @@ public class HistoryRepository {
       return histories;
     }
   }
-/*
-  public List<History> getFilteredHistories(String typedText) {
-    List<History> histories = new ArrayList();
-    Connection connection;
-    ResultSet resultSet;
-    try {
-      connection = Database.getInstance().getConnection();
-      PreparedStatement preparedStatement = connection.prepareStatement("select * from parking where license_plate like %?% ");
-      preparedStatement.setString(1, typedText);
-      resultSet = preparedStatement.executeQuery();
-      while (resultSet.next()) {
-        History history = new History();
-        history.setId(resultSet.getInt("id"));
-        history.setLicense_plate(resultSet.getString("license_plate"));
-        history.setType(resultSet.getString("type"));
-        history.setSeat(resultSet.getString("seat"));
-        history.setTicket(resultSet.getInt("ticket"));
-        history.setTime_in(resultSet.getString("time_in"));
-        history.setTime_out(resultSet.getString("time_out"));
-        history.setParking_time(resultSet.getString("parking_time"));
-        history.setFee(resultSet.getString("fee"));
-        history.setStatus(resultSet.getInt("status"));
-        histories.add(history);
-      }
-      return histories;
-    } catch (SQLException sqlException) {
-      System.err.println(String.format("Cannot get histories from DB: ", sqlException));
-      return histories;
-    }
-  }*/
 }

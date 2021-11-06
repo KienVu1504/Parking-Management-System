@@ -42,7 +42,7 @@ public class VehicleManagementController {
     ResultSet resultSet = null;
     try {
       connection = Database.getInstance().getConnection();
-      preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
+      preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1"); //AND status = 1
       preparedStatement.setString(1, licensePlateTextField.getText());
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
@@ -146,11 +146,11 @@ public class VehicleManagementController {
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("List is empty!");
         } else {
-          preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
+          preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");//AND status = 1
           preparedStatement.setString(1, licensePlateTextField.getText());
           resultSet = preparedStatement.executeQuery();
           if (resultSet.next()){
-            preparedStatement = connection.prepareStatement("update parking set type=?, seat=?, ticket=? where license_plate = ? AND status = 1");
+            preparedStatement = connection.prepareStatement("update parking set type=?, seat=?, ticket=? where license_plate = ? AND status = 1"); //AND status = 1
             if (vehicleBicycles.isSelected()){
               preparedStatement.setString(1, "Bicycles");
               preparedStatement.setString(2, "0");

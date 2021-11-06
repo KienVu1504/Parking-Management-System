@@ -91,7 +91,7 @@ public class HistoryController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     int numberOfItemPerPage = 25;
-    histories = historyRepository.getHistories(1, numberOfItemPerPage);
+    histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     backButton.setDisable(pageNumber <= 0);
     ObservableList<History> historyControllerObservableList = FXCollections.observableArrayList(histories);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));

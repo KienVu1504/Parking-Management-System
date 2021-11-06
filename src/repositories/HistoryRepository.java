@@ -13,7 +13,7 @@ public class HistoryRepository {
     ResultSet resultSet;
     try {
       connection = Database.getInstance().getConnection();
-      String sql = "select * from parking limit ? offset ?";
+      String sql = "select * from parking order by id desc limit ? offset ?";
       PreparedStatement preparedStatement = connection.prepareStatement(sql);
       preparedStatement.setInt(1, numberOfItemPerPage);
       preparedStatement.setInt(2, pageNumber * numberOfItemPerPage);
@@ -45,7 +45,7 @@ public class HistoryRepository {
     ResultSet resultSet;
     try {
       connection = Database.getInstance().getConnection();
-      PreparedStatement preparedStatement = connection.prepareStatement("select * from parking order where license_plate like %?% ");
+      PreparedStatement preparedStatement = connection.prepareStatement("select * from parking where license_plate like %?% ");
       preparedStatement.setString(1, typedText);
       resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {

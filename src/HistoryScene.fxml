@@ -74,7 +74,7 @@
             <TableColumn id="Time Out" fx:id="timeOutColumn" editable="false" maxWidth="243.0" minWidth="243.0" prefWidth="243.0" resizable="false" text="Time Out" />
             <TableColumn id="Parking Time" fx:id="parkingTimeColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Time" />
             <TableColumn id="Parking Fee" fx:id="parkingFeeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Parking Fee" />
-            <TableColumn id="Status" fx:id="statusColumn" editable="false" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Status" />
+            <TableColumn id="Status" fx:id="statusColumn" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="Status" />
         </columns>
     </TableView>
     <TextField fx:id="searchBox" layoutX="958.0" layoutY="25.0" onKeyTyped="#limitLength" prefHeight="54.0" prefWidth="400.0" promptText="Search Box">

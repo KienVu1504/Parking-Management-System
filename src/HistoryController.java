@@ -90,11 +90,7 @@ public class HistoryController implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
     int numberOfItemPerPage = 25;
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
-    if (pageNumber <= 0) {
-      backButton.setDisable(true);
-    } else {
-      backButton.setDisable(false);
-    }
+    backButton.setDisable(pageNumber <= 0);
     ObservableList<History> historyControllerObservableList = FXCollections.observableArrayList(histories);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));

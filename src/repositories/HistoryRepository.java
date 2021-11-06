@@ -17,7 +17,6 @@ public class HistoryRepository {
       PreparedStatement preparedStatement = connection.prepareStatement(sql);
       preparedStatement.setInt(1, numberOfItemPerPage);
       preparedStatement.setInt(2, pageNumber * numberOfItemPerPage);
-
       resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {
         History history = new History();
@@ -39,7 +38,7 @@ public class HistoryRepository {
       return histories;
     }
   }
-
+/*
   public List<History> getFilteredHistories(String typedText) {
     List<History> histories = new ArrayList();
     Connection connection;
@@ -68,5 +67,5 @@ public class HistoryRepository {
       System.err.println(String.format("Cannot get histories from DB: ", sqlException));
       return histories;
     }
-  }
+  }*/
 }

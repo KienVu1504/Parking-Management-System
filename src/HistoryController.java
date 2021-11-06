@@ -63,7 +63,9 @@ public class HistoryController implements Initializable {
   @FXML
   private TableColumn<History, String> parkingFeeColumn;
   @FXML
-  private TableColumn<HistoryController, Integer> statusColumn;
+  private TableColumn<History, Integer> statusColumn;
+  @FXML
+  private Button backButton, nextButton;
   private List<History> histories = new ArrayList();
   private HistoryRepository historyRepository = new HistoryRepository();
 
@@ -73,19 +75,26 @@ public class HistoryController implements Initializable {
   public HistoryController() {
   }
 
-  private void pressBack() {
+  public void pressBack() {
     pageNumber = pageNumber <= 0 ? pageNumber : pageNumber - 1;
+    pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
-  private void pressNext() {
+  public void pressNext() {
     pageNumber++;
+    pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
-  //select * from parking limit 20 offset 20 * 2
+  //select * from parking limit 25 offset 25 * 2
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     int numberOfItemPerPage = 25;
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
+    if (pageNumber <= 0) {
+      backButton.setDisable(true);
+    } else {
+      backButton.setDisable(false);
+    }
     ObservableList<History> historyControllerObservableList = FXCollections.observableArrayList(histories);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
@@ -104,7 +113,7 @@ public class HistoryController implements Initializable {
   private TextField searchBox;
 
   @FXML
-  private Label errorLabel, errorLabel1;
+  private Label pageNumberLabel, errorLabel, errorLabel1;
 
   public void limitLength() {
     searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {

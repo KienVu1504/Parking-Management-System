@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import repositories.Database;
 
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
   private Stage stage;
   @FXML
-  private Label errorLabel;
+  private Label errorLabel, usernameErrorLabel, passwordErrorLabel;
   @FXML
   private TextField usernameTextField, passwordTextField;
   @FXML
@@ -50,54 +51,111 @@ public class LoginController implements Initializable {
     }
   }
 
+  public void usernameLimitLength() {
+    usernameTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (usernameTextField.getText().length() > 25) {
+          errorLabel.setText("Username length must be <= 25!");
+          usernameErrorLabel.setText("!");
+          // if its 11th character then just setText to previous
+          // one
+          usernameTextField.setText(usernameTextField.getText().substring(0, 25));
+        } else {
+          errorLabel.setText("");
+          usernameErrorLabel.setText("");
+        }
+      }
+    });
+  }
+
+  public void passwordLimitLength() {
+    passwordTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (passwordTextField.getText().length() > 50) {
+          errorLabel.setText("Password length must be <= 50!");
+          passwordErrorLabel.setText("!");
+          // if its 11th character then just setText to previous
+          // one
+          passwordTextField.setText(passwordTextField.getText().substring(0, 50));
+        } else {
+          errorLabel.setText("");
+          passwordErrorLabel.setText("");
+        }
+      }
+    });
+  }
+
   public void loginCheck(ActionEvent event, String username, String password) {
-    Connection connection = null;
-    PreparedStatement preparedStatement = null;
-    ResultSet resultSet = null;
-    try {
-      connection = Database.getInstance().getConnection();
-      preparedStatement = connection.prepareStatement("SELECT password FROM account WHERE username = ?");
-      preparedStatement.setString(1, username);
-      resultSet = preparedStatement.executeQuery();
-      if (!resultSet.isBeforeFirst()) {
-        errorLabel.setText("Wrong username!");
-      } else {
-        while (resultSet.next()) {
-          String retriedPassword = resultSet.getString("password");
-          if (retriedPassword.equals(password)) {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
-            //Stage stage = (Stage) menuBar.getScene().getWindow();
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-          } else {
-            errorLabel.setText("Wrong password!");
+    if (usernameTextField.getText().isEmpty() && passwordTextField.getText().isEmpty()) {
+      usernameErrorLabel.setText("!");
+      passwordErrorLabel.setText("!");
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Please fill all field!");
+    } else if (usernameTextField.getText().isEmpty()) {
+      usernameErrorLabel.setText("!");
+      passwordErrorLabel.setText("");
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Enter your username!");
+    } else if (passwordTextField.getText().isEmpty()) {
+      passwordErrorLabel.setText("!");
+      usernameErrorLabel.setText("");
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Enter your password!");
+    } else {
+      Connection connection = null;
+      PreparedStatement preparedStatement = null;
+      ResultSet resultSet = null;
+      try {
+        connection = Database.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT password FROM account WHERE username = ?");
+        preparedStatement.setString(1, username);
+        resultSet = preparedStatement.executeQuery();
+        if (!resultSet.isBeforeFirst()) {
+          errorLabel.setText("Wrong username!");
+          usernameErrorLabel.setText("!");
+          passwordErrorLabel.setText("");
+        } else {
+          while (resultSet.next()) {
+            String retriedPassword = resultSet.getString("password");
+            if (retriedPassword.equals(password)) {
+              Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
+              //Stage stage = (Stage) menuBar.getScene().getWindow();
+              stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+              Scene scene = new Scene(root);
+              stage.setScene(scene);
+              stage.show();
+            } else {
+              errorLabel.setText("Wrong password!");
+              passwordErrorLabel.setText("!");
+              usernameErrorLabel.setText("");
+            }
           }
         }
-      }
-    } catch (SQLException | IOException e) {
-      e.printStackTrace();
-    } finally {
-      if (resultSet != null) {
-        try {
-          resultSet.close();
-        } catch (SQLException e) {
-          e.printStackTrace();
+      } catch (SQLException | IOException e) {
+        e.printStackTrace();
+      } finally {
+        if (resultSet != null) {
+          try {
+            resultSet.close();
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
         }
-      }
-      if (preparedStatement != null) {
-        try {
-          preparedStatement.close();
-        } catch (SQLException e) {
-          e.printStackTrace();
+        if (preparedStatement != null) {
+          try {
+            preparedStatement.close();
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
         }
-      }
-      if (connection != null) {
-        try {
-          connection.close();
-        } catch (SQLException e) {
-          e.printStackTrace();
+        if (connection != null) {
+          try {
+            connection.close();
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
         }
       }
     }

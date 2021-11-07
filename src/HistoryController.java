@@ -85,13 +85,19 @@ public class HistoryController implements Initializable {
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
+  int numberOfItemPerPage = 25;
+  ObservableList<History> historyControllerObservableList = null;
+
   //select * from parking limit 25 offset 25 * 2
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    int numberOfItemPerPage = 25;
+    resetHistoryPage();
+  }
+
+  public void resetHistoryPage() {
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     backButton.setDisable(pageNumber <= 0);
-    ObservableList<History> historyControllerObservableList = FXCollections.observableArrayList(histories);
+    historyControllerObservableList = FXCollections.observableArrayList(histories);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
     vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -112,23 +118,44 @@ public class HistoryController implements Initializable {
   private Label pageNumberLabel, errorLabel, errorLabel1;
 
   public void limitLength() {
-    searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
-      if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
-        if (searchBox.getText().length() > 10) {
-          errorLabel.setText("!");
-          errorLabel1.setTextFill(Color.RED);
-          errorLabel1.setText("License Plate length must be <= 10!");
-          searchBox.setText(searchBox.getText().substring(0, 10));
-        } else {
-          errorLabel.setText("");
-          errorLabel1.setTextFill(Color.BLACK);
-          errorLabel1.setText("Parking History");
+    if (searchBox.getLength() == 0 || searchBox.getText().equals("") || searchBox.getText().length() == 0 || searchBox.getText().isBlank() || searchBox.getText().isEmpty()) {
+      resetHistoryPage();
+    } else {
+      searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue.intValue() > oldValue.intValue()) {
+          // Check if the new character is greater than LIMIT
+          if (searchBox.getText().length() > 10) {
+            errorLabel.setText("!");
+            errorLabel1.setTextFill(Color.RED);
+            errorLabel1.setText("License Plate length must be <= 10!");
+            searchBox.setText(searchBox.getText().substring(0, 10));
+          } else {
+            errorLabel.setText("");
+            errorLabel1.setTextFill(Color.BLACK);
+            errorLabel1.setText("Parking History");
+          }
         }
-      }
-    });
+      });
+      search();
+    }
   }
-
+  public void search(){
+    historyControllerObservableList = null;
+    histories = historyRepository.getHistoriesFiltered(pageNumber, numberOfItemPerPage, searchBox.getText());
+    backButton.setDisable(pageNumber <= 0);
+    historyControllerObservableList = FXCollections.observableArrayList(histories);
+    IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+    licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
+    vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+    seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
+    monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+    timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
+    timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
+    parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
+    parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
+    statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+    historyTable.setItems(historyControllerObservableList);
+  }
   @FXML
   private MenuBar menuBar;
 

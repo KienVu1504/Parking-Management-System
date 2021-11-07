@@ -34,7 +34,7 @@ public class HistoryRepository {
       }
       return histories;
     } catch (SQLException sqlException) {
-      System.err.println(String.format("Cannot get histories from DB: ", sqlException.toString()));
+      System.err.println("Cannot get histories from DB: " + sqlException);
       return histories;
     }
   }
@@ -45,7 +45,7 @@ public class HistoryRepository {
     ResultSet resultSet;
     try {
       connection = Database.getInstance().getConnection();
-      String sql = "select * from parking where license_plate like %?% order by id desc limit ? offset ?";
+      String sql = "select * from parking where license_plate like ? order by id desc limit ? offset ?";
       PreparedStatement preparedStatement = connection.prepareStatement(sql);
       preparedStatement.setString(1, typedString);
       preparedStatement.setInt(2, numberOfItemPerPage);
@@ -67,7 +67,7 @@ public class HistoryRepository {
       }
       return histories;
     } catch (SQLException sqlException) {
-      System.err.println(String.format("Cannot get histories from DB: ", sqlException.toString()));
+      System.err.println("Cannot get histories from DB: " + sqlException);
       return histories;
     }
   }

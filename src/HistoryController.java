@@ -139,7 +139,8 @@ public class HistoryController implements Initializable {
       search();
     }
   }
-  public void search(){
+
+  public void search() {
     historyControllerObservableList = null;
     histories = historyRepository.getHistoriesFiltered(pageNumber, numberOfItemPerPage, searchBox.getText());
     backButton.setDisable(pageNumber <= 0);
@@ -156,6 +157,7 @@ public class HistoryController implements Initializable {
     statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
     historyTable.setItems(historyControllerObservableList);
   }
+
   @FXML
   private MenuBar menuBar;
 

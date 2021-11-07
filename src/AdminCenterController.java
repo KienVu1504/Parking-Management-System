@@ -1,7 +1,5 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -87,13 +85,19 @@ public class AdminCenterController implements Initializable {
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
+  int numberOfItemPerPage = 25;
+  ObservableList<History> historyControllerObservableList = null;
+
   //select * from parking limit 25 offset 25 * 2
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    int numberOfItemPerPage = 25;
+    resetHistoryPage();
+  }
+
+  public void resetHistoryPage() {
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     backButton.setDisable(pageNumber <= 0);
-    ObservableList<History> historyControllerObservableList = FXCollections.observableArrayList(histories);
+    historyControllerObservableList = FXCollections.observableArrayList(histories);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
     vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -104,34 +108,7 @@ public class AdminCenterController implements Initializable {
     parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
     parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
     statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-    //Initial filtered list
-    FilteredList<History> filteredList = new FilteredList<>(historyControllerObservableList, b -> true);
-    searchBox.textProperty().addListener((observable, oldValue, newValue) -> filteredList.setPredicate(historyController -> {
-      //If no search value then display all records or whatever records it current have. No change :v
-      if (newValue.isEmpty() || newValue.isBlank()) {
-        return true;
-      }
-      String searchKeyWords = newValue.toLowerCase();
-      if (historyController.getLicense_plate().toLowerCase().contains(searchKeyWords)) {
-        return true; // Means we found a match in license_plate
-      } else if (historyController.getType().toLowerCase().contains(searchKeyWords)) {
-        return true;
-      } else if (historyController.getSeat().toLowerCase().contains(searchKeyWords)) {
-        return true;
-      } else if (historyController.getTime_in().toLowerCase().contains(searchKeyWords)) {
-        return true;
-      } else if (historyController.getTime_out().toLowerCase().contains(searchKeyWords)) {
-        return true;
-      } else if (historyController.getParking_time().toLowerCase().contains(searchKeyWords)) {
-        return true;
-      } else return historyController.getFee().toLowerCase().contains(searchKeyWords);
-    }));
-    SortedList<History> sortedList = new SortedList<>(filteredList);
-    // Bind sorted result with TableView
-    sortedList.comparatorProperty().bind(historyTable.comparatorProperty());
-    //Apply filtered and sorted data to the TableView
-    historyTable.setItems(sortedList);
-    //historyTable.setItems(historyControllerObservableList);
+    historyTable.setItems(historyControllerObservableList);
   }
 
   @FXML
@@ -141,21 +118,44 @@ public class AdminCenterController implements Initializable {
   private Label pageNumberLabel, errorLabel, errorLabel1;
 
   public void limitLength() {
-    searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
-      if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
-        if (searchBox.getText().length() > 10) {
-          errorLabel.setText("!");
-          errorLabel1.setTextFill(Color.RED);
-          errorLabel1.setText("License Plate length must be <= 10!");
-          searchBox.setText(searchBox.getText().substring(0, 10));
-        } else {
-          errorLabel.setText("");
-          errorLabel1.setTextFill(Color.BLACK);
-          errorLabel1.setText("Admin Parking History");
+    if (searchBox.getLength() == 0 || searchBox.getText().equals("") || searchBox.getText().length() == 0 || searchBox.getText().isBlank() || searchBox.getText().isEmpty()) {
+      resetHistoryPage();
+    } else {
+      searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue.intValue() > oldValue.intValue()) {
+          // Check if the new character is greater than LIMIT
+          if (searchBox.getText().length() > 10) {
+            errorLabel.setText("!");
+            errorLabel1.setTextFill(Color.RED);
+            errorLabel1.setText("License Plate length must be <= 10!");
+            searchBox.setText(searchBox.getText().substring(0, 10));
+          } else {
+            errorLabel.setText("");
+            errorLabel1.setTextFill(Color.BLACK);
+            errorLabel1.setText("Admin Parking History");
+          }
         }
-      }
-    });
+      });
+      search();
+    }
+  }
+
+  public void search() {
+    historyControllerObservableList = null;
+    histories = historyRepository.getHistoriesFiltered(pageNumber, numberOfItemPerPage, searchBox.getText());
+    backButton.setDisable(pageNumber <= 0);
+    historyControllerObservableList = FXCollections.observableArrayList(histories);
+    IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+    licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
+    vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+    seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
+    monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
+    timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
+    timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
+    parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
+    parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
+    statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+    historyTable.setItems(historyControllerObservableList);
   }
 
   @FXML

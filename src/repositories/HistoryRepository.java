@@ -47,7 +47,7 @@ public class HistoryRepository {
       connection = Database.getInstance().getConnection();
       String sql = "select * from parking where license_plate like ? order by id desc limit ? offset ?";
       PreparedStatement preparedStatement = connection.prepareStatement(sql);
-      preparedStatement.setString(1, typedString);
+      preparedStatement.setString(1, "%" + typedString + "%");
       preparedStatement.setInt(2, numberOfItemPerPage);
       preparedStatement.setInt(3, pageNumber * numberOfItemPerPage);
       resultSet = preparedStatement.executeQuery();

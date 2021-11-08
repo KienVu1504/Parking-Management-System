@@ -141,6 +141,7 @@ public class InController {
       if (newValue.intValue() > oldValue.intValue()) {
         // Check if the new character is greater than LIMIT
         if (licensePlateTextField.getText().length() >= 11) {
+          errorLabel.setTextFill(Color.RED);
           errorLabel.setText("License Plate length must be <= 10!");
           errorLabel1.setTextFill(Color.RED);
           errorLabel1.setText("!");

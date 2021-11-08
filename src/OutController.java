@@ -54,11 +54,14 @@ public class OutController {
         if (licensePlateTextField.getText().length() > 10) {
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("License Plate length must be <= 10!");
+          errorLabel1.setTextFill(Color.RED);
+          errorLabel1.setText("!");
           // if its 11th character then just setText to previous
           // one
           licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
         } else {
           errorLabel1.setText("");
+          errorLabel.setText("");
         }
       }
     });

@@ -26,7 +26,7 @@ public class OutController {
   private Parent root;
   private Stage stage;
   @FXML
-  private Label errorLabel1, errorLabel2, errorLabel;
+  private Label errorLabel1, errorLabel2, errorLabel, errorLabel3, errorLabel4, errorLabel5, errorLabel6, errorLabel7;
   @FXML
   private TextField parkingTimeTextField, ticketTextField, seatTextField, timeOutField, licensePlateTextField, vehicleTypeTextField, timeInTextField, parkingFeeTextField;
   @FXML
@@ -68,18 +68,41 @@ public class OutController {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    if (licensePlateTextField.getText().length() == 0 || timeOutField.getText().length() == 0) {
-      if (licensePlateTextField.getText().length() == 0 || seatTextField.getText().length() != 0) {
-        errorLabel1.setTextFill(Color.RED);
-        errorLabel1.setText("!");
-      }
-      if (timeOutField.getText().length() == 0) {
-        errorLabel2.setTextFill(Color.RED);
-        errorLabel2.setText("!");
-      }
+    if (licensePlateTextField.getText().isEmpty() && vehicleTypeTextField.getText().isEmpty()) {
+      errorLabel1.setTextFill(Color.RED);
+      errorLabel1.setText("!");
+      errorLabel2.setTextFill(Color.RED);
+      errorLabel2.setText("!");
+      errorLabel3.setTextFill(Color.RED);
+      errorLabel3.setText("!");
+      errorLabel4.setTextFill(Color.RED);
+      errorLabel4.setText("!");
+      errorLabel5.setTextFill(Color.RED);
+      errorLabel5.setText("!");
+      errorLabel6.setTextFill(Color.RED);
+      errorLabel6.setText("!");
+      errorLabel7.setTextFill(Color.RED);
+      errorLabel7.setText("!");
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all text field before submit!");
-    } else {
+    } else if (!licensePlateTextField.getText().isEmpty() && vehicleTypeTextField.getText().isEmpty()) {
+      errorLabel1.setTextFill(Color.RED);
+      errorLabel1.setText("!");
+      errorLabel2.setTextFill(Color.RED);
+      errorLabel2.setText("!");
+      errorLabel3.setTextFill(Color.RED);
+      errorLabel3.setText("!");
+      errorLabel4.setTextFill(Color.RED);
+      errorLabel4.setText("!");
+      errorLabel5.setTextFill(Color.RED);
+      errorLabel5.setText("!");
+      errorLabel6.setTextFill(Color.RED);
+      errorLabel6.setText("!");
+      errorLabel7.setTextFill(Color.RED);
+      errorLabel7.setText("!");
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Please click search button!");
+    } else if (!licensePlateTextField.getText().isEmpty() && !vehicleTypeTextField.getText().isEmpty()) {
       try {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
         preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");
@@ -325,6 +348,12 @@ public class OutController {
         errorLabel1.setText("!");
       } else {
         errorLabel1.setText("");
+        errorLabel2.setText("");
+        errorLabel3.setText("");
+        errorLabel4.setText("");
+        errorLabel5.setText("");
+        errorLabel6.setText("");
+        errorLabel7.setText("");
         preparedStatement = connection.prepareStatement("select * from parking where license_plate = ?");
         preparedStatement.setString(1, licensePlateTextField.getText());
         resultSet = preparedStatement.executeQuery();

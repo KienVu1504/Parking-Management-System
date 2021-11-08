@@ -58,88 +58,88 @@
             </MenuItem>
         </Menu>
     </MenuBar>
-    <Label alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Vehicle Out">
+    <Label id="vehicle out label" alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Vehicle Out">
         <font>
             <Font name="System Bold" size="36.0"/>
         </font>
     </Label>
-    <Label layoutX="350.0" layoutY="230.0" text="License Plate">
+    <Label id="license" layoutX="350.0" layoutY="230.0" text="License Plate">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <Label layoutX="350.0" layoutY="300.0" text="Vehicle Type">
+    <Label id="type" layoutX="350.0" layoutY="300.0" text="Vehicle Type">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <Label layoutX="350.0" layoutY="370.0" text="Time In">
+    <Label id="in" layoutX="350.0" layoutY="370.0" text="Time In">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <Label layoutX="350.0" layoutY="440.0" text="Time Out">
+    <Label id="out" layoutX="350.0" layoutY="440.0" text="Time Out">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <Label layoutX="350.0" layoutY="509.0" text="Parking Fee">
+    <Label id="fee" layoutX="350.0" layoutY="509.0" text="Parking Fee">
         <font>
             <Font name="System Bold" size="18.0"/>
         </font>
     </Label>
-    <TextField fx:id="licensePlateTextField" layoutX="510.0" layoutY="230.0" onKeyTyped="#limitLength"
+    <TextField id="license" fx:id="licensePlateTextField" layoutX="510.0" layoutY="230.0" onKeyTyped="#limitLength"
                prefWidth="420.0"/>
-    <TextField fx:id="vehicleTypeTextField" editable="false" layoutX="510.0" layoutY="300.0" prefHeight="26.0"
+    <TextField id="type" fx:id="vehicleTypeTextField" editable="false" layoutX="510.0" layoutY="300.0" prefHeight="26.0"
                prefWidth="200.0"/>
-    <TextField fx:id="timeInTextField" editable="false" layoutX="510.0" layoutY="370.0" prefHeight="26.0"
+    <TextField id="in" fx:id="timeInTextField" editable="false" layoutX="510.0" layoutY="370.0" prefHeight="26.0"
                prefWidth="200.0"/>
-    <TextField fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0"
+    <TextField id="out" fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0"
                prefWidth="200.0"/>
-    <TextField fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0"
+    <TextField id="fee" fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0"
                prefWidth="457.0"/>
-    <Button fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false"
+    <Button id="search" fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false"
             onAction="#licensePlateSearch" text="Search"/>
-    <Button layoutX="606.0" layoutY="642.0" mnemonicParsing="false" onAction="#outCheck" text="Done">
+    <Button id="done" layoutX="606.0" layoutY="642.0" mnemonicParsing="false" onAction="#outCheck" text="Done">
         <font>
             <Font size="18.0"/>
         </font>
     </Button>
-    <Label fx:id="errorLabel1" layoutX="932.0" layoutY="234.0">
+    <Label id="license error" fx:id="errorLabel1" layoutX="919.0" layoutY="234.0">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label fx:id="errorLabel2" layoutX="1012.0" layoutY="374.0" prefHeight="20.0" prefWidth="6.0">
+    <Label id="error" fx:id="errorLabel" alignment="CENTER" layoutY="578.0" prefWidth="1360.0">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label fx:id="errorLabel" alignment="CENTER" layoutY="578.0" prefWidth="1360.0">
-        <font>
-            <Font name="System Bold" size="14.0"/>
-        </font>
-    </Label>
-    <Label layoutX="760.0" layoutY="299.0" text="Seat">
+    <Label id="seat" layoutX="760.0" layoutY="299.0" text="Seat">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <TextField fx:id="seatTextField" editable="false" layoutX="810.0" layoutY="300.0" prefHeight="26.0"
+    <TextField id="seat" fx:id="seatTextField" editable="false" layoutX="810.0" layoutY="300.0" prefHeight="26.0"
                prefWidth="200.0"/>
-    <Label layoutX="742.0" layoutY="368.0" text="Month Ticket">
+    <Label id="ticket" layoutX="742.0" layoutY="368.0" text="Monthly Ticket">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <TextField fx:id="ticketTextField" editable="false" layoutX="859.0" layoutY="369.0" prefHeight="26.0"
-               prefWidth="150.0"/>
-    <Label layoutX="742.0" layoutY="438.0" text="Parking Time">
+    <TextField id="ticket" fx:id="ticketTextField" editable="false" layoutX="879.0" layoutY="368.0" prefHeight="26.0"
+               prefWidth="130.0"/>
+    <Label id="ticket error" fx:id="errorLabel2" layoutX="999.0" layoutY="374.0">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label id="time" layoutX="742.0" layoutY="438.0" text="Parking Time">
         <font>
             <Font size="18.0"/>
         </font>
     </Label>
-    <TextField fx:id="parkingTimeTextField" editable="false" layoutX="859.0" layoutY="438.0" prefHeight="26.0"
+    <TextField id="time" fx:id="parkingTimeTextField" editable="false" layoutX="859.0" layoutY="438.0" prefHeight="26.0"
                prefWidth="115.0"/>
     <Label layoutX="974.0" layoutY="508.0" text="VNĐ">
         <font>
@@ -156,4 +156,29 @@
             <Font size="18.0"/>
         </font>
     </Button>
+    <Label fx:id="errorLabel3" layoutX="700.0" layoutY="303.0" prefHeight="20.0" prefWidth="6.0">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="errorLabel4" layoutX="1000.0" layoutY="303.0" prefHeight="20.0" prefWidth="6.0">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="errorLabel7" layoutX="700.0" layoutY="374.0" prefHeight="20.0" prefWidth="6.0">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="errorLabel5" layoutX="700.0" layoutY="444.0" prefHeight="20.0" prefWidth="6.0">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label fx:id="errorLabel6" layoutX="964.0" layoutY="441.0" prefHeight="20.0" prefWidth="6.0">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
 </AnchorPane>

@@ -65,7 +65,7 @@ public class HistoryController implements Initializable {
   @FXML
   private TableColumn<History, Integer> statusColumn;
   @FXML
-  private Button backButton;
+  private Button backButton, nextButton;
   private List<History> histories = new ArrayList();
   private HistoryRepository historyRepository = new HistoryRepository();
 
@@ -83,6 +83,7 @@ public class HistoryController implements Initializable {
     }
     backButton.setDisable(pageNumber <= 0);
     historyControllerObservableList = FXCollections.observableArrayList(histories);
+    nextButton.setDisable(historyControllerObservableList.size() < 25);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
     vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -105,6 +106,7 @@ public class HistoryController implements Initializable {
     }
     backButton.setDisable(pageNumber <= 0);
     historyControllerObservableList = FXCollections.observableArrayList(histories);
+    nextButton.setDisable(historyControllerObservableList.size() < 25);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
     vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -132,6 +134,7 @@ public class HistoryController implements Initializable {
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     backButton.setDisable(pageNumber <= 0);
     historyControllerObservableList = FXCollections.observableArrayList(histories);
+    nextButton.setDisable(historyControllerObservableList.size() < 25);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
     vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -180,6 +183,7 @@ public class HistoryController implements Initializable {
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
     backButton.setDisable(pageNumber <= 0);
     historyControllerObservableList = FXCollections.observableArrayList(histories);
+    nextButton.setDisable(historyControllerObservableList.size() < 25);
     IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
     vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));

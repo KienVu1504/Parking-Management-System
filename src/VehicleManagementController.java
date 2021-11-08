@@ -9,6 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import repositories.Database;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.Objects;
@@ -129,7 +133,7 @@ public class VehicleManagementController {
   }
 
   public void updateCheck() {
-    if (licensePlateTextField.getText().length() == 0 || vehicleTypeLabel.isDisable() || monthlyTicketLabel.isDisable()){
+    if (licensePlateTextField.getText().length() == 0 || vehicleTypeLabel.isDisable() || monthlyTicketLabel.isDisable()) {
       errorLabel1.setTextFill(Color.RED);
       errorLabel1.setText("!");
       errorLabel.setTextFill(Color.RED);
@@ -149,27 +153,27 @@ public class VehicleManagementController {
           preparedStatement = connection.prepareStatement("select * from parking where license_plate = ? AND status = 1");//AND status = 1
           preparedStatement.setString(1, licensePlateTextField.getText());
           resultSet = preparedStatement.executeQuery();
-          if (resultSet.next()){
+          if (resultSet.next()) {
             preparedStatement = connection.prepareStatement("update parking set type=?, seat=?, ticket=? where license_plate = ? AND status = 1"); //AND status = 1
-            if (vehicleBicycles.isSelected()){
+            if (vehicleBicycles.isSelected()) {
               preparedStatement.setString(1, "Bicycles");
               preparedStatement.setString(2, "0");
-            } else if (vehicleTypeMotorbike.isSelected()){
+            } else if (vehicleTypeMotorbike.isSelected()) {
               preparedStatement.setString(1, "Motorbike");
               preparedStatement.setString(2, "0");
-            } else if (vehicleTypeCar.isSelected()){
+            } else if (vehicleTypeCar.isSelected()) {
               preparedStatement.setString(1, "Car");
-              if (carSeats1.isSelected()){
+              if (carSeats1.isSelected()) {
                 preparedStatement.setString(2, "4-8");
-              } else if (carSeats2.isSelected()){
+              } else if (carSeats2.isSelected()) {
                 preparedStatement.setString(2, "9-29");
-              } else if (carSeats3.isSelected()){
+              } else if (carSeats3.isSelected()) {
                 preparedStatement.setString(2, "30+");
               }
             }
-            if (ticketYes.isSelected()){
+            if (ticketYes.isSelected()) {
               preparedStatement.setString(3, "1");
-            } else if (ticketNo.isSelected()){
+            } else if (ticketNo.isSelected()) {
               preparedStatement.setString(3, "0");
             }
             preparedStatement.setString(4, licensePlateTextField.getText());

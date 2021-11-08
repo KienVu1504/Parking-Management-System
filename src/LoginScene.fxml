@@ -59,13 +59,13 @@
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Hyperlink layoutX="31.0" layoutY="545.0" onAction="#openHomeSite"
+    <Hyperlink focusTraversable="false" layoutX="31.0" layoutY="545.0" onAction="#openHomeSite"
                text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
         <font>
             <Font size="14.0"/>
         </font>
     </Hyperlink>
-    <Hyperlink layoutX="41.0" layoutY="622.0" onAction="#openSupport"
+    <Hyperlink focusTraversable="false" layoutX="41.0" layoutY="622.0" onAction="#openSupport"
                text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
         <font>
             <Font size="14.0"/>

@@ -58,8 +58,7 @@ public class LoginController implements Initializable {
         if (usernameTextField.getText().length() > 25) {
           errorLabel.setText("Username length must be <= 25!");
           usernameErrorLabel.setText("!");
-          // if its 11th character then just setText to previous
-          // one
+          // if its 11th character then just setText to previous one
           usernameTextField.setText(usernameTextField.getText().substring(0, 25));
         } else {
           errorLabel.setText("");

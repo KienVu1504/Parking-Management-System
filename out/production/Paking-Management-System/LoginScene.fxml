@@ -12,76 +12,86 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="LoginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<AnchorPane fx:id="LoginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0"
+            prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
     <Label layoutX="575.0" layoutY="426.0" text="Username">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
     </Label>
     <Label layoutX="575.0" layoutY="476.0" text="Password">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
     </Label>
-    <TextField fx:id="usernameTextField" focusTraversable="false" layoutX="735.0" layoutY="426.0" onKeyTyped="#usernameLimitLength" prefWidth="500.0" promptText="Your username">
+    <TextField fx:id="usernameTextField" focusTraversable="false" layoutX="735.0" layoutY="426.0"
+               onKeyTyped="#usernameLimitLength" prefWidth="500.0" promptText="Your username">
         <cursor>
-            <Cursor fx:constant="TEXT" />
+            <Cursor fx:constant="TEXT"/>
         </cursor>
     </TextField>
-    <Button fx:id="loginButton" focusTraversable="false" layoutX="871.0" layoutY="582.0" mnemonicParsing="false" text="Login">
+    <Button fx:id="loginButton" focusTraversable="false" layoutX="871.0" layoutY="582.0" mnemonicParsing="false"
+            text="Login">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
         <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="HAND"/>
         </cursor>
     </Button>
-    <Separator layoutX="450.0" orientation="VERTICAL" prefHeight="768.0" />
-    <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="75.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
+    <Separator layoutX="450.0" orientation="VERTICAL" prefHeight="768.0"/>
+    <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="75.0" layoutY="98.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png"/>
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="831.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/lock-icon.png" />
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="831.0" layoutY="98.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@images/lock-icon.png"/>
     </ImageView>
     <Label layoutX="192.0" layoutY="511.0" text="Home Site:">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
     <Label layoutX="180.0" layoutY="592.0" text="Support Team:">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Hyperlink focusTraversable="false" layoutX="31.0" layoutY="545.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
+    <Hyperlink focusTraversable="false" layoutX="31.0" layoutY="545.0" onAction="#openHomeSite"
+               text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
         <font>
-            <Font size="14.0" />
+            <Font size="14.0"/>
         </font>
     </Hyperlink>
-    <Hyperlink focusTraversable="false" layoutX="41.0" layoutY="622.0" onAction="#openSupport" text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
+    <Hyperlink focusTraversable="false" layoutX="41.0" layoutY="622.0" onAction="#openSupport"
+               text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
         <font>
-            <Font size="14.0" />
+            <Font size="14.0"/>
         </font>
     </Hyperlink>
-    <Label fx:id="errorLabel" alignment="CENTER" layoutX="453.0" layoutY="535.0" prefHeight="20.0" prefWidth="905.0" textFill="RED">
+    <Label fx:id="errorLabel" alignment="CENTER" layoutX="453.0" layoutY="535.0" prefHeight="20.0" prefWidth="905.0"
+           textFill="RED">
         <font>
-            <Font size="14.0" />
+            <Font size="14.0"/>
         </font>
     </Label>
     <Label alignment="CENTER" layoutX="455.0" layoutY="322.0" prefHeight="27.0" prefWidth="899.0" text="Login">
         <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
-    <PasswordField fx:id="passwordTextField" focusTraversable="false" layoutX="735.0" layoutY="476.0" onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="500.0" promptText="Your password" />
+    <PasswordField fx:id="passwordTextField" focusTraversable="false" layoutX="735.0" layoutY="476.0"
+                   onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="500.0" promptText="Your password"/>
     <Label fx:id="usernameErrorLabel" layoutX="1218.0" layoutY="425.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="18.0"/>
         </font>
     </Label>
     <Label fx:id="passwordErrorLabel" layoutX="1218.0" layoutY="475.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="18.0"/>
         </font>
     </Label>
 </AnchorPane>

@@ -55,6 +55,7 @@ public class InController {
       carSeats3.setDisable(true);
       if (vehicleBicycles.isSelected()) {
         randomLP();
+        errorLabel1.setText("");
       } else {
         licensePlateTextField.setText("");
       }
@@ -139,13 +140,16 @@ public class InController {
     licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         // Check if the new character is greater than LIMIT
-        if (licensePlateTextField.getText().length() > 10) {
+        if (licensePlateTextField.getText().length() >= 11) {
           errorLabel.setText("License Plate length must be <= 10!");
+          errorLabel1.setTextFill(Color.RED);
+          errorLabel1.setText("!");
           // if its 11th character then just setText to previous
           // one
           licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
         } else {
           errorLabel1.setText("");
+          errorLabel.setText("");
         }
       }
     });
@@ -214,7 +218,7 @@ public class InController {
           int kq = preparedStatement.executeUpdate();
           if (kq > 0) {
             errorLabel.setTextFill(Color.GREEN);
-            errorLabel.setText("Submitted!");
+            errorLabel.setText("Submitted " + licensePlateTextField.getText() + "!");
           } else {
             errorLabel.setTextFill(Color.RED);
             errorLabel.setText("We can't submitted your record at this time. Please try again!");

@@ -101,5 +101,4 @@ public class History {
     this.fee = fee;
     this.status = status;
   }
-
 }

@@ -17,128 +17,118 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AdminPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0"
-            prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
+<AnchorPane fx:id="AdminPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
     <MenuBar fx:id="menuBar" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Help" mnemonicParsing="false" text="Help">
             <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
     </MenuBar>
-    <Separator layoutX="460.0" layoutY="10.0" orientation="VERTICAL" prefHeight="768.0"/>
-    <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="85.0" layoutY="108.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png"/>
+    <Separator layoutX="460.0" layoutY="10.0" orientation="VERTICAL" prefHeight="768.0" />
+    <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="85.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@images/lock-icon.png"/>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/lock-icon.png" />
     </ImageView>
     <Label layoutX="202.0" layoutY="521.0" text="Home Site:">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label layoutX="190.0" layoutY="602.0" text="Support Team:">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <Hyperlink focusTraversable="false" layoutX="41.0" layoutY="555.0" onAction="#openHomeSite"
-               text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
+    <Hyperlink focusTraversable="false" layoutX="41.0" layoutY="555.0" onAction="#openHomeSite" text="https://github.com/KienVu1504/Paking-Management-System" textFill="#e91874">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Hyperlink>
-    <Hyperlink focusTraversable="false" layoutX="51.0" layoutY="632.0" onAction="#openSupport"
-               text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
+    <Hyperlink focusTraversable="false" layoutX="51.0" layoutY="632.0" onAction="#openSupport" text="https://www.facebook.com/messages/t/100004800523531" textFill="#e91874">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Hyperlink>
     <Label alignment="CENTER" layoutX="460.0" layoutY="331.0" prefHeight="27.0" prefWidth="899.0" text="Admin Login">
         <font>
-            <Font name="System Bold" size="24.0"/>
+            <Font name="System Bold" size="24.0" />
         </font>
     </Label>
     <Label layoutX="585.0" layoutY="444.0" text="Username">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label layoutX="585.0" layoutY="494.0" text="Password">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
-    <TextField fx:id="usernameTextField" focusTraversable="false" layoutX="745.0" layoutY="444.0"
-               onKeyTyped="#usernameLimitLength" prefWidth="500.0" promptText="Your username">
+    <TextField fx:id="usernameTextField" focusTraversable="false" layoutX="745.0" layoutY="444.0" onKeyTyped="#usernameLimitLength" prefWidth="500.0" promptText="Your username">
         <cursor>
-            <Cursor fx:constant="TEXT"/>
+            <Cursor fx:constant="TEXT" />
         </cursor>
     </TextField>
-    <Button fx:id="loginButton" focusTraversable="false" layoutX="881.0" layoutY="600.0" mnemonicParsing="false"
-            text="Login">
+    <Button fx:id="loginButton" focusTraversable="false" layoutX="881.0" layoutY="600.0" mnemonicParsing="false" text="Login">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Label fx:id="errorLabel" alignment="CENTER" layoutX="463.0" layoutY="553.0" prefHeight="20.0" prefWidth="905.0"
-           textFill="RED">
+    <Label fx:id="errorLabel" alignment="CENTER" layoutX="463.0" layoutY="553.0" prefHeight="20.0" prefWidth="905.0" textFill="RED">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Label>
-    <PasswordField fx:id="passwordTextField" focusTraversable="false" layoutX="745.0" layoutY="494.0"
-                   onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="500.0" promptText="Your password"/>
+    <PasswordField fx:id="passwordTextField" focusTraversable="false" layoutX="745.0" layoutY="494.0" onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="500.0" promptText="Your password" />
     <Label fx:id="usernameErrorLabel" layoutX="1228.0" layoutY="443.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     <Label fx:id="passwordErrorLabel" layoutX="1228.0" layoutY="493.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
 </AnchorPane>

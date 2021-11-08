@@ -132,11 +132,16 @@ public class VehicleManagementController {
   }
 
   public void updateCheck() {
-    if (licensePlateTextField.getText().length() == 0 || vehicleTypeLabel.isDisable() || monthlyTicketLabel.isDisable()) {
+    if (licensePlateTextField.getText().length() == 0 && vehicleTypeLabel.isDisable() && monthlyTicketLabel.isDisable()) {
       errorLabel1.setTextFill(Color.RED);
       errorLabel1.setText("!");
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all fields before update!");
+    } else if (!licensePlateTextField.getText().isEmpty() && vehicleTypeLabel.isDisable() && monthlyTicketLabel.isDisable()) {
+      errorLabel1.setTextFill(Color.RED);
+      errorLabel1.setText("!");
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Please click search button!");
     } else {
       Connection connection = null;
       PreparedStatement preparedStatement = null;

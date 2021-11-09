@@ -54,11 +54,11 @@ public class AccountManagementController implements Initializable {
   @FXML
   private RadioButton addAdmin, addEmployee, upAdmin, upEmployee;
   @FXML
-  private PasswordField addPassTextField, upPassTextField;
+  private TextField addPassTextField, upPassTextField;
   @FXML
   private TextField upUserTextField;
   @FXML
-  private Label error1, error2, error3, error4, error5, error6, error7, error8, error9;
+  private Label error1, error2, error3, error4, error5, error6, error7, error8, error9, upRole;
   @FXML
   private MenuBar menuBar;
   @FXML
@@ -270,15 +270,73 @@ public class AccountManagementController implements Initializable {
     } else {
       error5.setText("");
       error6.setText("");
+      Connection connection = null;
+      PreparedStatement preparedStatement = null;
+      ResultSet resultSet = null;
+      try {
+        connection = Database.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM account LIMIT 0,1");
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+          preparedStatement = connection.prepareStatement("select * from account where username = ?");
+          preparedStatement.setString(1, upUserTextField.getText());
+          resultSet = preparedStatement.executeQuery();
+          if (!resultSet.next()) {
+            error5.setTextFill(Color.RED);
+            error6.setTextFill(Color.RED);
+            error5.setText("!");
+            error6.setText("Can't find " + upUserTextField.getText() + "!");
+          } else {
+            preparedStatement = connection.prepareStatement("select * from account where username = ?");
+            preparedStatement.setString(1, upUserTextField.getText());
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+              upPassTextField.setText(resultSet.getString("password"));
+              if (resultSet.getString("role").equals("ad")){
+                upAdmin.setSelected(true);
+                upRole.setDisable(true);
+                upAdmin.setDisable(true);
+                upEmployee.setDisable(true);
+              } else if (resultSet.getString("role").equals("ep")){
+                upEmployee.setSelected(true);
+                upRole.setDisable(false);
+                upAdmin.setDisable(false);
+                upEmployee.setDisable(false);
+              }
+            }
+          }
+        } else {
+          error9.setTextFill(Color.RED);
+          error9.setText("List is empty!");
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(AccountManagementController.class.getName()).log(Level.SEVERE, null, e);
+      } finally {
+        try {
+          if (resultSet != null) {
+            resultSet.close();
+          }
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+          if (connection != null) {
+            connection.close();
+          }
+        } catch (SQLException e) {
+          Logger.getLogger(AccountManagementController.class.getName()).log(Level.SEVERE, null, e);
+        }
+      }
     }
   }
 
   public void updateCheck() {
-    if (upUserTextField.getText().isEmpty()){
+    if (upUserTextField.getText().isEmpty()) {
       error5.setTextFill(Color.RED);
-      error6.setTextFill(Color.RED);
       error5.setText("!");
+      error6.setTextFill(Color.RED);
       error6.setText("Please enter username!");
+    } else if (!upUserTextField.getText().isEmpty() && upPassTextField.getText().isEmpty()) {
+
     }
   }
 

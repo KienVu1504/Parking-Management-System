@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
@@ -136,8 +135,6 @@
     </Label>
     <TextField id="user" fx:id="addUserTextField" focusTraversable="false" layoutX="927.0" layoutY="129.0"
                onKeyTyped="#usernameLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter username"/>
-    <PasswordField fx:id="addPassTextField" focusTraversable="false" layoutX="927.0" layoutY="211.0"
-                   onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password"/>
     <Label id="username add error" fx:id="error2" alignment="CENTER" layoutX="680.0" layoutY="174.0" prefWidth="680.0"/>
     <Label id="password add error" fx:id="error4" alignment="CENTER" layoutX="680.0" layoutY="261.0" prefWidth="680.0"/>
     <Label layoutX="835.0" layoutY="302.0" text="Role">
@@ -167,7 +164,7 @@
            prefWidth="680.0"/>
     <Label id="password update error" fx:id="error8" alignment="CENTER" layoutX="680.0" layoutY="593.0"
            prefWidth="680.0"/>
-    <Label layoutX="835.0" layoutY="634.0" text="Role">
+    <Label fx:id="upRole" layoutX="835.0" layoutY="634.0" text="Role">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
@@ -203,8 +200,10 @@
     </Label>
     <TextField fx:id="upUserTextField" focusTraversable="false" layoutX="927.0" layoutY="460.0"
                onKeyTyped="#upUsernameLimitLength" prefHeight="26.0" prefWidth="234.0" promptText="Enter username"/>
-    <PasswordField fx:id="upPassTextField" focusTraversable="false" layoutX="927.0" layoutY="542.0"
-                   onKeyTyped="#upPasswordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password"/>
     <Button id="update" focusTraversable="false" layoutX="1034.0" layoutY="715.0" mnemonicParsing="false"
             onAction="#deleteCheck" text="Delete"/>
+    <TextField fx:id="addPassTextField" layoutX="927.0" layoutY="211.0" onKeyTyped="#passwordLimitLength"
+               prefHeight="26.0" prefWidth="300.0" promptText="Enter password"/>
+    <TextField fx:id="upPassTextField" layoutX="927.0" layoutY="542.0" onKeyTyped="#upPasswordLimitLength"
+               prefHeight="26.0" prefWidth="300.0" promptText="Enter password"/>
 </AnchorPane>

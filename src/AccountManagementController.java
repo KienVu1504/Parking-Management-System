@@ -432,39 +432,44 @@ public class AccountManagementController implements Initializable {
       PreparedStatement preparedStatement = null;
       ResultSet resultSet = null;
       try {
-        connection = Database.getInstance().getConnection();
-        preparedStatement = connection.prepareStatement("SELECT * FROM account LIMIT 0,1");
-        resultSet = preparedStatement.executeQuery();
-        if (!resultSet.next()) {
-          error9.setTextFill(Color.RED);
-          error9.setText("List is empty!");
-        } else {
-          preparedStatement = connection.prepareStatement("select * from account where username = ?");
-          preparedStatement.setString(1, upUserTextField.getText());
+        if (!upUserTextField.getText().equals("admin")) {
+          connection = Database.getInstance().getConnection();
+          preparedStatement = connection.prepareStatement("SELECT * FROM account LIMIT 0,1");
           resultSet = preparedStatement.executeQuery();
-          if (resultSet.next()) {
-            preparedStatement = connection.prepareStatement("delete from account where username = ?");
+          if (!resultSet.next()) {
+            error9.setTextFill(Color.RED);
+            error9.setText("List is empty!");
+          } else {
+            preparedStatement = connection.prepareStatement("select * from account where username = ?");
             preparedStatement.setString(1, upUserTextField.getText());
-            int kq = preparedStatement.executeUpdate();
-            if (kq > 0) {
-              error9.setTextFill(Color.GREEN);
-              error9.setText("Deleted!");
-              error5.setText("");
-              resetTable();
-              upUserTextField.setText("");
-              upPassTextField.setText("");
-              upAdmin.setSelected(false);
-              upEmployee.setSelected(false);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              preparedStatement = connection.prepareStatement("delete from account where username = ?");
+              preparedStatement.setString(1, upUserTextField.getText());
+              int kq = preparedStatement.executeUpdate();
+              if (kq > 0) {
+                error9.setTextFill(Color.GREEN);
+                error9.setText("Deleted!");
+                error5.setText("");
+                resetTable();
+                upUserTextField.setText("");
+                upPassTextField.setText("");
+                upAdmin.setSelected(false);
+                upEmployee.setSelected(false);
+              } else {
+                error9.setTextFill(Color.RED);
+                error9.setText("Can't delete " + upUserTextField.getText() + ". Try again!");
+              }
             } else {
+              error5.setTextFill(Color.RED);
+              error5.setText("!");
               error9.setTextFill(Color.RED);
               error9.setText("Can't delete " + upUserTextField.getText() + ". Try again!");
             }
-          } else {
-            error5.setTextFill(Color.RED);
-            error5.setText("!");
-            error9.setTextFill(Color.RED);
-            error9.setText("Can't delete " + upUserTextField.getText() + ". Try again!");
           }
+        } else {
+          error9.setTextFill(Color.RED);
+          error9.setText("Cannot delete main Admin account!");
         }
       } catch (SQLException e) {
         Logger.getLogger(AccountManagementController.class.getName()).log(Level.SEVERE, null, e);

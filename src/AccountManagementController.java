@@ -79,7 +79,8 @@ public class AccountManagementController implements Initializable {
   public void initialize(URL url, ResourceBundle resourceBundle) {
     resetTable();
   }
-  public void resetTable(){
+
+  public void resetTable() {
     accounts = accountRepository.getAccount();
     ObservableList<Account> accountObservableList = FXCollections.observableArrayList(accounts);
     usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -87,6 +88,7 @@ public class AccountManagementController implements Initializable {
     roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
     accountTable.setItems(accountObservableList);
   }
+
   public void usernameLimitLength() {
     addUserTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
@@ -218,6 +220,70 @@ public class AccountManagementController implements Initializable {
         }
       }
     }
+  }
+
+  public void upUsernameLimitLength() {
+    upUserTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (upUserTextField.getText().length() > 25) {
+          error5.setTextFill(Color.RED);
+          error6.setTextFill(Color.RED);
+          error6.setText("Username length must be <= 25!");
+          error5.setText("!");
+          // if its 11th character then just setText to previous one
+          upUserTextField.setText(upUserTextField.getText().substring(0, 25));
+        } else {
+          error5.setText("");
+          error6.setText("");
+        }
+      }
+    });
+  }
+
+  public void upPasswordLimitLength() {
+    upPassTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (upPassTextField.getText().length() > 50) {
+          error8.setTextFill(Color.RED);
+          error7.setTextFill(Color.RED);
+          error8.setText("Password length must be <= 50!");
+          error7.setText("!");
+          // if its 11th character then just setText to previous
+          // one
+          upPassTextField.setText(upPassTextField.getText().substring(0, 50));
+        } else {
+          error7.setText("");
+          error8.setText("");
+        }
+      }
+    });
+  }
+
+  public void searchUsername() {
+    if (upUserTextField.getText().isEmpty()) {
+      error5.setTextFill(Color.RED);
+      error6.setTextFill(Color.RED);
+      error5.setText("!");
+      error6.setText("Please enter username!");
+    } else {
+      error5.setText("");
+      error6.setText("");
+    }
+  }
+
+  public void updateCheck() {
+    if (upUserTextField.getText().isEmpty()){
+      error5.setTextFill(Color.RED);
+      error6.setTextFill(Color.RED);
+      error5.setText("!");
+      error6.setText("Please enter username!");
+    }
+  }
+
+  public void deleteCheck() {
+
   }
 
   public void goToIn() throws IOException {

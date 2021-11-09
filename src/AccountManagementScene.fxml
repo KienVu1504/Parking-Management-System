@@ -16,194 +16,169 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="accountManagementPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountManagementController">
-    <Label id="update" alignment="CENTER" layoutX="680.0" layoutY="399.0" prefHeight="27.0" prefWidth="680.0"
-           text="Update Password">
+<AnchorPane fx:id="accountManagementPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountManagementController">
+    <Label id="update" alignment="CENTER" layoutX="680.0" layoutY="399.0" prefHeight="27.0" prefWidth="680.0" text="Update Password">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     <MenuBar fx:id="menuBar" layoutY="1.0" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
-            <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement"
-                      text="Vehicle Management">
+            <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Vehicle Management">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory"
-                      text="Packing History">
+            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement"
-                      text="Ticket Management">
+            <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement" text="Ticket Management">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP"/>
+                    <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Help" mnemonicParsing="false" text="Help">
             <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
     </MenuBar>
-    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="27.0" prefHeight="54.0" prefWidth="680.0"
-           text="Account Management">
+    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="27.0" prefHeight="54.0" prefWidth="680.0" text="Account Management">
         <font>
-            <Font name="System Bold" size="36.0"/>
+            <Font name="System Bold" size="36.0" />
         </font>
     </Label>
     <TableView fx:id="accountTable" focusTraversable="false" layoutY="27.0" prefHeight="742.0" prefWidth="680.0">
         <columns>
-            <TableColumn id="username" fx:id="usernameColumn" editable="false" maxWidth="200.0" minWidth="200.0"
-                         prefWidth="200.0" resizable="false" text="Username"/>
-            <TableColumn id="password" fx:id="passwordColumn" editable="false" maxWidth="380.0" minWidth="380.0"
-                         prefWidth="380.0" resizable="false" text="Password"/>
-            <TableColumn id="role" fx:id="roleColumn" editable="false" maxWidth="100.0" minWidth="100.0"
-                         prefWidth="100.0" resizable="false" text="Role"/>
+            <TableColumn id="username" fx:id="usernameColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="Username" />
+            <TableColumn id="password" fx:id="passwordColumn" editable="false" maxWidth="380.0" minWidth="380.0" prefWidth="380.0" resizable="false" text="Password" />
+            <TableColumn id="role" fx:id="roleColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Role" />
         </columns>
     </TableView>
-    <Separator layoutX="680.0" layoutY="79.0" prefWidth="680.0"/>
-    <Separator layoutX="680.0" layoutY="396.0" prefWidth="680.0"/>
-    <Label id="add" alignment="CENTER" layoutX="680.0" layoutY="82.0" prefHeight="27.0" prefWidth="680.0"
-           text="Add Account">
+    <Separator layoutX="680.0" layoutY="79.0" prefWidth="680.0" />
+    <Separator layoutX="680.0" layoutY="396.0" prefWidth="680.0" />
+    <Label id="add" alignment="CENTER" layoutX="680.0" layoutY="82.0" prefHeight="27.0" prefWidth="680.0" text="Add Account">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Button id="search" focusTraversable="false" layoutX="1172.0" layoutY="460.0" mnemonicParsing="false"
-            onAction="#searchUsername" prefHeight="27.0" prefWidth="55.0" text="Search"/>
-    <Button id="add" focusTraversable="false" layoutX="1001.0" layoutY="347.0" mnemonicParsing="false"
-            onAction="#addCheck" text="Add"/>
-    <Button id="update" focusTraversable="false" layoutX="955.0" layoutY="715.0" mnemonicParsing="false"
-            onAction="#updateCheck" text="Update"/>
+    <Button id="search" focusTraversable="false" layoutX="1172.0" layoutY="460.0" mnemonicParsing="false" onAction="#searchUsername" prefHeight="27.0" prefWidth="55.0" text="Search" />
+    <Button id="add" focusTraversable="false" layoutX="1001.0" layoutY="347.0" mnemonicParsing="false" onAction="#addCheck" text="Add" />
+    <Button id="update" focusTraversable="false" layoutX="955.0" layoutY="715.0" mnemonicParsing="false" onAction="#updateCheck" text="Update" />
     <Label id="username label" layoutX="817.0" layoutY="131.0" text="Username">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="pass label" layoutX="818.0" layoutY="214.0" text="Password">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <TextField id="user" fx:id="addUserTextField" focusTraversable="false" layoutX="927.0" layoutY="129.0"
-               onKeyTyped="#usernameLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter username"/>
-    <Label id="username add error" fx:id="error2" alignment="CENTER" layoutX="680.0" layoutY="174.0" prefWidth="680.0"/>
-    <Label id="password add error" fx:id="error4" alignment="CENTER" layoutX="680.0" layoutY="261.0" prefWidth="680.0"/>
+    <TextField id="user" fx:id="addUserTextField" focusTraversable="false" layoutX="927.0" layoutY="129.0" onKeyTyped="#usernameLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter username" />
+    <Label id="username add error" fx:id="error2" alignment="CENTER" layoutX="680.0" layoutY="174.0" prefWidth="680.0" />
+    <Label id="password add error" fx:id="error4" alignment="CENTER" layoutX="680.0" layoutY="261.0" prefWidth="680.0" />
     <Label layoutX="835.0" layoutY="302.0" text="Role">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <RadioButton fx:id="addAdmin" focusTraversable="false" layoutX="927.0" layoutY="304.0" mnemonicParsing="false"
-                 text="Admin">
+    <RadioButton fx:id="addAdmin" focusTraversable="false" layoutX="927.0" layoutY="304.0" mnemonicParsing="false" text="Admin">
         <toggleGroup>
-            <ToggleGroup fx:id="roleAdd"/>
+            <ToggleGroup fx:id="roleAdd" />
         </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="addEmployee" focusTraversable="false" layoutX="1139.0" layoutY="303.0" mnemonicParsing="false"
-                 selected="true" text="Employee" toggleGroup="$roleAdd"/>
+    <RadioButton fx:id="addEmployee" focusTraversable="false" layoutX="1139.0" layoutY="303.0" mnemonicParsing="false" selected="true" text="Employee" toggleGroup="$roleAdd" />
     <Label layoutX="817.0" layoutY="463.0" text="Username">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label layoutX="818.0" layoutY="546.0" text="Password">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <Label id="username update error" fx:id="error6" alignment="CENTER" layoutX="680.0" layoutY="506.0"
-           prefWidth="680.0"/>
-    <Label id="password update error" fx:id="error8" alignment="CENTER" layoutX="680.0" layoutY="593.0"
-           prefWidth="680.0"/>
-    <Label fx:id="upRole" layoutX="835.0" layoutY="634.0" text="Role">
+    <Label id="username update error" fx:id="error6" alignment="CENTER" layoutX="680.0" layoutY="506.0" prefWidth="680.0" />
+    <Label id="password update error" fx:id="error8" alignment="CENTER" layoutX="680.0" layoutY="593.0" prefWidth="680.0" />
+    <Label fx:id="upRole" disable="true" focusTraversable="false" layoutX="835.0" layoutY="634.0" text="Role">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <RadioButton fx:id="upAdmin" focusTraversable="false" layoutX="927.0" layoutY="636.0" mnemonicParsing="false"
-                 text="Admin">
+    <RadioButton fx:id="upAdmin" disable="true" focusTraversable="false" layoutX="927.0" layoutY="636.0" mnemonicParsing="false" text="Admin">
         <toggleGroup>
-            <ToggleGroup fx:id="roleUp"/>
+            <ToggleGroup fx:id="roleUp" />
         </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="upEmployee" focusTraversable="false" layoutX="1139.0" layoutY="635.0" mnemonicParsing="false"
-                 selected="true" text="Employee" toggleGroup="$roleUp"/>
-    <Label id="error" fx:id="error9" alignment="CENTER_RIGHT" layoutX="680.0" layoutY="676.0" prefWidth="680.0"/>
+    <RadioButton fx:id="upEmployee" disable="true" focusTraversable="false" layoutX="1139.0" layoutY="635.0" mnemonicParsing="false" text="Employee" toggleGroup="$roleUp" />
+    <Label id="error" fx:id="error9" alignment="CENTER" layoutX="680.0" layoutY="676.0" prefWidth="680.0" />
     <Label id="user add error !" fx:id="error1" layoutX="1238.0" layoutY="131.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="password add error !" fx:id="error3" layoutX="1238.0" layoutY="214.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="user update error !" fx:id="error5" layoutX="1238.0" layoutY="464.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="pass update error !" fx:id="error7" layoutX="1238.0" layoutY="546.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <TextField fx:id="upUserTextField" focusTraversable="false" layoutX="927.0" layoutY="460.0"
-               onKeyTyped="#upUsernameLimitLength" prefHeight="26.0" prefWidth="234.0" promptText="Enter username"/>
-    <Button id="update" focusTraversable="false" layoutX="1034.0" layoutY="715.0" mnemonicParsing="false"
-            onAction="#deleteCheck" text="Delete"/>
-    <TextField fx:id="addPassTextField" layoutX="927.0" layoutY="211.0" onKeyTyped="#passwordLimitLength"
-               prefHeight="26.0" prefWidth="300.0" promptText="Enter password"/>
-    <TextField fx:id="upPassTextField" layoutX="927.0" layoutY="542.0" onKeyTyped="#upPasswordLimitLength"
-               prefHeight="26.0" prefWidth="300.0" promptText="Enter password"/>
+    <TextField fx:id="upUserTextField" focusTraversable="false" layoutX="927.0" layoutY="460.0" onKeyTyped="#upUsernameLimitLength" prefHeight="26.0" prefWidth="234.0" promptText="Enter username" />
+    <Button id="update" focusTraversable="false" layoutX="1034.0" layoutY="715.0" mnemonicParsing="false" onAction="#deleteCheck" text="Delete" />
+    <TextField fx:id="addPassTextField" layoutX="927.0" layoutY="211.0" onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password" />
+    <TextField fx:id="upPassTextField" layoutX="927.0" layoutY="542.0" onKeyTyped="#upPasswordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password" />
 </AnchorPane>

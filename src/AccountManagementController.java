@@ -346,6 +346,7 @@ public class AccountManagementController implements Initializable {
     } else if (!upUserTextField.getText().isEmpty() && (!upAdmin.isSelected() && !upEmployee.isSelected())) {
       error9.setTextFill(Color.RED);
       error9.setText("Click search button first!");
+      error6.setText("");
     } else if (!upUserTextField.getText().isEmpty() && (upAdmin.isSelected() || upEmployee.isSelected())) {
       Connection connection = null;
       PreparedStatement preparedStatement = null;

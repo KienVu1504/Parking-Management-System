@@ -1,8 +1,7 @@
 package models;
 
 public class Ticket {
-  private String license_plate, expired_date;
-  private int status;
+  private String license_plate, expired_date, status;
 
   public Ticket() {
   }
@@ -15,7 +14,7 @@ public class Ticket {
     this.expired_date = expired_date;
   }
 
-  public void setStatus(int status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -27,11 +26,11 @@ public class Ticket {
     return expired_date;
   }
 
-  public int getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public Ticket(String license_plate, String expired_date, int status) {
+  public Ticket(String license_plate, String expired_date, String status) {
     this.license_plate = license_plate;
     this.expired_date = expired_date;
     this.status = status;

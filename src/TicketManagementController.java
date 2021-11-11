@@ -51,8 +51,6 @@ public class TicketManagementController implements Initializable {
   }
 
   @FXML
-  private TextField addUserTextField;
-  @FXML
   private RadioButton up1Month, up1Year, up6Months, add1Month, add1Year, add6Months, upActive, upSuspended;
   @FXML
   private TextField addLicensePlateTextField, upLicensePlateTextField, upExpiredDate;
@@ -278,7 +276,6 @@ public class TicketManagementController implements Initializable {
         preparedStatement = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
         resultSet = preparedStatement.executeQuery();
         if (!resultSet.next()) {
-          System.out.println("List is empty!");
           error3.setTextFill(Color.RED);
           error3.setText("List is empty!");
         } else {
@@ -337,6 +334,85 @@ public class TicketManagementController implements Initializable {
             error2.setText("!");
             error3.setTextFill(Color.RED);
             error3.setText("Update error. Try again!");
+          }
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(TicketManagementController.class.getName()).log(Level.SEVERE, null, e);
+      } finally {
+        try {
+          if (resultSet != null) {
+            resultSet.close();
+          }
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+          if (connection != null) {
+            connection.close();
+          }
+        } catch (SQLException e) {
+          Logger.getLogger(TicketManagementController.class.getName()).log(Level.SEVERE, null, e);
+        }
+      }
+    }
+  }
+
+  public void deleteCheck() {
+    if (upLicensePlateTextField.getText().isEmpty()) {
+      error2.setTextFill(Color.RED);
+      error3.setTextFill(Color.RED);
+      error2.setText("!");
+      error3.setText("Please enter license plate!");
+    } else if (!upLicensePlateTextField.getText().isEmpty() && statusLabel.isDisabled()) {
+      error2.setTextFill(Color.RED);
+      error3.setTextFill(Color.RED);
+      error2.setText("!");
+      error3.setText("Please click search button first!");
+    } else if (!upLicensePlateTextField.getText().isEmpty() && !statusLabel.isDisabled()) {
+      Connection connection = null;
+      PreparedStatement preparedStatement = null;
+      ResultSet resultSet = null;
+      try {
+        connection = Database.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
+        resultSet = preparedStatement.executeQuery();
+        if (!resultSet.next()) {
+          error3.setTextFill(Color.RED);
+          error3.setText("List is empty!");
+        } else {
+          preparedStatement = connection.prepareStatement("select * from ticket where license_plate = ?");
+          preparedStatement.setString(1, upLicensePlateTextField.getText());
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            preparedStatement = connection.prepareStatement("delete from ticket where license_plate = ?");
+            preparedStatement.setString(1, upLicensePlateTextField.getText());
+            int kq = preparedStatement.executeUpdate();
+            if (kq > 0) {
+              error3.setTextFill(Color.GREEN);
+              error3.setText("Deleted!");
+              expiredDateLabel.setDisable(true);
+              upExpiredDate.setText("");
+              upExpiredDate.setDisable(true);
+              statusLabel.setDisable(true);
+              upActive.setSelected(false);
+              upActive.setDisable(true);
+              upSuspended.setSelected(false);
+              upSuspended.setDisable(true);
+              ticketLabel.setDisable(true);
+              up1Month.setDisable(true);
+              up1Month.setSelected(false);
+              up6Months.setSelected(false);
+              up6Months.setDisable(true);
+              up1Year.setDisable(true);
+              up1Year.setSelected(false);
+              expiredDateLabel.setTextFill(Color.BLACK);
+              resetTable();
+            } else {
+              error3.setTextFill(Color.RED);
+              error3.setText("Can't delete " + upLicensePlateTextField.getText() + ". Try again!");
+            }
+          } else {
+            error3.setTextFill(Color.RED);
+            error3.setText("Not found " + upLicensePlateTextField.getText() + "!");
           }
         }
       } catch (SQLException e) {

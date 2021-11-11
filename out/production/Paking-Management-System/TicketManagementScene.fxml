@@ -163,7 +163,7 @@
     <TextField fx:id="upLicensePlateTextField" layoutX="934.0" layoutY="473.0" onKeyTyped="#upLicenseLimitLength"
                prefHeight="26.0" prefWidth="210.0" promptText="Enter license plate"/>
     <Button layoutX="1152.0" layoutY="473.0" mnemonicParsing="false" onAction="#searchLicensePlate" text="Search"/>
-    <Button layoutX="947.0" layoutY="715.0" mnemonicParsing="false" text="Update"/>
+    <Button layoutX="947.0" layoutY="715.0" mnemonicParsing="false" onAction="#updateCheck" text="Update"/>
     <Button layoutX="1030.0" layoutY="715.0" mnemonicParsing="false" text="Delete"/>
     <Label id="error2" fx:id="error2" layoutX="1213.0" layoutY="476.0" textFill="RED">
         <font>

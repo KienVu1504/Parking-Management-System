@@ -54,9 +54,9 @@ public class TicketManagementController implements Initializable {
   @FXML
   private TextField addUserTextField;
   @FXML
-  private RadioButton up1Month, up1Year, up6Months, add1Month, add1Year, add6Months;
+  private RadioButton up1Month, up1Year, up6Months, add1Month, add1Year, add6Months, upActive, upSuspended;
   @FXML
-  private TextField addLicensePlateTextField, upLicensePlateTextField, upStatusTextField;
+  private TextField addLicensePlateTextField, upLicensePlateTextField, upExpiredDate;
   @FXML
   private Label error1, error2, error3, error;
   @FXML
@@ -171,6 +171,84 @@ public class TicketManagementController implements Initializable {
         }
       }
     }
+  }
+
+  public void searchLicensePlate() {
+    if (upLicensePlateTextField.getText().isEmpty()) {
+      error2.setTextFill(Color.RED);
+      error3.setTextFill(Color.RED);
+      error2.setText("!");
+      error3.setText("Please enter license plate!");
+    } else {
+      Connection connection = null;
+      PreparedStatement preparedStatement = null;
+      ResultSet resultSet = null;
+      try {
+        connection = Database.getInstance().getConnection();
+        preparedStatement = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+          preparedStatement = connection.prepareStatement("select * from ticket where license_plate = ?");
+          preparedStatement.setString(1, upLicensePlateTextField.getText());
+          resultSet = preparedStatement.executeQuery();
+          if (!resultSet.next()) {
+            error2.setTextFill(Color.RED);
+            error3.setTextFill(Color.RED);
+            error2.setText("!");
+            error3.setText("Can't find " + upLicensePlateTextField.getText());
+          } else {
+            preparedStatement = connection.prepareStatement("select * from ticket where license_plate = ?");
+            preparedStatement.setString(1, upLicensePlateTextField.getText());
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+              if (resultSet.getInt("status") == 1) {
+                upActive.setSelected(true);
+              } else if (resultSet.getInt("status") == 0) {
+                upSuspended.setSelected(true);
+              }
+            }
+          }
+        } else {
+          error3.setTextFill(Color.RED);
+          error3.setText("List is empty!");
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(TicketManagementController.class.getName()).log(Level.SEVERE, null, e);
+      } finally {
+        try {
+          if (resultSet != null) {
+            resultSet.close();
+          }
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+          if (connection != null) {
+            connection.close();
+          }
+        } catch (SQLException e) {
+          Logger.getLogger(TicketManagementController.class.getName()).log(Level.SEVERE, null, e);
+        }
+      }
+    }
+  }
+
+  public void upLicenseLimitLength() {
+    upLicensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        // Check if the new character is greater than LIMIT
+        if (upLicensePlateTextField.getText().length() > 10) {
+          error3.setTextFill(Color.RED);
+          error2.setTextFill(Color.RED);
+          error3.setText("License Plate length must be <= 10!");
+          error2.setText("!");
+          // if its 11th character then just setText to previous one
+          upLicensePlateTextField.setText(upLicensePlateTextField.getText().substring(0, 10));
+        } else {
+          error3.setText("");
+          error2.setText("");
+        }
+      }
+    });
   }
 
   public void goToIn() throws IOException {

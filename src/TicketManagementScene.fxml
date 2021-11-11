@@ -19,6 +19,7 @@
 <AnchorPane fx:id="ticketManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketManagementController">
+    <RadioButton fx:id="upActive" disable="true" layoutX="987.0" layoutY="582.0" mnemonicParsing="false" text="Active"/>
     <MenuBar fx:id="menuBar" layoutY="1.0" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
@@ -115,16 +116,16 @@
     <TextField id="license add" fx:id="addLicensePlateTextField" layoutX="923.0" layoutY="154.0"
                onKeyTyped="#addLicenseLimitLength" prefHeight="26.0" prefWidth="270.0"
                promptText="Enter license plate"/>
-    <RadioButton id="add 1" fx:id="up1Month" layoutX="924.0" layoutY="598.0" mnemonicParsing="false" selected="true"
+    <RadioButton id="add 1" fx:id="up1Month" disable="true" layoutX="936.0" layoutY="636.0" mnemonicParsing="false"
                  text="1 Month">
         <toggleGroup>
             <ToggleGroup fx:id="upPlan"/>
         </toggleGroup>
     </RadioButton>
-    <RadioButton id="add 2" fx:id="up1Year" layoutX="1138.0" layoutY="597.0" mnemonicParsing="false" text="1 Year"
-                 toggleGroup="$upPlan"/>
-    <RadioButton id="add 3" fx:id="up6Months" layoutX="1023.0" layoutY="597.0" mnemonicParsing="false" text="6 Months"
-                 toggleGroup="$upPlan"/>
+    <RadioButton id="add 2" fx:id="up1Year" disable="true" layoutX="1150.0" layoutY="635.0" mnemonicParsing="false"
+                 text="1 Year" toggleGroup="$upPlan"/>
+    <RadioButton id="add 3" fx:id="up6Months" disable="true" layoutX="1035.0" layoutY="635.0" mnemonicParsing="false"
+                 text="6 Months" toggleGroup="$upPlan"/>
     <Separator layoutX="680.0" layoutY="396.0" prefWidth="680.0"/>
     <Button layoutX="1002.0" layoutY="324.0" mnemonicParsing="false" onAction="#addCheck" text="Add"/>
     <Label id="error1" fx:id="error1" layoutX="1204.0" layoutY="153.0" textFill="RED">
@@ -134,39 +135,38 @@
     </Label>
     <Label id="error" fx:id="error" alignment="CENTER" layoutX="681.0" layoutY="270.0" prefHeight="18.0"
            prefWidth="680.0" textFill="RED"/>
-    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="425.0" prefHeight="35.0" prefWidth="680.0"
+    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="417.0" prefHeight="35.0" prefWidth="680.0"
            text="Update Ticket">
         <font>
             <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
-    <Label id="license" layoutX="820.0" layoutY="493.0" text="License Plate">
+    <Label id="license" layoutX="830.0" layoutY="476.0" text="License Plate">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label id="ticket" layoutX="823.0" layoutY="596.0" text="Ticket Plans">
+    <Label id="ticket" disable="true" layoutX="835.0" layoutY="634.0" text="Ticket Plans">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label id="ticket" layoutX="841.0" layoutY="543.0" text="Status">
+    <Label id="ticket" disable="true" layoutX="853.0" layoutY="581.0" text="Status">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <TextField fx:id="upLicensePlateTextField" layoutX="924.0" layoutY="490.0" prefHeight="26.0" prefWidth="210.0"/>
-    <TextField fx:id="upStatusTextField" editable="false" focusTraversable="false" layoutX="924.0" layoutY="540.0"
-               prefHeight="26.0" prefWidth="270.0"/>
-    <Button layoutX="1142.0" layoutY="490.0" mnemonicParsing="false" text="Search"/>
-    <Button layoutX="953.0" layoutY="690.0" mnemonicParsing="false" text="Update"/>
-    <Button layoutX="1036.0" layoutY="690.0" mnemonicParsing="false" text="Delete"/>
-    <Label id="error2" fx:id="error2" layoutX="1203.0" layoutY="493.0" textFill="RED">
+    <TextField fx:id="upLicensePlateTextField" layoutX="934.0" layoutY="473.0" onKeyTyped="#upLicenseLimitLength"
+               prefHeight="26.0" prefWidth="210.0" promptText="Enter license plate"/>
+    <Button layoutX="1152.0" layoutY="473.0" mnemonicParsing="false" onAction="#searchLicensePlate" text="Search"/>
+    <Button layoutX="947.0" layoutY="715.0" mnemonicParsing="false" text="Update"/>
+    <Button layoutX="1030.0" layoutY="715.0" mnemonicParsing="false" text="Delete"/>
+    <Label id="error2" fx:id="error2" layoutX="1213.0" layoutY="476.0" textFill="RED">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label fx:id="error3" alignment="CENTER" layoutX="681.0" layoutY="642.0" prefHeight="18.0" prefWidth="680.0"
+    <Label fx:id="error3" alignment="CENTER" layoutX="682.0" layoutY="674.0" prefHeight="18.0" prefWidth="680.0"
            textFill="RED"/>
     <RadioButton id="add 1" fx:id="add1Month" layoutX="923.0" layoutY="215.0" mnemonicParsing="false" selected="true"
                  text="1 Month">
@@ -178,4 +178,17 @@
                  toggleGroup="$addPlan"/>
     <RadioButton id="add 3" fx:id="add6Months" layoutX="1022.0" layoutY="214.0" mnemonicParsing="false" text="6 Months"
                  toggleGroup="$addPlan"/>
+    <RadioButton fx:id="upSuspended" disable="true" layoutX="1082.0" layoutY="582.0" mnemonicParsing="false"
+                 text="Suspended">
+        <toggleGroup>
+            <ToggleGroup fx:id="statusUp"/>
+        </toggleGroup>
+    </RadioButton>
+    <Label disable="true" layoutX="831.0" layoutY="530.0" text="Expired Date">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="upExpiredDate" disable="true" editable="false" focusTraversable="false" layoutX="936.0"
+               layoutY="527.0" prefHeight="26.0" prefWidth="270.0"/>
 </AnchorPane>

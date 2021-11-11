@@ -19,7 +19,11 @@
 <AnchorPane fx:id="ticketManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketManagementController">
-    <RadioButton fx:id="upActive" disable="true" layoutX="987.0" layoutY="582.0" mnemonicParsing="false" text="Active"/>
+    <RadioButton fx:id="upActive" disable="true" layoutX="987.0" layoutY="582.0" mnemonicParsing="false" text="Active">
+        <toggleGroup>
+            <ToggleGroup fx:id="statusUp"/>
+        </toggleGroup>
+    </RadioButton>
     <MenuBar fx:id="menuBar" layoutY="1.0" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
@@ -146,12 +150,12 @@
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label id="ticket" disable="true" layoutX="835.0" layoutY="634.0" text="Ticket Plans">
+    <Label id="ticket" fx:id="ticketLabel" disable="true" layoutX="835.0" layoutY="634.0" text="Ticket Plans">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label id="ticket" disable="true" layoutX="853.0" layoutY="581.0" text="Status">
+    <Label id="ticket" fx:id="statusLabel" disable="true" layoutX="853.0" layoutY="581.0" text="Status">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>
@@ -179,12 +183,8 @@
     <RadioButton id="add 3" fx:id="add6Months" layoutX="1022.0" layoutY="214.0" mnemonicParsing="false" text="6 Months"
                  toggleGroup="$addPlan"/>
     <RadioButton fx:id="upSuspended" disable="true" layoutX="1082.0" layoutY="582.0" mnemonicParsing="false"
-                 text="Suspended">
-        <toggleGroup>
-            <ToggleGroup fx:id="statusUp"/>
-        </toggleGroup>
-    </RadioButton>
-    <Label disable="true" layoutX="831.0" layoutY="530.0" text="Expired Date">
+                 text="Suspended" toggleGroup="$statusUp"/>
+    <Label fx:id="expiredDateLabel" disable="true" layoutX="831.0" layoutY="530.0" text="Expired Date">
         <font>
             <Font name="System Bold" size="14.0"/>
         </font>

@@ -21,12 +21,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,7 +57,7 @@ public class TicketManagementController implements Initializable {
   @FXML
   private TextField addLicensePlateTextField, upLicensePlateTextField, upExpiredDate;
   @FXML
-  private Label error1, error2, error3, error;
+  private Label error1, error2, error3, error, expiredDateLabel, statusLabel, ticketLabel;
   @FXML
   private MenuBar menuBar;
   @FXML
@@ -201,12 +200,37 @@ public class TicketManagementController implements Initializable {
             preparedStatement.setString(1, upLicensePlateTextField.getText());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+              upExpiredDate.setText(resultSet.getString("expired_date"));
               if (resultSet.getInt("status") == 1) {
                 upActive.setSelected(true);
               } else if (resultSet.getInt("status") == 0) {
                 upSuspended.setSelected(true);
               }
             }
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+              LocalDateTime now = LocalDateTime.now();
+              Date d1 = sdf.parse(upExpiredDate.getText());
+              Date d2 = sdf.parse(dtf.format(now));
+              long difference_In_Time = d2.getTime() - d1.getTime();
+              if (difference_In_Time < 0) {
+                expiredDateLabel.setTextFill(Color.BLACK);
+              } else {
+                expiredDateLabel.setTextFill(Color.RED);
+              }
+            } catch (ParseException e) {
+              e.printStackTrace();
+            }
+            expiredDateLabel.setDisable(false);
+            upExpiredDate.setDisable(false);
+            statusLabel.setDisable(false);
+            upActive.setDisable(false);
+            upSuspended.setDisable(false);
+            ticketLabel.setDisable(false);
+            up1Month.setDisable(false);
+            up6Months.setDisable(false);
+            up1Year.setDisable(false);
           }
         } else {
           error3.setTextFill(Color.RED);
@@ -235,6 +259,22 @@ public class TicketManagementController implements Initializable {
   public void upLicenseLimitLength() {
     upLicensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
+        expiredDateLabel.setDisable(true);
+        upExpiredDate.setText("");
+        upExpiredDate.setDisable(true);
+        statusLabel.setDisable(true);
+        upActive.setSelected(false);
+        upActive.setDisable(true);
+        upSuspended.setSelected(false);
+        upSuspended.setDisable(true);
+        ticketLabel.setDisable(true);
+        up1Month.setDisable(true);
+        up1Month.setSelected(false);
+        up6Months.setSelected(false);
+        up6Months.setDisable(true);
+        up1Year.setDisable(true);
+        up1Year.setSelected(false);
+        expiredDateLabel.setTextFill(Color.BLACK);
         // Check if the new character is greater than LIMIT
         if (upLicensePlateTextField.getText().length() > 10) {
           error3.setTextFill(Color.RED);

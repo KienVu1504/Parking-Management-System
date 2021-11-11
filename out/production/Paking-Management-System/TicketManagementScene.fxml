@@ -112,8 +112,9 @@
             <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <TextField id="license add" fx:id="addLicensePlateTextField" layoutX="923.0" layoutY="154.0" prefHeight="26.0"
-               prefWidth="270.0" promptText="Enter license plate"/>
+    <TextField id="license add" fx:id="addLicensePlateTextField" layoutX="923.0" layoutY="154.0"
+               onKeyTyped="#addLicenseLimitLength" prefHeight="26.0" prefWidth="270.0"
+               promptText="Enter license plate"/>
     <RadioButton id="add 1" fx:id="up1Month" layoutX="924.0" layoutY="598.0" mnemonicParsing="false" selected="true"
                  text="1 Month">
         <toggleGroup>
@@ -125,7 +126,7 @@
     <RadioButton id="add 3" fx:id="up6Months" layoutX="1023.0" layoutY="597.0" mnemonicParsing="false" text="6 Months"
                  toggleGroup="$upPlan"/>
     <Separator layoutX="680.0" layoutY="396.0" prefWidth="680.0"/>
-    <Button layoutX="1002.0" layoutY="324.0" mnemonicParsing="false" text="Add"/>
+    <Button layoutX="1002.0" layoutY="324.0" mnemonicParsing="false" onAction="#addCheck" text="Add"/>
     <Label id="error1" fx:id="error1" layoutX="1204.0" layoutY="153.0" textFill="RED">
         <font>
             <Font name="System Bold" size="18.0"/>

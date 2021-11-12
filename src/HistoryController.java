@@ -19,6 +19,7 @@ import repositories.HistoryRepository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 
 public class HistoryController implements Initializable {
@@ -68,11 +69,13 @@ public class HistoryController implements Initializable {
   private Button backButton, nextButton;
   private List<History> histories = new ArrayList();
   private HistoryRepository historyRepository = new HistoryRepository();
-  private int numberOfPage = 10;//lay tu ham historyRepository.getNumberOfPages()
+  int numberOfItemPerPage = 25;
+  private int numberOfPage = (historyRepository.getNumberOfPage()) / numberOfItemPerPage;
   //internal state
   private int pageNumber = 0;
 
-  public HistoryController() {
+
+  public HistoryController() throws SQLException {
   }
 
   public void pressBack() {
@@ -97,7 +100,6 @@ public class HistoryController implements Initializable {
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
-  int numberOfItemPerPage = 25;
   ObservableList<History> historyControllerObservableList = null;
 
   //select * from parking limit 25 offset 25 * 2
@@ -110,7 +112,8 @@ public class HistoryController implements Initializable {
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     setTableValue();
   }
-  public void setTableValue(){
+
+  public void setTableValue() {
     backButton.setDisable(pageNumber <= 0);
     historyControllerObservableList = FXCollections.observableArrayList(histories);
     nextButton.setDisable(historyControllerObservableList.size() < 25);
@@ -126,6 +129,7 @@ public class HistoryController implements Initializable {
     statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
     historyTable.setItems(historyControllerObservableList);
   }
+
   @FXML
   private TextField searchBox;
 

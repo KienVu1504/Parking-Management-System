@@ -39,6 +39,21 @@ public class HistoryRepository {
     }
   }
 
+  public int getNumberOfPage() throws SQLException {
+    //Getting the connection
+    Connection connection = Database.getInstance().getConnection();
+    //Creating the Statement object
+    Statement stmt = connection.createStatement();
+    //Query to get the number of rows in a table
+    String query = "select count(*) from parking";
+    //Executing the query
+    ResultSet rs = stmt.executeQuery(query);
+    //Retrieving the result
+    rs.next();
+    int count = rs.getInt(1);
+    return count;
+  }
+
   public List<History> getHistoriesFiltered(int pageNumber, int numberOfItemPerPage, String typedString) {
     List<History> histories = new ArrayList();
     Connection connection;

@@ -81,20 +81,7 @@ public class HistoryController implements Initializable {
     } else {
       histories = historyRepository.getHistoriesFiltered(pageNumber = pageNumber <= 0 ? pageNumber : pageNumber - 1, numberOfItemPerPage, searchBox.getText());
     }
-    backButton.setDisable(pageNumber <= 0);
-    historyControllerObservableList = FXCollections.observableArrayList(histories);
-    nextButton.setDisable(historyControllerObservableList.size() < 25);
-    IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-    licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
-    vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-    seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
-    monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
-    timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
-    timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
-    parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
-    parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
-    statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-    historyTable.setItems(historyControllerObservableList);
+    setTableValue();
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
@@ -104,20 +91,7 @@ public class HistoryController implements Initializable {
     } else {
       histories = historyRepository.getHistoriesFiltered(pageNumber++, numberOfItemPerPage, searchBox.getText());
     }
-    backButton.setDisable(pageNumber <= 0);
-    historyControllerObservableList = FXCollections.observableArrayList(histories);
-    nextButton.setDisable(historyControllerObservableList.size() < 25);
-    IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-    licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
-    vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-    seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
-    monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
-    timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
-    timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
-    parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
-    parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
-    statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-    historyTable.setItems(historyControllerObservableList);
+    setTableValue();
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
@@ -132,6 +106,9 @@ public class HistoryController implements Initializable {
 
   public void resetHistoryPage() {
     histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
+    setTableValue();
+  }
+  public void setTableValue(){
     backButton.setDisable(pageNumber <= 0);
     historyControllerObservableList = FXCollections.observableArrayList(histories);
     nextButton.setDisable(historyControllerObservableList.size() < 25);
@@ -147,7 +124,6 @@ public class HistoryController implements Initializable {
     statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
     historyTable.setItems(historyControllerObservableList);
   }
-
   @FXML
   private TextField searchBox;
 
@@ -181,20 +157,7 @@ public class HistoryController implements Initializable {
     historyControllerObservableList = null;
     histories = historyRepository.getHistoriesFiltered(pageNumber = 0, numberOfItemPerPage, searchBox.getText());
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
-    backButton.setDisable(pageNumber <= 0);
-    historyControllerObservableList = FXCollections.observableArrayList(histories);
-    nextButton.setDisable(historyControllerObservableList.size() < 25);
-    IdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-    licensePlateColumn.setCellValueFactory(new PropertyValueFactory<>("license_plate"));
-    vehicleTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-    seatColumn.setCellValueFactory(new PropertyValueFactory<>("seat"));
-    monthlyTicketColumn.setCellValueFactory(new PropertyValueFactory<>("ticket"));
-    timeInColumn.setCellValueFactory(new PropertyValueFactory<>("time_in"));
-    timeOutColumn.setCellValueFactory(new PropertyValueFactory<>("time_out"));
-    parkingTimeColumn.setCellValueFactory(new PropertyValueFactory<>("parking_time"));
-    parkingFeeColumn.setCellValueFactory(new PropertyValueFactory<>("fee"));
-    statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-    historyTable.setItems(historyControllerObservableList);
+    setTableValue();
   }
 
   @FXML

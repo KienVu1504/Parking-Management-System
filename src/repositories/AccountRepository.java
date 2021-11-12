@@ -23,7 +23,7 @@ public class AccountRepository {
         Account account = new Account();
         account.setUsername(resultSet.getString("username"));
         account.setPassword(resultSet.getString("password"));
-        if (resultSet.getString("role").equals("ad")){
+        if (resultSet.getString("role").equals("ad")) {
           account.setRole("admin");
         } else {
           account.setRole("employee");

@@ -68,7 +68,7 @@ public class HistoryController implements Initializable {
   private Button backButton, nextButton;
   private List<History> histories = new ArrayList();
   private HistoryRepository historyRepository = new HistoryRepository();
-
+  private int numberOfPage = 10;//lay tu ham historyRepository.getNumberOfPages()
   //internal state
   private int pageNumber = 0;
 
@@ -76,20 +76,22 @@ public class HistoryController implements Initializable {
   }
 
   public void pressBack() {
+    pageNumber = pageNumber <= 0 ? pageNumber : pageNumber - 1;
     if (searchBox.getText().isEmpty()) {
-      histories = historyRepository.getHistories(pageNumber = pageNumber <= 0 ? pageNumber : pageNumber - 1, numberOfItemPerPage);
+      histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     } else {
-      histories = historyRepository.getHistoriesFiltered(pageNumber = pageNumber <= 0 ? pageNumber : pageNumber - 1, numberOfItemPerPage, searchBox.getText());
+      histories = historyRepository.getHistoriesFiltered(pageNumber, numberOfItemPerPage, searchBox.getText());
     }
     setTableValue();
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));
   }
 
   public void pressNext() {
+    pageNumber = (pageNumber <= numberOfPage - 1) ? pageNumber + 1 : pageNumber;
     if (searchBox.getText().isEmpty()) {
-      histories = historyRepository.getHistories(pageNumber++, numberOfItemPerPage);
+      histories = historyRepository.getHistories(pageNumber, numberOfItemPerPage);
     } else {
-      histories = historyRepository.getHistoriesFiltered(pageNumber++, numberOfItemPerPage, searchBox.getText());
+      histories = historyRepository.getHistoriesFiltered(pageNumber, numberOfItemPerPage, searchBox.getText());
     }
     setTableValue();
     pageNumberLabel.setText(String.valueOf(pageNumber + 1));

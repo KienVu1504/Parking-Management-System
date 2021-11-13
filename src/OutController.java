@@ -115,7 +115,11 @@ public class OutController {
           preparedStatement = connection.prepareStatement("update parking set time_out=?, parking_time=?, fee=?, status=? where license_plate = ? AND status = 1");
           preparedStatement.setString(1, timeOutField.getText());
           preparedStatement.setString(2, parkingTimeTextField.getText());
-          preparedStatement.setString(3, parkingFeeTextField.getText());
+          if (parkingFeeTextField.getText().equals("Free")){
+            preparedStatement.setString(3, "0");
+          } else {
+            preparedStatement.setString(3, parkingFeeTextField.getText());
+          }
           preparedStatement.setString(4, "0");
           preparedStatement.setString(5, licensePlateTextField.getText());
           int kq = preparedStatement.executeUpdate();

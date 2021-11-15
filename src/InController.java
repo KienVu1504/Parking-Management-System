@@ -180,7 +180,7 @@ public class InController {
       connection = Database.getInstance().getConnection();
       preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'slotsleft'");
       resultSet = preparedStatement.executeQuery();
-      while (resultSet.next()) {
+      if (resultSet.next()) {
         return resultSet.getInt("slots");
       }
     } catch (SQLException e) {

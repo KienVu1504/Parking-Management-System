@@ -54,6 +54,7 @@ public class InController {
       carSeats1.setDisable(true);
       carSeats2.setDisable(true);
       carSeats3.setDisable(true);
+      timeInField.setText("");
       if (vehicleBicycles.isSelected()) {
         randomLP();
         errorLabel1.setText("");
@@ -61,6 +62,7 @@ public class InController {
         licensePlateTextField.setText("");
       }
     } else {
+      timeInField.setText("");
       carSeatsLabel.setDisable(false);
       carSeats1.setDisable(false);
       carSeats2.setDisable(false);
@@ -167,8 +169,7 @@ public class InController {
     ResultSet rs = stmt.executeQuery(query);
     //Retrieving the result
     rs.next();
-    int count = rs.getInt(1);
-    return count;
+    return rs.getInt(1);
   }
 
   public int getTotalSlots() {

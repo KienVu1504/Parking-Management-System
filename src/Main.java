@@ -13,7 +13,7 @@ public class Main extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));
     Scene scene = new Scene(root, 1360, 768);
     Image icon = new Image("images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png");
     stage.setTitle("Parking Management System");

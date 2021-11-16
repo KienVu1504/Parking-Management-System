@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import repositories.Database;
 
 import java.util.Date;
 import java.io.IOException;
@@ -115,7 +116,7 @@ public class OutController {
           preparedStatement = connection.prepareStatement("update parking set time_out=?, parking_time=?, fee=?, status=? where license_plate = ? AND status = 1");
           preparedStatement.setString(1, timeOutField.getText());
           preparedStatement.setString(2, parkingTimeTextField.getText());
-          if (parkingFeeTextField.getText().equals("Free")){
+          if (parkingFeeTextField.getText().equals("Free")) {
             preparedStatement.setString(3, "0");
           } else {
             preparedStatement.setString(3, parkingFeeTextField.getText());
@@ -202,7 +203,7 @@ public class OutController {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     try {
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/parkingsystem", "root", "");
+      connection = Database.getInstance().getConnection();
       preparedStatement = connection.prepareStatement("select expired_date from ticket where license_plate = ? AND status = 1");
       preparedStatement.setString(1, licensePlateTextField.getText());
       resultSet = preparedStatement.executeQuery();
@@ -263,78 +264,190 @@ public class OutController {
   }
 
   public void feeCal() {
-    int parkingFee;
-    int parkingTime = Integer.parseInt(parkingTimeTextField.getText());
-    if (vehicleTypeTextField.getText().equals("Bicycles")) {
-      if (parkingTime <= 240) {
-        parkingFee = 50 * parkingTime;
-        parkingFeeTextField.setText(String.valueOf(parkingFee));
-      }
-      if (parkingTime > 240 && parkingTime <= 480) {
-        parkingFee = 9 * parkingTime;
-        parkingFeeTextField.setText(String.valueOf(parkingFee));
-      }
-      if (parkingTime > 480) {
-        parkingFee = 11 * parkingTime;
-        parkingFeeTextField.setText(String.valueOf(parkingFee));
-      }
-    }
-    if (vehicleTypeTextField.getText().equals("Motorbike")) {
-      if (parkingTime <= 240) {
-        parkingFee = 100 * parkingTime;
-        parkingFeeTextField.setText(String.valueOf(parkingFee));
-      }
-      if (parkingTime > 240 && parkingTime <= 480) {
-        parkingFee = 17 * parkingTime;
-        parkingFeeTextField.setText(String.valueOf(parkingFee));
-      }
-      if (parkingTime > 480) {
-        parkingFee = 19 * parkingTime;
-        parkingFeeTextField.setText(String.valueOf(parkingFee));
-      }
-    }
-    if (vehicleTypeTextField.getText().equals("Car")) {
-      if (parkingTime <= 90) {
-        if (seatTextField.getText().equals("4-8")) {
-          parkingFee = 417 * parkingTime;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    try {
+      connection = Database.getInstance().getConnection();
+      int parkingFee;
+      int parkingTime = Integer.parseInt(parkingTimeTextField.getText());
+      if (vehicleTypeTextField.getText().equals("Bicycles")) {
+        if (parkingTime <= 240) {
+          preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = 'bicycles'");
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            parkingFee = resultSet.getInt("m240") * parkingTime;
+          } else {
+            parkingFee = 50 * parkingTime;
+          }
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")) {
-          parkingFee = 667 * parkingTime;
+        if (parkingTime > 240 && parkingTime <= 480) {
+          preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = 'bicycles'");
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            parkingFee = resultSet.getInt("240t480") * parkingTime;
+          } else {
+            parkingFee = 9 * parkingTime;
+          }
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("30+")) {
-          parkingFee = 834 * parkingTime;
+        if (parkingTime > 480) {
+          preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = 'bicycles'");
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            parkingFee = resultSet.getInt("480p") * parkingTime;
+          } else {
+            parkingFee = 11 * parkingTime;
+          }
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
       }
-      if (parkingTime > 90 && parkingTime <= 1440) {
-        if (seatTextField.getText().equals("4-8")) {
-          parkingFee = 167 * parkingTime;
+      if (vehicleTypeTextField.getText().equals("Motorbike")) {
+        if (parkingTime <= 240) {
+          preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = 'motorbike'");
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            parkingFee = resultSet.getInt("m240") * parkingTime;
+          } else {
+            parkingFee = 100 * parkingTime;
+          }
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("9-29")) {
-          parkingFee = 250 * parkingTime;
+        if (parkingTime > 240 && parkingTime <= 480) {
+          preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = 'motorbike'");
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            parkingFee = resultSet.getInt("240t480") * parkingTime;
+          } else {
+            parkingFee = 17 * parkingTime;
+          }
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
-        if (seatTextField.getText().equals("30+")) {
-          parkingFee = 334 * parkingTime;
+        if (parkingTime > 480) {
+          preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = 'motorbike'");
+          resultSet = preparedStatement.executeQuery();
+          if (resultSet.next()) {
+            parkingFee = resultSet.getInt("480p") * parkingTime;
+          } else {
+            parkingFee = 19 * parkingTime;
+          }
           parkingFeeTextField.setText(String.valueOf(parkingFee));
         }
       }
-      if (parkingTime > 1440) {
-        if (seatTextField.getText().equals("4-8")) {
-          parkingFee = 105 * parkingTime;
-          parkingFeeTextField.setText(String.valueOf(parkingFee));
+      if (vehicleTypeTextField.getText().equals("Car")) {
+        if (parkingTime <= 90) {
+          if (seatTextField.getText().equals("4-8")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '4t8car'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("m90") * parkingTime;
+            } else {
+              parkingFee = 417 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
+          if (seatTextField.getText().equals("9-29")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '9t29car'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("m90") * parkingTime;
+            } else {
+              parkingFee = 667 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
+          if (seatTextField.getText().equals("30+")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '30pcar'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("m90") * parkingTime;
+            } else {
+              parkingFee = 834 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
         }
-        if (seatTextField.getText().equals("9-29")) {
-          parkingFee = 209 * parkingTime;
-          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        if (parkingTime > 90 && parkingTime <= 1440) {
+          if (seatTextField.getText().equals("4-8")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '4t8car'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("90t1440") * parkingTime;
+            } else {
+              parkingFee = 167 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
+          if (seatTextField.getText().equals("9-29")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '9t29car'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("90t1440") * parkingTime;
+            } else {
+              parkingFee = 250 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
+          if (seatTextField.getText().equals("30+")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '30pcar'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("90t1440") * parkingTime;
+            } else {
+              parkingFee = 334 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
         }
-        if (seatTextField.getText().equals("30+")) {
-          parkingFee = 334 * parkingTime;
-          parkingFeeTextField.setText(String.valueOf(parkingFee));
+        if (parkingTime > 1440) {
+          if (seatTextField.getText().equals("4-8")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '4t8car'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("1440p") * parkingTime;
+            } else {
+              parkingFee = 105 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
+          if (seatTextField.getText().equals("9-29")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '9t29car'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("1440p") * parkingTime;
+            } else {
+              parkingFee = 209 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
+          if (seatTextField.getText().equals("30+")) {
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots where type = '30pcar'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              parkingFee = resultSet.getInt("1440p") * parkingTime;
+            } else {
+              parkingFee = 334 * parkingTime;
+            }
+            parkingFeeTextField.setText(String.valueOf(parkingFee));
+          }
         }
+      }
+    } catch (SQLException e) {
+      Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
+    } finally {
+      try {
+        if (resultSet != null) {
+          resultSet.close();
+        }
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+        if (connection != null) {
+          connection.close();
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(OutController.class.getName()).log(Level.SEVERE, null, e);
       }
     }
   }

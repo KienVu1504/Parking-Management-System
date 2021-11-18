@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import repositories.Database;
 
@@ -39,11 +40,109 @@ public class SlotsController implements Initializable {
   }
 
   @FXML
-  private TextField bicyclesField, motorbikeField, carField, seat1, seat2, seat3, slotsNumber;
+  private TextField bicyclesField, motorbikeField, carField, seat1, seat2, seat3, slotsNumber, newSlotsNumber;
   @FXML
   private Label error, error1;
   @FXML
   private MenuBar menuBar;
+
+  public void limitLength() {
+    newSlotsNumber.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (newSlotsNumber.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Number of slots must be <= 9999999999!");
+          error1.setTextFill(Color.RED);
+          error1.setText("!");
+          newSlotsNumber.setText(newSlotsNumber.getText().substring(0, 10));
+        } else {
+          error1.setText("");
+          error.setText("");
+        }
+      }
+    });
+  }
+
+  public void updateCheck() throws SQLException {
+    if (newSlotsNumber.getText().isEmpty()) {
+      error1.setTextFill(Color.RED);
+      error1.setText("!");
+      error.setTextFill(Color.RED);
+      error.setText("Please enter new number of slots!");
+    } else {
+      try {
+        if (Integer.parseInt(newSlotsNumber.getText()) <= getTotalParking()) {
+          error.setTextFill(Color.RED);
+          error.setText("Can't set new number of slots to this value!");
+          error1.setTextFill(Color.RED);
+          error1.setText("!");
+        } else {
+          error1.setText("");
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'slotsleft'");
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+              preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = 'slotsleft'");
+              preparedStatement.setString(1, newSlotsNumber.getText());
+              int kq = preparedStatement.executeUpdate();
+              if (kq > 0) {
+                error.setTextFill(Color.GREEN);
+                error.setText("Update successfully!");
+                error1.setText("");
+                newSlotsNumber.setText("");
+                getCurrentSlots();
+                getData();
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Can't update number of slots at this time!");
+              }
+            } else {
+              error.setTextFill(Color.RED);
+              error.setText("Can't update number of slots at this time!");
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error1.setTextFill(Color.RED);
+        error1.setText("!");
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a number!");
+      }
+    }
+  }
+
+  public int getTotalParking() throws SQLException {
+    Connection connection = Database.getInstance().getConnection();
+    //Creating the Statement object
+    Statement stmt = connection.createStatement();
+    //Query to get the number of rows in a table
+    String query = "select count(*) from parking where status = 1";
+    //Executing the query
+    ResultSet rs = stmt.executeQuery(query);
+    //Retrieving the result
+    rs.next();
+    return rs.getInt(1);
+  }
 
   public void getData() throws SQLException {
     Connection connection = Database.getInstance().getConnection();
@@ -82,7 +181,7 @@ public class SlotsController implements Initializable {
       connection = Database.getInstance().getConnection();
       preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'slotsleft'");
       resultSet = preparedStatement.executeQuery();
-      if (resultSet.next()){
+      if (resultSet.next()) {
         slotsNumber.setText(String.valueOf(resultSet.getInt("slots")));
       }
     } catch (SQLException e) {

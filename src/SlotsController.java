@@ -1,3 +1,4 @@
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -234,8 +235,13 @@ public class SlotsController implements Initializable {
     }
   }
 
-  public void updateCheck() {
+  public void updateBicyclesCheck() {
+    if (upBicycles.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("Nothings to update!");
+    } else {
 
+    }
   }
 
   public void goToAccountManagement() throws IOException {

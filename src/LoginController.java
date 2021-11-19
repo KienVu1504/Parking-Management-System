@@ -134,6 +134,9 @@ public class LoginController implements Initializable {
         }
       } catch (SQLException | IOException e) {
         e.printStackTrace();
+      } catch (NullPointerException nullPointerException) {
+        errorLabel.setTextFill(Color.RED);
+        errorLabel.setText("Connection error, please try again later!");
       } finally {
         if (resultSet != null) {
           try {

@@ -74,12 +74,12 @@
         </font>
     </Label>
     <PasswordField fx:id="passwordTextField" focusTraversable="false" layoutX="735.0" layoutY="476.0" onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="500.0" promptText="Your password" />
-    <Label fx:id="usernameErrorLabel" layoutX="1218.0" layoutY="425.0" textFill="RED">
+    <Label fx:id="usernameErrorLabel" layoutX="1244.0" layoutY="425.0" textFill="RED">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Label fx:id="passwordErrorLabel" layoutX="1218.0" layoutY="475.0" textFill="RED">
+    <Label fx:id="passwordErrorLabel" layoutX="1244.0" layoutY="476.0" textFill="RED">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>

@@ -13,148 +13,133 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="InPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0"
-            prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="InController">
+<AnchorPane fx:id="InPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InController">
     <MenuBar fx:id="menuBar" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Admin" mnemonicParsing="false" text="Admin">
             <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Help" mnemonicParsing="false" text="Help">
             <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
     </MenuBar>
     <Label alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Vehicle In">
         <font>
-            <Font name="System Bold" size="36.0"/>
+            <Font name="System Bold" size="36.0" />
         </font>
     </Label>
-    <Label layoutX="348.0" layoutY="340.0" text="License Plate">
+    <Label layoutX="345.0" layoutY="413.0" text="License Plate">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label layoutX="349.0" layoutY="480.0" text="Time In">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label layoutX="348.0" layoutY="260.0" text="Vehicle Type">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
-    <TextField fx:id="licensePlateTextField" layoutX="508.0" layoutY="340.0" onKeyTyped="#limitLength"
-               prefWidth="500.0"/>
-    <TextField fx:id="timeInField" editable="false" layoutX="509.0" layoutY="480.0" prefHeight="26.0"
-               prefWidth="420.0"/>
-    <RadioButton fx:id="vehicleBicycles" layoutX="508.0" layoutY="260.0" mnemonicParsing="false"
-                 onAction="#carTypeChecked" text="Bicycles">
+    <TextField fx:id="licensePlateTextField" layoutX="505.0" layoutY="413.0" onKeyTyped="#limitLength" prefWidth="500.0" />
+    <TextField fx:id="timeInField" editable="false" layoutX="509.0" layoutY="480.0" prefHeight="26.0" prefWidth="420.0" />
+    <RadioButton fx:id="vehicleBicycles" layoutX="508.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
         <toggleGroup>
-            <ToggleGroup fx:id="vehicleType"/>
+            <ToggleGroup fx:id="vehicleType" />
         </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeCar" layoutX="948.0" layoutY="260.0" mnemonicParsing="false"
-                 onAction="#carTypeChecked" text="Car" toggleGroup="$vehicleType">
+    <RadioButton fx:id="vehicleTypeCar" layoutX="948.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$vehicleType">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeMotorbike" layoutX="700.0" layoutY="260.0" mnemonicParsing="false"
-                 onAction="#carTypeChecked" selected="true" text="Motorbike" toggleGroup="$vehicleType">
+    <RadioButton fx:id="vehicleTypeMotorbike" layoutX="700.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" selected="true" text="Motorbike" toggleGroup="$vehicleType">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </RadioButton>
-    <Button layoutX="595.0" layoutY="642.0" mnemonicParsing="false" onAction="#submitIn" text="Submit">
+    <Button layoutX="640.0" layoutY="642.0" mnemonicParsing="false" onAction="#submitIn" text="Submit">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Button>
-    <Label fx:id="carSeatsLabel" disable="true" layoutX="349.0" layoutY="410.0" text="Car Seats">
+    <Label fx:id="carSeatsLabel" disable="true" layoutX="349.0" layoutY="340.0" text="Car Seats">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
-    <RadioButton fx:id="carSeats1" disable="true" layoutX="509.0" layoutY="410.0" mnemonicParsing="false"
-                 selected="true" text="4 - 8">
+    <RadioButton fx:id="carSeats1" disable="true" layoutX="509.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" selected="true" text="4 - 8">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
         <toggleGroup>
-            <ToggleGroup fx:id="carSeats"/>
+            <ToggleGroup fx:id="carSeats" />
         </toggleGroup>
     </RadioButton>
-    <RadioButton fx:id="carSeats3" disable="true" layoutX="949.0" layoutY="410.0" mnemonicParsing="false" text="30+"
-                 toggleGroup="$carSeats">
+    <RadioButton fx:id="carSeats3" disable="true" layoutX="949.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" text="30+" toggleGroup="$carSeats">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </RadioButton>
-    <RadioButton fx:id="carSeats2" disable="true" layoutX="701.0" layoutY="410.0" mnemonicParsing="false" text="9 - 29"
-                 toggleGroup="$carSeats">
+    <RadioButton fx:id="carSeats2" disable="true" layoutX="701.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" text="9 - 29" toggleGroup="$carSeats">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </RadioButton>
-    <Button layoutX="949.0" layoutY="480.0" mnemonicParsing="false" onAction="#getTimeIn" text="Get Time"/>
-    <Label fx:id="errorLabel" alignment="CENTER" layoutY="569.0" prefWidth="1360.0" textFill="RED">
+    <Button layoutX="949.0" layoutY="480.0" mnemonicParsing="false" onAction="#getTimeIn" text="Get Time" />
+    <Label fx:id="errorLabel" alignment="CENTER" layoutX="1.0" layoutY="568.0" prefWidth="1360.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="12.0"/>
+            <Font name="System Bold" size="12.0" />
         </font>
     </Label>
-    <Label fx:id="errorLabel1" alignment="CENTER" layoutX="997.0" layoutY="339.0" textFill="RED">
+    <Label fx:id="errorLabel1" alignment="CENTER" layoutX="1015.0" layoutY="412.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Label fx:id="errorLabel2" alignment="CENTER" layoutX="918.0" layoutY="480.0" textFill="RED">
+    <Label fx:id="errorLabel2" alignment="CENTER" layoutX="936.0" layoutY="480.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Button layoutX="697.0" layoutY="642.0" mnemonicParsing="false" onAction="#goToIn" text="Reset">
-        <font>
-            <Font size="18.0"/>
-        </font>
-    </Button>
 </AnchorPane>

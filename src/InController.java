@@ -31,6 +31,8 @@ public class InController {
   private Label carSeatsLabel, errorLabel, errorLabel1, errorLabel2;
   @FXML
   private AnchorPane InPane;
+  @FXML
+  private MenuBar menuBar;
 
   public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -45,6 +47,24 @@ public class InController {
       stage = (Stage) InPane.getScene().getWindow();
       stage.close();
     }
+  }
+
+  public void randomLP() {
+    // chose a Character random from this String
+    String AlphaNumericString = "0123456789";
+    // create StringBuffer size of AlphaNumericString
+    StringBuilder sb = new StringBuilder(9);
+    for (int i = 0; i < 9; i++) {
+      // generate a random number between
+      // 0 to AlphaNumericString variable length
+      int index
+        = (int) (AlphaNumericString.length()
+        * Math.random());
+      // add Character one by one in end of sb
+      sb.append(AlphaNumericString
+        .charAt(index));
+    }
+    licensePlateTextField.setText(sb.toString());
   }
 
   public void carTypeChecked() {
@@ -69,6 +89,19 @@ public class InController {
       carSeats3.setDisable(false);
       licensePlateTextField.setText("");
     }
+    errorLabel2.setText("");
+    errorLabel1.setText("");
+    errorLabel.setText("");
+  }
+
+  public void seatsChecked() {
+    if (carSeats1.isSelected() || carSeats2.isSelected() || carSeats3.isSelected()) {
+      errorLabel1.setText("");
+      errorLabel2.setText("");
+      errorLabel.setText("");
+      timeInField.setText("");
+      licensePlateTextField.setText("");
+    }
   }
 
   public void getTimeIn() {
@@ -76,67 +109,8 @@ public class InController {
     LocalDateTime now = LocalDateTime.now();
     timeInField.setText(dtf.format(now));
     errorLabel2.setText("");
-  }
-
-  public void goToIn(ActionEvent event) throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
-    //Stage stage = (Stage) menuBar.getScene().getWindow();
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  @FXML
-  private MenuBar menuBar;
-
-  public void goToOut() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public void goToHistory() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public void goToAdmin() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public void goToHelp() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public void goToAbout() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public void logout() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
+    errorLabel1.setText("");
+    errorLabel.setText("");
   }
 
   public void limitLength() {
@@ -164,7 +138,20 @@ public class InController {
     //Creating the Statement object
     Statement stmt = connection.createStatement();
     //Query to get the number of rows in a table
-    String query = "select count(*) from parking where status = 1";
+    String query;
+    if (vehicleBicycles.isSelected()) {
+      query = "select count(*) from parking where status = 1 and type = 'bicycles'";
+    } else if (vehicleTypeMotorbike.isSelected()) {
+      query = "select count(*) from parking where status = 1 and type = 'motorbike'";
+    } else {
+      if (carSeats1.isSelected()) {
+        query = "select count(*) from parking where status = 1 and type = 'car' and seat = '4-8'";
+      } else if (carSeats2.isSelected()) {
+        query = "select count(*) from parking where status = 1 and type = 'car' and seat = '9-29'";
+      } else {
+        query = "select count(*) from parking where status = 1 and type = 'car' and seat = '30+'";
+      }
+    }
     //Executing the query
     ResultSet rs = stmt.executeQuery(query);
     //Retrieving the result
@@ -173,18 +160,36 @@ public class InController {
   }
 
   public int getTotalSlots() {
+    int sum = 0;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet;
     try {
       connection = Database.getInstance().getConnection();
-      preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'slotsleft'");
+      if (vehicleBicycles.isSelected()) {
+        preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'bicycles'");
+      } else if (vehicleTypeMotorbike.isSelected()) {
+        preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'motorbike'");
+      } else {
+        if (carSeats1.isSelected()) {
+          preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = '4t8car'");
+        } else if (carSeats2.isSelected()) {
+          preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = '9t29car'");
+        } else {
+          preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = '30pcar'");
+        }
+      }
       resultSet = preparedStatement.executeQuery();
       if (resultSet.next()) {
         return resultSet.getInt("slots");
       }
     } catch (SQLException e) {
       Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);
+    } catch (NullPointerException nullPointerException) {
+      errorLabel.setTextFill(Color.RED);
+      errorLabel.setText("Connection error, please try again later!");
+      errorLabel1.setText("");
+      errorLabel2.setText("");
     } finally {
       try {
         if (preparedStatement != null) {
@@ -264,7 +269,11 @@ public class InController {
             int kq = preparedStatement.executeUpdate();
             if (kq > 0) {
               errorLabel.setTextFill(Color.GREEN);
-              errorLabel.setText("Submitted " + licensePlateTextField.getText() + "!");
+              errorLabel.setText("Submitted!");
+              errorLabel1.setText("");
+              errorLabel2.setText("");
+              licensePlateTextField.setText("");
+              timeInField.setText("");
             } else {
               errorLabel.setTextFill(Color.RED);
               errorLabel.setText("We can't submitted your record at this time. Please try again!");
@@ -272,6 +281,9 @@ public class InController {
           }
         } catch (SQLException e) {
           Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);
+        } catch (NullPointerException nullPointerException) {
+          errorLabel.setTextFill(Color.RED);
+          errorLabel.setText("Connection error, please try again later!");
         } finally {
           try {
             if (preparedStatement != null) {
@@ -291,21 +303,59 @@ public class InController {
     }
   }
 
-  public void randomLP() {
-    // chose a Character random from this String
-    String AlphaNumericString = "0123456789";
-    // create StringBuffer size of AlphaNumericString
-    StringBuilder sb = new StringBuilder(9);
-    for (int i = 0; i < 9; i++) {
-      // generate a random number between
-      // 0 to AlphaNumericString variable length
-      int index
-        = (int) (AlphaNumericString.length()
-        * Math.random());
-      // add Character one by one in end of sb
-      sb.append(AlphaNumericString
-        .charAt(index));
-    }
-    licensePlateTextField.setText(sb.toString());
+  public void goToIn(ActionEvent event) throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToOut() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToHistory() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HistoryScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToAdmin() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToHelp() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HelpScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToAbout() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void logout() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
   }
 }

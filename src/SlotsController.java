@@ -23,6 +23,12 @@ public class SlotsController implements Initializable {
   private Parent root;
   @FXML
   private AnchorPane slotsPane;
+  @FXML
+  private TextField bicyclesField, motorbikeField, carField, seat1, seat2, seat3, upBicycles, upMotorbike, upSeat1, upSeat2, upSeat3;
+  @FXML
+  private Label error, currentBicycles, currentMotorbike, currentSeat1, currentSeat2, currentSeat3;
+  @FXML
+  private MenuBar menuBar;
 
   public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -39,109 +45,154 @@ public class SlotsController implements Initializable {
     }
   }
 
-  @FXML
-  private TextField bicyclesField, motorbikeField, carField, seat1, seat2, seat3, slotsNumber, newSlotsNumber;
-  @FXML
-  private Label error, error1;
-  @FXML
-  private MenuBar menuBar;
-
   public void limitLength() {
-    newSlotsNumber.lengthProperty().addListener((observable, oldValue, newValue) -> {
+    upBicycles.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        if (newSlotsNumber.getText().length() >= 11) {
+        if (upBicycles.getText().length() >= 11) {
           error.setTextFill(Color.RED);
           error.setText("Number of slots must be <= 9999999999!");
-          error1.setTextFill(Color.RED);
-          error1.setText("!");
-          newSlotsNumber.setText(newSlotsNumber.getText().substring(0, 10));
+          upBicycles.setText(upBicycles.getText().substring(0, 10));
         } else {
-          error1.setText("");
           error.setText("");
         }
       }
     });
   }
 
-  public void updateCheck() throws SQLException {
-    if (newSlotsNumber.getText().isEmpty()) {
-      error1.setTextFill(Color.RED);
-      error1.setText("!");
-      error.setTextFill(Color.RED);
-      error.setText("Please enter new number of slots!");
-    } else {
-      try {
-        if (Integer.parseInt(newSlotsNumber.getText()) <= getTotalParking()) {
+  public void limitLength1() {
+    upMotorbike.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upMotorbike.getText().length() >= 11) {
           error.setTextFill(Color.RED);
-          error.setText("Can't set new number of slots to this value!");
-          error1.setTextFill(Color.RED);
-          error1.setText("!");
+          error.setText("Number of slots must be <= 9999999999!");
+          upMotorbike.setText(upMotorbike.getText().substring(0, 10));
         } else {
-          error1.setText("");
-          Connection connection = null;
-          PreparedStatement preparedStatement = null;
-          ResultSet resultSet = null;
-          try {
-            connection = Database.getInstance().getConnection();
-            preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'slotsleft'");
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-              preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = 'slotsleft'");
-              preparedStatement.setString(1, newSlotsNumber.getText());
-              int kq = preparedStatement.executeUpdate();
-              if (kq > 0) {
-                error.setTextFill(Color.GREEN);
-                error.setText("Update successfully!");
-                error1.setText("");
-                newSlotsNumber.setText("");
-                getCurrentSlots();
-                getData();
-              } else {
-                error.setTextFill(Color.RED);
-                error.setText("Can't update number of slots at this time!");
-              }
-            } else {
-              error.setTextFill(Color.RED);
-              error.setText("Can't update number of slots at this time!");
-            }
-          } catch (SQLException e) {
-            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
-          } finally {
-            try {
-              if (resultSet != null) {
-                resultSet.close();
-              }
-              if (preparedStatement != null) {
-                preparedStatement.close();
-              }
-              if (connection != null) {
-                connection.close();
-              }
-            } catch (SQLException e) {
-              Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
-            }
-          }
+          error.setText("");
         }
-      } catch (NumberFormatException numberFormatException) {
-        error1.setTextFill(Color.RED);
-        error1.setText("!");
-        error.setTextFill(Color.RED);
-        error.setText("Please enter a number!");
       }
-    }
+    });
   }
 
-  public int getTotalParking() throws SQLException {
-    Connection connection = Database.getInstance().getConnection();
-    //Creating the Statement object
-    Statement stmt = connection.createStatement();
-    //Query to get the number of rows in a table
-    String query = "select count(*) from parking where status = 1";
-    //Executing the query
-    ResultSet rs = stmt.executeQuery(query);
-    //Retrieving the result
-    rs.next();
-    return rs.getInt(1);
+  public void limitLength2() {
+    upSeat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upSeat1.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Number of slots must be <= 9999999999!");
+          upSeat1.setText(upSeat1.getText().substring(0, 10));
+        } else {
+          error.setText("");
+        }
+      }
+    });
+  }
+
+  public void limitLength3() {
+    upSeat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upSeat2.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Number of slots must be <= 9999999999!");
+          upSeat2.setText(upSeat2.getText().substring(0, 10));
+        } else {
+          error.setText("");
+        }
+      }
+    });
+  }
+
+  public void limitLength4() {
+    upSeat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upSeat3.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Number of slots must be <= 9999999999!");
+          upSeat3.setText(upSeat3.getText().substring(0, 10));
+        } else {
+          error.setText("");
+        }
+      }
+    });
+  }
+
+  public void getCurrentSlots() {
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatement1 = null;
+    PreparedStatement preparedStatement3 = null;
+    PreparedStatement preparedStatement4 = null;
+    PreparedStatement preparedStatement2 = null;
+    ResultSet resultSet = null;
+    ResultSet resultSet1 = null;
+    ResultSet resultSet2 = null;
+    ResultSet resultSet3 = null;
+    ResultSet resultSet4 = null;
+    try {
+      connection = Database.getInstance().getConnection();
+      preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'bicycles'");
+      preparedStatement1 = connection.prepareStatement("select slots from pricevsslots where type = 'motorbike'");
+      preparedStatement2 = connection.prepareStatement("select slots from pricevsslots where type = '4t8car'");
+      preparedStatement3 = connection.prepareStatement("select slots from pricevsslots where type = '9t29car'");
+      preparedStatement4 = connection.prepareStatement("select slots from pricevsslots where type = '30pcar'");
+      resultSet = preparedStatement.executeQuery();
+      resultSet1 = preparedStatement1.executeQuery();
+      resultSet2 = preparedStatement2.executeQuery();
+      resultSet3 = preparedStatement3.executeQuery();
+      resultSet4 = preparedStatement4.executeQuery();
+      if (resultSet.next() && resultSet1.next() && resultSet2.next() && resultSet3.next() && resultSet4.next()) {
+        currentBicycles.setText("/ " + resultSet.getInt("slots"));
+        upBicycles.setPromptText(String.valueOf(resultSet.getInt("slots")));
+        currentMotorbike.setText("/ " + resultSet1.getInt("slots"));
+        upMotorbike.setPromptText(String.valueOf(resultSet1.getInt("slots")));
+        currentSeat1.setText("/ " + resultSet2.getInt("slots"));
+        upSeat1.setPromptText(String.valueOf(resultSet2.getInt("slots")));
+        currentSeat2.setText("/ " + resultSet3.getInt("slots"));
+        upSeat2.setPromptText(String.valueOf(resultSet3.getInt("slots")));
+        currentSeat3.setText("/ " + resultSet4.getInt("slots"));
+        upSeat3.setPromptText(String.valueOf(resultSet4.getInt("slots")));
+      } else {
+        currentBicycles.setText("Data error!");
+        currentMotorbike.setText("Data error!");
+        currentSeat1.setText("Data error!");
+        currentSeat2.setText("Data error!");
+        currentSeat3.setText("Data error!");
+      }
+    } catch (SQLException e) {
+      Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+    } catch (NullPointerException nullPointerException) {
+      error.setTextFill(Color.RED);
+      error.setText("Connection error, please try again later!");
+    } finally {
+      try {
+        if (resultSet != null) {
+          resultSet.close();
+        } else if (resultSet1 != null) {
+          resultSet1.close();
+        } else if (resultSet2 != null) {
+          resultSet2.close();
+        } else if (resultSet3 != null) {
+          resultSet3.close();
+        } else if (resultSet4 != null) {
+          resultSet4.close();
+        }
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        } else if (preparedStatement1 != null) {
+          preparedStatement1.close();
+        } else if (preparedStatement2 != null) {
+          preparedStatement2.close();
+        } else if (preparedStatement3 != null) {
+          preparedStatement3.close();
+        } else if (preparedStatement4 != null) {
+          preparedStatement4.close();
+        }
+        if (connection != null) {
+          connection.close();
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+      }
+    }
   }
 
   public void getData() throws SQLException {
@@ -173,34 +224,18 @@ public class SlotsController implements Initializable {
     seat3.setText(String.valueOf(rs5.getInt(1)));
   }
 
-  public void getCurrentSlots() {
-    Connection connection = null;
-    PreparedStatement preparedStatement = null;
-    ResultSet resultSet = null;
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
     try {
-      connection = Database.getInstance().getConnection();
-      preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'slotsleft'");
-      resultSet = preparedStatement.executeQuery();
-      if (resultSet.next()) {
-        slotsNumber.setText(String.valueOf(resultSet.getInt("slots")));
-      }
+      getData();
+      getCurrentSlots();
     } catch (SQLException e) {
-      Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
-    } finally {
-      try {
-        if (resultSet != null) {
-          resultSet.close();
-        }
-        if (preparedStatement != null) {
-          preparedStatement.close();
-        }
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException e) {
-        Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
-      }
+      e.printStackTrace();
     }
+  }
+
+  public void updateCheck() {
+
   }
 
   public void goToAccountManagement() throws IOException {
@@ -290,15 +325,5 @@ public class SlotsController implements Initializable {
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
-  }
-
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-    try {
-      getData();
-      getCurrentSlots();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
   }
 }

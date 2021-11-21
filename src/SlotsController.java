@@ -51,7 +51,7 @@ public class SlotsController implements Initializable {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upBicycles.getText().length() >= 11) {
           error.setTextFill(Color.RED);
-          error.setText("Number of slots must be <= 9999999999!");
+          error.setText("Length must be <= 11 characters!");
           upBicycles.setText(upBicycles.getText().substring(0, 10));
         } else {
           error.setText("");
@@ -65,7 +65,7 @@ public class SlotsController implements Initializable {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upMotorbike.getText().length() >= 11) {
           error.setTextFill(Color.RED);
-          error.setText("Number of slots must be <= 9999999999!");
+          error.setText("Length must be <= 11 characters!");
           upMotorbike.setText(upMotorbike.getText().substring(0, 10));
         } else {
           error.setText("");
@@ -79,7 +79,7 @@ public class SlotsController implements Initializable {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upSeat1.getText().length() >= 11) {
           error.setTextFill(Color.RED);
-          error.setText("Number of slots must be <= 9999999999!");
+          error.setText("Length must be <= 11 characters!");
           upSeat1.setText(upSeat1.getText().substring(0, 10));
         } else {
           error.setText("");
@@ -93,7 +93,7 @@ public class SlotsController implements Initializable {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upSeat2.getText().length() >= 11) {
           error.setTextFill(Color.RED);
-          error.setText("Number of slots must be <= 9999999999!");
+          error.setText("Length must be <= 11 characters!");
           upSeat2.setText(upSeat2.getText().substring(0, 10));
         } else {
           error.setText("");
@@ -107,7 +107,7 @@ public class SlotsController implements Initializable {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upSeat3.getText().length() >= 11) {
           error.setTextFill(Color.RED);
-          error.setText("Number of slots must be <= 9999999999!");
+          error.setText("Length must be <= 11 characters!");
           upSeat3.setText(upSeat3.getText().substring(0, 10));
         } else {
           error.setText("");
@@ -225,11 +225,40 @@ public class SlotsController implements Initializable {
     seat3.setText(String.valueOf(rs5.getInt(1)));
   }
 
+  public void fullCheck() {
+    if (bicyclesField.getText().equals(upBicycles.getPromptText())){
+      currentBicycles.setTextFill(Color.RED);
+    } else {
+      currentBicycles.setTextFill(Color.BLACK);
+    }
+    if (motorbikeField.getText().equals(upMotorbike.getPromptText())){
+      currentMotorbike.setTextFill(Color.RED);
+    } else {
+      currentMotorbike.setTextFill(Color.BLACK);
+    }
+    if (seat1.getText().equals(upSeat1.getPromptText())){
+      currentSeat1.setTextFill(Color.RED);
+    } else {
+      currentSeat1.setTextFill(Color.BLACK);
+    }
+    if (seat2.getText().equals(upSeat2.getPromptText())){
+      currentSeat2.setTextFill(Color.RED);
+    } else {
+      currentSeat2.setTextFill(Color.BLACK);
+    }
+    if (seat3.getText().equals(upSeat3.getPromptText())){
+      currentSeat3.setTextFill(Color.RED);
+    } else {
+      currentSeat3.setTextFill(Color.BLACK);
+    }
+  }
+
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     try {
       getData();
       getCurrentSlots();
+      fullCheck();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -240,7 +269,69 @@ public class SlotsController implements Initializable {
       error.setTextFill(Color.RED);
       error.setText("Nothings to update!");
     } else {
-
+      try {
+        if (Integer.parseInt(upBicycles.getText()) < Integer.parseInt(bicyclesField.getText())) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > " + bicyclesField.getText() + "!");
+        } else if (Integer.parseInt(upBicycles.getText()) == Integer.parseInt(upBicycles.getPromptText())) {
+          error.setTextFill(Color.RED);
+          error.setText("New value can't be equal " + upBicycles.getPromptText() + "!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = 'bicycles'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = 'bicycles'");
+                preparedStatement.setString(1, upBicycles.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  upBicycles.setText("");
+                  getData();
+                  getCurrentSlots();
+                  fullCheck();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
     }
   }
 

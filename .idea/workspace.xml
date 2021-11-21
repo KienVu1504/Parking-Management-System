@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/SlotsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlotsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlotsManagementScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlotsManagementScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

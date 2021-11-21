@@ -475,6 +475,7 @@ public class SlotsController implements Initializable {
       }
     }
   }
+
   public void updateSeat2Check() {
     if (upSeat2.getText().isEmpty()) {
       error.setTextFill(Color.RED);
@@ -499,10 +500,10 @@ public class SlotsController implements Initializable {
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
-              preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = '4t8car'");
+              preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = '9t29car'");
               resultSet = preparedStatement.executeQuery();
               if (resultSet.next()) {
-                preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = '4t8car'");
+                preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = '9t29car'");
                 preparedStatement.setString(1, upSeat2.getText());
                 int kq = preparedStatement.executeUpdate();
                 if (kq > 0) {

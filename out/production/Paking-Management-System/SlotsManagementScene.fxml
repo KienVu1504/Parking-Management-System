@@ -193,7 +193,7 @@
       </font>
    </Label>
    <TextField fx:id="carField" alignment="CENTER" editable="false" focusTraversable="false" layoutX="266.0" layoutY="417.0" prefHeight="25.0" prefWidth="312.0" />
-   <Button layoutX="1193.0" layoutY="365.0" mnemonicParsing="false" text="Update" />
+   <Button layoutX="1193.0" layoutY="365.0" mnemonicParsing="false" onAction="#updateMotorbikeCheck" text="Update" />
    <Button layoutX="1193.0" layoutY="433.0" mnemonicParsing="false" text="Update" />
    <Button layoutX="1193.0" layoutY="517.0" mnemonicParsing="false" text="Update" />
    <Button layoutX="1193.0" layoutY="592.0" mnemonicParsing="false" text="Update" />

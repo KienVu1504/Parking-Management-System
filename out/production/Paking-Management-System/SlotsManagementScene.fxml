@@ -196,5 +196,5 @@
    <Button layoutX="1193.0" layoutY="365.0" mnemonicParsing="false" onAction="#updateMotorbikeCheck" text="Update" />
    <Button layoutX="1193.0" layoutY="433.0" mnemonicParsing="false" onAction="#updateSeat1Check" text="Update" />
    <Button layoutX="1193.0" layoutY="517.0" mnemonicParsing="false" onAction="#updateSeat2Check" text="Update" />
-   <Button layoutX="1193.0" layoutY="592.0" mnemonicParsing="false" text="Update" />
+   <Button layoutX="1193.0" layoutY="592.0" mnemonicParsing="false" onAction="#updateSeat3Check" text="Update" />
 </AnchorPane>

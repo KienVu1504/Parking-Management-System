@@ -484,7 +484,7 @@ public class SlotsController implements Initializable {
       try {
         if (Integer.parseInt(upSeat2.getText()) < Integer.parseInt(seat2.getText())) {
           error.setTextFill(Color.RED);
-          error.setText("New value must be > " + seat1.getText() + "!");
+          error.setText("New value must be > " + seat2.getText() + "!");
         } else if (Integer.parseInt(upSeat2.getText()) == Integer.parseInt(upSeat2.getPromptText())) {
           error.setTextFill(Color.RED);
           error.setText("New value can't be equal " + upSeat2.getPromptText() + "!");
@@ -510,6 +510,77 @@ public class SlotsController implements Initializable {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
                   upSeat2.setText("");
+                  getData();
+                  getCurrentSlots();
+                  fullCheck();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
+  }
+
+  public void updateSeat3Check() {
+    if (upSeat3.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("Nothings to update!");
+    } else {
+      try {
+        if (Integer.parseInt(upSeat3.getText()) < Integer.parseInt(seat3.getText())) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > " + seat3.getText() + "!");
+        } else if (Integer.parseInt(upSeat3.getText()) == Integer.parseInt(upSeat3.getPromptText())) {
+          error.setTextFill(Color.RED);
+          error.setText("New value can't be equal " + upSeat3.getPromptText() + "!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select slots from pricevsslots where type = '30pcar'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = '30pcar'");
+                preparedStatement.setString(1, upSeat3.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  upSeat3.setText("");
                   getData();
                   getCurrentSlots();
                   fullCheck();

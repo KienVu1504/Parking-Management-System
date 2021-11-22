@@ -498,19 +498,64 @@
    <Button layoutX="1298.0" layoutY="630.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
    <Button layoutX="1298.0" layoutY="672.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="60.0" text="Update" />
    <Button layoutX="1298.0" layoutY="716.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="60.0" text="Update" />
-   <TextField fx:id="upBicycles1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="115.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="upBicycles2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="158.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="upBicycles3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="202.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="upMotorbike1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="245.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="upMotorbike2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="288.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="upMotorbike3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="331.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up1seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="374.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up1seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="417.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up1seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="460.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up2seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="503.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up2seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="546.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up2seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="589.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up3seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="632.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up3seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="675.0" prefHeight="43.0" prefWidth="375.0" />
-   <TextField fx:id="up3seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="718.0" prefHeight="49.0" prefWidth="375.0" />
+   <TextField fx:id="upBicycles1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="115.0" onKeyTyped="#limitLength" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="upBicycles2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="158.0" onKeyTyped="#limitLength1" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="upBicycles3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="202.0" onKeyTyped="#limitLength2" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="upMotorbike1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="245.0" onKeyTyped="#limitLength3" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="upMotorbike2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="288.0" onKeyTyped="#limitLength4" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="upMotorbike3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="331.0" onKeyTyped="#limitLength5" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up1seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="374.0" onKeyTyped="#limitLength6" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up1seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="417.0" onKeyTyped="#limitLength7" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up1seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="460.0" onKeyTyped="#limitLength8" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up2seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="503.0" onKeyTyped="#limitLength9" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up2seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="546.0" onKeyTyped="#limitLength10" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up2seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="589.0" onKeyTyped="#limitLength11" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up3seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="632.0" onKeyTyped="#limitLength12" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up3seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="675.0" onKeyTyped="#limitLength13" prefHeight="43.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <TextField fx:id="up3seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="718.0" onKeyTyped="#limitLength14" prefHeight="49.0" prefWidth="375.0">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
 </AnchorPane>

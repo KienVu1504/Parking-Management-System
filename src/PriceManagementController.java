@@ -5,10 +5,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PriceManagementController {
   private Scene scene;
@@ -37,7 +44,344 @@ public class PriceManagementController {
     }
   }
 
-  
+  public void getCurrentData() {
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatement1 = null;
+    PreparedStatement preparedStatement2 = null;
+    PreparedStatement preparedStatement3 = null;
+    PreparedStatement preparedStatement4 = null;
+    PreparedStatement preparedStatement5 = null;
+    PreparedStatement preparedStatement6 = null;
+    PreparedStatement preparedStatement7 = null;
+    PreparedStatement preparedStatement8 = null;
+    PreparedStatement preparedStatement9 = null;
+    PreparedStatement preparedStatement10 = null;
+    PreparedStatement preparedStatement11 = null;
+    PreparedStatement preparedStatement12 = null;
+    PreparedStatement preparedStatement13 = null;
+    PreparedStatement preparedStatement14 = null;
+    ResultSet resultSet = null;
+    ResultSet resultSet1 = null;
+    ResultSet resultSet2 = null;
+    ResultSet resultSet3 = null;
+    ResultSet resultSet4 = null;
+    ResultSet resultSet5 = null;
+    ResultSet resultSet6 = null;
+    ResultSet resultSet7 = null;
+    ResultSet resultSet8 = null;
+    ResultSet resultSet9 = null;
+    ResultSet resultSet10 = null;
+    ResultSet resultSet11 = null;
+    ResultSet resultSet12 = null;
+    ResultSet resultSet13 = null;
+    ResultSet resultSet14 = null;
+    try {
+      error.setTextFill(Color.BLACK);
+      error.setText("Parking Prices Management");
+
+    } catch (SQLException e) {
+      Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+    } catch (NullPointerException nullPointerException) {
+      error.setTextFill(Color.RED);
+      error.setText("Connection error, please try again later!");
+    } finally {
+      try {
+        if (resultSet != null) {
+          resultSet.close();
+        } else if (resultSet1 != null) {
+          resultSet1.close();
+        } else if (resultSet2 != null) {
+          resultSet2.close();
+        } else if (resultSet3 != null) {
+          resultSet3.close();
+        } else if (resultSet4 != null) {
+          resultSet4.close();
+        } else if (resultSet5 != null) {
+          resultSet5.close();
+        } else if (resultSet6 != null) {
+          resultSet6.close();
+        } else if (resultSet7 != null) {
+          resultSet7.close();
+        } else if (resultSet8 != null) {
+          resultSet8.close();
+        } else if (resultSet9 != null) {
+          resultSet9.close();
+        } else if (resultSet10 != null) {
+          resultSet10.close();
+        } else if (resultSet11 != null) {
+          resultSet11.close();
+        } else if (resultSet12 != null) {
+          resultSet12.close();
+        } else if (resultSet13 != null) {
+          resultSet13.close();
+        } else if (resultSet14 != null) {
+          resultSet14.close();
+        }
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        } else if (preparedStatement1 != null) {
+          preparedStatement1.close();
+        } else if (preparedStatement2 != null) {
+          preparedStatement2.close();
+        } else if (preparedStatement3 != null) {
+          preparedStatement3.close();
+        } else if (preparedStatement4 != null) {
+          preparedStatement4.close();
+        } else if (preparedStatement5 != null) {
+          preparedStatement5.close();
+        } else if (preparedStatement6 != null) {
+          preparedStatement6.close();
+        } else if (preparedStatement7 != null) {
+          preparedStatement7.close();
+        } else if (preparedStatement8 != null) {
+          preparedStatement8.close();
+        } else if (preparedStatement9 != null) {
+          preparedStatement9.close();
+        } else if (preparedStatement10 != null) {
+          preparedStatement10.close();
+        } else if (preparedStatement11 != null) {
+          preparedStatement11.close();
+        } else if (preparedStatement12 != null) {
+          preparedStatement12.close();
+        } else if (preparedStatement13 != null) {
+          preparedStatement13.close();
+        } else if (preparedStatement14 != null) {
+          preparedStatement14.close();
+        }
+        if (connection != null) {
+          connection.close();
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+      }
+    }
+  }
+
+  public void limitLength() {
+    upBicycles1.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upBicycles1.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          upBicycles1.setText(upBicycles1.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength1() {
+    upBicycles2.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upBicycles2.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          upBicycles2.setText(upBicycles2.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength2() {
+    upBicycles3.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upBicycles3.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          upBicycles3.setText(upBicycles3.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength3() {
+    upMotorbike1.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upMotorbike1.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          upMotorbike1.setText(upMotorbike1.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength4() {
+    upMotorbike2.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upMotorbike2.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          upMotorbike2.setText(upMotorbike2.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength5() {
+    upMotorbike3.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (upMotorbike3.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          upMotorbike3.setText(upMotorbike3.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength6() {
+    up1seat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up1seat1.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up1seat1.setText(up1seat1.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength7() {
+    up1seat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up1seat2.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up1seat2.setText(up1seat2.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength8() {
+    up1seat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up1seat3.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up1seat3.setText(up1seat3.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength9() {
+    up2seat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up2seat1.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up2seat1.setText(up2seat1.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength10() {
+    up2seat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up2seat2.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up2seat2.setText(up2seat2.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength11() {
+    up2seat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up2seat3.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up2seat3.setText(up2seat3.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength12() {
+    up3seat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up3seat1.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up3seat1.setText(up3seat1.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength13() {
+    up3seat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up3seat2.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up3seat2.setText(up3seat2.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
+
+  public void limitLength14() {
+    up3seat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue.intValue() > oldValue.intValue()) {
+        if (up3seat3.getText().length() >= 11) {
+          error.setTextFill(Color.RED);
+          error.setText("Length must be <= 11 characters!");
+          up3seat3.setText(up3seat3.getText().substring(0, 10));
+        } else {
+          error.setTextFill(Color.BLACK);
+          error.setText("Parking Prices Management");
+        }
+      }
+    });
+  }
 
   public void goToAccountManagement() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AccountManagementScene.fxml")));

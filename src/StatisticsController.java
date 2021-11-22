@@ -56,6 +56,12 @@ public class StatisticsController implements Initializable {
   }
 
   public void getWeeklyData() {
+    sum = 0;
+    bicycles = 0;
+    motorbike = 0;
+    seat1Sum = 0;
+    seat2Sum = 0;
+    seat3Sum = 0;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     PreparedStatement preparedStatement1 = null;

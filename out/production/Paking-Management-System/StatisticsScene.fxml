@@ -91,17 +91,17 @@
    <Separator layoutX="218.0" layoutY="80.0" orientation="VERTICAL" prefHeight="689.0" />
    <Separator layoutY="308.0" prefWidth="218.0" />
    <Separator layoutY="537.0" prefWidth="218.0" />
-   <Button alignment="CENTER" focusTraversable="false" layoutY="79.0" mnemonicParsing="false" prefHeight="229.0" prefWidth="218.0" text="Weekly" textAlignment="CENTER" textFill="#e91874">
+   <Button fx:id="weekButton" alignment="CENTER" focusTraversable="false" layoutY="79.0" mnemonicParsing="false" onAction="#weekClick" prefHeight="229.0" prefWidth="218.0" text="Weekly" textAlignment="CENTER" textFill="#e91874">
       <font>
          <Font name="System Bold" size="24.0" />
       </font>
    </Button>
-   <Button alignment="CENTER" focusTraversable="false" layoutY="308.0" mnemonicParsing="false" prefHeight="229.0" prefWidth="218.0" text="Monthly" textAlignment="CENTER">
+   <Button fx:id="monthButton" alignment="CENTER" focusTraversable="false" layoutY="308.0" mnemonicParsing="false" onAction="#monthClick" prefHeight="229.0" prefWidth="218.0" text="Monthly" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="24.0" />
       </font>
    </Button>
-   <Button alignment="CENTER" focusTraversable="false" layoutY="537.0" mnemonicParsing="false" prefHeight="230.0" prefWidth="218.0" text="Yearly" textAlignment="CENTER">
+   <Button fx:id="yearButton" alignment="CENTER" focusTraversable="false" layoutY="537.0" mnemonicParsing="false" onAction="#yearClick" prefHeight="230.0" prefWidth="218.0" text="Yearly" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="24.0" />
       </font>

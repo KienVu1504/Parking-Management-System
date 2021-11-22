@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pricePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PriceManagementController">
-    <MenuBar fx:id="menuBar" layoutY="2.0" prefWidth="1360.0">
+    <MenuBar fx:id="rmenuBar" layoutY="2.0" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
                 <accelerator>
@@ -81,7 +83,7 @@
             </MenuItem>
         </Menu>
     </MenuBar>
-    <Label alignment="CENTER" layoutY="27.0" prefWidth="1360.0" text="Parking Prices Management">
+    <Label fx:id="error" alignment="CENTER" layoutY="27.0" prefWidth="1360.0" text="Parking Prices Management">
         <font>
             <Font name="System Bold" size="36.0" />
         </font>
@@ -113,7 +115,7 @@
    </Label>
    <Separator layoutX="120.0" layoutY="159.0" prefWidth="560.0" />
    <Separator layoutX="120.0" layoutY="202.0" prefWidth="560.0" />
-   <Separator layoutY="245.0" prefWidth="1360.0" />
+   <Separator layoutY="245.0" prefWidth="680.0" />
    <Label alignment="CENTER" layoutX="120.0" layoutY="159.0" prefHeight="43.0" prefWidth="120.0" text="240-480(m)">
       <font>
          <Font size="18.0" />
@@ -124,15 +126,15 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Separator layoutY="374.0" prefWidth="1360.0" />
-   <Separator layoutY="503.0" prefWidth="1360.0" />
-   <Separator layoutY="632.0" prefWidth="1360.0" />
+   <Separator layoutY="374.0" prefWidth="680.0" />
+   <Separator layoutY="503.0" prefWidth="680.0" />
+   <Separator layoutY="632.0" prefWidth="680.0" />
    <Label alignment="CENTER" layoutY="248.0" prefHeight="129.0" prefWidth="120.0" text="Motorbike">
       <font>
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="6.0" layoutY="374.0" prefHeight="129.0" prefWidth="120.0" text="4-8 seats">
+   <Label alignment="CENTER" layoutY="373.0" prefHeight="129.0" prefWidth="120.0" text="4-8 seats">
       <font>
          <Font size="18.0" />
       </font>
@@ -142,7 +144,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutY="634.0" prefHeight="129.0" prefWidth="120.0" text="30+ seats">
+   <Label alignment="CENTER" layoutY="634.0" prefHeight="139.0" prefWidth="120.0" text="30+ seats">
       <font>
          <Font size="18.0" />
       </font>
@@ -202,7 +204,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="120.0" layoutY="720.0" prefHeight="43.0" prefWidth="120.0" text="&gt;1440(m)">
+   <Label alignment="CENTER" layoutX="120.0" layoutY="720.0" prefHeight="53.0" prefWidth="120.0" text="&gt;1440(m)">
       <font>
          <Font size="18.0" />
       </font>
@@ -215,7 +217,7 @@
    <Separator layoutX="120.0" layoutY="588.0" prefWidth="560.0" />
    <Separator layoutX="120.0" layoutY="674.0" prefWidth="560.0" />
    <Separator layoutX="120.0" layoutY="717.0" prefWidth="560.0" />
-   <Label alignment="CENTER" layoutX="240.0" layoutY="119.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="currentBicycles1" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="119.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -225,7 +227,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="160.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="currentBicycles2" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="160.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -235,7 +237,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="205.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="currentBicycles3" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="205.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -245,7 +247,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="249.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="currentMotorbike1" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="249.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -255,7 +257,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="290.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="currentMotorbike2" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="290.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -265,7 +267,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="335.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="currentMotorbike3" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="335.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -275,7 +277,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="375.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current1seat1" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="375.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -285,7 +287,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="416.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current1seat2" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="416.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -295,7 +297,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="461.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current1seat3" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="461.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -305,7 +307,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="502.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current2seat1" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="502.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -315,7 +317,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="543.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current2seat2" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="543.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -325,7 +327,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="588.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current2seat3" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="588.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -335,7 +337,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="633.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current3seat1" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="633.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -345,7 +347,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="674.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current3seat2" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="674.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -355,14 +357,160 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="240.0" layoutY="719.0" prefHeight="43.0" prefWidth="400.0">
+   <Label fx:id="current3seat3" alignment="CENTER_RIGHT" layoutX="240.0" layoutY="719.0" prefHeight="43.0" prefWidth="400.0">
       <font>
          <Font size="18.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="637.0" layoutY="718.0" prefHeight="43.0" prefWidth="40.0" text="VND">
+   <Label alignment="CENTER" layoutX="637.0" layoutY="718.0" prefHeight="53.0" prefWidth="40.0" text="VND">
       <font>
          <Font size="18.0" />
       </font>
    </Label>
+   <Label alignment="CENTER" layoutX="683.0" layoutY="117.0" prefHeight="129.0" prefWidth="120.0" text="Bicycles">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Separator layoutX="803.0" layoutY="115.0" orientation="VERTICAL" prefHeight="650.0" />
+   <Separator layoutX="923.0" layoutY="115.0" orientation="VERTICAL" prefHeight="650.0" />
+   <Label alignment="CENTER" layoutX="803.0" layoutY="116.0" prefHeight="43.0" prefWidth="120.0" text="&lt;240(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Separator layoutX="803.0" layoutY="157.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="200.0" prefWidth="560.0" />
+   <Separator layoutX="683.0" layoutY="243.0" prefWidth="680.0" />
+   <Label alignment="CENTER" layoutX="803.0" layoutY="157.0" prefHeight="43.0" prefWidth="120.0" text="240-480(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="202.0" prefHeight="43.0" prefWidth="120.0" text="&gt;480(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Separator layoutX="683.0" layoutY="372.0" prefWidth="680.0" />
+   <Separator layoutX="683.0" layoutY="501.0" prefWidth="680.0" />
+   <Separator layoutX="683.0" layoutY="630.0" prefWidth="680.0" />
+   <Label alignment="CENTER" layoutX="683.0" layoutY="246.0" prefHeight="129.0" prefWidth="120.0" text="Motorbike">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="683.0" layoutY="371.0" prefHeight="129.0" prefWidth="120.0" text="4-8 seats">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="683.0" layoutY="501.0" prefHeight="129.0" prefWidth="120.0" text="9-29 seats">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="683.0" layoutY="632.0" prefHeight="139.0" prefWidth="120.0" text="30+ seats">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="246.0" prefHeight="43.0" prefWidth="120.0" text="&lt;240(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="287.0" prefHeight="43.0" prefWidth="120.0" text="240-480(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="332.0" prefHeight="43.0" prefWidth="120.0" text="&gt;480(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="376.0" prefHeight="43.0" prefWidth="120.0" text="&lt;90(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="417.0" prefHeight="43.0" prefWidth="120.0" text="90-1440(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="462.0" prefHeight="43.0" prefWidth="120.0" text="&gt;1440(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="501.0" prefHeight="43.0" prefWidth="120.0" text="&lt;90(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="542.0" prefHeight="43.0" prefWidth="120.0" text="90-1440(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="587.0" prefHeight="43.0" prefWidth="120.0" text="&gt;1440(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="632.0" prefHeight="43.0" prefWidth="120.0" text="&lt;90(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="673.0" prefHeight="43.0" prefWidth="120.0" text="90-1440(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="803.0" layoutY="718.0" prefHeight="43.0" prefWidth="120.0" text="&gt;1440(m)">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Separator layoutX="803.0" layoutY="288.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="331.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="416.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="459.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="543.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="586.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="672.0" prefWidth="560.0" />
+   <Separator layoutX="803.0" layoutY="715.0" prefWidth="560.0" />
+   <Button layoutX="1298.0" layoutY="117.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="158.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="200.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="244.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="289.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="331.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="373.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="414.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="460.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="502.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="544.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="587.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="630.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="672.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="716.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="60.0" text="Update" />
+   <TextField fx:id="upBicycles1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="115.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="upBicycles2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="158.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="upBicycles3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="202.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="upMotorbike1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="245.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="upMotorbike2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="288.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="upMotorbike3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="331.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up1seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="374.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up1seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="417.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up1seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="460.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up2seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="503.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up2seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="546.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up2seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="589.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up3seat1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="632.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up3seat2" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="675.0" prefHeight="43.0" prefWidth="375.0" />
+   <TextField fx:id="up3seat3" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="718.0" prefHeight="49.0" prefWidth="375.0" />
 </AnchorPane>

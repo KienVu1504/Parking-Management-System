@@ -483,21 +483,21 @@
    <Separator layoutX="803.0" layoutY="586.0" prefWidth="560.0" />
    <Separator layoutX="803.0" layoutY="672.0" prefWidth="560.0" />
    <Separator layoutX="803.0" layoutY="715.0" prefWidth="560.0" />
-   <Button layoutX="1298.0" layoutY="117.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="158.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="200.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="244.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="289.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="331.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="373.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="414.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="460.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="502.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="544.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="587.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="630.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="672.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="716.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="117.0" mnemonicParsing="false" onAction="#update1Check" prefHeight="40.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="158.0" mnemonicParsing="false" onAction="#update2Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="200.0" mnemonicParsing="false" onAction="#update3Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="244.0" mnemonicParsing="false" onAction="#update4Check" prefHeight="45.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="289.0" mnemonicParsing="false" onAction="#update5Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="331.0" mnemonicParsing="false" onAction="#update6Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="373.0" mnemonicParsing="false" onAction="#update7Check" prefHeight="43.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="414.0" mnemonicParsing="false" onAction="#update8Check" prefHeight="44.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="460.0" mnemonicParsing="false" onAction="#update9Check" prefHeight="41.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="502.0" mnemonicParsing="false" onAction="#update10Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="544.0" mnemonicParsing="false" onAction="#update11Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="587.0" mnemonicParsing="false" onAction="#update12Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="630.0" mnemonicParsing="false" onAction="#update13Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="672.0" mnemonicParsing="false" onAction="#update14Check" prefHeight="44.0" prefWidth="60.0" text="Update" />
+   <Button layoutX="1298.0" layoutY="716.0" mnemonicParsing="false" onAction="#update15Check" prefHeight="51.0" prefWidth="60.0" text="Update" />
    <TextField fx:id="upBicycles1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="115.0" onKeyTyped="#limitLength" prefHeight="43.0" prefWidth="375.0" promptText="VND/Minute">
       <font>
          <Font size="14.0" />

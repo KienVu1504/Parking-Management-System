@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -7,17 +8,20 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import repositories.Database;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PriceManagementController {
+public class PriceManagementController implements Initializable {
   private Scene scene;
   private Parent root;
   @FXML
@@ -79,7 +83,45 @@ public class PriceManagementController {
     try {
       error.setTextFill(Color.BLACK);
       error.setText("Parking Prices Management");
-
+      connection = Database.getInstance().getConnection();
+      preparedStatement = connection.prepareStatement("select m240 from pricevsslots where type = 'bicycles'");
+      preparedStatement1 = connection.prepareStatement("select 240t480 from pricevsslots where type = 'bicycles'");
+      preparedStatement2 = connection.prepareStatement("select 480p from pricevsslots where type = 'bicycles'");
+      preparedStatement3 = connection.prepareStatement("select m240 from pricevsslots where type = 'motorbike'");
+      preparedStatement4 = connection.prepareStatement("select 240t480 from pricevsslots where type = 'motorbike'");
+      preparedStatement5 = connection.prepareStatement("select 480p from pricevsslots where type = 'motorbike'");
+      preparedStatement6 = connection.prepareStatement("select m90 from pricevsslots where type = '4t8car'");
+      preparedStatement7 = connection.prepareStatement("select 90t1440 from pricevsslots where type = '4t8car'");
+      preparedStatement8 = connection.prepareStatement("select 1440p from pricevsslots where type = '4t8car'");
+      preparedStatement9 = connection.prepareStatement("select m90 from pricevsslots where type = '9t29car'");
+      preparedStatement10 = connection.prepareStatement("select 90t1440 from pricevsslots where type = '9t29car'");
+      preparedStatement11 = connection.prepareStatement("select 1440p from pricevsslots where type = '9t29car'");
+      preparedStatement12 = connection.prepareStatement("select m90 from pricevsslots where type = '30pcar'");
+      preparedStatement13 = connection.prepareStatement("select 90t1440 from pricevsslots where type = '30pcar'");
+      preparedStatement14 = connection.prepareStatement("select 1440p from pricevsslots where type = '30pcar'");
+      resultSet = preparedStatement.executeQuery();
+      resultSet1 = preparedStatement1.executeQuery();
+      resultSet2 = preparedStatement2.executeQuery();
+      resultSet3 = preparedStatement3.executeQuery();
+      resultSet4 = preparedStatement4.executeQuery();
+      resultSet5 = preparedStatement5.executeQuery();
+      resultSet6 = preparedStatement6.executeQuery();
+      resultSet7 = preparedStatement7.executeQuery();
+      resultSet8 = preparedStatement8.executeQuery();
+      resultSet9 = preparedStatement9.executeQuery();
+      resultSet10 = preparedStatement10.executeQuery();
+      resultSet11 = preparedStatement11.executeQuery();
+      resultSet12 = preparedStatement12.executeQuery();
+      resultSet13 = preparedStatement13.executeQuery();
+      resultSet14 = preparedStatement14.executeQuery();
+      if (resultSet.next() && resultSet1.next() && resultSet2.next() && resultSet3.next() && resultSet4.next() && resultSet5.next() && resultSet6.next() && resultSet7.next() && resultSet8.next() && resultSet9.next() && resultSet10.next() && resultSet11.next() && resultSet12.next() && resultSet13.next() && resultSet14.next()) {
+        error.setTextFill(Color.BLACK);
+        error.setText("Parking Prices Management");
+        currentBicycles1.setText(String.valueOf(resultSet.getInt("m240")));
+      } else {
+        error.setTextFill(Color.RED);
+        error.setText("Data error!");
+      }
     } catch (SQLException e) {
       Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
@@ -156,6 +198,11 @@ public class PriceManagementController {
         Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
       }
     }
+  }
+
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    getCurrentData();
   }
 
   public void limitLength() {

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 public class StatisticsController implements Initializable {
   private int sum = 0, bicycles = 0, motorbike = 0, seat1Sum = 0, seat2Sum = 0, seat3Sum = 0;
-  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy"), dtf2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy"), dtf2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"), dft1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
   LocalDateTime now = LocalDateTime.now(), week = now.minusWeeks(1), month = now.minusMonths(1), year = now.minusYears(1);
   DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
   private Scene scene;
@@ -37,6 +37,8 @@ public class StatisticsController implements Initializable {
   private Label parkingFeeLabel, bicyclesLabel, motorbikeLabel, seat1, seat2, seat3, error;
   @FXML
   private MenuBar menuBar;
+  @FXML
+  private Button weekButton, monthButton, yearButton;
 
   public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -56,7 +58,17 @@ public class StatisticsController implements Initializable {
   public void getWeeklyData() {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatement1 = null;
+    PreparedStatement preparedStatement2 = null;
+    PreparedStatement preparedStatement3 = null;
+    PreparedStatement preparedStatement4 = null;
+    PreparedStatement preparedStatement5 = null;
     ResultSet resultSet = null;
+    ResultSet resultSet1 = null;
+    ResultSet resultSet2 = null;
+    ResultSet resultSet3 = null;
+    ResultSet resultSet4 = null;
+    ResultSet resultSet5 = null;
     try {
       error.setTextFill(Color.BLACK);
       error.setText("Statistics from " + dtf.format(week) + " to " + dtf.format(now));
@@ -64,14 +76,54 @@ public class StatisticsController implements Initializable {
       preparedStatement = connection.prepareStatement("SELECT * FROM parking LIMIT 0,1");
       resultSet = preparedStatement.executeQuery();
       if (resultSet.next()) {
-        preparedStatement = connection.prepareStatement("select fee from parking where status = '0' and (cast(time_out as datetime) >= ?) and (cast(time_out as datetime) <= ?)");
-        preparedStatement.setString(1, dtf2.format(week));
-        preparedStatement.setString(2, dtf2.format(now));
+        preparedStatement = connection.prepareStatement("select * from parking where status = '0' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
+        preparedStatement.setString(1, dft1.format(week));
+        preparedStatement.setString(2, dft1.format(now));
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
           sum += resultSet.getInt("fee");
         }
         parkingFeeLabel.setText(decimalFormat.format(sum) + " VND");
+        preparedStatement1 = connection.prepareStatement("select type from parking where status = '0' and type = 'Bicycles' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
+        preparedStatement1.setString(1, dft1.format(week));
+        preparedStatement1.setString(2, dft1.format(now));
+        resultSet1 = preparedStatement1.executeQuery();
+        while (resultSet1.next()) {
+          bicycles += 1;
+        }
+        bicyclesLabel.setText(String.valueOf(bicycles));
+        preparedStatement2 = connection.prepareStatement("select type from parking where status = '0' and type = 'Motorbike' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
+        preparedStatement2.setString(1, dft1.format(week));
+        preparedStatement2.setString(2, dft1.format(now));
+        resultSet2 = preparedStatement2.executeQuery();
+        while (resultSet2.next()) {
+          motorbike += 1;
+        }
+        motorbikeLabel.setText(String.valueOf(motorbike));
+        preparedStatement3 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '4-8' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
+        preparedStatement3.setString(1, dft1.format(week));
+        preparedStatement3.setString(2, dft1.format(now));
+        resultSet3 = preparedStatement3.executeQuery();
+        while (resultSet3.next()) {
+          seat1Sum += 1;
+        }
+        seat1.setText(String.valueOf(seat1Sum));
+        preparedStatement4 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '9-29' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
+        preparedStatement4.setString(1, dft1.format(week));
+        preparedStatement4.setString(2, dft1.format(now));
+        resultSet4 = preparedStatement4.executeQuery();
+        while (resultSet4.next()) {
+          seat2Sum += 1;
+        }
+        seat2.setText(String.valueOf(seat2Sum));
+        preparedStatement5 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '30+' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
+        preparedStatement5.setString(1, dft1.format(week));
+        preparedStatement5.setString(2, dft1.format(now));
+        resultSet5 = preparedStatement5.executeQuery();
+        while (resultSet5.next()) {
+          seat3Sum += 1;
+        }
+        seat3.setText(String.valueOf(seat3Sum));
       } else {
         parkingFeeLabel.setText("0 VND");
         bicyclesLabel.setText("0");
@@ -89,9 +141,29 @@ public class StatisticsController implements Initializable {
       try {
         if (resultSet != null) {
           resultSet.close();
+        } else if (resultSet1 != null) {
+          resultSet1.close();
+        } else if (resultSet2 != null) {
+          resultSet2.close();
+        } else if (resultSet3 != null) {
+          resultSet3.close();
+        } else if (resultSet4 != null) {
+          resultSet4.close();
+        } else if (resultSet5 != null) {
+          resultSet5.close();
         }
         if (preparedStatement != null) {
           preparedStatement.close();
+        } else if (preparedStatement1 != null) {
+          preparedStatement1.close();
+        } else if (preparedStatement2 != null) {
+          preparedStatement2.close();
+        } else if (preparedStatement3 != null) {
+          preparedStatement3.close();
+        } else if (preparedStatement4 != null) {
+          preparedStatement4.close();
+        } else if (preparedStatement5 != null) {
+          preparedStatement5.close();
         }
         if (connection != null) {
           connection.close();
@@ -100,6 +172,27 @@ public class StatisticsController implements Initializable {
         Logger.getLogger(StatisticsController.class.getName()).log(Level.SEVERE, null, e);
       }
     }
+  }
+
+  public void weekClick() {
+    getWeeklyData();
+    weekButton.setTextFill(Color.web("#e91874"));
+    monthButton.setTextFill(Color.BLACK);
+    yearButton.setTextFill(Color.BLACK);
+  }
+
+  public void monthClick() {
+    getWeeklyData();
+    monthButton.setTextFill(Color.web("#e91874"));
+    weekButton.setTextFill(Color.BLACK);
+    yearButton.setTextFill(Color.BLACK);
+  }
+
+  public void yearClick() {
+    getWeeklyData();
+    yearButton.setTextFill(Color.web("#e91874"));
+    monthButton.setTextFill(Color.BLACK);
+    weekButton.setTextFill(Color.BLACK);
   }
 
   @Override

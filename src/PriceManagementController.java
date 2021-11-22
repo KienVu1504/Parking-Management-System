@@ -120,6 +120,18 @@ public class PriceManagementController implements Initializable {
         currentBicycles1.setText(String.valueOf(resultSet.getInt("m240")));
         currentBicycles2.setText(String.valueOf(resultSet1.getInt("240t480")));
         currentBicycles3.setText(String.valueOf(resultSet2.getInt("480p")));
+        currentMotorbike1.setText(String.valueOf(resultSet3.getInt("m240")));
+        currentMotorbike2.setText(String.valueOf(resultSet4.getInt("240t480")));
+        currentMotorbike3.setText(String.valueOf(resultSet5.getInt("480p")));
+        current1seat1.setText(String.valueOf(resultSet6.getInt("m90")));
+        current1seat2.setText(String.valueOf(resultSet7.getInt("90t1440")));
+        current1seat3.setText(String.valueOf(resultSet8.getInt("1440p")));
+        current2seat1.setText(String.valueOf(resultSet9.getInt("m90")));
+        current2seat2.setText(String.valueOf(resultSet10.getInt("90t1440")));
+        current2seat3.setText(String.valueOf(resultSet11.getInt("1440p")));
+        current3seat1.setText(String.valueOf(resultSet12.getInt("m90")));
+        current3seat2.setText(String.valueOf(resultSet13.getInt("90t1440")));
+        current3seat3.setText(String.valueOf(resultSet14.getInt("1440p")));
       } else {
         error.setTextFill(Color.RED);
         error.setText("Data error!");

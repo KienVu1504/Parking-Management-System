@@ -95,7 +95,7 @@
             <Font name="System Bold" size="24.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" layoutY="82.0" prefHeight="35.0" prefWidth="680.0" text="Statistics">
+    <Label alignment="CENTER" layoutY="82.0" prefHeight="35.0" prefWidth="680.0" text="Current prices">
         <font>
             <Font name="System Bold" size="24.0" />
         </font>

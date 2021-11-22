@@ -432,7 +432,7 @@ public class PriceManagementController implements Initializable {
               preparedStatement = connection.prepareStatement("select m240 from pricevsslots where type = 'motorbike'");
               resultSet = preparedStatement.executeQuery();
               if (resultSet.next()) {
-                preparedStatement = connection.prepareStatement("update pricevsslots set 480p=? where type = 'motorbike'");
+                preparedStatement = connection.prepareStatement("update pricevsslots set m240=? where type = 'motorbike'");
                 preparedStatement.setString(1, upMotorbike1.getText());
                 int kq = preparedStatement.executeUpdate();
                 if (kq > 0) {
@@ -541,72 +541,6 @@ public class PriceManagementController implements Initializable {
   }
 
   public void update6Check() {
-    if (upMotorbike2.getText().isEmpty()) {
-      error.setTextFill(Color.RED);
-      error.setText("No thing to update!");
-    } else {
-      try {
-        if (Integer.parseInt(upMotorbike2.getText()) <= 0) {
-          error.setTextFill(Color.RED);
-          error.setText("New value must be > than 0!");
-        } else {
-          Connection connection = null;
-          PreparedStatement preparedStatement = null;
-          ResultSet resultSet = null;
-          try {
-            connection = Database.getInstance().getConnection();
-            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
-            resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next()) {
-              error.setTextFill(Color.RED);
-              error.setText("List is empty!");
-            } else {
-              preparedStatement = connection.prepareStatement("select 240t480 from pricevsslots where type = 'motorbike'");
-              resultSet = preparedStatement.executeQuery();
-              if (resultSet.next()) {
-                preparedStatement = connection.prepareStatement("update pricevsslots set 240t480=? where type = 'motorbike'");
-                preparedStatement.setString(1, upMotorbike2.getText());
-                int kq = preparedStatement.executeUpdate();
-                if (kq > 0) {
-                  error.setTextFill(Color.GREEN);
-                  error.setText("Update successfully!");
-                  upMotorbike2.setText("");
-                  getCurrentData();
-                } else {
-                  error.setTextFill(Color.RED);
-                  error.setText("Update error, Please try again later!");
-                }
-              } else {
-                error.setTextFill(Color.RED);
-                error.setText("Database error, please try again later!");
-              }
-            }
-          } catch (SQLException e) {
-            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
-          } finally {
-            try {
-              if (resultSet != null) {
-                resultSet.close();
-              }
-              if (preparedStatement != null) {
-                preparedStatement.close();
-              }
-              if (connection != null) {
-                connection.close();
-              }
-            } catch (SQLException e) {
-              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
-            }
-          }
-        }
-      } catch (NumberFormatException numberFormatException) {
-        error.setTextFill(Color.RED);
-        error.setText("Please enter a valid number!");
-      }
-    }
-  }
-
-  public void update7Check() {
     if (upMotorbike3.getText().isEmpty()) {
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
@@ -672,7 +606,7 @@ public class PriceManagementController implements Initializable {
     }
   }
 
-  public void update8Check() {
+  public void update7Check() {
     if (up1seat1.getText().isEmpty()) {
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
@@ -738,7 +672,7 @@ public class PriceManagementController implements Initializable {
     }
   }
 
-  public void update9Check() {
+  public void update8Check() {
     if (up1seat2.getText().isEmpty()) {
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
@@ -804,22 +738,466 @@ public class PriceManagementController implements Initializable {
     }
   }
 
+  public void update9Check() {
+    if (up1seat3.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up1seat3.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select 1440p from pricevsslots where type = '4t8car'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set 1440p=? where type = '4t8car'");
+                preparedStatement.setString(1, up1seat3.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up1seat3.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
+  }
+
   public void update10Check() {
+    if (up2seat1.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up2seat1.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select m90 from pricevsslots where type = '9t29car'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set m90=? where type = '9t29car'");
+                preparedStatement.setString(1, up2seat1.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up2seat1.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
   }
 
   public void update11Check() {
+    if (up2seat2.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up2seat2.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select 90t1440 from pricevsslots where type = '9t29car'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set 90t1440=? where type = '9t29car'");
+                preparedStatement.setString(1, up2seat2.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up2seat2.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
   }
 
   public void update12Check() {
+    if (up2seat3.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up2seat3.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select 1440p from pricevsslots where type = '9t29car'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set 1440p=? where type = '9t29car'");
+                preparedStatement.setString(1, up2seat3.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up2seat3.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
   }
 
   public void update13Check() {
+    if (up3seat1.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up3seat1.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select m90 from pricevsslots where type = '30pcar'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set m90=? where type = '30pcar'");
+                preparedStatement.setString(1, up3seat1.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up3seat1.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
   }
 
   public void update14Check() {
+    if (up3seat2.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up3seat2.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select 90t1440 from pricevsslots where type = '30pcar'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set 90t1440=? where type = '30pcar'");
+                preparedStatement.setString(1, up3seat2.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up3seat2.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
   }
 
   public void update15Check() {
+    if (up3seat3.getText().isEmpty()) {
+      error.setTextFill(Color.RED);
+      error.setText("No thing to update!");
+    } else {
+      try {
+        if (Integer.parseInt(up3seat3.getText()) <= 0) {
+          error.setTextFill(Color.RED);
+          error.setText("New value must be > than 0!");
+        } else {
+          Connection connection = null;
+          PreparedStatement preparedStatement = null;
+          ResultSet resultSet = null;
+          try {
+            connection = Database.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+              error.setTextFill(Color.RED);
+              error.setText("List is empty!");
+            } else {
+              preparedStatement = connection.prepareStatement("select 1440p from pricevsslots where type = '30pcar'");
+              resultSet = preparedStatement.executeQuery();
+              if (resultSet.next()) {
+                preparedStatement = connection.prepareStatement("update pricevsslots set 1440p=? where type = '30pcar'");
+                preparedStatement.setString(1, up3seat3.getText());
+                int kq = preparedStatement.executeUpdate();
+                if (kq > 0) {
+                  error.setTextFill(Color.GREEN);
+                  error.setText("Update successfully!");
+                  up3seat3.setText("");
+                  getCurrentData();
+                } else {
+                  error.setTextFill(Color.RED);
+                  error.setText("Update error, Please try again later!");
+                }
+              } else {
+                error.setTextFill(Color.RED);
+                error.setText("Database error, please try again later!");
+              }
+            }
+          } catch (SQLException e) {
+            Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
+          } finally {
+            try {
+              if (resultSet != null) {
+                resultSet.close();
+              }
+              if (preparedStatement != null) {
+                preparedStatement.close();
+              }
+              if (connection != null) {
+                connection.close();
+              }
+            } catch (SQLException e) {
+              Logger.getLogger(PriceManagementController.class.getName()).log(Level.SEVERE, null, e);
+            }
+          }
+        }
+      } catch (NumberFormatException numberFormatException) {
+        error.setTextFill(Color.RED);
+        error.setText("Please enter a valid number!");
+      }
+    }
   }
 
   @Override

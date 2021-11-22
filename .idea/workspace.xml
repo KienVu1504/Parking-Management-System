@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="" />
+    <list default="true" id="7c38ed15-d4e1-4b6d-bb7f-14c0c7642b09" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/io_github_typhon0_AnimateFX.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paking-Management-System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Paking-Management-System.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Paking-Management-System/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Paking-Management-System/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +61,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.21639344" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="preferences.packagesearch.PackageSearchGeneralConfigurable" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

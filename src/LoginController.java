@@ -1,3 +1,5 @@
+import animatefx.animation.*;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +13,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import repositories.Database;
 
 import java.awt.*;
@@ -35,6 +39,8 @@ public class LoginController implements Initializable {
   private Button loginButton;
   @FXML
   private AnchorPane LoginPane;
+  @FXML
+  private ImageView image;
 
   public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -86,22 +92,36 @@ public class LoginController implements Initializable {
     });
   }
 
+  public void errorAnimated() {
+    new Shake(image).play();
+    new BounceIn(errorLabel).play();
+  }
+
   public void loginCheck(ActionEvent event, String username, String password) {
     if (usernameTextField.getText().isEmpty() && passwordTextField.getText().isEmpty()) {
       usernameErrorLabel.setText("!");
       passwordErrorLabel.setText("!");
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all field!");
+      errorAnimated();
+      new BounceIn(usernameErrorLabel).play();
+      new BounceIn(passwordErrorLabel).play();
     } else if (usernameTextField.getText().isEmpty()) {
       usernameErrorLabel.setText("!");
       passwordErrorLabel.setText("");
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Enter your username!");
+      errorAnimated();
+      new BounceIn(usernameErrorLabel).play();
+      new BounceIn(passwordErrorLabel).play();
     } else if (passwordTextField.getText().isEmpty()) {
       passwordErrorLabel.setText("!");
       usernameErrorLabel.setText("");
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Enter your password!");
+      errorAnimated();
+      new BounceIn(usernameErrorLabel).play();
+      new BounceIn(passwordErrorLabel).play();
     } else {
       Connection connection = null;
       PreparedStatement preparedStatement = null;
@@ -115,6 +135,8 @@ public class LoginController implements Initializable {
           errorLabel.setText("Wrong username!");
           usernameErrorLabel.setText("!");
           passwordErrorLabel.setText("");
+          errorAnimated();
+          new BounceIn(usernameErrorLabel).play();
         } else {
           while (resultSet.next()) {
             String retriedPassword = resultSet.getString("password");
@@ -126,6 +148,8 @@ public class LoginController implements Initializable {
               stage.setScene(scene);
               stage.show();
             } else {
+              errorAnimated();
+              new BounceIn(passwordErrorLabel).play();
               errorLabel.setText("Wrong password!");
               passwordErrorLabel.setText("!");
               usernameErrorLabel.setText("");

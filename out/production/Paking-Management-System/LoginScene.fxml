@@ -28,7 +28,7 @@
             <Cursor fx:constant="TEXT" />
         </cursor>
     </TextField>
-    <Button fx:id="loginButton" focusTraversable="false" layoutX="871.0" layoutY="582.0" mnemonicParsing="false" text="Login">
+    <Button fx:id="loginButton" focusTraversable="false" layoutX="821.0" layoutY="582.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Login">
         <font>
             <Font size="18.0" />
         </font>
@@ -40,7 +40,7 @@
     <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="75.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="831.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="831.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/lock-icon.png" />
     </ImageView>
     <Label layoutX="192.0" layoutY="511.0" text="Home Site:">

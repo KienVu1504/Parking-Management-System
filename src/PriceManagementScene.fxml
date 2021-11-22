@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pricePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PriceManagementController">
-    <MenuBar fx:id="rmenuBar" layoutY="2.0" prefWidth="1360.0">
+    <MenuBar fx:id="menuBar" layoutY="2.0" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
                 <accelerator>

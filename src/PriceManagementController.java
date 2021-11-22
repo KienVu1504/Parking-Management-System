@@ -118,6 +118,8 @@ public class PriceManagementController implements Initializable {
         error.setTextFill(Color.BLACK);
         error.setText("Parking Prices Management");
         currentBicycles1.setText(String.valueOf(resultSet.getInt("m240")));
+        currentBicycles2.setText(String.valueOf(resultSet1.getInt("240t480")));
+        currentBicycles3.setText(String.valueOf(resultSet2.getInt("480p")));
       } else {
         error.setTextFill(Color.RED);
         error.setText("Data error!");

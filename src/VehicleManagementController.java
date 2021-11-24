@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,9 +30,7 @@ public class VehicleManagementController {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) vehicleManagementPane.getScene().getWindow();
@@ -49,8 +48,10 @@ public class VehicleManagementController {
       preparedStatement.setString(1, licensePlateTextField.getText());
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
+        new BounceIn(errorLabel).play();
+        new BounceIn(errorLabel1).play();
         errorLabel.setTextFill(Color.RED);
-        errorLabel.setText("Can't find " + licensePlateTextField.getText());
+        errorLabel.setText("Can't find " + licensePlateTextField.getText() + "!");
         errorLabel1.setTextFill(Color.RED);
         errorLabel1.setText("!");
       } else {
@@ -133,11 +134,15 @@ public class VehicleManagementController {
 
   public void updateCheck() {
     if (licensePlateTextField.getText().length() == 0 && vehicleTypeLabel.isDisable() && monthlyTicketLabel.isDisable()) {
+      new BounceIn(errorLabel).play();
+      new BounceIn(errorLabel1).play();
       errorLabel1.setTextFill(Color.RED);
       errorLabel1.setText("!");
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all fields before update!");
     } else if (!licensePlateTextField.getText().isEmpty() && vehicleTypeLabel.isDisable() && monthlyTicketLabel.isDisable()) {
+      new BounceIn(errorLabel).play();
+      new BounceIn(errorLabel1).play();
       errorLabel1.setTextFill(Color.RED);
       errorLabel1.setText("!");
       errorLabel.setTextFill(Color.RED);
@@ -151,6 +156,7 @@ public class VehicleManagementController {
         preparedStatement = connection.prepareStatement("SELECT * FROM parking LIMIT 0,1");
         resultSet = preparedStatement.executeQuery();
         if (!resultSet.next()) {
+          new BounceIn(errorLabel).play();
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("List is empty!");
         } else {
@@ -182,6 +188,7 @@ public class VehicleManagementController {
             }
             preparedStatement.setString(4, licensePlateTextField.getText());
             int kq = preparedStatement.executeUpdate();
+            new BounceIn(errorLabel).play();
             if (kq > 0) {
               errorLabel.setTextFill(Color.GREEN);
               errorLabel.setText("Update success " + licensePlateTextField.getText() + "!");
@@ -190,6 +197,7 @@ public class VehicleManagementController {
               errorLabel.setText("Update error. Try again!");
             }
           } else {
+            new BounceIn(errorLabel).play();
             errorLabel.setTextFill(Color.RED);
             errorLabel.setText("Not found " + licensePlateTextField.getText() + "!");
           }
@@ -215,7 +223,6 @@ public class VehicleManagementController {
   }
 
   public void carTypeChecked() {
-    //set Car Seats section to disabled state each time "vehicleTypeCar" radiobutton is selected
     if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()) {
       carSeatsLabel.setDisable(true);
       carSeats1.setDisable(true);
@@ -232,14 +239,13 @@ public class VehicleManagementController {
   public void limitLength() {
     licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (licensePlateTextField.getText().length() > 10) {
+          new BounceIn(errorLabel).play();
+          new BounceIn(errorLabel1).play();
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("License Plate length must be <= 10!");
           errorLabel1.setTextFill(Color.RED);
           errorLabel1.setText("!");
-          // if its 11th character then just setText to previous
-          // one
           licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
         } else {
           errorLabel1.setText("");
@@ -276,7 +282,6 @@ public class VehicleManagementController {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
@@ -341,6 +346,30 @@ public class VehicleManagementController {
 
   public void adminLogout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToSlotsManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SlotsManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToStatistics() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StatisticsScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToPricesManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PricesManagementScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

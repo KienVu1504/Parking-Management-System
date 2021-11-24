@@ -14,225 +14,238 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="vehicleManagementPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VehicleManagementController">
-   <MenuBar fx:id="menuBar1" layoutY="2.0" prefWidth="1360.0">
-      <menus>
-         <Menu id="Menu" mnemonicParsing="false" text="Menu">
-            <items>
-               <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <SeparatorMenuItem mnemonicParsing="false" />
-               <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-            </items>
-         </Menu>
-         <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
-            <items>
-                  <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management">
-                      <accelerator>
-                          <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                      </accelerator>
-                  </MenuItem>
-               <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
-                  <accelerator>
-                     <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement" text="Ticket Management">
-                  <accelerator>
-                     <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="Slots Management" mnemonicParsing="false" onAction="#goToSlotsManagement" text="Slots Management">
-                  <accelerator>
-                     <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="Prices Management" mnemonicParsing="false" onAction="#goToPricesManagement" text="Prices Management">
-                  <accelerator>
-                     <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="Statistics" mnemonicParsing="false" onAction="#goToStatistics" text="Statistics">
-                  <accelerator>
-                     <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <SeparatorMenuItem mnemonicParsing="false" />
-               <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
-                  <accelerator>
-                     <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-            </items>
-         </Menu>
-         <Menu id="Help" mnemonicParsing="false" text="Help">
-            <items>
-               <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-               <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
-                  <accelerator>
-                     <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                  </accelerator>
-               </MenuItem>
-            </items>
-         </Menu>
-      </menus>
-   </MenuBar>
+<AnchorPane fx:id="vehicleManagementPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="VehicleManagementController">
+    <MenuBar fx:id="menuBar" layoutY="2.0" prefWidth="1360.0">
+        <Menu id="Menu" mnemonicParsing="false" text="Menu">
+            <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+        <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
+            <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement"
+                      text="Account Management">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory"
+                      text="Packing History">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement"
+                      text="Ticket Management">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Slots Management" mnemonicParsing="false" onAction="#goToSlotsManagement"
+                      text="Slots Management">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Prices Management" mnemonicParsing="false" onAction="#goToPricesManagement"
+                      text="Prices Management">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Statistics" mnemonicParsing="false" onAction="#goToStatistics" text="Statistics">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+        <Menu id="Help" mnemonicParsing="false" text="Help">
+            <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
+                <accelerator>
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+    </MenuBar>
     <Label alignment="CENTER" layoutY="93.0" prefWidth="1360.0" text="Vehicle Management">
         <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="36.0"/>
         </font>
     </Label>
     <Label layoutX="350.0" layoutY="261.0" text="License Plate">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
     </Label>
     <Label fx:id="vehicleTypeLabel" disable="true" layoutX="350.0" layoutY="331.0" text="Vehicle Type">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
     </Label>
-    <TextField fx:id="licensePlateTextField" focusTraversable="false" layoutX="510.0" layoutY="261.0" onKeyTyped="#limitLength" prefHeight="26.0" prefWidth="430.0">
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor></TextField>
-    <Button fx:id="licensePlateSearch" focusTraversable="false" layoutX="958.0" layoutY="261.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
-    <Button focusTraversable="false" layoutX="510.0" layoutY="633.0" mnemonicParsing="false" onAction="#updateCheck" prefHeight="40.0" prefWidth="170.0" text="Update">
+    <TextField fx:id="licensePlateTextField" focusTraversable="false" layoutX="510.0" layoutY="261.0"
+               onKeyTyped="#limitLength" prefHeight="26.0" prefWidth="430.0">
+        <cursor>
+            <Cursor fx:constant="TEXT"/>
+        </cursor>
+    </TextField>
+    <Button fx:id="licensePlateSearch" focusTraversable="false" layoutX="958.0" layoutY="261.0" mnemonicParsing="false"
+            onAction="#licensePlateSearch" text="Search">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <Button focusTraversable="false" layoutX="510.0" layoutY="633.0" mnemonicParsing="false" onAction="#updateCheck"
+            prefHeight="40.0" prefWidth="170.0" text="Update">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </Button>
     <Label fx:id="errorLabel1" layoutX="925.0" layoutY="265.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
     <Label fx:id="errorLabel" alignment="CENTER" layoutY="582.0" prefWidth="1360.0">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
     <Label fx:id="carSeatsLabel" disable="true" layoutX="350.0" layoutY="402.0" text="Seat">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
     </Label>
     <Label fx:id="monthlyTicketLabel" disable="true" layoutX="350.0" layoutY="479.0" text="Month Ticket">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
     </Label>
-    <Button focusTraversable="false" layoutX="680.0" layoutY="633.0" mnemonicParsing="false" onAction="#goToVehicleManagement" prefHeight="40.0" prefWidth="170.0" text="Reset">
+    <Button focusTraversable="false" layoutX="680.0" layoutY="633.0" mnemonicParsing="false"
+            onAction="#goToVehicleManagement" prefHeight="40.0" prefWidth="170.0" text="Reset">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </Button>
-    <RadioButton fx:id="vehicleBicycles" disable="true" focusTraversable="false" layoutX="510.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
+    <RadioButton fx:id="vehicleBicycles" disable="true" focusTraversable="false" layoutX="510.0" layoutY="331.0"
+                 mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
         <toggleGroup>
-            <ToggleGroup fx:id="adminVehicleType" />
+            <ToggleGroup fx:id="adminVehicleType"/>
         </toggleGroup>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeCar" disable="true" focusTraversable="false" layoutX="950.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$adminVehicleType">
+    <RadioButton fx:id="vehicleTypeCar" disable="true" focusTraversable="false" layoutX="950.0" layoutY="331.0"
+                 mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$adminVehicleType">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeMotorbike" disable="true" focusTraversable="false" layoutX="702.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Motorbike" toggleGroup="$adminVehicleType">
+    <RadioButton fx:id="vehicleTypeMotorbike" disable="true" focusTraversable="false" layoutX="702.0" layoutY="331.0"
+                 mnemonicParsing="false" onAction="#carTypeChecked" text="Motorbike" toggleGroup="$adminVehicleType">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats1" disable="true" focusTraversable="false" layoutX="508.0" layoutY="402.0" mnemonicParsing="false" selected="true" text="4 - 8">
+    <RadioButton fx:id="carSeats1" disable="true" focusTraversable="false" layoutX="508.0" layoutY="402.0"
+                 mnemonicParsing="false" selected="true" text="4 - 8">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
         <toggleGroup>
-            <ToggleGroup fx:id="adminCarSeats" />
+            <ToggleGroup fx:id="adminCarSeats"/>
         </toggleGroup>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats3" disable="true" focusTraversable="false" layoutX="948.0" layoutY="402.0" mnemonicParsing="false" text="30+" toggleGroup="$adminCarSeats">
+    <RadioButton fx:id="carSeats3" disable="true" focusTraversable="false" layoutX="948.0" layoutY="402.0"
+                 mnemonicParsing="false" text="30+" toggleGroup="$adminCarSeats">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats2" disable="true" focusTraversable="false" layoutX="700.0" layoutY="402.0" mnemonicParsing="false" text="9 - 29" toggleGroup="$adminCarSeats">
+    <RadioButton fx:id="carSeats2" disable="true" focusTraversable="false" layoutX="700.0" layoutY="402.0"
+                 mnemonicParsing="false" text="9 - 29" toggleGroup="$adminCarSeats">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="ticketYes" disable="true" focusTraversable="false" layoutX="606.0" layoutY="479.0" mnemonicParsing="false" text="Yes">
+    <RadioButton fx:id="ticketYes" disable="true" focusTraversable="false" layoutX="606.0" layoutY="479.0"
+                 mnemonicParsing="false" text="Yes">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
         <toggleGroup>
-            <ToggleGroup fx:id="adminMonthlyTicket" />
+            <ToggleGroup fx:id="adminMonthlyTicket"/>
         </toggleGroup>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton fx:id="ticketNo" disable="true" focusTraversable="false" layoutX="798.0" layoutY="479.0" mnemonicParsing="false" text="No" toggleGroup="$adminMonthlyTicket">
+    <RadioButton fx:id="ticketNo" disable="true" focusTraversable="false" layoutX="798.0" layoutY="479.0"
+                 mnemonicParsing="false" text="No" toggleGroup="$adminMonthlyTicket">
         <font>
-            <Font size="18.0" />
+            <Font size="18.0"/>
         </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
 </AnchorPane>

@@ -144,13 +144,12 @@ public class TicketManagementController implements Initializable {
           preparedStatement.setString(2, dtf.format(now));
           int kq = preparedStatement.executeUpdate();
           error1.setText("");
+          new BounceIn(error).play();
           if (kq > 0) {
-            new BounceIn(error).play();
             error.setTextFill(Color.GREEN);
             error.setText("Added " + addLicensePlateTextField.getText() + "!");
             resetTable();
           } else {
-            new BounceIn(error).play();
             error.setTextFill(Color.RED);
             error.setText("We can't add your ticket at this time. Please try again!");
           }
@@ -320,8 +319,8 @@ public class TicketManagementController implements Initializable {
             }
             preparedStatement.setString(3, upLicensePlateTextField.getText());
             int kq = preparedStatement.executeUpdate();
+            new BounceIn(error3).play();
             if (kq > 0) {
-              new BounceIn(error3).play();
               error3.setTextFill(Color.GREEN);
               error3.setText("Update success!");
               expiredDateLabel.setDisable(true);
@@ -342,7 +341,6 @@ public class TicketManagementController implements Initializable {
               expiredDateLabel.setTextFill(Color.BLACK);
               resetTable();
             } else {
-              new BounceIn(error3).play();
               error3.setTextFill(Color.RED);
               error3.setText("Update error. Try again!");
             }
@@ -410,8 +408,8 @@ public class TicketManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("delete from ticket where license_plate = ?");
             preparedStatement.setString(1, upLicensePlateTextField.getText());
             int kq = preparedStatement.executeUpdate();
+            new BounceIn(error3).play();
             if (kq > 0) {
-              new BounceIn(error3).play();
               error3.setTextFill(Color.GREEN);
               error3.setText("Deleted!");
               expiredDateLabel.setDisable(true);
@@ -432,7 +430,6 @@ public class TicketManagementController implements Initializable {
               expiredDateLabel.setTextFill(Color.BLACK);
               resetTable();
             } else {
-              new BounceIn(error3).play();
               error3.setTextFill(Color.RED);
               error3.setText("Can't delete " + upLicensePlateTextField.getText() + ". Try again!");
             }

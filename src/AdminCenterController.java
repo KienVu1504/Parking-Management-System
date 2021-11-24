@@ -219,6 +219,20 @@ public class AdminCenterController implements Initializable {
     stage.setScene(scene);
     stage.show();
   }
+  public void goToSlotsManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SlotsManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+  public void goToPricesManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PricesManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
 
   public void goToAbout() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AboutScene.fxml")));

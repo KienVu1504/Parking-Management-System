@@ -39,9 +39,7 @@ public class AccountManagementController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) accountManagementPane.getScene().getWindow();
@@ -92,13 +90,11 @@ public class AccountManagementController implements Initializable {
   public void usernameLimitLength() {
     addUserTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (addUserTextField.getText().length() > 25) {
           error1.setTextFill(Color.RED);
           error2.setTextFill(Color.RED);
           error2.setText("Username length must be <= 25!");
           error1.setText("!");
-          // if its 11th character then just setText to previous one
           addUserTextField.setText(addUserTextField.getText().substring(0, 25));
         } else {
           error1.setText("");
@@ -111,14 +107,11 @@ public class AccountManagementController implements Initializable {
   public void passwordLimitLength() {
     addPassTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (addPassTextField.getText().length() > 50) {
           error4.setTextFill(Color.RED);
           error3.setTextFill(Color.RED);
           error4.setText("Password length must be <= 50!");
           error3.setText("!");
-          // if its 11th character then just setText to previous
-          // one
           addPassTextField.setText(addPassTextField.getText().substring(0, 50));
         } else {
           error3.setText("");
@@ -231,13 +224,11 @@ public class AccountManagementController implements Initializable {
     upEmployee.setDisable(true);
     upUserTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (upUserTextField.getText().length() > 25) {
           error5.setTextFill(Color.RED);
           error6.setTextFill(Color.RED);
           error6.setText("Username length must be <= 25!");
           error5.setText("!");
-          // if its 11th character then just setText to previous one
           upUserTextField.setText(upUserTextField.getText().substring(0, 25));
         } else {
           error5.setText("");
@@ -250,14 +241,11 @@ public class AccountManagementController implements Initializable {
   public void upPasswordLimitLength() {
     upPassTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (upPassTextField.getText().length() > 50) {
           error8.setTextFill(Color.RED);
           error7.setTextFill(Color.RED);
           error8.setText("Password length must be <= 50!");
           error7.setText("!");
-          // if its 11th character then just setText to previous
-          // one
           upPassTextField.setText(upPassTextField.getText().substring(0, 50));
         } else {
           error7.setText("");
@@ -502,7 +490,6 @@ public class AccountManagementController implements Initializable {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

@@ -39,7 +39,7 @@ public class StatisticsController implements Initializable {
   @FXML
   private MenuBar menuBar;
   @FXML
-  private Button weekButton, monthButton, yearButton;
+  private Button weekButton, monthButton, yearButton, allButton;
 
   public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -453,11 +453,133 @@ public class StatisticsController implements Initializable {
     }
   }
 
+  public void getAllData() {
+    sum = 0;
+    bicycles = 0;
+    motorbike = 0;
+    seat1Sum = 0;
+    seat2Sum = 0;
+    seat3Sum = 0;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatement1 = null;
+    PreparedStatement preparedStatement2 = null;
+    PreparedStatement preparedStatement3 = null;
+    PreparedStatement preparedStatement4 = null;
+    PreparedStatement preparedStatement5 = null;
+    ResultSet resultSet = null;
+    ResultSet resultSet1 = null;
+    ResultSet resultSet2 = null;
+    ResultSet resultSet3 = null;
+    ResultSet resultSet4 = null;
+    ResultSet resultSet5 = null;
+    try {
+      new BounceIn(error).play();
+      error.setTextFill(Color.BLACK);
+      error.setText("All Statistics!");
+      connection = Database.getInstance().getConnection();
+      preparedStatement = connection.prepareStatement("SELECT * FROM parking LIMIT 0,1");
+      resultSet = preparedStatement.executeQuery();
+      if (resultSet.next()) {
+        preparedStatement = connection.prepareStatement("select * from parking where status = '0'");
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+          sum += resultSet.getInt("fee");
+        }
+        new BounceIn(parkingFeeLabel).play();
+        parkingFeeLabel.setText(decimalFormat.format(sum) + " VND");
+        preparedStatement1 = connection.prepareStatement("select type from parking where status = '0' and type = 'Bicycles'");
+        resultSet1 = preparedStatement1.executeQuery();
+        while (resultSet1.next()) {
+          bicycles += 1;
+        }
+        new BounceIn(bicyclesLabel).play();
+        bicyclesLabel.setText(String.valueOf(bicycles));
+        preparedStatement2 = connection.prepareStatement("select type from parking where status = '0' and type = 'Motorbike'");
+        resultSet2 = preparedStatement2.executeQuery();
+        while (resultSet2.next()) {
+          motorbike += 1;
+        }
+        new BounceIn(motorbikeLabel).play();
+        motorbikeLabel.setText(String.valueOf(motorbike));
+        preparedStatement3 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '4-8'");
+        resultSet3 = preparedStatement3.executeQuery();
+        while (resultSet3.next()) {
+          seat1Sum += 1;
+        }
+        new BounceIn(seat1).play();
+        seat1.setText(String.valueOf(seat1Sum));
+        preparedStatement4 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '9-29'");
+        resultSet4 = preparedStatement4.executeQuery();
+        while (resultSet4.next()) {
+          seat2Sum += 1;
+        }
+        new BounceIn(seat2).play();
+        seat2.setText(String.valueOf(seat2Sum));
+        preparedStatement5 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '30+'");
+        resultSet5 = preparedStatement5.executeQuery();
+        while (resultSet5.next()) {
+          seat3Sum += 1;
+        }
+        new BounceIn(seat3).play();
+        seat3.setText(String.valueOf(seat3Sum));
+      } else {
+        parkingFeeLabel.setText("0 VND");
+        bicyclesLabel.setText("0");
+        motorbikeLabel.setText("0");
+        seat1.setText("0");
+        seat2.setText("0");
+        seat3.setText("0");
+      }
+    } catch (SQLException e) {
+      Logger.getLogger(StatisticsController.class.getName()).log(Level.SEVERE, null, e);
+    } catch (NullPointerException nullPointerException) {
+      new BounceIn(error).play();
+      error.setTextFill(Color.RED);
+      error.setText("Connection error, please try again!");
+    } finally {
+      try {
+        if (resultSet != null) {
+          resultSet.close();
+        } else if (resultSet1 != null) {
+          resultSet1.close();
+        } else if (resultSet2 != null) {
+          resultSet2.close();
+        } else if (resultSet3 != null) {
+          resultSet3.close();
+        } else if (resultSet4 != null) {
+          resultSet4.close();
+        } else if (resultSet5 != null) {
+          resultSet5.close();
+        }
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        } else if (preparedStatement1 != null) {
+          preparedStatement1.close();
+        } else if (preparedStatement2 != null) {
+          preparedStatement2.close();
+        } else if (preparedStatement3 != null) {
+          preparedStatement3.close();
+        } else if (preparedStatement4 != null) {
+          preparedStatement4.close();
+        } else if (preparedStatement5 != null) {
+          preparedStatement5.close();
+        }
+        if (connection != null) {
+          connection.close();
+        }
+      } catch (SQLException e) {
+        Logger.getLogger(StatisticsController.class.getName()).log(Level.SEVERE, null, e);
+      }
+    }
+  }
+
   public void weekClick() {
     getWeeklyData();
     weekButton.setTextFill(Color.web("#e91874"));
     monthButton.setTextFill(Color.BLACK);
     yearButton.setTextFill(Color.BLACK);
+    allButton.setTextFill(Color.BLACK);
   }
 
   public void monthClick() {
@@ -465,6 +587,7 @@ public class StatisticsController implements Initializable {
     monthButton.setTextFill(Color.web("#e91874"));
     weekButton.setTextFill(Color.BLACK);
     yearButton.setTextFill(Color.BLACK);
+    allButton.setTextFill(Color.BLACK);
   }
 
   public void yearClick() {
@@ -472,6 +595,15 @@ public class StatisticsController implements Initializable {
     yearButton.setTextFill(Color.web("#e91874"));
     monthButton.setTextFill(Color.BLACK);
     weekButton.setTextFill(Color.BLACK);
+    allButton.setTextFill(Color.BLACK);
+  }
+
+  public void allClick() {
+    getAllData();
+    allButton.setTextFill(Color.web("#e91874"));
+    monthButton.setTextFill(Color.BLACK);
+    weekButton.setTextFill(Color.BLACK);
+    yearButton.setTextFill(Color.BLACK);
   }
 
   @Override

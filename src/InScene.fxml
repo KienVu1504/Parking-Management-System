@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -78,55 +79,85 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <TextField fx:id="licensePlateTextField" layoutX="505.0" layoutY="413.0" onKeyTyped="#limitLength" prefWidth="500.0" />
-    <TextField fx:id="timeInField" editable="false" layoutX="509.0" layoutY="480.0" prefHeight="26.0" prefWidth="420.0" />
-    <RadioButton fx:id="vehicleBicycles" layoutX="508.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
+    <TextField fx:id="licensePlateTextField" focusTraversable="false" layoutX="505.0" layoutY="413.0" onKeyTyped="#limitLength" prefWidth="500.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <TextField fx:id="timeInField" editable="false" focusTraversable="false" layoutX="505.0" layoutY="480.0" prefHeight="26.0" prefWidth="420.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <RadioButton fx:id="vehicleBicycles" focusTraversable="false" layoutX="508.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
         <font>
             <Font size="18.0" />
         </font>
         <toggleGroup>
             <ToggleGroup fx:id="vehicleType" />
         </toggleGroup>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeCar" layoutX="948.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$vehicleType">
+    <RadioButton fx:id="vehicleTypeCar" focusTraversable="false" layoutX="948.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$vehicleType">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeMotorbike" layoutX="700.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" selected="true" text="Motorbike" toggleGroup="$vehicleType">
+    <RadioButton fx:id="vehicleTypeMotorbike" focusTraversable="false" layoutX="700.0" layoutY="260.0" mnemonicParsing="false" onAction="#carTypeChecked" selected="true" text="Motorbike" toggleGroup="$vehicleType">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <Button layoutX="596.0" layoutY="641.0" mnemonicParsing="false" onAction="#submitIn" prefHeight="40.0" prefWidth="170.0" text="Submit">
+    <Button focusTraversable="false" layoutX="596.0" layoutY="641.0" mnemonicParsing="false" onAction="#submitIn" prefHeight="40.0" prefWidth="170.0" text="Submit">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </Button>
     <Label fx:id="carSeatsLabel" disable="true" layoutX="349.0" layoutY="340.0" text="Car Seats">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <RadioButton fx:id="carSeats1" disable="true" layoutX="509.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" selected="true" text="4 - 8">
+    <RadioButton fx:id="carSeats1" disable="true" focusTraversable="false" layoutX="509.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" selected="true" text="4 - 8">
         <font>
             <Font size="18.0" />
         </font>
         <toggleGroup>
             <ToggleGroup fx:id="carSeats" />
         </toggleGroup>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats3" disable="true" layoutX="949.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" text="30+" toggleGroup="$carSeats">
+    <RadioButton fx:id="carSeats3" disable="true" focusTraversable="false" layoutX="949.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" text="30+" toggleGroup="$carSeats">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats2" disable="true" layoutX="701.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" text="9 - 29" toggleGroup="$carSeats">
+    <RadioButton fx:id="carSeats2" disable="true" focusTraversable="false" layoutX="701.0" layoutY="340.0" mnemonicParsing="false" onAction="#seatsChecked" text="9 - 29" toggleGroup="$carSeats">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <Button layoutX="949.0" layoutY="480.0" mnemonicParsing="false" onAction="#getTimeIn" text="Get Time" />
+    <Button focusTraversable="false" layoutX="949.0" layoutY="480.0" mnemonicParsing="false" onAction="#getTimeIn" text="Get Time">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
     <Label fx:id="errorLabel" alignment="CENTER" layoutX="1.0" layoutY="568.0" prefWidth="1360.0" textFill="RED">
         <font>
             <Font name="System Bold" size="12.0" />

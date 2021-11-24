@@ -11,174 +11,163 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="OutPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0"
-            prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="OutController">
+<AnchorPane fx:id="OutPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OutController">
     <MenuBar fx:id="menuBar" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Admin" mnemonicParsing="false" text="Admin">
             <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Help" mnemonicParsing="false" text="Help">
             <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
     </MenuBar>
     <Label id="vehicle out label" alignment="CENTER" layoutY="100.0" prefWidth="1360.0" text="Vehicle Out">
         <font>
-            <Font name="System Bold" size="36.0"/>
+            <Font name="System Bold" size="36.0" />
         </font>
     </Label>
     <Label id="license" layoutX="350.0" layoutY="230.0" text="License Plate">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label id="type" layoutX="350.0" layoutY="300.0" text="Vehicle Type">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label id="in" layoutX="350.0" layoutY="370.0" text="Time In">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label id="out" layoutX="350.0" layoutY="440.0" text="Time Out">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
     <Label id="fee" layoutX="350.0" layoutY="509.0" text="Parking Fee">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <TextField id="license" fx:id="licensePlateTextField" layoutX="510.0" layoutY="230.0" onKeyTyped="#limitLength"
-               prefWidth="420.0"/>
-    <TextField id="type" fx:id="vehicleTypeTextField" editable="false" layoutX="510.0" layoutY="300.0" prefHeight="26.0"
-               prefWidth="200.0"/>
-    <TextField id="in" fx:id="timeInTextField" editable="false" layoutX="510.0" layoutY="370.0" prefHeight="26.0"
-               prefWidth="200.0"/>
-    <TextField id="out" fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0"
-               prefWidth="200.0"/>
-    <TextField id="fee" fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0"
-               prefWidth="457.0"/>
-    <Button id="search" fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false"
-            onAction="#licensePlateSearch" text="Search"/>
+    <TextField id="license" fx:id="licensePlateTextField" layoutX="510.0" layoutY="230.0" onKeyTyped="#limitLength" prefWidth="420.0" />
+    <TextField id="type" fx:id="vehicleTypeTextField" editable="false" layoutX="510.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0" />
+    <TextField id="in" fx:id="timeInTextField" editable="false" layoutX="510.0" layoutY="370.0" prefHeight="26.0" prefWidth="200.0" />
+    <TextField id="out" fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0" prefWidth="200.0" />
+    <TextField id="fee" fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0" prefWidth="457.0" />
+    <Button id="search" fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
     <Button id="done" layoutX="606.0" layoutY="642.0" mnemonicParsing="false" onAction="#outCheck" text="Done">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Button>
     <Label id="license error" fx:id="errorLabel1" layoutX="919.0" layoutY="234.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="error" fx:id="errorLabel" alignment="CENTER" layoutY="578.0" prefWidth="1360.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="seat" layoutX="760.0" layoutY="299.0" text="Seat">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
-    <TextField id="seat" fx:id="seatTextField" editable="false" layoutX="810.0" layoutY="300.0" prefHeight="26.0"
-               prefWidth="200.0"/>
+    <TextField id="seat" fx:id="seatTextField" editable="false" layoutX="810.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0" />
     <Label id="ticket" layoutX="742.0" layoutY="368.0" text="Monthly Ticket">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
-    <TextField id="ticket" fx:id="ticketTextField" editable="false" layoutX="879.0" layoutY="368.0" prefHeight="26.0"
-               prefWidth="130.0"/>
+    <TextField id="ticket" fx:id="ticketTextField" editable="false" layoutX="879.0" layoutY="368.0" prefHeight="26.0" prefWidth="130.0" />
     <Label id="ticket error" fx:id="errorLabel2" layoutX="999.0" layoutY="374.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label id="time" layoutX="742.0" layoutY="438.0" text="Parking Time">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Label>
-    <TextField id="time" fx:id="parkingTimeTextField" editable="false" layoutX="859.0" layoutY="438.0" prefHeight="26.0"
-               prefWidth="115.0"/>
+    <TextField id="time" fx:id="parkingTimeTextField" editable="false" layoutX="859.0" layoutY="438.0" prefHeight="26.0" prefWidth="115.0" />
     <Label layoutX="974.0" layoutY="508.0" text="VNĐ">
         <font>
-            <Font name="System Bold" size="18.0"/>
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     <Label layoutX="980.0" layoutY="441.0" text="MIN">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Label>
     <Button layoutX="686.0" layoutY="642.0" mnemonicParsing="false" onAction="#goToOut" text="Reset">
         <font>
-            <Font size="18.0"/>
+            <Font size="18.0" />
         </font>
     </Button>
     <Label fx:id="errorLabel3" layoutX="700.0" layoutY="303.0" prefHeight="20.0" prefWidth="6.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label fx:id="errorLabel4" layoutX="1000.0" layoutY="303.0" prefHeight="20.0" prefWidth="6.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label fx:id="errorLabel7" layoutX="700.0" layoutY="374.0" prefHeight="20.0" prefWidth="6.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label fx:id="errorLabel5" layoutX="700.0" layoutY="444.0" prefHeight="20.0" prefWidth="6.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Label fx:id="errorLabel6" layoutX="964.0" layoutY="441.0" prefHeight="20.0" prefWidth="6.0">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
 </AnchorPane>

@@ -107,7 +107,7 @@
             <Cursor fx:constant="TEXT" />
         </cursor>
     </TextField>
-    <Button fx:id="loginButton" focusTraversable="false" layoutX="881.0" layoutY="600.0" mnemonicParsing="false" text="Login">
+    <Button fx:id="loginButton" focusTraversable="false" layoutX="831.0" layoutY="602.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Login">
         <font>
             <Font size="18.0" />
         </font>

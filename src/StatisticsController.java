@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,9 +46,7 @@ public class StatisticsController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) statisticsPane.getScene().getWindow();
@@ -76,6 +75,7 @@ public class StatisticsController implements Initializable {
     ResultSet resultSet4 = null;
     ResultSet resultSet5 = null;
     try {
+      new BounceIn(error).play();
       error.setTextFill(Color.BLACK);
       error.setText("Statistics from " + dtf.format(week) + " to " + dtf.format(now));
       connection = Database.getInstance().getConnection();
@@ -89,6 +89,7 @@ public class StatisticsController implements Initializable {
         while (resultSet.next()) {
           sum += resultSet.getInt("fee");
         }
+        new BounceIn(parkingFeeLabel).play();
         parkingFeeLabel.setText(decimalFormat.format(sum) + " VND");
         preparedStatement1 = connection.prepareStatement("select type from parking where status = '0' and type = 'Bicycles' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement1.setString(1, dft1.format(week));
@@ -97,6 +98,7 @@ public class StatisticsController implements Initializable {
         while (resultSet1.next()) {
           bicycles += 1;
         }
+        new BounceIn(bicyclesLabel).play();
         bicyclesLabel.setText(String.valueOf(bicycles));
         preparedStatement2 = connection.prepareStatement("select type from parking where status = '0' and type = 'Motorbike' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement2.setString(1, dft1.format(week));
@@ -105,6 +107,7 @@ public class StatisticsController implements Initializable {
         while (resultSet2.next()) {
           motorbike += 1;
         }
+        new BounceIn(motorbikeLabel).play();
         motorbikeLabel.setText(String.valueOf(motorbike));
         preparedStatement3 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '4-8' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement3.setString(1, dft1.format(week));
@@ -113,6 +116,7 @@ public class StatisticsController implements Initializable {
         while (resultSet3.next()) {
           seat1Sum += 1;
         }
+        new BounceIn(seat1).play();
         seat1.setText(String.valueOf(seat1Sum));
         preparedStatement4 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '9-29' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement4.setString(1, dft1.format(week));
@@ -121,6 +125,7 @@ public class StatisticsController implements Initializable {
         while (resultSet4.next()) {
           seat2Sum += 1;
         }
+        new BounceIn(seat2).play();
         seat2.setText(String.valueOf(seat2Sum));
         preparedStatement5 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '30+' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement5.setString(1, dft1.format(week));
@@ -129,6 +134,7 @@ public class StatisticsController implements Initializable {
         while (resultSet5.next()) {
           seat3Sum += 1;
         }
+        new BounceIn(seat3).play();
         seat3.setText(String.valueOf(seat3Sum));
       } else {
         parkingFeeLabel.setText("0 VND");
@@ -141,6 +147,7 @@ public class StatisticsController implements Initializable {
     } catch (SQLException e) {
       Logger.getLogger(StatisticsController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Connection error, please try again!");
     } finally {
@@ -201,6 +208,7 @@ public class StatisticsController implements Initializable {
     ResultSet resultSet4 = null;
     ResultSet resultSet5 = null;
     try {
+      new BounceIn(error).play();
       error.setTextFill(Color.BLACK);
       error.setText("Statistics from " + dtf.format(month) + " to " + dtf.format(now));
       connection = Database.getInstance().getConnection();
@@ -214,6 +222,7 @@ public class StatisticsController implements Initializable {
         while (resultSet.next()) {
           sum += resultSet.getInt("fee");
         }
+        new BounceIn(parkingFeeLabel).play();
         parkingFeeLabel.setText(decimalFormat.format(sum) + " VND");
         preparedStatement1 = connection.prepareStatement("select type from parking where status = '0' and type = 'Bicycles' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement1.setString(1, dft1.format(month));
@@ -222,6 +231,7 @@ public class StatisticsController implements Initializable {
         while (resultSet1.next()) {
           bicycles += 1;
         }
+        new BounceIn(bicyclesLabel).play();
         bicyclesLabel.setText(String.valueOf(bicycles));
         preparedStatement2 = connection.prepareStatement("select type from parking where status = '0' and type = 'Motorbike' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement2.setString(1, dft1.format(month));
@@ -230,6 +240,7 @@ public class StatisticsController implements Initializable {
         while (resultSet2.next()) {
           motorbike += 1;
         }
+        new BounceIn(motorbikeLabel).play();
         motorbikeLabel.setText(String.valueOf(motorbike));
         preparedStatement3 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '4-8' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement3.setString(1, dft1.format(month));
@@ -238,6 +249,7 @@ public class StatisticsController implements Initializable {
         while (resultSet3.next()) {
           seat1Sum += 1;
         }
+        new BounceIn(seat1).play();
         seat1.setText(String.valueOf(seat1Sum));
         preparedStatement4 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '9-29' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement4.setString(1, dft1.format(month));
@@ -246,6 +258,7 @@ public class StatisticsController implements Initializable {
         while (resultSet4.next()) {
           seat2Sum += 1;
         }
+        new BounceIn(seat2).play();
         seat2.setText(String.valueOf(seat2Sum));
         preparedStatement5 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '30+' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement5.setString(1, dft1.format(month));
@@ -254,6 +267,7 @@ public class StatisticsController implements Initializable {
         while (resultSet5.next()) {
           seat3Sum += 1;
         }
+        new BounceIn(seat3).play();
         seat3.setText(String.valueOf(seat3Sum));
       } else {
         parkingFeeLabel.setText("0 VND");
@@ -266,6 +280,7 @@ public class StatisticsController implements Initializable {
     } catch (SQLException e) {
       Logger.getLogger(StatisticsController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Connection error, please try again!");
     } finally {
@@ -326,6 +341,7 @@ public class StatisticsController implements Initializable {
     ResultSet resultSet4 = null;
     ResultSet resultSet5 = null;
     try {
+      new BounceIn(error).play();
       error.setTextFill(Color.BLACK);
       error.setText("Statistics from " + dtf.format(year) + " to " + dtf.format(now));
       connection = Database.getInstance().getConnection();
@@ -339,6 +355,7 @@ public class StatisticsController implements Initializable {
         while (resultSet.next()) {
           sum += resultSet.getInt("fee");
         }
+        new BounceIn(parkingFeeLabel).play();
         parkingFeeLabel.setText(decimalFormat.format(sum) + " VND");
         preparedStatement1 = connection.prepareStatement("select type from parking where status = '0' and type = 'Bicycles' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement1.setString(1, dft1.format(year));
@@ -347,6 +364,7 @@ public class StatisticsController implements Initializable {
         while (resultSet1.next()) {
           bicycles += 1;
         }
+        new BounceIn(bicyclesLabel).play();
         bicyclesLabel.setText(String.valueOf(bicycles));
         preparedStatement2 = connection.prepareStatement("select type from parking where status = '0' and type = 'Motorbike' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement2.setString(1, dft1.format(year));
@@ -355,6 +373,7 @@ public class StatisticsController implements Initializable {
         while (resultSet2.next()) {
           motorbike += 1;
         }
+        new BounceIn(motorbikeLabel).play();
         motorbikeLabel.setText(String.valueOf(motorbike));
         preparedStatement3 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '4-8' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement3.setString(1, dft1.format(year));
@@ -363,6 +382,7 @@ public class StatisticsController implements Initializable {
         while (resultSet3.next()) {
           seat1Sum += 1;
         }
+        new BounceIn(seat1).play();
         seat1.setText(String.valueOf(seat1Sum));
         preparedStatement4 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '9-29' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement4.setString(1, dft1.format(year));
@@ -371,6 +391,7 @@ public class StatisticsController implements Initializable {
         while (resultSet4.next()) {
           seat2Sum += 1;
         }
+        new BounceIn(seat2).play();
         seat2.setText(String.valueOf(seat2Sum));
         preparedStatement5 = connection.prepareStatement("select type from parking where status = '0' and type = 'Car' and seat = '30+' and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') >= ?) and (STR_TO_DATE(time_out, '%d-%m-%Y %H:%i:%s') <= ?)");
         preparedStatement5.setString(1, dft1.format(year));
@@ -379,6 +400,7 @@ public class StatisticsController implements Initializable {
         while (resultSet5.next()) {
           seat3Sum += 1;
         }
+        new BounceIn(seat3).play();
         seat3.setText(String.valueOf(seat3Sum));
       } else {
         parkingFeeLabel.setText("0 VND");
@@ -391,6 +413,7 @@ public class StatisticsController implements Initializable {
     } catch (SQLException e) {
       Logger.getLogger(StatisticsController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Connection error, please try again!");
     } finally {
@@ -474,7 +497,6 @@ public class StatisticsController implements Initializable {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

@@ -33,9 +33,7 @@ public class AdminCenterController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) adminCenterPane.getScene().getWindow();
@@ -72,7 +70,6 @@ public class AdminCenterController implements Initializable {
   int numberOfItemPerPage = 25;
   private int numberOfPage = (historyRepository.getNumberOfPage()) / numberOfItemPerPage;
 
-  //internal state
   private int pageNumber = 0;
 
   public AdminCenterController() throws SQLException {
@@ -102,7 +99,6 @@ public class AdminCenterController implements Initializable {
 
   ObservableList<History> historyControllerObservableList = null;
 
-  //select * from parking limit 25 offset 25 * 2
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     resetHistoryPage();
@@ -142,7 +138,6 @@ public class AdminCenterController implements Initializable {
     } else {
       searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue.intValue() > oldValue.intValue()) {
-          // Check if the new character is greater than LIMIT
           if (searchBox.getText().length() > 10) {
             errorLabel.setText("!");
             errorLabel1.setTextFill(Color.RED);
@@ -179,7 +174,6 @@ public class AdminCenterController implements Initializable {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

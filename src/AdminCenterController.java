@@ -199,14 +199,6 @@ public class AdminCenterController implements Initializable {
     stage.show();
   }
 
-  public void goToStatistics() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StatisticsScene.fxml")));
-    Stage stage = (Stage) menuBar.getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
   public void goToAccountManagement() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AccountManagementScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
@@ -233,6 +225,14 @@ public class AdminCenterController implements Initializable {
 
   public void goToSlotsManagement() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SlotsManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToStatistics() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StatisticsScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

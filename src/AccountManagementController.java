@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -91,6 +92,8 @@ public class AccountManagementController implements Initializable {
     addUserTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (addUserTextField.getText().length() > 25) {
+          new BounceIn(error1).play();
+          new BounceIn(error2).play();
           error1.setTextFill(Color.RED);
           error2.setTextFill(Color.RED);
           error2.setText("Username length must be <= 25!");
@@ -108,6 +111,8 @@ public class AccountManagementController implements Initializable {
     addPassTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (addPassTextField.getText().length() > 50) {
+          new BounceIn(error4).play();
+          new BounceIn(error3).play();
           error4.setTextFill(Color.RED);
           error3.setTextFill(Color.RED);
           error4.setText("Password length must be <= 50!");
@@ -123,6 +128,10 @@ public class AccountManagementController implements Initializable {
 
   public void addCheck() {
     if (addUserTextField.getText().isEmpty() && addPassTextField.getText().isEmpty()) {
+      new BounceIn(error1).play();
+      new BounceIn(error2).play();
+      new BounceIn(error3).play();
+      new BounceIn(error4).play();
       error1.setTextFill(Color.RED);
       error2.setTextFill(Color.RED);
       error3.setTextFill(Color.RED);
@@ -132,17 +141,25 @@ public class AccountManagementController implements Initializable {
       error2.setText("Enter username!");
       error4.setText("Enter password!");
     } else if (addUserTextField.getText().isEmpty() && !addPassTextField.getText().isEmpty()) {
+      new BounceIn(error1).play();
+      new BounceIn(error2).play();
       error1.setTextFill(Color.RED);
       error2.setTextFill(Color.RED);
       error1.setText("!");
       error2.setText("Enter username!");
     } else if (!addUserTextField.getText().isEmpty() && addPassTextField.getText().isEmpty()) {
+      new BounceIn(error3).play();
+      new BounceIn(error4).play();
       error3.setTextFill(Color.RED);
       error4.setTextFill(Color.RED);
       error3.setText("!");
       error4.setText("Enter password!");
     } else if (!addUserTextField.getText().isEmpty() && !addPassTextField.getText().isEmpty()) {
       if (addUserTextField.getText().length() < 5 && addPassTextField.getText().length() < 8) {
+        new BounceIn(error1).play();
+        new BounceIn(error2).play();
+        new BounceIn(error3).play();
+        new BounceIn(error4).play();
         error1.setTextFill(Color.RED);
         error2.setTextFill(Color.RED);
         error3.setTextFill(Color.RED);
@@ -152,11 +169,15 @@ public class AccountManagementController implements Initializable {
         error2.setText("Username must > 5 characters!");
         error4.setText("Password must > 8 characters!");
       } else if (addUserTextField.getText().length() >= 5 && addPassTextField.getText().length() < 8) {
+        new BounceIn(error3).play();
+        new BounceIn(error4).play();
         error3.setTextFill(Color.RED);
         error4.setTextFill(Color.RED);
         error3.setText("!");
         error4.setText("Password must > 8 characters!");
       } else if (addUserTextField.getText().length() < 5 && addPassTextField.getText().length() >= 8) {
+        new BounceIn(error1).play();
+        new BounceIn(error2).play();
         error1.setTextFill(Color.RED);
         error2.setTextFill(Color.RED);
         error1.setText("!");
@@ -171,6 +192,8 @@ public class AccountManagementController implements Initializable {
           preparedStatement.setString(1, addUserTextField.getText());
           resultSet = preparedStatement.executeQuery();
           if (resultSet.next()) {
+            new BounceIn(error1).play();
+            new BounceIn(error2).play();
             error1.setTextFill(Color.RED);
             error2.setTextFill(Color.RED);
             error1.setText("!");
@@ -185,6 +208,7 @@ public class AccountManagementController implements Initializable {
               preparedStatement.setString(3, "ep");
             }
             int kq = preparedStatement.executeUpdate();
+            new BounceIn(error4).play();
             if (kq > 0) {
               error4.setTextFill(Color.GREEN);
               error4.setText("Added " + addUserTextField.getText() + "!");
@@ -225,6 +249,8 @@ public class AccountManagementController implements Initializable {
     upUserTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upUserTextField.getText().length() > 25) {
+          new BounceIn(error5).play();
+          new BounceIn(error6).play();
           error5.setTextFill(Color.RED);
           error6.setTextFill(Color.RED);
           error6.setText("Username length must be <= 25!");
@@ -242,6 +268,8 @@ public class AccountManagementController implements Initializable {
     upPassTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upPassTextField.getText().length() > 50) {
+          new BounceIn(error8).play();
+          new BounceIn(error7).play();
           error8.setTextFill(Color.RED);
           error7.setTextFill(Color.RED);
           error8.setText("Password length must be <= 50!");
@@ -257,6 +285,8 @@ public class AccountManagementController implements Initializable {
 
   public void searchUsername() {
     if (upUserTextField.getText().isEmpty()) {
+      new BounceIn(error6).play();
+      new BounceIn(error5).play();
       error5.setTextFill(Color.RED);
       error6.setTextFill(Color.RED);
       error5.setText("!");
@@ -276,6 +306,8 @@ public class AccountManagementController implements Initializable {
           preparedStatement.setString(1, upUserTextField.getText());
           resultSet = preparedStatement.executeQuery();
           if (!resultSet.next()) {
+            new BounceIn(error6).play();
+            new BounceIn(error5).play();
             error9.setText("");
             error5.setTextFill(Color.RED);
             error6.setTextFill(Color.RED);
@@ -302,6 +334,7 @@ public class AccountManagementController implements Initializable {
             }
           }
         } else {
+          new BounceIn(error9).play();
           error9.setTextFill(Color.RED);
           error9.setText("List is empty!");
         }
@@ -327,11 +360,14 @@ public class AccountManagementController implements Initializable {
 
   public void updateCheck() {
     if (upUserTextField.getText().isEmpty()) {
+      new BounceIn(error5).play();
+      new BounceIn(error6).play();
       error5.setTextFill(Color.RED);
       error5.setText("!");
       error6.setTextFill(Color.RED);
       error6.setText("Please enter username!");
     } else if (!upUserTextField.getText().isEmpty() && (!upAdmin.isSelected() && !upEmployee.isSelected())) {
+      new BounceIn(error9).play();
       error9.setTextFill(Color.RED);
       error9.setText("Click search button first!");
       error6.setText("");
@@ -344,6 +380,7 @@ public class AccountManagementController implements Initializable {
         preparedStatement = connection.prepareStatement("SELECT * FROM account LIMIT 0,1");
         resultSet = preparedStatement.executeQuery();
         if (!resultSet.next()) {
+          new BounceIn(error9).play();
           error9.setTextFill(Color.RED);
           error9.setText("List is empty!");
         } else {
@@ -370,14 +407,19 @@ public class AccountManagementController implements Initializable {
               upAdmin.setSelected(false);
               upEmployee.setSelected(false);
               upEmployee.setDisable(true);
+              new BounceIn(error9).play();
               error9.setTextFill(Color.GREEN);
               error9.setText("Update success!");
               resetTable();
             } else {
+              new BounceIn(error9).play();
               error9.setTextFill(Color.RED);
               error9.setText("Update error. Try again!");
             }
           } else {
+            new BounceIn(error5).play();
+            new BounceIn(error6).play();
+            new BounceIn(error9).play();
             error5.setTextFill(Color.RED);
             error5.setText("!");
             error6.setTextFill(Color.RED);
@@ -408,12 +450,15 @@ public class AccountManagementController implements Initializable {
 
   public void deleteCheck() {
     if (upUserTextField.getText().isEmpty()) {
+      new BounceIn(error5).play();
+      new BounceIn(error6).play();
       error5.setTextFill(Color.RED);
       error5.setText("!");
       error6.setTextFill(Color.RED);
       error6.setText("Please enter username!");
       error9.setText("");
     } else if (!upUserTextField.getText().isEmpty() && (!upAdmin.isSelected() && !upEmployee.isSelected())) {
+      new BounceIn(error9).play();
       error9.setTextFill(Color.RED);
       error9.setText("Click search button first!");
     } else if (!upUserTextField.getText().isEmpty() && (upAdmin.isSelected() || upEmployee.isSelected())) {
@@ -426,6 +471,7 @@ public class AccountManagementController implements Initializable {
           preparedStatement = connection.prepareStatement("SELECT * FROM account LIMIT 0,1");
           resultSet = preparedStatement.executeQuery();
           if (!resultSet.next()) {
+            new BounceIn(error9).play();
             error9.setTextFill(Color.RED);
             error9.setText("List is empty!");
           } else {
@@ -436,6 +482,7 @@ public class AccountManagementController implements Initializable {
               preparedStatement = connection.prepareStatement("delete from account where username = ?");
               preparedStatement.setString(1, upUserTextField.getText());
               int kq = preparedStatement.executeUpdate();
+              new BounceIn(error9).play();
               if (kq > 0) {
                 error9.setTextFill(Color.GREEN);
                 error9.setText("Deleted!");
@@ -450,6 +497,8 @@ public class AccountManagementController implements Initializable {
                 error9.setText("Can't delete " + upUserTextField.getText() + ". Try again!");
               }
             } else {
+              new BounceIn(error9).play();
+              new BounceIn(error5).play();
               error5.setTextFill(Color.RED);
               error5.setText("!");
               error9.setTextFill(Color.RED);
@@ -457,6 +506,7 @@ public class AccountManagementController implements Initializable {
             }
           }
         } else {
+          new BounceIn(error9).play();
           error9.setTextFill(Color.RED);
           error9.setText("Cannot delete main Admin account!");
         }
@@ -554,6 +604,30 @@ public class AccountManagementController implements Initializable {
 
   public void goToTicketManagement() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TicketManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToSlotsManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SlotsManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToStatistics() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StatisticsScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToPricesManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PricesManagementScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

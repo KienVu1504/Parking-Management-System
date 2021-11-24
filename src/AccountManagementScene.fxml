@@ -130,8 +130,8 @@
         </font>
     </Label>
     <Button id="search" focusTraversable="false" layoutX="1172.0" layoutY="460.0" mnemonicParsing="false" onAction="#searchUsername" prefHeight="27.0" prefWidth="55.0" text="Search" />
-    <Button id="add" focusTraversable="false" layoutX="1001.0" layoutY="347.0" mnemonicParsing="false" onAction="#addCheck" text="Add" />
-    <Button id="update" focusTraversable="false" layoutX="955.0" layoutY="715.0" mnemonicParsing="false" onAction="#updateCheck" text="Update" />
+    <Button id="add" focusTraversable="false" layoutX="925.0" layoutY="344.0" mnemonicParsing="false" onAction="#addCheck" prefHeight="40.0" prefWidth="170.0" text="Add" />
+    <Button id="update" focusTraversable="false" layoutX="841.0" layoutY="714.0" mnemonicParsing="false" onAction="#updateCheck" prefHeight="40.0" prefWidth="170.0" text="Update" />
     <Label id="username label" layoutX="817.0" layoutY="131.0" text="Username">
         <font>
             <Font name="System Bold" size="14.0" />
@@ -201,7 +201,7 @@
         </font>
     </Label>
     <TextField fx:id="upUserTextField" focusTraversable="false" layoutX="927.0" layoutY="460.0" onKeyTyped="#upUsernameLimitLength" prefHeight="26.0" prefWidth="234.0" promptText="Enter username" />
-    <Button id="update" focusTraversable="false" layoutX="1034.0" layoutY="715.0" mnemonicParsing="false" onAction="#deleteCheck" text="Delete" />
-    <TextField fx:id="addPassTextField" layoutX="927.0" layoutY="211.0" onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password" />
-    <TextField fx:id="upPassTextField" layoutX="927.0" layoutY="542.0" onKeyTyped="#upPasswordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password" />
+    <Button id="update" focusTraversable="false" layoutX="1010.0" layoutY="714.0" mnemonicParsing="false" onAction="#deleteCheck" prefHeight="40.0" prefWidth="170.0" text="Delete" />
+    <TextField fx:id="addPassTextField" focusTraversable="false" layoutX="927.0" layoutY="211.0" onKeyTyped="#passwordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password" />
+    <TextField fx:id="upPassTextField" focusTraversable="false" layoutX="927.0" layoutY="542.0" onKeyTyped="#upPasswordLimitLength" prefHeight="26.0" prefWidth="300.0" promptText="Enter password" />
 </AnchorPane>

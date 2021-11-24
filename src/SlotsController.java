@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,9 +36,7 @@ public class SlotsController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) slotsPane.getScene().getWindow();
@@ -49,6 +48,7 @@ public class SlotsController implements Initializable {
     upBicycles.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upBicycles.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upBicycles.setText(upBicycles.getText().substring(0, 10));
@@ -63,6 +63,7 @@ public class SlotsController implements Initializable {
     upMotorbike.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upMotorbike.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upMotorbike.setText(upMotorbike.getText().substring(0, 10));
@@ -77,6 +78,7 @@ public class SlotsController implements Initializable {
     upSeat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upSeat1.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upSeat1.setText(upSeat1.getText().substring(0, 10));
@@ -91,6 +93,7 @@ public class SlotsController implements Initializable {
     upSeat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upSeat2.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upSeat2.setText(upSeat2.getText().substring(0, 10));
@@ -105,6 +108,7 @@ public class SlotsController implements Initializable {
     upSeat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upSeat3.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upSeat3.setText(upSeat3.getText().substring(0, 10));
@@ -160,6 +164,7 @@ public class SlotsController implements Initializable {
     } catch (SQLException e) {
       Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Connection error, please try again later!");
     } finally {
@@ -265,14 +270,17 @@ public class SlotsController implements Initializable {
 
   public void updateBicyclesCheck() {
     if (upBicycles.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Nothings to update!");
     } else {
       try {
         if (Integer.parseInt(upBicycles.getText()) < Integer.parseInt(bicyclesField.getText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > " + bicyclesField.getText() + "!");
         } else if (Integer.parseInt(upBicycles.getText()) == Integer.parseInt(upBicycles.getPromptText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value can't be equal " + upBicycles.getPromptText() + "!");
         } else {
@@ -284,6 +292,7 @@ public class SlotsController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -293,6 +302,7 @@ public class SlotsController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = 'bicycles'");
                 preparedStatement.setString(1, upBicycles.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -305,6 +315,7 @@ public class SlotsController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -328,6 +339,7 @@ public class SlotsController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -336,14 +348,17 @@ public class SlotsController implements Initializable {
 
   public void updateMotorbikeCheck() {
     if (upMotorbike.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Nothings to update!");
     } else {
       try {
         if (Integer.parseInt(upMotorbike.getText()) < Integer.parseInt(motorbikeField.getText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > " + motorbikeField.getText() + "!");
         } else if (Integer.parseInt(upMotorbike.getText()) == Integer.parseInt(upMotorbike.getPromptText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value can't be equal " + upMotorbike.getPromptText() + "!");
         } else {
@@ -355,6 +370,7 @@ public class SlotsController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -364,6 +380,7 @@ public class SlotsController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = 'motorbike'");
                 preparedStatement.setString(1, upMotorbike.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -376,6 +393,7 @@ public class SlotsController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -399,6 +417,7 @@ public class SlotsController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -407,14 +426,17 @@ public class SlotsController implements Initializable {
 
   public void updateSeat1Check() {
     if (upSeat1.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Nothings to update!");
     } else {
       try {
         if (Integer.parseInt(upSeat1.getText()) < Integer.parseInt(seat1.getText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > " + seat1.getText() + "!");
         } else if (Integer.parseInt(upSeat1.getText()) == Integer.parseInt(upSeat1.getPromptText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value can't be equal " + upSeat1.getPromptText() + "!");
         } else {
@@ -426,6 +448,7 @@ public class SlotsController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -435,6 +458,7 @@ public class SlotsController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = '4t8car'");
                 preparedStatement.setString(1, upSeat1.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -447,6 +471,7 @@ public class SlotsController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -470,6 +495,7 @@ public class SlotsController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -478,14 +504,17 @@ public class SlotsController implements Initializable {
 
   public void updateSeat2Check() {
     if (upSeat2.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Nothings to update!");
     } else {
       try {
         if (Integer.parseInt(upSeat2.getText()) < Integer.parseInt(seat2.getText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > " + seat2.getText() + "!");
         } else if (Integer.parseInt(upSeat2.getText()) == Integer.parseInt(upSeat2.getPromptText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value can't be equal " + upSeat2.getPromptText() + "!");
         } else {
@@ -497,6 +526,7 @@ public class SlotsController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -506,6 +536,7 @@ public class SlotsController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = '9t29car'");
                 preparedStatement.setString(1, upSeat2.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -518,6 +549,7 @@ public class SlotsController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -541,6 +573,7 @@ public class SlotsController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -549,14 +582,17 @@ public class SlotsController implements Initializable {
 
   public void updateSeat3Check() {
     if (upSeat3.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Nothings to update!");
     } else {
       try {
         if (Integer.parseInt(upSeat3.getText()) < Integer.parseInt(seat3.getText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > " + seat3.getText() + "!");
         } else if (Integer.parseInt(upSeat3.getText()) == Integer.parseInt(upSeat3.getPromptText())) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value can't be equal " + upSeat3.getPromptText() + "!");
         } else {
@@ -568,6 +604,7 @@ public class SlotsController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -577,6 +614,7 @@ public class SlotsController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set slots=? where type = '30pcar'");
                 preparedStatement.setString(1, upSeat3.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -589,6 +627,7 @@ public class SlotsController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -612,6 +651,7 @@ public class SlotsController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -716,7 +756,7 @@ public class SlotsController implements Initializable {
   }
 
   public void goToPricesManagement() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PricesManagementScene.fxml")));
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PriceManagementScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

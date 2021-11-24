@@ -240,7 +240,7 @@ public class AdminCenterController implements Initializable {
   }
 
   public void goToPricesManagement() throws IOException {
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PricesManagementScene.fxml")));
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PriceManagementScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

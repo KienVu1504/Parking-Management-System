@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -139,6 +140,8 @@ public class AdminCenterController implements Initializable {
       searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue.intValue() > oldValue.intValue()) {
           if (searchBox.getText().length() > 10) {
+            new BounceIn(errorLabel).play();
+            new BounceIn(errorLabel1).play();
             errorLabel.setText("!");
             errorLabel1.setTextFill(Color.RED);
             errorLabel1.setText("License Plate length must be <= 10!");

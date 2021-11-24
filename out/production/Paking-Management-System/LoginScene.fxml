@@ -28,7 +28,7 @@
             <Cursor fx:constant="TEXT" />
         </cursor>
     </TextField>
-    <Button fx:id="loginButton" focusTraversable="false" layoutX="821.0" layoutY="582.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Login">
+    <Button fx:id="loginButton" focusTraversable="false" layoutX="736.0" layoutY="582.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Login">
         <font>
             <Font size="18.0" />
         </font>
@@ -84,4 +84,12 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
+   <Button focusTraversable="false" layoutX="906.0" layoutY="582.0" mnemonicParsing="false" onAction="#closeAPP" prefHeight="40.0" prefWidth="170.0" text="Exit">
+      <font>
+         <Font size="18.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
 </AnchorPane>

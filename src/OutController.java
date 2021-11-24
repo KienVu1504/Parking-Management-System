@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,9 +39,7 @@ public class OutController {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) OutPane.getScene().getWindow();
@@ -51,18 +50,23 @@ public class OutController {
   public void limitLength() {
     licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (licensePlateTextField.getText().length() > 10) {
+          new BounceIn(errorLabel).play();
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("License Plate length must be <= 10!");
+          new BounceIn(errorLabel1).play();
           errorLabel1.setTextFill(Color.RED);
           errorLabel1.setText("!");
-          // if its 11th character then just setText to previous
-          // one
           licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
         } else {
-          errorLabel1.setText("");
           errorLabel.setText("");
+          errorLabel1.setText("");
+          errorLabel2.setText("");
+          errorLabel3.setText("");
+          errorLabel4.setText("");
+          errorLabel5.setText("");
+          errorLabel6.setText("");
+          errorLabel7.setText("");
         }
       }
     });
@@ -73,23 +77,39 @@ public class OutController {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     if (licensePlateTextField.getText().isEmpty() && vehicleTypeTextField.getText().isEmpty()) {
+      new BounceIn(errorLabel1).play();
       errorLabel1.setTextFill(Color.RED);
       errorLabel1.setText("!");
+      new BounceIn(errorLabel2).play();
       errorLabel2.setTextFill(Color.RED);
       errorLabel2.setText("!");
+      new BounceIn(errorLabel3).play();
       errorLabel3.setTextFill(Color.RED);
       errorLabel3.setText("!");
+      new BounceIn(errorLabel4).play();
       errorLabel4.setTextFill(Color.RED);
       errorLabel4.setText("!");
+      new BounceIn(errorLabel5).play();
       errorLabel5.setTextFill(Color.RED);
       errorLabel5.setText("!");
+      new BounceIn(errorLabel6).play();
       errorLabel6.setTextFill(Color.RED);
       errorLabel6.setText("!");
+      new BounceIn(errorLabel7).play();
       errorLabel7.setTextFill(Color.RED);
       errorLabel7.setText("!");
+      new BounceIn(errorLabel).play();
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all text field before submit!");
     } else if (!licensePlateTextField.getText().isEmpty() && vehicleTypeTextField.getText().isEmpty()) {
+      new BounceIn(errorLabel1).play();
+      new BounceIn(errorLabel2).play();
+      new BounceIn(errorLabel3).play();
+      new BounceIn(errorLabel4).play();
+      new BounceIn(errorLabel5).play();
+      new BounceIn(errorLabel6).play();
+      new BounceIn(errorLabel7).play();
+      new BounceIn(errorLabel).play();
       errorLabel1.setTextFill(Color.RED);
       errorLabel1.setText("!");
       errorLabel2.setTextFill(Color.RED);
@@ -124,6 +144,7 @@ public class OutController {
           preparedStatement.setString(4, "0");
           preparedStatement.setString(5, licensePlateTextField.getText());
           int kq = preparedStatement.executeUpdate();
+          new BounceIn(errorLabel).play();
           if (kq > 0) {
             errorLabel.setTextFill(Color.GREEN);
             errorLabel.setText("Completed!");
@@ -132,6 +153,8 @@ public class OutController {
             errorLabel.setText("We can't submitted your record at this time. Please try again!");
           }
         } else {
+          new BounceIn(errorLabel).play();
+          new BounceIn(errorLabel1).play();
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("Can't find " + licensePlateTextField.getText() + "!");
           errorLabel1.setTextFill(Color.RED);
@@ -176,24 +199,14 @@ public class OutController {
   }
 
   public void findDifference() {
-    // SimpleDateFormat converts the
-    // string format to date object
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-    // Try Block
     try {
-      // parse method is used to parse
-      // the text from a string to
-      // produce the date
       Date d1 = sdf.parse(timeInTextField.getText());
       Date d2 = sdf.parse(timeOutField.getText());
-      // Calculate time difference
-      // in milliseconds
       long difference_In_Time = d2.getTime() - d1.getTime();
       int parkingTime = (int) ((difference_In_Time / 1000) / 60);
       parkingTimeTextField.setText(String.valueOf(parkingTime));
-    }
-    // Catch the Exception
-    catch (ParseException e) {
+    } catch (ParseException e) {
       e.printStackTrace();
     }
   }
@@ -210,6 +223,8 @@ public class OutController {
       if (!resultSet.next()) {
         feeCal();
         if (ticketTextField.getText().equals("Yes")) {
+          new BounceIn(errorLabel).play();
+          new BounceIn(errorLabel2).play();
           errorLabel2.setTextFill(Color.RED);
           errorLabel2.setText("!");
           errorLabel.setTextFill(Color.RED);
@@ -232,6 +247,8 @@ public class OutController {
           } else {
             if (!ticketTextField.getText().equals("No")) {
               feeCal();
+              new BounceIn(errorLabel).play();
+              new BounceIn(errorLabel2).play();
               errorLabel2.setTextFill(Color.RED);
               errorLabel2.setText("!");
               errorLabel.setTextFill(Color.RED);
@@ -462,8 +479,10 @@ public class OutController {
       preparedStatement.setString(1, licensePlateTextField.getText());
       resultSet = preparedStatement.executeQuery();
       if (!resultSet.next()) {
+        new BounceIn(errorLabel).play();
+        new BounceIn(errorLabel1).play();
         errorLabel.setTextFill(Color.RED);
-        errorLabel.setText("Can't find " + licensePlateTextField.getText());
+        errorLabel.setText("Can't find " + licensePlateTextField.getText() + "!");
         errorLabel1.setTextFill(Color.RED);
         errorLabel1.setText("!");
       } else {
@@ -513,7 +532,6 @@ public class OutController {
 
   public void goToOut(ActionEvent event) throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //Stage stage = (Stage) menuBar.getScene().getWindow();
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

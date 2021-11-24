@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,9 +34,7 @@ public class HistoryController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) HistoryPane.getScene().getWindow();
@@ -71,9 +70,7 @@ public class HistoryController implements Initializable {
   private HistoryRepository historyRepository = new HistoryRepository();
   int numberOfItemPerPage = 25;
   private int numberOfPage = (historyRepository.getNumberOfPage()) / numberOfItemPerPage;
-  //internal state
   private int pageNumber = 0;
-
 
   public HistoryController() throws SQLException {
   }
@@ -102,7 +99,6 @@ public class HistoryController implements Initializable {
 
   ObservableList<History> historyControllerObservableList = null;
 
-  //select * from parking limit 25 offset 25 * 2
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     resetHistoryPage();
@@ -142,8 +138,9 @@ public class HistoryController implements Initializable {
     } else {
       searchBox.lengthProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue.intValue() > oldValue.intValue()) {
-          // Check if the new character is greater than LIMIT
           if (searchBox.getText().length() > 10) {
+            new BounceIn(errorLabel).play();
+            new BounceIn(errorLabel1).play();
             errorLabel.setText("!");
             errorLabel1.setTextFill(Color.RED);
             errorLabel1.setText("License Plate length must be <= 10!");
@@ -179,7 +176,6 @@ public class HistoryController implements Initializable {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

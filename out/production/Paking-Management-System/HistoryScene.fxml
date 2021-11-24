@@ -29,7 +29,7 @@
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
@@ -41,7 +41,7 @@
         <Menu id="Admin" mnemonicParsing="false" text="Admin">
             <MenuItem id="LogIn" mnemonicParsing="false" onAction="#goToAdmin" text="Login">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
         </Menu>
@@ -87,7 +87,7 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Button fx:id="backButton" layoutX="530.0" layoutY="727.0" mnemonicParsing="false" onAction="#pressBack" text="Back" />
-    <Button fx:id="nextButton" layoutX="778.0" layoutY="727.0" mnemonicParsing="false" onAction="#pressNext" text="Next" />
+    <Button fx:id="backButton" layoutX="14.0" layoutY="720.0" mnemonicParsing="false" onAction="#pressBack" prefHeight="40.0" prefWidth="170.0" text="Back" />
+    <Button fx:id="nextButton" layoutX="1176.0" layoutY="720.0" mnemonicParsing="false" onAction="#pressNext" prefHeight="40.0" prefWidth="170.0" text="Next" />
     <Label fx:id="pageNumberLabel" accessibleRoleDescription="t" layoutX="668.0" layoutY="731.0" text="1" />
 </AnchorPane>

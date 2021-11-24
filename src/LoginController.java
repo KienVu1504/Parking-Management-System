@@ -1,5 +1,4 @@
 import animatefx.animation.*;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import repositories.Database;
 
 import java.awt.*;
@@ -47,9 +45,7 @@ public class LoginController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) LoginPane.getScene().getWindow();
@@ -60,7 +56,6 @@ public class LoginController implements Initializable {
   public void usernameLimitLength() {
     usernameTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (usernameTextField.getText().length() > 25) {
           errorLabel.setText("Username length must be <= 25!");
           new BounceIn(errorLabel).play();
@@ -81,7 +76,6 @@ public class LoginController implements Initializable {
   public void passwordLimitLength() {
     passwordTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (passwordTextField.getText().length() > 50) {
           errorLabel.setText("Password length must be <= 50!");
           passwordErrorLabel.setText("!");
@@ -149,7 +143,6 @@ public class LoginController implements Initializable {
             String retriedPassword = resultSet.getString("password");
             if (retriedPassword.equals(password)) {
               Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InScene.fxml")));
-              //Stage stage = (Stage) menuBar.getScene().getWindow();
               stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
               Scene scene = new Scene(root);
               stage.setScene(scene);

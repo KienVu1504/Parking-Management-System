@@ -13,7 +13,7 @@ public class Main extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
     Scene scene = new Scene(root, 1360, 768);
     Image icon = new Image("images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png");
     stage.setTitle("Parking Management System");
@@ -33,9 +33,7 @@ public class Main extends Application {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage1 = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage1.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage.close();

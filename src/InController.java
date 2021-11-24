@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,9 +40,7 @@ public class InController {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) InPane.getScene().getWindow();
@@ -50,25 +49,16 @@ public class InController {
   }
 
   public void randomLP() {
-    // chose a Character random from this String
     String AlphaNumericString = "0123456789";
-    // create StringBuffer size of AlphaNumericString
     StringBuilder sb = new StringBuilder(9);
     for (int i = 0; i < 9; i++) {
-      // generate a random number between
-      // 0 to AlphaNumericString variable length
-      int index
-        = (int) (AlphaNumericString.length()
-        * Math.random());
-      // add Character one by one in end of sb
-      sb.append(AlphaNumericString
-        .charAt(index));
+      int index = (int) (AlphaNumericString.length() * Math.random());
+      sb.append(AlphaNumericString.charAt(index));
     }
     licensePlateTextField.setText(sb.toString());
   }
 
   public void carTypeChecked() {
-    //set Car Seats section to disabled state each time "vehicleTypeCar" radiobutton is selected
     if (vehicleBicycles.isSelected() || vehicleTypeMotorbike.isSelected()) {
       carSeatsLabel.setDisable(true);
       carSeats1.setDisable(true);
@@ -116,14 +106,13 @@ public class InController {
   public void limitLength() {
     licensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (licensePlateTextField.getText().length() >= 11) {
+          new BounceIn(errorLabel).play();
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("License Plate length must be <= 10!");
+          new BounceIn(errorLabel1).play();
           errorLabel1.setTextFill(Color.RED);
           errorLabel1.setText("!");
-          // if its 11th character then just setText to previous
-          // one
           licensePlateTextField.setText(licensePlateTextField.getText().substring(0, 10));
         } else {
           errorLabel1.setText("");
@@ -135,9 +124,7 @@ public class InController {
 
   public int getTotalParking() throws SQLException {
     Connection connection = Database.getInstance().getConnection();
-    //Creating the Statement object
     Statement stmt = connection.createStatement();
-    //Query to get the number of rows in a table
     String query;
     if (vehicleBicycles.isSelected()) {
       query = "select count(*) from parking where status = 1 and type = 'bicycles'";
@@ -152,15 +139,12 @@ public class InController {
         query = "select count(*) from parking where status = 1 and type = 'car' and seat = '30+'";
       }
     }
-    //Executing the query
     ResultSet rs = stmt.executeQuery(query);
-    //Retrieving the result
     rs.next();
     return rs.getInt(1);
   }
 
   public int getTotalSlots() {
-    int sum = 0;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet;
@@ -186,6 +170,7 @@ public class InController {
     } catch (SQLException e) {
       Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
+      new BounceIn(errorLabel).play();
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Connection error, please try again later!");
       errorLabel1.setText("");
@@ -208,11 +193,14 @@ public class InController {
   public void submitIn() throws SQLException {
     if (timeInField.getText().length() == 0 || licensePlateTextField.getText().length() == 0) {
       if (licensePlateTextField.getText().length() == 0) {
+        new BounceIn(errorLabel1).play();
         errorLabel1.setText("!");
       }
       if (timeInField.getText().length() == 0) {
+        new BounceIn(errorLabel2).play();
         errorLabel2.setText("!");
       }
+      new BounceIn(errorLabel).play();
       errorLabel.setTextFill(Color.RED);
       errorLabel.setText("Please fill all text field before submit!");
     } else {
@@ -226,8 +214,10 @@ public class InController {
           preparedStatement.setString(1, licensePlateTextField.getText());
           resultSet = preparedStatement.executeQuery();
           if (resultSet.next()) {
+            new BounceIn(errorLabel).play();
             errorLabel.setTextFill(Color.RED);
             errorLabel.setText("License plate existing!");
+            new BounceIn(errorLabel1).play();
             errorLabel1.setTextFill(Color.RED);
             errorLabel1.setText("!");
           } else {
@@ -268,6 +258,7 @@ public class InController {
             preparedStatement.setString(5, timeInField.getText());
             int kq = preparedStatement.executeUpdate();
             if (kq > 0) {
+              new BounceIn(errorLabel).play();
               errorLabel.setTextFill(Color.GREEN);
               errorLabel.setText("Submitted!");
               errorLabel1.setText("");
@@ -275,6 +266,7 @@ public class InController {
               licensePlateTextField.setText("");
               timeInField.setText("");
             } else {
+              new BounceIn(errorLabel).play();
               errorLabel.setTextFill(Color.RED);
               errorLabel.setText("We can't submitted your record at this time. Please try again!");
             }
@@ -282,6 +274,7 @@ public class InController {
         } catch (SQLException e) {
           Logger.getLogger(InController.class.getName()).log(Level.SEVERE, null, e);
         } catch (NullPointerException nullPointerException) {
+          new BounceIn(errorLabel).play();
           errorLabel.setTextFill(Color.RED);
           errorLabel.setText("Connection error, please try again later!");
         } finally {
@@ -297,6 +290,7 @@ public class InController {
           }
         }
       } else {
+        new BounceIn(errorLabel).play();
         errorLabel.setTextFill(Color.RED);
         errorLabel.setText("Out of slots!");
       }

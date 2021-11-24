@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -86,16 +87,37 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <TextField id="license" fx:id="licensePlateTextField" layoutX="510.0" layoutY="230.0" onKeyTyped="#limitLength" prefWidth="420.0" />
-    <TextField id="type" fx:id="vehicleTypeTextField" editable="false" layoutX="510.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0" />
-    <TextField id="in" fx:id="timeInTextField" editable="false" layoutX="510.0" layoutY="370.0" prefHeight="26.0" prefWidth="200.0" />
-    <TextField id="out" fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0" prefWidth="200.0" />
-    <TextField id="fee" fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0" prefWidth="457.0" />
-    <Button id="search" fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
+    <TextField id="license" fx:id="licensePlateTextField" layoutX="510.0" layoutY="230.0" onKeyTyped="#limitLength" prefWidth="420.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <TextField id="type" fx:id="vehicleTypeTextField" editable="false" layoutX="510.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <TextField id="in" fx:id="timeInTextField" editable="false" layoutX="510.0" layoutY="370.0" prefHeight="26.0" prefWidth="200.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <TextField id="out" fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0" prefWidth="200.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <TextField id="fee" fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0" prefWidth="457.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <Button id="search" fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
     <Button id="done" layoutX="511.0" layoutY="642.0" mnemonicParsing="false" onAction="#outCheck" prefHeight="40.0" prefWidth="170.0" text="Done">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </Button>
     <Label id="license error" fx:id="errorLabel1" layoutX="919.0" layoutY="234.0">
         <font>
@@ -112,13 +134,19 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <TextField id="seat" fx:id="seatTextField" editable="false" layoutX="810.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0" />
+    <TextField id="seat" fx:id="seatTextField" editable="false" layoutX="810.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
     <Label id="ticket" layoutX="742.0" layoutY="368.0" text="Monthly Ticket">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <TextField id="ticket" fx:id="ticketTextField" editable="false" layoutX="879.0" layoutY="368.0" prefHeight="26.0" prefWidth="130.0" />
+    <TextField id="ticket" fx:id="ticketTextField" editable="false" layoutX="879.0" layoutY="368.0" prefHeight="26.0" prefWidth="130.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
     <Label id="ticket error" fx:id="errorLabel2" layoutX="999.0" layoutY="374.0">
         <font>
             <Font name="System Bold" size="14.0" />
@@ -129,7 +157,10 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <TextField id="time" fx:id="parkingTimeTextField" editable="false" layoutX="859.0" layoutY="438.0" prefHeight="26.0" prefWidth="115.0" />
+    <TextField id="time" fx:id="parkingTimeTextField" editable="false" layoutX="859.0" layoutY="438.0" prefHeight="26.0" prefWidth="115.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
     <Label layoutX="974.0" layoutY="508.0" text="VNĐ">
         <font>
             <Font name="System Bold" size="18.0" />
@@ -144,6 +175,9 @@
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </Button>
     <Label fx:id="errorLabel3" layoutX="700.0" layoutY="303.0" prefHeight="20.0" prefWidth="6.0">
         <font>

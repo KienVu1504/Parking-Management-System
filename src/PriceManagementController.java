@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -127,12 +128,14 @@ public class PriceManagementController implements Initializable {
         current3seat2.setText(String.valueOf(resultSet13.getInt("90t1440")));
         current3seat3.setText(String.valueOf(resultSet14.getInt("1440p")));
       } else {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Data error!");
       }
     } catch (SQLException e) {
       Logger.getLogger(SlotsController.class.getName()).log(Level.SEVERE, null, e);
     } catch (NullPointerException nullPointerException) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("Connection error, please try again later!");
     } finally {
@@ -210,11 +213,13 @@ public class PriceManagementController implements Initializable {
 
   public void update1Check() {
     if (upBicycles1.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(upBicycles1.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -226,6 +231,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -235,6 +241,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set m240=? where type = 'bicycles'");
                 preparedStatement.setString(1, upBicycles1.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -245,6 +252,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -268,6 +276,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -276,11 +285,13 @@ public class PriceManagementController implements Initializable {
 
   public void update2Check() {
     if (upBicycles2.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(upBicycles2.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -292,6 +303,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -301,6 +313,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 240t480=? where type = 'bicycles'");
                 preparedStatement.setString(1, upBicycles2.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -311,6 +324,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -334,6 +348,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -342,11 +357,13 @@ public class PriceManagementController implements Initializable {
 
   public void update3Check() {
     if (upBicycles3.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(upBicycles3.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -358,6 +375,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -367,6 +385,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 480p=? where type = 'bicycles'");
                 preparedStatement.setString(1, upBicycles3.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -377,6 +396,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -408,11 +428,13 @@ public class PriceManagementController implements Initializable {
 
   public void update4Check() {
     if (upMotorbike1.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(upMotorbike1.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -424,6 +446,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -433,6 +456,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set m240=? where type = 'motorbike'");
                 preparedStatement.setString(1, upMotorbike1.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -443,6 +467,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -466,6 +491,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -474,11 +500,13 @@ public class PriceManagementController implements Initializable {
 
   public void update5Check() {
     if (upMotorbike2.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(upMotorbike2.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -490,6 +518,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -499,6 +528,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 240t480=? where type = 'motorbike'");
                 preparedStatement.setString(1, upMotorbike2.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -509,6 +539,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -532,6 +563,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -540,11 +572,13 @@ public class PriceManagementController implements Initializable {
 
   public void update6Check() {
     if (upMotorbike3.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(upMotorbike3.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -556,6 +590,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -565,6 +600,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 480p=? where type = 'motorbike'");
                 preparedStatement.setString(1, upMotorbike3.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -575,6 +611,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -598,6 +635,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -606,11 +644,13 @@ public class PriceManagementController implements Initializable {
 
   public void update7Check() {
     if (up1seat1.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up1seat1.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -622,6 +662,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -631,6 +672,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set m90=? where type = '4t8car'");
                 preparedStatement.setString(1, up1seat1.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -641,6 +683,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -664,6 +707,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -672,11 +716,13 @@ public class PriceManagementController implements Initializable {
 
   public void update8Check() {
     if (up1seat2.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up1seat2.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -688,6 +734,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -697,6 +744,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 90t1440=? where type = '4t8car'");
                 preparedStatement.setString(1, up1seat2.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -707,6 +755,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -730,6 +779,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -738,11 +788,13 @@ public class PriceManagementController implements Initializable {
 
   public void update9Check() {
     if (up1seat3.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up1seat3.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -754,6 +806,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -763,6 +816,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 1440p=? where type = '4t8car'");
                 preparedStatement.setString(1, up1seat3.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -773,6 +827,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -796,6 +851,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -804,11 +860,13 @@ public class PriceManagementController implements Initializable {
 
   public void update10Check() {
     if (up2seat1.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up2seat1.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -820,6 +878,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -829,6 +888,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set m90=? where type = '9t29car'");
                 preparedStatement.setString(1, up2seat1.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -839,6 +899,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -862,6 +923,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -870,11 +932,13 @@ public class PriceManagementController implements Initializable {
 
   public void update11Check() {
     if (up2seat2.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up2seat2.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -886,6 +950,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -895,6 +960,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 90t1440=? where type = '9t29car'");
                 preparedStatement.setString(1, up2seat2.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -905,6 +971,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -928,6 +995,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -936,11 +1004,13 @@ public class PriceManagementController implements Initializable {
 
   public void update12Check() {
     if (up2seat3.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up2seat3.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -952,6 +1022,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -961,6 +1032,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 1440p=? where type = '9t29car'");
                 preparedStatement.setString(1, up2seat3.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -971,6 +1043,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -994,6 +1067,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -1002,11 +1076,13 @@ public class PriceManagementController implements Initializable {
 
   public void update13Check() {
     if (up3seat1.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up3seat1.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -1018,6 +1094,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -1027,6 +1104,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set m90=? where type = '30pcar'");
                 preparedStatement.setString(1, up3seat1.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -1037,6 +1115,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -1060,6 +1139,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -1068,11 +1148,13 @@ public class PriceManagementController implements Initializable {
 
   public void update14Check() {
     if (up3seat2.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up3seat2.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -1084,6 +1166,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -1093,6 +1176,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 90t1440=? where type = '30pcar'");
                 preparedStatement.setString(1, up3seat2.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -1103,6 +1187,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -1126,6 +1211,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -1134,11 +1220,13 @@ public class PriceManagementController implements Initializable {
 
   public void update15Check() {
     if (up3seat3.getText().isEmpty()) {
+      new BounceIn(error).play();
       error.setTextFill(Color.RED);
       error.setText("No thing to update!");
     } else {
       try {
         if (Integer.parseInt(up3seat3.getText()) <= 0) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("New value must be > than 0!");
         } else {
@@ -1150,6 +1238,7 @@ public class PriceManagementController implements Initializable {
             preparedStatement = connection.prepareStatement("SELECT * FROM pricevsslots LIMIT 0,1");
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
+              new BounceIn(error).play();
               error.setTextFill(Color.RED);
               error.setText("List is empty!");
             } else {
@@ -1159,6 +1248,7 @@ public class PriceManagementController implements Initializable {
                 preparedStatement = connection.prepareStatement("update pricevsslots set 1440p=? where type = '30pcar'");
                 preparedStatement.setString(1, up3seat3.getText());
                 int kq = preparedStatement.executeUpdate();
+                new BounceIn(error).play();
                 if (kq > 0) {
                   error.setTextFill(Color.GREEN);
                   error.setText("Update successfully!");
@@ -1169,6 +1259,7 @@ public class PriceManagementController implements Initializable {
                   error.setText("Update error, Please try again later!");
                 }
               } else {
+                new BounceIn(error).play();
                 error.setTextFill(Color.RED);
                 error.setText("Database error, please try again later!");
               }
@@ -1192,6 +1283,7 @@ public class PriceManagementController implements Initializable {
           }
         }
       } catch (NumberFormatException numberFormatException) {
+        new BounceIn(error).play();
         error.setTextFill(Color.RED);
         error.setText("Please enter a valid number!");
       }
@@ -1207,10 +1299,12 @@ public class PriceManagementController implements Initializable {
     upBicycles1.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upBicycles1.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upBicycles1.setText(upBicycles1.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1222,10 +1316,12 @@ public class PriceManagementController implements Initializable {
     upBicycles2.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upBicycles2.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upBicycles2.setText(upBicycles2.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1237,10 +1333,12 @@ public class PriceManagementController implements Initializable {
     upBicycles3.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upBicycles3.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upBicycles3.setText(upBicycles3.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1252,10 +1350,12 @@ public class PriceManagementController implements Initializable {
     upMotorbike1.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upMotorbike1.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upMotorbike1.setText(upMotorbike1.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1267,10 +1367,12 @@ public class PriceManagementController implements Initializable {
     upMotorbike2.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upMotorbike2.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upMotorbike2.setText(upMotorbike2.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1282,10 +1384,12 @@ public class PriceManagementController implements Initializable {
     upMotorbike3.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (upMotorbike3.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           upMotorbike3.setText(upMotorbike3.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1297,10 +1401,12 @@ public class PriceManagementController implements Initializable {
     up1seat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up1seat1.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up1seat1.setText(up1seat1.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1312,10 +1418,12 @@ public class PriceManagementController implements Initializable {
     up1seat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up1seat2.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up1seat2.setText(up1seat2.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1327,10 +1435,12 @@ public class PriceManagementController implements Initializable {
     up1seat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up1seat3.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up1seat3.setText(up1seat3.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1342,10 +1452,12 @@ public class PriceManagementController implements Initializable {
     up2seat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up2seat1.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up2seat1.setText(up2seat1.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1357,10 +1469,12 @@ public class PriceManagementController implements Initializable {
     up2seat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up2seat2.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up2seat2.setText(up2seat2.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1371,11 +1485,13 @@ public class PriceManagementController implements Initializable {
   public void limitLength11() {
     up2seat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
+        new BounceIn(error).play();
         if (up2seat3.getText().length() >= 11) {
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up2seat3.setText(up2seat3.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1387,10 +1503,12 @@ public class PriceManagementController implements Initializable {
     up3seat1.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up3seat1.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up3seat1.setText(up3seat1.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1402,10 +1520,12 @@ public class PriceManagementController implements Initializable {
     up3seat2.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up3seat2.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up3seat2.setText(up3seat2.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1417,10 +1537,12 @@ public class PriceManagementController implements Initializable {
     up3seat3.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (up3seat3.getText().length() >= 11) {
+          new BounceIn(error).play();
           error.setTextFill(Color.RED);
           error.setText("Length must be <= 11 characters!");
           up3seat3.setText(up3seat3.getText().substring(0, 10));
         } else {
+          new BounceIn(error).play();
           error.setTextFill(Color.BLACK);
           error.setText("Parking Prices Management");
         }
@@ -1510,6 +1632,22 @@ public class PriceManagementController implements Initializable {
 
   public void goToTicketManagement() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TicketManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToSlotsManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SlotsManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToStatistics() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StatisticsScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

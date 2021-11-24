@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -117,12 +118,21 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <TextField fx:id="licensePlateTextField" layoutX="510.0" layoutY="261.0" onKeyTyped="#limitLength" prefHeight="26.0" prefWidth="430.0" />
-    <Button fx:id="licensePlateSearch" layoutX="958.0" layoutY="261.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
-    <Button layoutX="592.0" layoutY="635.0" mnemonicParsing="false" onAction="#updateCheck" text="Update">
+    <TextField fx:id="licensePlateTextField" focusTraversable="false" layoutX="510.0" layoutY="261.0" onKeyTyped="#limitLength" prefHeight="26.0" prefWidth="430.0">
+      <cursor>
+         <Cursor fx:constant="TEXT" />
+      </cursor></TextField>
+    <Button fx:id="licensePlateSearch" focusTraversable="false" layoutX="958.0" layoutY="261.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+    <Button focusTraversable="false" layoutX="592.0" layoutY="635.0" mnemonicParsing="false" onAction="#updateCheck" text="Update">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </Button>
     <Label fx:id="errorLabel1" layoutX="925.0" layoutY="265.0" textFill="RED">
         <font>
@@ -144,58 +154,85 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Button layoutX="701.0" layoutY="635.0" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Reset">
+    <Button focusTraversable="false" layoutX="701.0" layoutY="635.0" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Reset">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </Button>
-    <RadioButton fx:id="vehicleBicycles" disable="true" layoutX="510.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
+    <RadioButton fx:id="vehicleBicycles" disable="true" focusTraversable="false" layoutX="510.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Bicycles">
         <font>
             <Font size="18.0" />
         </font>
         <toggleGroup>
             <ToggleGroup fx:id="adminVehicleType" />
         </toggleGroup>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeCar" disable="true" layoutX="950.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$adminVehicleType">
+    <RadioButton fx:id="vehicleTypeCar" disable="true" focusTraversable="false" layoutX="950.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Car" toggleGroup="$adminVehicleType">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="vehicleTypeMotorbike" disable="true" layoutX="702.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Motorbike" toggleGroup="$adminVehicleType">
+    <RadioButton fx:id="vehicleTypeMotorbike" disable="true" focusTraversable="false" layoutX="702.0" layoutY="331.0" mnemonicParsing="false" onAction="#carTypeChecked" text="Motorbike" toggleGroup="$adminVehicleType">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats1" disable="true" layoutX="508.0" layoutY="402.0" mnemonicParsing="false" selected="true" text="4 - 8">
+    <RadioButton fx:id="carSeats1" disable="true" focusTraversable="false" layoutX="508.0" layoutY="402.0" mnemonicParsing="false" selected="true" text="4 - 8">
         <font>
             <Font size="18.0" />
         </font>
         <toggleGroup>
             <ToggleGroup fx:id="adminCarSeats" />
         </toggleGroup>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats3" disable="true" layoutX="948.0" layoutY="402.0" mnemonicParsing="false" text="30+" toggleGroup="$adminCarSeats">
+    <RadioButton fx:id="carSeats3" disable="true" focusTraversable="false" layoutX="948.0" layoutY="402.0" mnemonicParsing="false" text="30+" toggleGroup="$adminCarSeats">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="carSeats2" disable="true" layoutX="700.0" layoutY="402.0" mnemonicParsing="false" text="9 - 29" toggleGroup="$adminCarSeats">
+    <RadioButton fx:id="carSeats2" disable="true" focusTraversable="false" layoutX="700.0" layoutY="402.0" mnemonicParsing="false" text="9 - 29" toggleGroup="$adminCarSeats">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="ticketYes" disable="true" layoutX="606.0" layoutY="479.0" mnemonicParsing="false" text="Yes">
+    <RadioButton fx:id="ticketYes" disable="true" focusTraversable="false" layoutX="606.0" layoutY="479.0" mnemonicParsing="false" text="Yes">
         <font>
             <Font size="18.0" />
         </font>
         <toggleGroup>
             <ToggleGroup fx:id="adminMonthlyTicket" />
         </toggleGroup>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
-    <RadioButton fx:id="ticketNo" disable="true" layoutX="798.0" layoutY="479.0" mnemonicParsing="false" text="No" toggleGroup="$adminMonthlyTicket">
+    <RadioButton fx:id="ticketNo" disable="true" focusTraversable="false" layoutX="798.0" layoutY="479.0" mnemonicParsing="false" text="No" toggleGroup="$adminMonthlyTicket">
         <font>
             <Font size="18.0" />
         </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
     </RadioButton>
 </AnchorPane>

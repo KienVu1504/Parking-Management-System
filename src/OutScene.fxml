@@ -92,7 +92,7 @@
     <TextField id="out" fx:id="timeOutField" editable="false" layoutX="510.0" layoutY="440.0" prefHeight="26.0" prefWidth="200.0" />
     <TextField id="fee" fx:id="parkingFeeTextField" editable="false" layoutX="510.0" layoutY="509.0" prefHeight="26.0" prefWidth="457.0" />
     <Button id="search" fx:id="licensePlateSearch" layoutX="958.0" layoutY="230.0" mnemonicParsing="false" onAction="#licensePlateSearch" text="Search" />
-    <Button id="done" layoutX="606.0" layoutY="642.0" mnemonicParsing="false" onAction="#outCheck" text="Done">
+    <Button id="done" layoutX="511.0" layoutY="642.0" mnemonicParsing="false" onAction="#outCheck" prefHeight="40.0" prefWidth="170.0" text="Done">
         <font>
             <Font size="18.0" />
         </font>
@@ -140,7 +140,7 @@
             <Font size="14.0" />
         </font>
     </Label>
-    <Button layoutX="686.0" layoutY="642.0" mnemonicParsing="false" onAction="#goToOut" text="Reset">
+    <Button layoutX="680.0" layoutY="642.0" mnemonicParsing="false" onAction="#goToOut" prefHeight="40.0" prefWidth="170.0" text="Reset">
         <font>
             <Font size="18.0" />
         </font>

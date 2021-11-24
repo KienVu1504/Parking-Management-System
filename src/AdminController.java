@@ -1,3 +1,5 @@
+import animatefx.animation.BounceIn;
+import animatefx.animation.Shake;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -38,6 +41,8 @@ public class AdminController implements Initializable {
   private Button loginButton;
   @FXML
   private AnchorPane AdminPane;
+  @FXML
+  private ImageView image;
 
   public void closeAPP() {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -107,6 +112,8 @@ public class AdminController implements Initializable {
     usernameTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (usernameTextField.getText().length() > 25) {
+          new BounceIn(errorLabel).play();
+          new BounceIn(usernameErrorLabel).play();
           errorLabel.setText("Username length must be <= 25!");
           usernameErrorLabel.setText("!");
           usernameTextField.setText(usernameTextField.getText().substring(0, 25));
@@ -122,6 +129,8 @@ public class AdminController implements Initializable {
     passwordTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
         if (passwordTextField.getText().length() > 50) {
+          new BounceIn(errorLabel).play();
+          new BounceIn(passwordErrorLabel).play();
           errorLabel.setText("Password length must be <= 50!");
           passwordErrorLabel.setText("!");
           passwordTextField.setText(passwordTextField.getText().substring(0, 50));
@@ -135,16 +144,26 @@ public class AdminController implements Initializable {
 
   public void loginCheck(ActionEvent event, String username, String password) {
     if (usernameTextField.getText().isEmpty() && passwordTextField.getText().isEmpty()) {
+      new BounceIn(errorLabel).play();
+      new BounceIn(usernameErrorLabel).play();
+      new BounceIn(passwordErrorLabel).play();
+      new Shake(image).play();
       usernameErrorLabel.setText("!");
       passwordErrorLabel.setText("!");
       errorLabel.setTextFill(javafx.scene.paint.Color.RED);
       errorLabel.setText("Please fill all field!");
     } else if (usernameTextField.getText().isEmpty()) {
+      new BounceIn(errorLabel).play();
+      new BounceIn(usernameErrorLabel).play();
+      new Shake(image).play();
       usernameErrorLabel.setText("!");
       passwordErrorLabel.setText("");
       errorLabel.setTextFill(javafx.scene.paint.Color.RED);
       errorLabel.setText("Enter your username!");
     } else if (passwordTextField.getText().isEmpty()) {
+      new BounceIn(errorLabel).play();
+      new BounceIn(passwordErrorLabel).play();
+      new Shake(image).play();
       passwordErrorLabel.setText("!");
       usernameErrorLabel.setText("");
       errorLabel.setTextFill(Color.RED);
@@ -159,6 +178,9 @@ public class AdminController implements Initializable {
         preparedStatement.setString(1, username);
         resultSet = preparedStatement.executeQuery();
         if (!resultSet.isBeforeFirst()) {
+          new BounceIn(errorLabel).play();
+          new BounceIn(usernameErrorLabel).play();
+          new Shake(image).play();
           errorLabel.setText("Wrong username!");
           usernameErrorLabel.setText("!");
           passwordErrorLabel.setText("");
@@ -172,6 +194,9 @@ public class AdminController implements Initializable {
               stage.setScene(scene);
               stage.show();
             } else {
+              new Shake(image).play();
+              new BounceIn(errorLabel).play();
+              new BounceIn(passwordErrorLabel).play();
               errorLabel.setText("Wrong password!");
               passwordErrorLabel.setText("!");
               usernameErrorLabel.setText("");

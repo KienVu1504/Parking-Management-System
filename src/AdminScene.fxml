@@ -64,7 +64,7 @@
     <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="85.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/lock-icon.png" />
     </ImageView>
     <Label layoutX="202.0" layoutY="521.0" text="Home Site:">

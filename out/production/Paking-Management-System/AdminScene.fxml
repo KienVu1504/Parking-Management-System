@@ -38,7 +38,7 @@
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
@@ -64,7 +64,7 @@
     <ImageView fitHeight="297.0" fitWidth="302.0" layoutX="85.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
     </ImageView>
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/lock-icon.png" />
     </ImageView>
     <Label layoutX="202.0" layoutY="521.0" text="Home Site:">
@@ -107,7 +107,7 @@
             <Cursor fx:constant="TEXT" />
         </cursor>
     </TextField>
-    <Button fx:id="loginButton" focusTraversable="false" layoutX="881.0" layoutY="600.0" mnemonicParsing="false" text="Login">
+    <Button fx:id="loginButton" focusTraversable="false" layoutX="831.0" layoutY="602.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Login">
         <font>
             <Font size="18.0" />
         </font>

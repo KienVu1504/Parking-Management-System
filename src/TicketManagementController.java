@@ -1,3 +1,4 @@
+import animatefx.animation.BounceIn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,9 +41,7 @@ public class TicketManagementController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) ticketManagerPane.getScene().getWindow();
@@ -90,13 +89,13 @@ public class TicketManagementController implements Initializable {
   public void addLicenseLimitLength() {
     addLicensePlateTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (addLicensePlateTextField.getText().length() > 10) {
+          new BounceIn(error).play();
+          new BounceIn(error1).play();
           error1.setTextFill(Color.RED);
           error.setTextFill(Color.RED);
           error.setText("License Plate length must be <= 10!");
           error1.setText("!");
-          // if its 11th character then just setText to previous one
           addLicensePlateTextField.setText(addLicensePlateTextField.getText().substring(0, 10));
         } else {
           error.setText("");
@@ -108,6 +107,8 @@ public class TicketManagementController implements Initializable {
 
   public void addCheck() {
     if (addLicensePlateTextField.getText().isEmpty()) {
+      new BounceIn(error).play();
+      new BounceIn(error1).play();
       error1.setTextFill(Color.RED);
       error.setTextFill(Color.RED);
       error.setText("Please enter license plate!");
@@ -122,6 +123,8 @@ public class TicketManagementController implements Initializable {
         preparedStatement.setString(1, addLicensePlateTextField.getText());
         resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
+          new BounceIn(error).play();
+          new BounceIn(error1).play();
           error1.setTextFill(Color.RED);
           error.setTextFill(Color.RED);
           error.setText("Ticket existing!");
@@ -142,10 +145,12 @@ public class TicketManagementController implements Initializable {
           int kq = preparedStatement.executeUpdate();
           error1.setText("");
           if (kq > 0) {
+            new BounceIn(error).play();
             error.setTextFill(Color.GREEN);
             error.setText("Added " + addLicensePlateTextField.getText() + "!");
             resetTable();
           } else {
+            new BounceIn(error).play();
             error.setTextFill(Color.RED);
             error.setText("We can't add your ticket at this time. Please try again!");
           }
@@ -173,6 +178,8 @@ public class TicketManagementController implements Initializable {
   public void searchLicensePlate() {
     error3.setText("");
     if (upLicensePlateTextField.getText().isEmpty()) {
+      new BounceIn(error2).play();
+      new BounceIn(error3).play();
       error2.setTextFill(Color.RED);
       error3.setTextFill(Color.RED);
       error2.setText("!");
@@ -190,6 +197,8 @@ public class TicketManagementController implements Initializable {
           preparedStatement.setString(1, upLicensePlateTextField.getText());
           resultSet = preparedStatement.executeQuery();
           if (!resultSet.next()) {
+            new BounceIn(error2).play();
+            new BounceIn(error3).play();
             error2.setTextFill(Color.RED);
             error3.setTextFill(Color.RED);
             error2.setText("!");
@@ -233,6 +242,7 @@ public class TicketManagementController implements Initializable {
             up1Year.setDisable(false);
           }
         } else {
+          new BounceIn(error3).play();
           error3.setTextFill(Color.RED);
           error3.setText("List is empty!");
         }
@@ -258,11 +268,15 @@ public class TicketManagementController implements Initializable {
 
   public void updateCheck() {
     if (upLicensePlateTextField.getText().isEmpty()) {
+      new BounceIn(error2).play();
+      new BounceIn(error3).play();
       error2.setTextFill(Color.RED);
       error3.setTextFill(Color.RED);
       error2.setText("!");
       error3.setText("Please enter license plate!");
     } else if (!upLicensePlateTextField.getText().isEmpty() && statusLabel.isDisabled()) {
+      new BounceIn(error2).play();
+      new BounceIn(error3).play();
       error2.setTextFill(Color.RED);
       error3.setTextFill(Color.RED);
       error2.setText("!");
@@ -276,6 +290,7 @@ public class TicketManagementController implements Initializable {
         preparedStatement = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
         resultSet = preparedStatement.executeQuery();
         if (!resultSet.next()) {
+          new BounceIn(error3).play();
           error3.setTextFill(Color.RED);
           error3.setText("List is empty!");
         } else {
@@ -306,6 +321,7 @@ public class TicketManagementController implements Initializable {
             preparedStatement.setString(3, upLicensePlateTextField.getText());
             int kq = preparedStatement.executeUpdate();
             if (kq > 0) {
+              new BounceIn(error3).play();
               error3.setTextFill(Color.GREEN);
               error3.setText("Update success!");
               expiredDateLabel.setDisable(true);
@@ -326,10 +342,13 @@ public class TicketManagementController implements Initializable {
               expiredDateLabel.setTextFill(Color.BLACK);
               resetTable();
             } else {
+              new BounceIn(error3).play();
               error3.setTextFill(Color.RED);
               error3.setText("Update error. Try again!");
             }
           } else {
+            new BounceIn(error3).play();
+            new BounceIn(error2).play();
             error2.setTextFill(Color.RED);
             error2.setText("!");
             error3.setTextFill(Color.RED);
@@ -358,11 +377,15 @@ public class TicketManagementController implements Initializable {
 
   public void deleteCheck() {
     if (upLicensePlateTextField.getText().isEmpty()) {
+      new BounceIn(error3).play();
+      new BounceIn(error2).play();
       error2.setTextFill(Color.RED);
       error3.setTextFill(Color.RED);
       error2.setText("!");
       error3.setText("Please enter license plate!");
     } else if (!upLicensePlateTextField.getText().isEmpty() && statusLabel.isDisabled()) {
+      new BounceIn(error3).play();
+      new BounceIn(error2).play();
       error2.setTextFill(Color.RED);
       error3.setTextFill(Color.RED);
       error2.setText("!");
@@ -376,6 +399,7 @@ public class TicketManagementController implements Initializable {
         preparedStatement = connection.prepareStatement("SELECT * FROM ticket LIMIT 0,1");
         resultSet = preparedStatement.executeQuery();
         if (!resultSet.next()) {
+          new BounceIn(error3).play();
           error3.setTextFill(Color.RED);
           error3.setText("List is empty!");
         } else {
@@ -387,6 +411,7 @@ public class TicketManagementController implements Initializable {
             preparedStatement.setString(1, upLicensePlateTextField.getText());
             int kq = preparedStatement.executeUpdate();
             if (kq > 0) {
+              new BounceIn(error3).play();
               error3.setTextFill(Color.GREEN);
               error3.setText("Deleted!");
               expiredDateLabel.setDisable(true);
@@ -407,10 +432,12 @@ public class TicketManagementController implements Initializable {
               expiredDateLabel.setTextFill(Color.BLACK);
               resetTable();
             } else {
+              new BounceIn(error3).play();
               error3.setTextFill(Color.RED);
               error3.setText("Can't delete " + upLicensePlateTextField.getText() + ". Try again!");
             }
           } else {
+            new BounceIn(error3).play();
             error3.setTextFill(Color.RED);
             error3.setText("Not found " + upLicensePlateTextField.getText() + "!");
           }
@@ -454,13 +481,13 @@ public class TicketManagementController implements Initializable {
         up1Year.setDisable(true);
         up1Year.setSelected(false);
         expiredDateLabel.setTextFill(Color.BLACK);
-        // Check if the new character is greater than LIMIT
         if (upLicensePlateTextField.getText().length() > 10) {
+          new BounceIn(error3).play();
+          new BounceIn(error2).play();
           error3.setTextFill(Color.RED);
           error2.setTextFill(Color.RED);
           error3.setText("License Plate length must be <= 10!");
           error2.setText("!");
-          // if its 11th character then just setText to previous one
           upLicensePlateTextField.setText(upLicensePlateTextField.getText().substring(0, 10));
         } else {
           error3.setText("");
@@ -480,7 +507,6 @@ public class TicketManagementController implements Initializable {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
@@ -545,6 +571,30 @@ public class TicketManagementController implements Initializable {
 
   public void goToAccountManagement() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AccountManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToSlotsManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SlotsManagementScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToStatistics() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StatisticsScene.fxml")));
+    Stage stage = (Stage) menuBar.getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public void goToPricesManagement() throws IOException {
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PricesManagementScene.fxml")));
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

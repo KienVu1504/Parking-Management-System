@@ -13,76 +13,94 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="slotsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SlotsController">
-    <MenuBar fx:id="menuBar" layoutY="2.0" prefWidth="1360.0">
-        <Menu id="Menu" mnemonicParsing="false" text="Menu">
-            <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-        </Menu>
-        <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
-            <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Vehicle Management">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement" text="Ticket Management">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-        </Menu>
-        <Menu id="Help" mnemonicParsing="false" text="Help">
-            <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-        </Menu>
-    </MenuBar>
+   <MenuBar fx:id="menuBar1" layoutX="-3.0" layoutY="2.0" prefWidth="1360.0">
+      <menus>
+         <Menu id="Menu" mnemonicParsing="false" text="Menu">
+            <items>
+               <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+            </items>
+         </Menu>
+         <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
+            <items>
+               <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Vehicle Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+                  <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement" text="Ticket Management">
+                      <accelerator>
+                          <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                      </accelerator>
+                  </MenuItem>
+               <MenuItem id="Prices Management" mnemonicParsing="false" onAction="#goToPricesManagement" text="Prices Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Statistics" mnemonicParsing="false" onAction="#goToStatistics" text="Statistics">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+            </items>
+         </Menu>
+         <Menu id="Help" mnemonicParsing="false" text="Help">
+            <items>
+               <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+            </items>
+         </Menu>
+      </menus>
+   </MenuBar>
     <Label alignment="CENTER" layoutY="27.0" prefWidth="1360.0" text="Slots Management">
         <font>
             <Font name="System Bold" size="36.0" />

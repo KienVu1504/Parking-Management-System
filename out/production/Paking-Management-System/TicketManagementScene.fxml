@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -16,157 +17,258 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ticketManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketManagementController">
-    <RadioButton fx:id="upActive" disable="true" layoutX="987.0" layoutY="582.0" mnemonicParsing="false" text="Active">
+<AnchorPane fx:id="ticketManagerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicketManagementController">
+    <RadioButton fx:id="upActive" disable="true" focusTraversable="false" layoutX="987.0" layoutY="582.0"
+                 mnemonicParsing="false" text="Active">
         <toggleGroup>
-            <ToggleGroup fx:id="statusUp" />
+            <ToggleGroup fx:id="statusUp"/>
         </toggleGroup>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <MenuBar fx:id="menuBar" layoutY="1.0" prefWidth="1360.0">
+    <MenuBar fx:id="menuBar" layoutY="2.0" prefWidth="1360.0">
         <Menu id="Menu" mnemonicParsing="false" text="Menu">
             <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
             <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
             <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
+            <SeparatorMenuItem mnemonicParsing="false"/>
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
             <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
-            <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management">
+            <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement"
+                      text="Account Management">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
-            <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Vehicle Management">
+            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory"
+                      text="Packing History">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
-            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
+            <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement"
+                      text="Vehicle Management">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem id="Slots Management" mnemonicParsing="false" onAction="#goToSlotsManagement"
+                      text="Slots Management">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Prices Management" mnemonicParsing="false" onAction="#goToPricesManagement"
+                      text="Prices Management">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem id="Statistics" mnemonicParsing="false" onAction="#goToStatistics" text="Statistics">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false"/>
             <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
                 <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                    <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
         </Menu>
         <Menu id="Help" mnemonicParsing="false" text="Help">
             <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
             <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
                 <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP"/>
                 </accelerator>
             </MenuItem>
         </Menu>
     </MenuBar>
-    <TableView fx:id="ticketTable" layoutY="27.0" prefHeight="741.0" prefWidth="680.0">
+    <TableView fx:id="ticketTable" focusTraversable="false" layoutY="27.0" prefHeight="741.0" prefWidth="680.0">
         <columns>
-            <TableColumn fx:id="licensePlateColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="License Plate" />
-            <TableColumn fx:id="expiredDateColumn" editable="false" maxWidth="375.0" minWidth="375.0" prefWidth="375.0" resizable="false" text="Expired Date" />
-            <TableColumn fx:id="statusColumn" editable="false" prefWidth="108.79998779296875" text="Status" />
+            <TableColumn fx:id="licensePlateColumn" editable="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0"
+                         resizable="false" text="License Plate"/>
+            <TableColumn fx:id="expiredDateColumn" editable="false" maxWidth="375.0" minWidth="375.0" prefWidth="375.0"
+                         resizable="false" text="Expired Date"/>
+            <TableColumn fx:id="statusColumn" editable="false" prefWidth="108.79998779296875" text="Status"/>
         </columns>
     </TableView>
-    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="71.0" prefHeight="35.0" prefWidth="680.0" text="Add Ticket">
+    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="71.0" prefHeight="35.0" prefWidth="680.0"
+           text="Add Ticket">
         <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
     <Label id="license" layoutX="819.0" layoutY="157.0" text="License Plate">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
     <Label id="ticket" layoutX="822.0" layoutY="213.0" text="Ticket Plans">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <TextField id="license add" fx:id="addLicensePlateTextField" layoutX="923.0" layoutY="154.0" onKeyTyped="#addLicenseLimitLength" prefHeight="26.0" prefWidth="270.0" promptText="Enter license plate" />
-    <RadioButton id="add 1" fx:id="up1Month" disable="true" layoutX="936.0" layoutY="636.0" mnemonicParsing="false" text="1 Month">
+    <TextField id="license add" fx:id="addLicensePlateTextField" focusTraversable="false" layoutX="923.0"
+               layoutY="154.0" onKeyTyped="#addLicenseLimitLength" prefHeight="26.0" prefWidth="270.0"
+               promptText="Enter license plate">
+        <cursor>
+            <Cursor fx:constant="TEXT"/>
+        </cursor>
+    </TextField>
+    <RadioButton id="add 1" fx:id="up1Month" disable="true" focusTraversable="false" layoutX="936.0" layoutY="636.0"
+                 mnemonicParsing="false" text="1 Month">
         <toggleGroup>
-            <ToggleGroup fx:id="upPlan" />
+            <ToggleGroup fx:id="upPlan"/>
         </toggleGroup>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton id="add 2" fx:id="up1Year" disable="true" layoutX="1150.0" layoutY="635.0" mnemonicParsing="false" text="1 Year" toggleGroup="$upPlan" />
-    <RadioButton id="add 3" fx:id="up6Months" disable="true" layoutX="1035.0" layoutY="635.0" mnemonicParsing="false" text="6 Months" toggleGroup="$upPlan" />
-    <Separator layoutX="680.0" layoutY="396.0" prefWidth="680.0" />
-    <Button layoutX="1002.0" layoutY="324.0" mnemonicParsing="false" onAction="#addCheck" text="Add" />
+    <RadioButton id="add 2" fx:id="up1Year" disable="true" focusTraversable="false" layoutX="1150.0" layoutY="635.0"
+                 mnemonicParsing="false" text="1 Year" toggleGroup="$upPlan">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </RadioButton>
+    <RadioButton id="add 3" fx:id="up6Months" disable="true" focusTraversable="false" layoutX="1035.0" layoutY="635.0"
+                 mnemonicParsing="false" text="6 Months" toggleGroup="$upPlan">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </RadioButton>
+    <Separator layoutX="680.0" layoutY="396.0" prefWidth="680.0"/>
+    <Button focusTraversable="false" layoutX="929.0" layoutY="323.0" mnemonicParsing="false" onAction="#addCheck"
+            prefHeight="40.0" prefWidth="170.0" text="Add">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
     <Label id="error1" fx:id="error1" layoutX="1204.0" layoutY="153.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="18.0"/>
         </font>
     </Label>
-    <Label id="error" fx:id="error" alignment="CENTER" layoutX="681.0" layoutY="270.0" prefHeight="18.0" prefWidth="680.0" textFill="RED" />
-    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="417.0" prefHeight="35.0" prefWidth="680.0" text="Update Ticket">
+    <Label id="error" fx:id="error" alignment="CENTER" layoutX="681.0" layoutY="270.0" prefHeight="18.0"
+           prefWidth="680.0" textFill="RED"/>
+    <Label id="big label" alignment="CENTER" layoutX="680.0" layoutY="417.0" prefHeight="35.0" prefWidth="680.0"
+           text="Update Ticket">
         <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
     <Label id="license" layoutX="830.0" layoutY="476.0" text="License Plate">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
     <Label id="ticket" fx:id="ticketLabel" disable="true" layoutX="835.0" layoutY="634.0" text="Ticket Plans">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
     <Label id="ticket" fx:id="statusLabel" disable="true" layoutX="853.0" layoutY="581.0" text="Status">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <TextField fx:id="upLicensePlateTextField" layoutX="934.0" layoutY="473.0" onKeyTyped="#upLicenseLimitLength" prefHeight="26.0" prefWidth="210.0" promptText="Enter license plate" />
-    <Button layoutX="1152.0" layoutY="473.0" mnemonicParsing="false" onAction="#searchLicensePlate" text="Search" />
-    <Button layoutX="947.0" layoutY="715.0" mnemonicParsing="false" onAction="#updateCheck" text="Update" />
-    <Button layoutX="1030.0" layoutY="715.0" mnemonicParsing="false" onAction="#deleteCheck" text="Delete" />
+    <TextField fx:id="upLicensePlateTextField" focusTraversable="false" layoutX="934.0" layoutY="473.0"
+               onKeyTyped="#upLicenseLimitLength" prefHeight="26.0" prefWidth="210.0" promptText="Enter license plate">
+        <cursor>
+            <Cursor fx:constant="TEXT"/>
+        </cursor>
+    </TextField>
+    <Button focusTraversable="false" layoutX="1152.0" layoutY="473.0" mnemonicParsing="false"
+            onAction="#searchLicensePlate" text="Search">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <Button focusTraversable="false" layoutX="845.0" layoutY="714.0" mnemonicParsing="false" onAction="#updateCheck"
+            prefHeight="40.0" prefWidth="170.0" text="Update">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <Button focusTraversable="false" layoutX="1013.0" layoutY="714.0" mnemonicParsing="false" onAction="#deleteCheck"
+            prefHeight="40.0" prefWidth="170.0" text="Delete">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
     <Label id="error2" fx:id="error2" layoutX="1213.0" layoutY="476.0" textFill="RED">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <Label fx:id="error3" alignment="CENTER" layoutX="682.0" layoutY="674.0" prefHeight="18.0" prefWidth="680.0" textFill="RED" />
-    <RadioButton id="add 1" fx:id="add1Month" layoutX="923.0" layoutY="215.0" mnemonicParsing="false" selected="true" text="1 Month">
+    <Label fx:id="error3" alignment="CENTER" layoutX="682.0" layoutY="674.0" prefHeight="18.0" prefWidth="680.0"
+           textFill="RED"/>
+    <RadioButton id="add 1" fx:id="add1Month" focusTraversable="false" layoutX="923.0" layoutY="215.0"
+                 mnemonicParsing="false" selected="true" text="1 Month">
         <toggleGroup>
-            <ToggleGroup fx:id="addPlan" />
+            <ToggleGroup fx:id="addPlan"/>
         </toggleGroup>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </RadioButton>
-    <RadioButton id="add 2" fx:id="add1Year" layoutX="1137.0" layoutY="214.0" mnemonicParsing="false" text="1 Year" toggleGroup="$addPlan" />
-    <RadioButton id="add 3" fx:id="add6Months" layoutX="1022.0" layoutY="214.0" mnemonicParsing="false" text="6 Months" toggleGroup="$addPlan" />
-    <RadioButton fx:id="upSuspended" disable="true" layoutX="1082.0" layoutY="582.0" mnemonicParsing="false" text="Suspended" toggleGroup="$statusUp" />
+    <RadioButton id="add 2" fx:id="add1Year" focusTraversable="false" layoutX="1137.0" layoutY="214.0"
+                 mnemonicParsing="false" text="1 Year" toggleGroup="$addPlan">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </RadioButton>
+    <RadioButton id="add 3" fx:id="add6Months" focusTraversable="false" layoutX="1022.0" layoutY="214.0"
+                 mnemonicParsing="false" text="6 Months" toggleGroup="$addPlan">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </RadioButton>
+    <RadioButton fx:id="upSuspended" disable="true" focusTraversable="false" layoutX="1082.0" layoutY="582.0"
+                 mnemonicParsing="false" text="Suspended" toggleGroup="$statusUp">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </RadioButton>
     <Label fx:id="expiredDateLabel" disable="true" layoutX="831.0" layoutY="530.0" text="Expired Date">
         <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="14.0"/>
         </font>
     </Label>
-    <TextField fx:id="upExpiredDate" disable="true" editable="false" focusTraversable="false" layoutX="936.0" layoutY="527.0" prefHeight="26.0" prefWidth="270.0" />
+    <TextField fx:id="upExpiredDate" disable="true" editable="false" focusTraversable="false" layoutX="936.0"
+               layoutY="527.0" prefHeight="26.0" prefWidth="270.0">
+        <cursor>
+            <Cursor fx:constant="TEXT"/>
+        </cursor>
+    </TextField>
 </AnchorPane>

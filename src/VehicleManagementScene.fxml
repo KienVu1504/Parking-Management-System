@@ -126,7 +126,7 @@
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-    <Button focusTraversable="false" layoutX="592.0" layoutY="635.0" mnemonicParsing="false" onAction="#updateCheck" text="Update">
+    <Button focusTraversable="false" layoutX="510.0" layoutY="633.0" mnemonicParsing="false" onAction="#updateCheck" prefHeight="40.0" prefWidth="170.0" text="Update">
         <font>
             <Font size="18.0" />
         </font>
@@ -154,7 +154,7 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Button focusTraversable="false" layoutX="701.0" layoutY="635.0" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Reset">
+    <Button focusTraversable="false" layoutX="680.0" layoutY="633.0" mnemonicParsing="false" onAction="#goToVehicleManagement" prefHeight="40.0" prefWidth="170.0" text="Reset">
         <font>
             <Font size="18.0" />
         </font>

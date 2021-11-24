@@ -44,9 +44,7 @@ public class AdminController implements Initializable {
     alert.setTitle("Close!");
     alert.setHeaderText("You're about to close the application!");
     alert.setContentText("Do you want to exit?");
-    // Get the Stage.
     stage = (Stage) alert.getDialogPane().getScene().getWindow();
-    // Add a custom icon.
     stage.getIcons().add(new Image("images/sgd.png"));
     if (alert.showAndWait().orElse(null) == ButtonType.OK) {
       stage = (Stage) AdminPane.getScene().getWindow();
@@ -67,7 +65,6 @@ public class AdminController implements Initializable {
 
   public void goToOut() throws IOException {
     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OutScene.fxml")));
-    //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     Stage stage = (Stage) menuBar.getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
@@ -109,11 +106,9 @@ public class AdminController implements Initializable {
   public void usernameLimitLength() {
     usernameTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (usernameTextField.getText().length() > 25) {
           errorLabel.setText("Username length must be <= 25!");
           usernameErrorLabel.setText("!");
-          // if its 11th character then just setText to previous one
           usernameTextField.setText(usernameTextField.getText().substring(0, 25));
         } else {
           errorLabel.setText("");
@@ -126,12 +121,9 @@ public class AdminController implements Initializable {
   public void passwordLimitLength() {
     passwordTextField.lengthProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue.intValue() > oldValue.intValue()) {
-        // Check if the new character is greater than LIMIT
         if (passwordTextField.getText().length() > 50) {
           errorLabel.setText("Password length must be <= 50!");
           passwordErrorLabel.setText("!");
-          // if its 11th character then just setText to previous
-          // one
           passwordTextField.setText(passwordTextField.getText().substring(0, 50));
         } else {
           errorLabel.setText("");
@@ -175,7 +167,6 @@ public class AdminController implements Initializable {
             String retriedPassword = resultSet.getString("password");
             if (retriedPassword.equals(password)) {
               Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminCenterScene.fxml")));
-              //Stage stage = (Stage) menuBar.getScene().getWindow();
               stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
               Scene scene = new Scene(root);
               stage.setScene(scene);

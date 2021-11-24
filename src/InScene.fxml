@@ -98,7 +98,7 @@
             <Font size="18.0" />
         </font>
     </RadioButton>
-    <Button layoutX="640.0" layoutY="642.0" mnemonicParsing="false" onAction="#submitIn" text="Submit">
+    <Button layoutX="596.0" layoutY="641.0" mnemonicParsing="false" onAction="#submitIn" prefHeight="40.0" prefWidth="170.0" text="Submit">
         <font>
             <Font size="18.0" />
         </font>

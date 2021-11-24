@@ -63,12 +63,16 @@ public class LoginController implements Initializable {
         // Check if the new character is greater than LIMIT
         if (usernameTextField.getText().length() > 25) {
           errorLabel.setText("Username length must be <= 25!");
+          new BounceIn(errorLabel).play();
+          new BounceIn(usernameErrorLabel).play();
           usernameErrorLabel.setText("!");
           // if its 11th character then just setText to previous one
           usernameTextField.setText(usernameTextField.getText().substring(0, 25));
         } else {
           errorLabel.setText("");
           usernameErrorLabel.setText("");
+          new BounceOut(errorLabel).play();
+          new BounceOut(usernameErrorLabel).play();
         }
       }
     });
@@ -81,12 +85,14 @@ public class LoginController implements Initializable {
         if (passwordTextField.getText().length() > 50) {
           errorLabel.setText("Password length must be <= 50!");
           passwordErrorLabel.setText("!");
-          // if its 11th character then just setText to previous
-          // one
+          new BounceIn(errorLabel).play();
+          new BounceIn(passwordErrorLabel).play();
           passwordTextField.setText(passwordTextField.getText().substring(0, 50));
         } else {
           errorLabel.setText("");
           passwordErrorLabel.setText("");
+          new BounceOut(errorLabel).play();
+          new BounceOut(passwordErrorLabel).play();
         }
       }
     });
@@ -137,6 +143,7 @@ public class LoginController implements Initializable {
           passwordErrorLabel.setText("");
           errorAnimated();
           new BounceIn(usernameErrorLabel).play();
+          new BounceOut(passwordErrorLabel).play();
         } else {
           while (resultSet.next()) {
             String retriedPassword = resultSet.getString("password");
@@ -146,10 +153,13 @@ public class LoginController implements Initializable {
               stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
               Scene scene = new Scene(root);
               stage.setScene(scene);
+              new FadeOut(image).play();
+              new BounceOut(errorLabel).play();
               stage.show();
             } else {
               errorAnimated();
               new BounceIn(passwordErrorLabel).play();
+              new BounceOut(usernameErrorLabel).play();
               errorLabel.setText("Wrong password!");
               passwordErrorLabel.setText("!");
               usernameErrorLabel.setText("");
@@ -159,6 +169,7 @@ public class LoginController implements Initializable {
       } catch (SQLException | IOException e) {
         e.printStackTrace();
       } catch (NullPointerException nullPointerException) {
+        new BounceIn(errorLabel).play();
         errorLabel.setTextFill(Color.RED);
         errorLabel.setText("Connection error, please try again later!");
       } finally {

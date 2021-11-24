@@ -13,76 +13,94 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pricePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PriceManagementController">
-    <MenuBar fx:id="menuBar" layoutY="2.0" prefWidth="1360.0">
-        <Menu id="Menu" mnemonicParsing="false" text="Menu">
-            <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-        </Menu>
-        <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
-            <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Vehicle Management">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement" text="Ticket Management">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
-                <accelerator>
-                    <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-        </Menu>
-        <Menu id="Help" mnemonicParsing="false" text="Help">
-            <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-            <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
-                <accelerator>
-                    <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                </accelerator>
-            </MenuItem>
-        </Menu>
-    </MenuBar>
+   <MenuBar fx:id="menuBar1" prefWidth="1360.0">
+      <menus>
+         <Menu id="Menu" mnemonicParsing="false" text="Menu">
+            <items>
+               <MenuItem id="In" mnemonicParsing="false" onAction="#goToIn" text="In">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Out" mnemonicParsing="false" onAction="#goToOut" text="Out">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="History" mnemonicParsing="false" onAction="#goToHistory" text="History">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem id="Logout" mnemonicParsing="false" onAction="#logout" text="Logout">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Close" mnemonicParsing="false" onAction="#closeAPP" text="Close">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+            </items>
+         </Menu>
+         <Menu id="Admin Tools" mnemonicParsing="false" text="Admin Tools">
+            <items>
+               <MenuItem id="Account Management" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Packing History" mnemonicParsing="false" onAction="#goToAdminPackingHistory" text="Packing History">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Vehicle Management" mnemonicParsing="false" onAction="#goToVehicleManagement" text="Vehicle Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Ticket Management" mnemonicParsing="false" onAction="#goToTicketManagement" text="Ticket Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Slots Management" mnemonicParsing="false" onAction="#goToSlotsManagement" text="Slots Management">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="Statistics" mnemonicParsing="false" onAction="#goToStatistics" text="Statistics">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem id="Logout" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+            </items>
+         </Menu>
+         <Menu id="Help" mnemonicParsing="false" text="Help">
+            <items>
+               <MenuItem id="Tutorials" mnemonicParsing="false" onAction="#goToHelp" text="Tutorials">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+               <MenuItem id="About" mnemonicParsing="false" onAction="#goToAbout" text="About">
+                  <accelerator>
+                     <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </MenuItem>
+            </items>
+         </Menu>
+      </menus>
+   </MenuBar>
     <Label fx:id="error" alignment="CENTER" layoutY="27.0" prefWidth="1360.0" text="Parking Prices Management">
         <font>
             <Font name="System Bold" size="36.0" />
@@ -483,21 +501,21 @@
    <Separator layoutX="803.0" layoutY="586.0" prefWidth="560.0" />
    <Separator layoutX="803.0" layoutY="672.0" prefWidth="560.0" />
    <Separator layoutX="803.0" layoutY="715.0" prefWidth="560.0" />
-   <Button layoutX="1298.0" layoutY="117.0" mnemonicParsing="false" onAction="#update1Check" prefHeight="40.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="158.0" mnemonicParsing="false" onAction="#update2Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="200.0" mnemonicParsing="false" onAction="#update3Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="244.0" mnemonicParsing="false" onAction="#update4Check" prefHeight="45.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="289.0" mnemonicParsing="false" onAction="#update5Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="331.0" mnemonicParsing="false" onAction="#update6Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="373.0" mnemonicParsing="false" onAction="#update7Check" prefHeight="43.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="414.0" mnemonicParsing="false" onAction="#update8Check" prefHeight="44.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="460.0" mnemonicParsing="false" onAction="#update9Check" prefHeight="41.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="502.0" mnemonicParsing="false" onAction="#update10Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="544.0" mnemonicParsing="false" onAction="#update11Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="587.0" mnemonicParsing="false" onAction="#update12Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="630.0" mnemonicParsing="false" onAction="#update13Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="672.0" mnemonicParsing="false" onAction="#update14Check" prefHeight="44.0" prefWidth="60.0" text="Update" />
-   <Button layoutX="1298.0" layoutY="716.0" mnemonicParsing="false" onAction="#update15Check" prefHeight="51.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="117.0" mnemonicParsing="false" onAction="#update1Check" prefHeight="40.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="158.0" mnemonicParsing="false" onAction="#update2Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="200.0" mnemonicParsing="false" onAction="#update3Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="244.0" mnemonicParsing="false" onAction="#update4Check" prefHeight="45.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="289.0" mnemonicParsing="false" onAction="#update5Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="331.0" mnemonicParsing="false" onAction="#update6Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="373.0" mnemonicParsing="false" onAction="#update7Check" prefHeight="43.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="414.0" mnemonicParsing="false" onAction="#update8Check" prefHeight="44.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="460.0" mnemonicParsing="false" onAction="#update9Check" prefHeight="41.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="502.0" mnemonicParsing="false" onAction="#update10Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="544.0" mnemonicParsing="false" onAction="#update11Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="587.0" mnemonicParsing="false" onAction="#update12Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="630.0" mnemonicParsing="false" onAction="#update13Check" prefHeight="42.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="672.0" mnemonicParsing="false" onAction="#update14Check" prefHeight="44.0" prefWidth="60.0" text="Update" />
+   <Button focusTraversable="false" layoutX="1298.0" layoutY="716.0" mnemonicParsing="false" onAction="#update15Check" prefHeight="51.0" prefWidth="60.0" text="Update" />
    <TextField fx:id="upBicycles1" alignment="CENTER" focusTraversable="false" layoutX="923.0" layoutY="115.0" onKeyTyped="#limitLength" prefHeight="43.0" prefWidth="375.0" promptText="VND/Minute">
       <font>
          <Font size="14.0" />

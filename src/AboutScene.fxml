@@ -72,7 +72,7 @@
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="344.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pngtree-parking-icon-for-your-design-websites-and-projects-png-image_5149413.png" />
     </ImageView>
-    <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.11.24 Build 10.11PM Beta">
+    <Label alignment="CENTER" layoutX="521.0" layoutY="168.0" prefHeight="27.0" prefWidth="498.0" text="Version: 21.12.1 Build 1.44PM Beta">
         <font>
             <Font size="18.0" />
         </font>

@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 22, 2021 lúc 05:56 AM
--- Phiên bản máy phục vụ: 10.4.18-MariaDB
--- Phiên bản PHP: 8.0.3
+-- Host: 127.0.0.1
+-- Generation Time: Dec 01, 2021 at 08:14 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `parkingsystem`
+-- Database: `parkingsystem`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -35,7 +35,7 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `account`
+-- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `role`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `account` (`id`, `username`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `parking`
+-- Table structure for table `parking`
 --
 
 CREATE TABLE `parking` (
@@ -68,7 +68,7 @@ CREATE TABLE `parking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `parking`
+-- Dumping data for table `parking`
 --
 
 INSERT INTO `parking` (`id`, `license_plate`, `type`, `seat`, `ticket`, `time_in`, `time_out`, `parking_time`, `fee`, `status`) VALUES
@@ -83,14 +83,14 @@ INSERT INTO `parking` (`id`, `license_plate`, `type`, `seat`, `ticket`, `time_in
 (9, '123456789', 'Motorbike', '0', 0, '02-11-2021 15:00:27', '02-11-2021 16:13:40', '73', '0', 0),
 (10, '0355469274', 'Car', '30+', 0, '02-11-2021 16:14:24', '02-11-2021 16:51:09', '36', '30024', 0),
 (11, '30y64065', 'Motorbike', '0', 0, '02-10-2021 16:50:29', '02-11-2021 16:51:18', '44640', '848160', 0),
-(12, '1612043809', 'Bicycles', '0', 0, '03-11-2021 15:30:12', '', '', '', 1),
+(12, '1612043809', 'Bicycles', '0', 1, '03-11-2021 15:30:12', '24-11-2021 17:40:56', '30370', '334070', 0),
 (13, '1213548434', 'Motorbike', '0', 0, '03-11-2021 15:30:20', '04-11-2021 11:04:49', '1174', '22306', 0),
 (14, '4651468654', 'Car', '4-8', 0, '03-11-2021 15:30:34', '', '', '', 1),
 (15, '4631491693', 'Car', '30+', 0, '03-11-2021 15:30:41', '05-11-2021 13:18:49', '2748', '917832', 0),
 (16, '2905597875', 'Car', '9-29', 0, '03-11-2021 15:30:45', '04-11-2021 11:05:09', '1174', '293500', 0),
 (17, '4916987076', 'Bicycles', '0', 0, '04-11-2021 11:01:08', '', '', '', 1),
 (18, '30H33558', 'Car', '30+', 0, '04-11-2021 11:02:14', '04-11-2021 11:08:03', '5', '4170', 0),
-(19, '30h335585', 'Car', '4-8', 0, '04-11-2021 11:02:35', '', '', '', 1),
+(19, '30h335585', 'Car', '4-8', 0, '04-11-2021 11:02:35', '24-11-2021 14:13:17', '28990', '1478490', 0),
 (20, '012153654', 'Car', '30+', 0, '04-11-2021 11:12:46', '', '', '', 1),
 (21, 'rgdfhhdh', 'Motorbike', '0', 0, '04-11-2021 11:12:51', '04-11-2021 14:22:52', '190', '19000', 0),
 (22, '4122727589', 'Bicycles', '0', 0, '04-11-2021 11:12:55', '05-11-2021 13:18:32', '1565', '17215', 0),
@@ -183,7 +183,7 @@ INSERT INTO `parking` (`id`, `license_plate`, `type`, `seat`, `ticket`, `time_in
 (109, 'yutjjyjghj', 'Motorbike', '0', 0, '19-11-2021 14:37:11', '', '', '', 1),
 (110, 'fjfgjfjfjf', 'Car', '4-8', 0, '19-11-2021 14:37:15', '', '', '', 1),
 (111, 'hjgfhgfjfg', 'Car', '9-29', 0, '19-11-2021 14:37:33', '', '', '', 1),
-(112, 'gfhfghg', 'Car', '4-8', 0, '19-11-2021 15:50:28', '', '', '', 1),
+(112, 'gfhfghg', 'Car', '4-8', 0, '19-11-2021 15:50:28', '24-11-2021 14:00:09', '7089', '361539', 0),
 (113, '513061709', 'Bicycles', '0', 0, '19-11-2021 15:50:31', '', '', '', 1),
 (114, '764926209', 'Bicycles', '0', 0, '21-11-2021 14:14:23', '', '', '', 1),
 (115, '5353453', 'Motorbike', '0', 0, '21-11-2021 14:14:36', '', '', '', 1),
@@ -192,12 +192,22 @@ INSERT INTO `parking` (`id`, `license_plate`, `type`, `seat`, `ticket`, `time_in
 (118, '6535345333', 'Motorbike', '0', 0, '22-11-2021 11:55:03', '', '', '', 1),
 (119, '4253351', 'Car', '4-8', 0, '22-11-2021 11:55:07', '', '', '', 1),
 (120, '3421534153', 'Car', '9-29', 0, '22-11-2021 11:55:11', '', '', '', 1),
-(121, '531153531', 'Car', '30+', 0, '22-11-2021 11:55:15', '', '', '', 1);
+(121, '531153531', 'Car', '30+', 0, '22-11-2021 11:55:15', '', '', '', 1),
+(122, '952852557', 'Bicycles', '0', 0, '24-11-2021 13:57:50', '', '', '', 1),
+(123, 'fsfssdfs', 'Motorbike', '0', 0, '24-11-2021 13:57:55', '', '', '', 1),
+(124, '46777734', 'Car', '4-8', 0, '24-11-2021 13:58:00', '', '', '', 1),
+(125, '4334654355', 'Car', '9-29', 0, '24-11-2021 13:58:08', '', '', '', 1),
+(126, '5545361353', 'Car', '30+', 0, '24-11-2021 13:58:14', '', '', '', 1),
+(127, '973484700', 'Bicycles', '0', 0, '24-11-2021 17:41:15', '', '', '', 1),
+(128, 'tu56u6y55', 'Motorbike', '0', 0, '24-11-2021 17:41:17', '', '', '', 1),
+(129, 'tu212jhg', 'Car', '4-8', 0, '24-11-2021 17:41:23', '', '', '', 1),
+(130, 'tyjtyyt745', 'Car', '9-29', 0, '24-11-2021 17:41:28', '', '', '', 1),
+(131, '4574747474', 'Car', '30+', 0, '24-11-2021 17:41:31', '', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `pricevsslots`
+-- Table structure for table `pricevsslots`
 --
 
 CREATE TABLE `pricevsslots` (
@@ -212,20 +222,20 @@ CREATE TABLE `pricevsslots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `pricevsslots`
+-- Dumping data for table `pricevsslots`
 --
 
 INSERT INTO `pricevsslots` (`type`, `m90`, `90t1440`, `1440p`, `m240`, `240t480`, `480p`, `slots`) VALUES
-('30pcar', 834, 334, 334, 0, 0, 0, 20),
-('4t8car', 417, 167, 105, 0, 0, 0, 20),
-('9t29car', 667, 250, 209, 0, 0, 0, 20),
+('30pcar', 415, 112, 120, 0, 0, 0, 15),
+('4t8car', 210, 85, 51, 0, 0, 0, 15),
+('9t29car', 333, 130, 105, 0, 0, 0, 15),
 ('bicycles', 0, 0, 0, 50, 9, 11, 70),
-('motorbike', 0, 0, 0, 100, 17, 19, 50);
+('motorbike', 0, 0, 0, 100, 17, 11, 50);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `ticket`
+-- Table structure for table `ticket`
 --
 
 CREATE TABLE `ticket` (
@@ -235,12 +245,12 @@ CREATE TABLE `ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `ticket`
+-- Dumping data for table `ticket`
 --
 
 INSERT INTO `ticket` (`license_plate`, `expired_date`, `status`) VALUES
 ('123456789', '11-01-2023 15:41:00', 1),
-('30h33558', '31-12-2021 21:53:30', 1),
+('30h33558', '31-01-2022 21:53:30', 1),
 ('3131534', '11-11-2022 10:53:25', 1),
 ('3153453531', '11-11-2020 15:47:42', 1),
 ('4541213', '11-12-2021 15:48:10', 1),
@@ -249,48 +259,48 @@ INSERT INTO `ticket` (`license_plate`, `expired_date`, `status`) VALUES
 ('684653', '11-12-2021 10:48:05', 1);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `parking`
+-- Indexes for table `parking`
 --
 ALTER TABLE `parking`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `pricevsslots`
+-- Indexes for table `pricevsslots`
 --
 ALTER TABLE `pricevsslots`
   ADD PRIMARY KEY (`type`);
 
 --
--- Chỉ mục cho bảng `ticket`
+-- Indexes for table `ticket`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`license_plate`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `account`
+-- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
   MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT cho bảng `parking`
+-- AUTO_INCREMENT for table `parking`
 --
 ALTER TABLE `parking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
